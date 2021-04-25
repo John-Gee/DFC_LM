@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <title> DeFiChain Liquidty Mining Calculator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="js/jquery-3.6.0.min.js"></script>
         <script>
             $(document).ready(function(){
@@ -121,34 +122,61 @@
         <style>
             * {
                 box-sizing: border-box;
+                margin: 0;
             }
-            body {
-                //background-color: rgba(0, 0, 0, 0.5);
+
+            .header img {
+                float: left;
+                height: 80%;
             }
-            h1 {
-                color: rgba(255,105,180, 1);
+
+            .header h1 {
+                color: rgba(255,0,176,1);
+                position: relative;
+                top: 10%;
+                width: 99%;
+                left: 1%;
             }
+
+            .header {
+                background-color: rgb(240,240,240);
+                position: sticky;
+                top: 0;
+                height: 15%;
+                width: 100%;
+                z-index: 1;
+            }
+
+            .main {
+                position: relative;
+            }
+
             .column {
                 float: left;
                 width: 50%;
                 padding: 5px;
             }
+
             table {
-                border:1px solid rgba(255,105,180, 1);
+                border:1px solid rgba(255,0,176,1);
                 width: 100%;
                 margin-bottom: 20px;
                 font-size: 100%;
             }
+
             caption {
                 font-weight: bold;
             }
+
             input {
-                color: rgba(255,105,180, 1);
+                color: rgba(255,0,176,1);
                 font-size: 80%;
             }
+
             div {
                 margin-bottom: 10px;
             }
+
             label {
                 display: inline-block;
                 width: 30%;
@@ -157,114 +185,119 @@
         </style>
     </head>
     <body>
-        <h1> Liquidity Mining Calculator </h1>
-        <br/>
-        <div>
-            <div class="column">
-                <table>
-                    <caption>Current price in USD</caption>
-                    <tr>
-                        <td></td>
-                        <td>DFI</td>
-                        <td><input type="number" id="cPriceDFI" name="cPriceDFI" placeholder="$"></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Ratio</td>
-                        <td><input type="number" id="cPriceRatio" name="cPriceRatio" disabled></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>Token</td>
-                        <td><input type="number" id="cPriceToken" name="cPriceToken" placeholder="$"></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="column">
-                <table>
-                    <caption>Current amount</caption>
-                    <tr>
-                        <td></td>
-                        <td>DFI</td>
-                        <td><input type="number" id="cAmountDFI" name="cAmountDFI" placeholder="N"></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Ratio</td>
-                        <td><input type="number" id="cAmountRatio" name="cAmountRatio" disabled></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>Token</td>
-                        <td><input type="number" id="cAmountT" name="cAmountT" placeholder="N"></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>
-        <div>
-        <div>
-            <div class="column">
-                <table>
-                    <caption>Estimated future price in USD</caption>
-                    <tr>
-                        <td></td>
-                        <td>DFI</td>
-                        <td><input type="number" id="ePriceDFI" name="ePriceDFI" placeholder="$"></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>Ratio</td>
-                        <td><input type="number" id="ePriceRatio" name="ePriceRatio" disabled></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>Token</td>
-                        <td><input type="number" id="ePriceToken" name="ePriceToken" placeholder="$"></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="column">
-                <table>
-                    <caption>Calculated future amount</caption>
-                    <tr>
-                        <td></td>
-                        <td>DFI</td>
-                        <td><input type="number" id="fAmountDFI" name="fAmountDFI" disabled></td>
-                        <td>Difference</td>
-                        <td><input id="diffAmountDFI" name="diffAmountDFI" disabled></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <!--<td>Ratio</td>
-                        <td><input type="number" id="fAmountRatio" name="fAmountRatio" disabled></td>-->
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>Token</td>
-                        <td><input type="number" id="fAmountT" name="fAmountT" disabled></td>
-                        <td>Difference</td>
-                        <td><input id="diffAmountT" name="diffAmountT" disabled></td>
-                    </tr>
-                </table>
+        <div class="header">
+            <img src="img/defichain-dfi-logo.png" alt="Simply Easy Learning" />
+            <h1> Liquidity Mining Calculator </h1>
+        </div>
+        <div class="main">
+            <div>
+                <div class="column">
+                    <table>
+                        <caption>Current price in USD</caption>
+                        <tr>
+                            <td></td>
+                            <td>DFI</td>
+                            <td><input type="number" id="cPriceDFI" name="cPriceDFI" placeholder="$"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Ratio</td>
+                            <td><input type="number" id="cPriceRatio" name="cPriceRatio" disabled></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Token</td>
+                            <td><input type="number" id="cPriceToken" name="cPriceToken" placeholder="$"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="column">
+                    <table>
+                        <caption>Current amount</caption>
+                        <tr>
+                            <td></td>
+                            <td>DFI</td>
+                            <td><input type="number" id="cAmountDFI" name="cAmountDFI" placeholder="N"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Ratio</td>
+                            <td><input type="number" id="cAmountRatio" name="cAmountRatio" disabled></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Token</td>
+                            <td><input type="number" id="cAmountT" name="cAmountT" placeholder="N"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            <div>
+            <div>
+                <div class="column">
+                    <table>
+                        <caption>Estimated future price in USD</caption>
+                        <tr>
+                            <td></td>
+                            <td>DFI</td>
+                            <td><input type="number" id="ePriceDFI" name="ePriceDFI" placeholder="$"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Ratio</td>
+                            <td><input type="number" id="ePriceRatio" name="ePriceRatio" disabled></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Token</td>
+                            <td><input type="number" id="ePriceToken" name="ePriceToken" placeholder="$"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="column">
+                    <table>
+                        <caption>Calculated future amount</caption>
+                        <tr>
+                            <td></td>
+                            <td>DFI</td>
+                            <td><input type="number" id="fAmountDFI" name="fAmountDFI" disabled></td>
+                            <td>Difference</td>
+                            <td><input id="diffAmountDFI" name="diffAmountDFI" disabled></td>
+                        </tr>
+                        <tr class="blank_row">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td colspan="3">&nbsp;</td>
+                            <!--<td>Ratio</td>
+                            <td><input type="number" id="fAmountRatio" name="fAmountRatio" disabled></td>-->
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Token</td>
+                            <td><input type="number" id="fAmountT" name="fAmountT" disabled></td>
+                            <td>Difference</td>
+                            <td><input id="diffAmountT" name="diffAmountT" disabled></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
         <button type="button" id="myBtn">Calculate Value</button>
