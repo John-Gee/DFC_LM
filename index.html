@@ -5,344 +5,139 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/jpg" href="img/favicon-16x16.png"/>
         <script src="3rd Party/jquery/jquery-3.6.0.min.js"></script>
-        <link href="3rd Party/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="functions.js"></script>
 
-        <script>
-            $(document).ready(function(){
-                $("#cPriceToken").on("input", function() {
-                    cPriceRatio();
-                });
-                $("#cPriceDFI").on("input", function() {
-                    cPriceRatio();
-                });
+        <link href="style.css" rel="stylesheet" />
 
-                $("#cAmountT").on("input", function() {
-                    cAmountRatio();
-                });
-                $("#cAmountDFI").on("input", function() {
-                    cAmountRatio();
-                });
-
-                $("#cPriceRatio").change(function() {
-                    verifyCRatios();
-                });
-                $("#cAmountRatio").change(function() {
-                    verifyCRatios();
-                });
-                
-                $("#ePriceToken").on("input", function() {
-                    ePriceRatio();
-                });
-                $("#ePriceDFI").on("input", function() {
-                    ePriceRatio();
-                });
-            });
-            
-            function cPriceRatio() {
-                if ($("#cPriceToken").val() && $("#cPriceDFI").val()) {
-                    $("#cPriceRatio").val($("#cPriceToken").val() / $("#cPriceDFI").val()).change();
-                } else {
-                    $("#cPriceRatio").val("").change();
-                }
-            }
-            
-            function cAmountRatio() {
-                if ($("#cAmountT").val() && $("#cAmountDFI").val()) {
-                    $("#cAmountRatio").val($("#cAmountDFI").val() / $("#cAmountT").val()).change();
-                } else {
-                    $("#cAmountRatio").val("").change();
-                }
-            }
-            
-            function verifyCRatios() {
-                if ( $("#cPriceRatio").val() && $("#cAmountRatio").val() && ($("#cPriceRatio").val() != $("#cAmountRatio").val())) {
-                    $("#cPriceRatio").css("background-color", "red");
-                    $("#cAmountRatio").css("background-color", "red");
-                } else {
-                    $("#cPriceRatio").css("background-color", "white");
-                    $("#cAmountRatio").css("background-color", "white");
-                }
-            }
-
-            function ePriceRatio() {
-                if ($("#ePriceToken").val() && $("#ePriceDFI").val()) {
-                    $("#ePriceRatio").val($("#ePriceToken").val() / $("#ePriceDFI").val()).change();
-                } else {
-                    $("#ePriceRatio").val("").change();
-                }
-            }
-            
-            function isInBetween(min, max, value) {
-                return value >= min && value <= max;
-            }
-
-            $(document).ready(function() {
-                $("#estimate").click(function() {
-                    var futureBlock = `
-                        <div>
-                            <div class="column">
-                                <table>
-                                    <caption>Estimated future price in USD</caption>
-                                    <tr>
-                                        <td></td>
-                                        <td>DFI</td>
-                                        <td><input type="number" id="ePriceDFI" name="ePriceDFI" placeholder="$"></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Ratio</td>
-                                        <td><input type="number" id="ePriceRatio" name="ePriceRatio" disabled></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Token</td>
-                                        <td><input type="number" id="ePriceToken" name="ePriceToken" placeholder="$"></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div class="column">
-                                <table>
-                                    <caption>Calculated future amount</caption>
-                                    <tr>
-                                        <td></td>
-                                        <td>DFI</td>
-                                        <td><input type="number" id="fAmountDFI" name="fAmountDFI" disabled></td>
-                                        <td>Difference</td>
-                                        <td><input id="diffAmountDFI" name="diffAmountDFI" disabled></td>
-                                    </tr>
-                                    <tr class="blank_row">
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>&nbsp;</td>
-                                        <td></td>
-                                        <!--<td>Ratio</td>
-                                        <td><input type="number" id="fAmountRatio" name="fAmountRatio" disabled></td>-->
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>Token</td>
-                                        <td><input type="number" id="fAmountT" name="fAmountT" disabled></td>
-                                        <td>Difference</td>
-                                        <td><input id="diffAmountT" name="diffAmountT" disabled></td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div class="button">
-                                <button type="button" class="btn-primary round" id="calculate">Calculate the values</button>
-                            </div>
-                        </div>
-                    `;
-                    $(this).parent().parent('.main').append(futureBlock);
-                    
-                    $("#calculate").click(function() {
-                        var ePriceToken  = $("#ePriceToken").val() * 1;
-                        var ePriceDFI    = $("#ePriceDFI").val()  * 1;
-                        var ePriceRatio  = ePriceToken / ePriceDFI;
-
-                        var cAmountT     = $("#cAmountT").val()  * 1;
-                        var cAmountDFI   = $("#cAmountDFI").val()  * 1;
-                        var cAmountRatio = cAmountDFI/ cAmountT;
-                        var fAmountT     = cAmountT;
-                        var fAmountDFI   = cAmountDFI;
-                        var precision    = 0.01;
-
-                        while ((fAmountT !=0) && (fAmountDFI != 0)) {
-                            var fAmountRatio = fAmountDFI / fAmountT;
-                            if (isInBetween(precision * -1, precision, fAmountRatio - ePriceRatio)) {
-                                break;
-                            } else if (fAmountRatio < ePriceRatio) {
-                            fAmountT   = fAmountT - 1;
-                            fAmountDFI = fAmountDFI + (fAmountRatio);
-                            } else {
-                                fAmountDFI = fAmountDFI - 1;
-                                fAmountT   = fAmountT + (1/fAmountRatio);
-                            }
-                        }
-                        $("#fAmountT").val(fAmountT);
-                        $("#fAmountDFI").val(fAmountDFI);
-                        $("#ePriceRatio").val(ePriceRatio);
-                        if (fAmountT == cAmountT)
-                            $("#diffAmountT").val("0");
-                        else if (fAmountT > cAmountT)
-                            $("#diffAmountT").val("+" + (fAmountT - cAmountT));
-                        else
-                            $("#diffAmountT").val("-" + (fAmountT - cAmountT));
-                        if (fAmountDFI == cAmountDFI)
-                            $("#diffAmountDFI").val("0");
-                        else if (fAmountDFI > cAmountDFI)
-                            $("#diffAmountDFI").val("+" + (fAmountDFI - cAmountDFI));
-                        else
-                            $("#diffAmountDFI").val(fAmountDFI - cAmountDFI);
-                    });
-                });
-            });
-        </script>
-        <style>
-            * {
-                box-sizing: border-box;
-                margin: 0;
-            }
-
-            .header img {
-                float: left;
-                height: 80%;
-            }
-
-            .header h1 {
-                color: rgba(255,0,176,1);
-                position: relative;
-                top: 10%;
-                width: 99%;
-                left: 1%;
-            }
-
-            .header {
-                background-color: rgb(240,240,240);
-                position: sticky;
-                top: 0;
-                height: 15%;
-                width: 100%;
-                z-index: 1;
-            }
-
-            .main {
-                position: relative;
-            }
-
-            .column {
-                float: left;
-                width: 50%;
-                padding: 5px;
-            }
-
-            /* Clearfix (clear floats) */
-            .row::after {
-                content: "";
-                clear: both;
-                display: table;
-            }
-
-            table {
-                border:1px solid rgba(255,0,176,1);
-                width: 90%;
-                margin: 5%;
-                padding: 5%;
-                font-size: 100%;
-            }
-
-            caption {
-                font-weight: bold;
-                text-align: center;
-                caption-side: top;
-            }
-
-            th, td {
-                text-align: left;
-                padding: 5px;
-            }
-
-            input {
-                color: rgba(255,0,176,1);
-                font-size: 80%;
-                width: 150px;
-            }
-
-            div {
-                margin-bottom: 10px;
-            }
-
-            .button {
-                text-align: center;
-                content: "";
-                clear: both;
-            }
-
-            .round {
-                background-color: rgba(255,0,176,1);
-                border-radius: 24px;
-            }
-
-            .btn-primary:hover,
-            .btn-primary:focus,
-            .btn-primary:active,
-            .btn-primary.active,
-            .open .dropdown-toggle.btn-primary {
-                color: rgba(0,0,0,1);
-                background-color: rgba(255,0,176,1);
-                border-color: rgba(255,0,176,1);
-            }
-        </style>
     </head>
     <body>
         <div class="header">
             <img src="img/defichain-dfi-logo.png" alt="Simply Easy Learning" />
-            <h1> Liquidity Mining Calculator </h1>
+            <h1> Liquidity Mining: Impermanent Loss Calculator </h1>
         </div>
         <div class="main">
+            <div class="subheader">
+                <p>
+                    This calculator allows you to estimate potential impermanent loss from your holding.
+                </p>
+                <p>
+                    Beware, as they depend on many external factors not simulated here, actual impermanent loss will be different!
+                </p>
+                <br/>
+            </div>
             <div>
                 <div class="column">
                     <table>
-                        <caption>Current price in USD</caption>
+                        <caption>Current prices in USD</caption>
                         <tr>
-                            <td></td>
-                            <td>DFI</td>
-                            <td><input type="number" id="cPriceDFI" name="cPriceDFI" placeholder="$"></td>
-                            <td></td>
+                            <td>DFI: $<input type="number" min="0" id="cPriceDFI" name="cPriceDFI"/></td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>Ratio</td>
-                            <td><input type="number" id="cPriceRatio" name="cPriceRatio" disabled></td>
+                            <td> </td>
+                            <td>Ratio: <input class="auto" id="cPriceRatio" name="cPriceRatio" disabled/></td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td>Token</td>
-                            <td><input type="number" id="cPriceToken" name="cPriceToken" placeholder="$"></td>
-                            <td></td>
+                            <td>Other: $<input type="number" min="0" id="cPriceToken" name="cPriceToken"/></td>
                             <td></td>
                         </tr>
                     </table>
                 </div>
                 <div class="column">
                     <table>
-                        <caption>Current amount</caption>
+                        <caption>Current amounts of tokens</caption>
                         <tr>
-                            <td></td>
-                            <td>DFI</td>
-                            <td><input type="number" id="cAmountDFI" name="cAmountDFI" placeholder="N"></td>
-                            <td></td>
+                            <td>DFI: <input type="number" min="0" id="cAmountDFI" name="cAmountDFI"/></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
+                            <td>Ratio: <input class="auto" id="cAmountRatio" name="cAmountRatio" disabled/></td>
+                        </tr>
+                        <tr>
+                            <td>Other: <input type="number" min="0" id="cAmountToken" name="cAmountToken"/></td>
                             <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="column">
+                    <table>
+                        <caption>Current values</caption>
+                        <tr>
+                            <td>DFI: $<input class="auto" id="cValueDFI" name="cValueDFI"/></td>
                             <td></td>
-                            <td>Ratio</td>
-                            <td><input type="number" id="cAmountRatio" name="cAmountRatio" disabled></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>Token</td>
-                            <td><input type="number" id="cAmountT" name="cAmountT" placeholder="N"></td>
-                            <td></td>
+                            <td>Total: $<input class="auto" id="cValue" name="cValue" disabled/></td>
+                        </tr>
+                        <tr>
+                            <td>Other: $<input class="auto" id="cValueToken" name="cValueToken"/></td>
                             <td></td>
                         </tr>
                     </table>
                 </div>
             </div>
-            <div class="button">
-                <button type="button" class="btn btn-primary round" id="estimate">Estimate new values</button>
-                <br/>
+            <div class="comments" id="commentRatio">
+                The 2 ratios should be the same.
+            </div>
+            <div>
+                <div class="column">
+                    <table>
+                        <caption>Future prices in USD</caption>
+                        <tr>
+                            <td>DFI: $<input type="number" min="0" id="fPriceDFI" name="fPriceDFI"/></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Ratio: <input class="auto" id="fPriceRatio" name="fPriceRatio" disabled/></td>
+                        </tr>
+                        <tr>
+                            <td>Other: $<input type="number" min="0" id="fPriceToken" name="fPriceToken"/></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="column">
+                    <table>
+                        <caption>Future amount of tokens</caption>
+                        <tr>
+                            <td>DFI: <input class="auto" id="fAmountDFI" name="fAmountDFI" disabled/></td>
+                            <td><input class="auto comments" id="fAmountDFIDifference" name="fAmountDFIDifference" disabled/></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="blank_row">
+                            <td>&nbsp;</td>
+                            <!--<td>Ratio</td>
+                            <td><input type="number" id="fAmountRatio" name="fAmountRatio" disabled></td>-->
+                        </tr>
+                        <tr>
+                            <td>Other: <input class="auto" id="fAmountToken" name="fAmountToken" disabled/></td>
+                            <td><input class="auto comments" id="fAmountTokenDifference" name="fAmountTokenDifference" disabled/></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="column">
+                    <table>
+                        <caption>Future values</caption>
+                        <tr>
+                            <td>DFI: $<input class="auto" id="fValueDFI" name="fValueDFI"/></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Total: $<input class="auto" id="fValue" name="fValue" disabled/></td>
+                        </tr>
+                        <tr>
+                            <td>Other: $<input class="auto" id="fValueToken" name="fValueToken"/></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </body>
