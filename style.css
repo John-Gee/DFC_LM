@@ -29,10 +29,6 @@
     text-align: center;
 }
 
-.main {
-    position: relative;
-}
-
 .column {
     float: left;
     width: 33.33%;

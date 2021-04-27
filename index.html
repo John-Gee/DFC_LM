@@ -15,129 +15,182 @@
             <img src="img/defichain-dfi-logo.png" alt="Simply Easy Learning" />
             <h1> Liquidity Mining: Impermanent Loss Calculator </h1>
         </div>
-        <div class="main">
-            <div class="subheader">
-                <p>
-                    This calculator allows you to estimate potential impermanent loss from your holding.
-                </p>
-                <p>
-                    Beware, as they depend on many external factors not simulated here, actual impermanent loss will be different!
-                </p>
-                <br/>
+        <div class="subheader">
+            <p>
+                This calculator allows you to estimate potential impermanent loss from your holding.
+            </p>
+            <p>
+                As it depends on many external factors not simulated here, actual impermanent loss will be different!
+            </p>
+            <br/>
+        </div>
+        <div>
+            <div class="column">
+                <table>
+                    <caption>Current prices in USD</caption>
+                    <tr>
+                        <td>DFI: $<input type="number" min="0" id="cPriceDFI" name="cPriceDFI"/></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Ratio: <input class="auto" id="cPriceRatio" name="cPriceRatio" disabled/></td>
+                    </tr>
+                    <tr>
+                        <td>Other: $<input type="number" min="0" id="cPriceToken" name="cPriceToken"/></td>
+                        <td></td>
+                    </tr>
+                </table>
             </div>
-            <div>
-                <div class="column">
-                    <table>
-                        <caption>Current prices in USD</caption>
-                        <tr>
-                            <td>DFI: $<input type="number" min="0" id="cPriceDFI" name="cPriceDFI"/></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td> </td>
-                            <td>Ratio: <input class="auto" id="cPriceRatio" name="cPriceRatio" disabled/></td>
-                        </tr>
-                        <tr>
-                            <td>Other: $<input type="number" min="0" id="cPriceToken" name="cPriceToken"/></td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="column">
-                    <table>
-                        <caption>Current amounts of tokens</caption>
-                        <tr>
-                            <td>DFI: <input type="number" min="0" id="cAmountDFI" name="cAmountDFI"/></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>Ratio: <input class="auto" id="cAmountRatio" name="cAmountRatio" disabled/></td>
-                        </tr>
-                        <tr>
-                            <td>Other: <input type="number" min="0" id="cAmountToken" name="cAmountToken"/></td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="column">
-                    <table>
-                        <caption>Current values</caption>
-                        <tr>
-                            <td>DFI: $<input class="auto" id="cValueDFI" name="cValueDFI"/></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>Total: $<input class="auto" id="cValue" name="cValue" disabled/></td>
-                        </tr>
-                        <tr>
-                            <td>Other: $<input class="auto" id="cValueToken" name="cValueToken"/></td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
+            <div class="column">
+                <table>
+                    <caption>Current amounts of tokens</caption>
+                    <tr>
+                        <td>DFI: <input type="number" min="0" id="cAmountDFI" name="cAmountDFI"/></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Ratio: <input class="auto" id="cAmountRatio" name="cAmountRatio" disabled/></td>
+                    </tr>
+                    <tr>
+                        <td>Other: <input type="number" min="0" id="cAmountToken" name="cAmountToken"/></td>
+                        <td></td>
+                    </tr>
+                </table>
             </div>
-            <div class="comments" id="commentRatio">
-                The 2 ratios should be the same.
+            <div class="column">
+                <table>
+                    <caption>Current values</caption>
+                    <tr>
+                        <td>DFI: $<input class="auto" id="cValueDFI" name="cValueDFI"/></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Total: $<input class="auto" id="cValue" name="cValue" disabled/></td>
+                    </tr>
+                    <tr>
+                        <td>Other: $<input class="auto" id="cValueToken" name="cValueToken"/></td>
+                        <td></td>
+                    </tr>
+                </table>
             </div>
-            <div>
-                <div class="column">
-                    <table>
-                        <caption>Future prices in USD</caption>
-                        <tr>
-                            <td>DFI: $<input type="number" min="0" id="fPriceDFI" name="fPriceDFI"/></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>Ratio: <input class="auto" id="fPriceRatio" name="fPriceRatio" disabled/></td>
-                        </tr>
-                        <tr>
-                            <td>Other: $<input type="number" min="0" id="fPriceToken" name="fPriceToken"/></td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
+        </div>
+        <div class="comments" id="commentRatio">
+            The 2 ratios should be the same.
+        </div>
+        <div>
+            <div class="column">
+                <table>
+                    <caption>Future prices in USD</caption>
+                    <tr>
+                        <td>DFI: $<input type="number" min="0" id="fPriceDFI" name="fPriceDFI"/></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Ratio: <input class="auto" id="fPriceRatio" name="fPriceRatio" disabled/></td>
+                    </tr>
+                    <tr>
+                        <td>Other: $<input type="number" min="0" id="fPriceToken" name="fPriceToken"/></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
 
-                <div class="column">
-                    <table>
-                        <caption>Future amount of tokens</caption>
-                        <tr>
-                            <td>DFI: <input class="auto" id="fAmountDFI" name="fAmountDFI" disabled/></td>
-                            <td><input class="auto comments" id="fAmountDFIDifference" name="fAmountDFIDifference" disabled/></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr class="blank_row">
-                            <td>&nbsp;</td>
-                            <!--<td>Ratio</td>
-                            <td><input type="number" id="fAmountRatio" name="fAmountRatio" disabled></td>-->
-                        </tr>
-                        <tr>
-                            <td>Other: <input class="auto" id="fAmountToken" name="fAmountToken" disabled/></td>
-                            <td><input class="auto comments" id="fAmountTokenDifference" name="fAmountTokenDifference" disabled/></td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="column">
-                    <table>
-                        <caption>Future values</caption>
-                        <tr>
-                            <td>DFI: $<input class="auto" id="fValueDFI" name="fValueDFI"/></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>Total: $<input class="auto" id="fValue" name="fValue" disabled/></td>
-                        </tr>
-                        <tr>
-                            <td>Other: $<input class="auto" id="fValueToken" name="fValueToken"/></td>
-                            <td></td>
-                        </tr>
-                    </table>
-                </div>
+            <div class="column">
+                <table>
+                    <caption>Future amount of tokens</caption>
+                    <tr>
+                        <td>DFI: <input class="auto" id="fAmountDFI" name="fAmountDFI" disabled/></td>
+                        <td><input class="auto comments" id="fAmountDFIDifference" name="fAmountDFIDifference" disabled/></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="blank_row">
+                        <td>&nbsp;</td>
+                        <!--<td>Ratio</td>
+                        <td><input type="number" id="fAmountRatio" name="fAmountRatio" disabled></td>-->
+                    </tr>
+                    <tr>
+                        <td>Other: <input class="auto" id="fAmountToken" name="fAmountToken" disabled/></td>
+                        <td><input class="auto comments" id="fAmountTokenDifference" name="fAmountTokenDifference" disabled/></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="column">
+                <table>
+                    <caption>Future values</caption>
+                    <tr>
+                        <td>DFI: $<input class="auto" id="fValueDFI" name="fValueDFI"/></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Total: $<input class="auto" id="fValue" name="fValue" disabled/></td>
+                    </tr>
+                    <tr>
+                        <td>Other: $<input class="auto" id="fValueToken" name="fValueToken"/></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div>
+            <div class="column">
+                <table>
+                    <caption>Interest</caption>
+                    <tr>
+                        <td>APY: %<input type="number" min="0" id="apy" name="apyapy"/></td>
+                        <td></td>
+                    </tr>
+                    <tr class="blank_row">
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>Duration: D<input type="number" min="0" id="duration" name="duration"/></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="column">
+                <table>
+                    <caption>Future amount of tokens with interest</caption>
+                    <tr>
+                        <td>DFI: <input class="auto" id="fAmountDFII" name="fAmountDFII" disabled/></td>
+                        <td><input class="auto comments" id="fAmountDFIIDifference" name="fAmountDFIDifference" disabled/></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr class="blank_row">
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>Other: <input class="auto" id="fAmountTokenI" name="fAmountTokenI" disabled/></td>
+                        <td><input class="auto comments" id="fAmountTokenIDifference" name="fAmountTokenIDifference" disabled/></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="column">
+                <table>
+                    <caption>Future values with interest</caption>
+                    <tr>
+                        <td>DFI: $<input class="auto" id="fValueDFII" name="fValueDFII"/></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>Total: $<input class="auto" id="fValueI" name="fValueI" disabled/></td>
+                    </tr>
+                    <tr>
+                        <td>Other: $<input class="auto" id="fValueTokenI" name="fValueTokenI"/></td>
+                        <td></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </body>
