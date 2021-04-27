@@ -1,5 +1,5 @@
 * {
-    box-sizing: border-box;
+    //box-sizing: border-box;
     margin: 0;
 }
 
@@ -75,7 +75,7 @@ input {
 .auto {
     color: rgba(255,0,176,0.5);
     background-color: rgba(240,240,240,0);
-    border:none;
+    border:1px solid rgba(0,0,0,0);
     text-align: left;
     font-weight: bold;
 }
@@ -114,4 +114,5 @@ div {
     text-align: center;
     font-style: italic;
     font-size: 75%;
+    width: 66%;
 }

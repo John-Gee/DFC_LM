@@ -32,6 +32,15 @@ $(document).ready(function(){
         fPriceRatio();
         calculate();
     });
+
+    $("#apy").on("input", function() {
+        fPriceRatio();
+        calculate();
+    });
+    $("#duration").on("input", function() {
+        fPriceRatio();
+        calculate();
+    });
 });
 
 var precision = 6;
@@ -132,7 +141,7 @@ function calculate() {
         $("#fAmountTokenDifference").val("(" + Number((fAmountToken - cAmountToken).toPrecision(precision)) + ")");
     else
         $("#fAmountTokenDifference").val("");
-
+    
     $("#fAmountDFI").val(fAmountDFI);
     if (fAmountDFI > cAmountDFI)
         $("#fAmountDFIDifference").val("(+" + Number((fAmountDFI - cAmountDFI).toPrecision(precision)) +")");
@@ -141,10 +150,35 @@ function calculate() {
     else
         $("#fAmountDFIDifference").val("");
 
-    var fValueToken  = fAmountToken * cPriceToken;
-    var fValueDFI    = fAmountDFI * cPriceDFI;
-    var fValue       = fValueToken + cValueDFI;
+    var fValueToken  = fAmountToken * fPriceToken;
+    var fValueDFI    = fAmountDFI * fPriceDFI;
+    var fValue       = fValueToken + fValueDFI;
     $("#fValueToken").val(fValueToken);
     $("#fValueDFI").val(fValueDFI);
     $("#fValue").val(fValue);
+
+    if ( !$("#apy").val() || !$("#duration").val() )
+        return;
+
+    var apy         = $("#apy").val();
+    var duration    = $("#duration").val();
+    var fAmountDFII = fAmountDFI + 2 * fAmountDFI * apy * duration /(100*365);
+    $("#fAmountDFII").val(Number((fAmountDFII).toPrecision(precision)));
+    if (fAmountDFII > cAmountDFI)
+        $("#fAmountDFIIDifference").val("(+" + Number((fAmountDFII - cAmountDFI).toPrecision(precision)) +")");
+    else if(fAmountDFII < cAmountDFI)
+        $("#fAmountDFIIDifference").val("(" + Number((fAmountDFII - cAmountDFI).toPrecision(precision)) + ")");
+    else
+        $("#fAmountDFIIDifference").val("");
+
+    var fAmountTokenI = fAmountToken;
+    $("#fAmountTokenI").val(fAmountTokenI);
+    $("#fAmountTokenIDifference").val($("#fAmountTokenDifference").val());
+
+    var fValueTokenI  = fAmountTokenI * fPriceToken;
+    var fValueDFII    = fAmountDFII * fPriceDFI;
+    var fValueI       = fValueTokenI + fValueDFII;
+    $("#fValueTokenI").val(fValueTokenI);
+    $("#fValueDFII").val(fValueDFII);
+    $("#fValueI").val(fValueI);
 }
