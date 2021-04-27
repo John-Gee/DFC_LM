@@ -31,7 +31,7 @@
 
 .column {
     float: left;
-    width: 33.33%;
+    width: 25%;
     
 }
 
@@ -68,7 +68,7 @@ input {
     background-color: rgba(240,240,240,1);
     border:1px solid rgba(0,0,0,0.25);
     font-size: 100%;
-    width: 66%;
+    width: 40%;
     border-radius: 8px;
 }
 
@@ -114,5 +114,5 @@ div {
     text-align: center;
     font-style: italic;
     font-size: 75%;
-    width: 66%;
+    width: 50%;
 }

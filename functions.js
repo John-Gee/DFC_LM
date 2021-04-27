@@ -157,6 +157,13 @@ function calculate() {
     $("#fValueDFI").val(fValueDFI);
     $("#fValue").val(fValue);
 
+    var fValueTokenH  = cAmountToken * fPriceToken;
+    var fValueDFIH    = cAmountDFI * fPriceDFI;
+    var fValueH       = fValueTokenH + fValueDFIH;
+    $("#fValueTokenH").val(fValueTokenH);
+    $("#fValueDFIH").val(fValueDFIH);
+    $("#fValueH").val(fValueH);
+
     if ( !$("#apy").val() || !$("#duration").val() )
         return;
 
