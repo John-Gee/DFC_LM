@@ -21,13 +21,24 @@ $(document).ready(function(){
         calculate();
     });
 
+    $("#interest").on("input", function() {
+        if ($("#interest:checked").val()) {
+            $("#apy").prop("disabled", false);
+            $("#apy").parent().removeClass("disabled");
+            $("#duration").prop("disabled", false);
+            $("#duration").parent().removeClass("disabled");
+        } else {
+            $("#apy").prop("disabled", true);
+            $("#apy").parent().addClass("disabled");
+            $("#duration").prop("disabled", true);
+            $("#duration").parent().addClass("disabled");
+        }
+        calculate();
+    });
     $("#apy").on("input", function() {
         calculate();
     });
     $("#duration").on("input", function() {
-        calculate();
-    });
-    $("#split").on("input", function() {
         calculate();
     });
 });
@@ -149,18 +160,14 @@ function calculate() {
         $("#fValue").parent().addClass("minus")
     }
 
-    if ( !$("#apy").val() || !$("#duration").val() )
+    if ( !$("#interest:checked").val() ||
+        !$("#apy").val() || !$("#duration").val() )
         return;
 
     var apy         = $("#apy").val();
     var duration    = $("#duration").val();
-    var split       = $("#split:checked").val();
-    var halfDFII    = (fAmountDFI * apy * duration /(100*365))
-    if (split)
-        var fAmountDFII = fAmountDFI + halfDFII;
-    else
-        var fAmountDFII = fAmountDFI + (2 * halfDFII);
-    $("#fAmountDFII").val(prettyNumber((fAmountDFII)));
+    var fAmountDFII = fAmountDFI + (2 * fAmountDFI * apy * duration /(100*365));
+    $("#fAmountDFI").val(prettyNumber((fAmountDFII)));
     if (fAmountDFII > cAmountDFI)
         $("#fAmountDFIIDifference").val("(+" + prettyNumber(fAmountDFII - cAmountDFI) +")");
     else if(fAmountDFII < cAmountDFI)
@@ -168,29 +175,19 @@ function calculate() {
     else
         $("#fAmountDFIIDifference").val("");
 
-    if (split)
-        var fAmountTokenI = fAmountToken + (halfDFII * fPriceRatio);
-    else
-        var fAmountTokenI = fAmountToken;
-
-    $("#fAmountTokenI").val(prettyNumber(fAmountTokenI));
-    $("#fAmountTokenIDifference").val($("#fAmountTokenDifference").val());
-
-    var fValueTokenI  = fAmountTokenI * fPriceToken;
     var fValueDFII    = fAmountDFII * fPriceDFI;
-    var fValueI       = fValueTokenI + fValueDFII;
-    $("#fValueTokenI").val(prettyNumber(fValueTokenI));
-    $("#fValueDFII").val(prettyNumber(fValueDFII));
-    $("#fValueI").val(prettyNumber(fValueI));
+    var fValueI       = fValueToken + fValueDFII;
+    $("#fValueDFI").val(prettyNumber(fValueDFII));
+    $("#fValue").val(prettyNumber(fValueI));
 
     if (fValueI == fValueH) {
-        $("#fValueI").parent().removeClass("plus");
-        $("#fValueI").parent().removeClass("minus");
+        $("#fValue").parent().removeClass("plus");
+        $("#fValue").parent().removeClass("minus");
     } else if (fValueI > fValueH) {
-        $("#fValueI").parent().addClass("plus");
-        $("#fValueI").parent().removeClass("minus")
+        $("#fValue").parent().addClass("plus");
+        $("#fValue").parent().removeClass("minus")
     } else {
-        $("#fValueI").parent().removeClass("plus");
-        $("#fValueI").parent().addClass("minus")
+        $("#fValue").parent().removeClass("plus");
+        $("#fValue").parent().addClass("minus")
     }
 }

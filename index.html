@@ -56,7 +56,7 @@
             </div>
             <div class="column">
                 <table>
-                    <caption>Amount of Tokens in the pool</caption>
+                    <caption>Amount of tokens</caption>
                     <tr class="twoonly">
                         <th>DFI </th>
                         <td>
@@ -77,27 +77,24 @@
             </div>
             <div class="column">
                 <table>
-                    <caption>Interest</caption>
-                    <tr>
+                    <caption>
+                        <input class="split" type="checkbox" id="interest" name="interest"/>
+                        Interest
+                    </caption>
+                    <tr class="twoonly">
                         <th>APY</th>
                         <td>
-                            <div class="manualInput">
-                                %<input type="number" min="0" id="apy" name="apy"/>
+                            <div class="manualInput disabled">
+                                %<input type="number" min="0" id="apy" name="apy" disabled/>
                             </div>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="twoonly">
                         <th>Time</th>
                         <td>
-                            <div class="manualInput">
-                                d.&nbsp;<input type="number" min="0" id="duration" name="duration"/>
+                            <div class="manualInput disabled">
+                                d.&nbsp;<input type="number" min="0" id="duration" name="duration" disabled/>
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Split</th>
-                        <td>
-                            <input class="split" type="checkbox" id="split" name="split"/>
                         </td>
                     </tr>
                 </table>
@@ -166,17 +163,12 @@
             </div>
             <div class="column">
                 <table>
-                    <caption>Tokens, without and with interest</caption>
+                    <caption>Amount of tokens</caption>
                     <tr class="twoonly">
                         <th>DFI</th>
                         <td>
                             <div class="autoInput">
                                 <input class="auto" id="fAmountDFI" name="fAmountDFI" disabled/>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="autoInput">
-                                <input class="auto" id="fAmountDFII" name="fAmountDFII" disabled/>
                             </div>
                         </td>
                     </tr>
@@ -187,27 +179,17 @@
                                 <input class="auto" id="fAmountToken" name="fAmountToken" disabled/>
                             </div>
                         </td>
-                        <td>
-                            <div class="autoInput">
-                                <input class="auto" id="fAmountTokenI" name="fAmountTokenI" disabled/>
-                            </div>
-                        </td>
                     </tr>
                 </table>
             </div>
             <div class="column">
                 <table>
-                    <caption>Value, without and with interest</caption>
+                    <caption>Value</caption>
                     <tr>
                         <th>DFI</th>
                         <td>
                             <div class="autoInput">
                                 $<input class="auto" id="fValueDFI" name="fValueDFI" disabled/>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="autoInput">
-                                $<input class="auto" id="fValueDFII" name="fValueDFII" disabled/>
                             </div>
                         </td>
                     </tr>
@@ -218,22 +200,12 @@
                                 $<input class="auto" id="fValueToken" name="fValueToken" disabled/>
                             </div>
                         </td>
-                        <td>
-                            <div class="autoInput">
-                                $<input class="auto" id="fValueTokenI" name="fValueTokenI" disabled/>
-                            </div>
-                        </td>
                     </tr>
                     <tr>
                         <th>Total</th>
                         <td>
                             <div class="autoInput">
                                 $<input class="auto" id="fValue" name="fValue" disabled/>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="autoInput">
-                                $<input class="auto" id="fValueI" name="fValueI" disabled/>
                             </div>
                         </td>
                     </tr>
