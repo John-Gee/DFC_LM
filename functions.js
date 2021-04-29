@@ -32,11 +32,13 @@ $(document).ready(function(){
     });
 });
 
-var precision = 6;
+function prettyNumber(number) {
+    return numeral(number).format("0,0[.]000");
+}
 
 function cPriceRatio() {
     if ($("#cPriceToken").val() && $("#cPriceDFI").val()) {
-        $("#cPriceRatio").val("1:" + Number(($("#cPriceDFI").val() / $("#cPriceToken").val()).toPrecision(precision))).change();
+        $("#cPriceRatio").val("1:" + prettyNumber(($("#cPriceDFI").val() / $("#cPriceToken").val()))).change();
     } else {
         $("#cPriceRatio").val("").change();
     }
@@ -44,7 +46,7 @@ function cPriceRatio() {
 
 function fPriceRatio() {
     if ($("#fPriceToken").val() && $("#fPriceDFI").val()) {
-        $("#fPriceRatio").val("1:" + Number(($("#fPriceDFI").val() / $("#fPriceToken").val()).toPrecision(precision))).change();
+        $("#fPriceRatio").val("1:" + prettyNumber(($("#fPriceDFI").val() / $("#fPriceToken").val()))).change();
     } else {
         $("#fPriceRatio").val("").change();
     }
@@ -63,14 +65,14 @@ function calculate() {
     var cPriceToken  = $("#cPriceToken").val();
     var cPriceDFI    = $("#cPriceDFI").val();
     var cAmountToken = cPriceDFI/cPriceToken *cAmountDFI;
-    $("#cAmountToken").val(cAmountToken);
+    $("#cAmountToken").val(prettyNumber(cAmountToken));
 
     var cValueToken  = cAmountToken * cPriceToken;
     var cValueDFI    = cAmountDFI * cPriceDFI;
     var cValue       = cValueToken + cValueDFI;
-    $("#cValueToken").val(cValueToken);
-    $("#cValueDFI").val(cValueDFI);
-    $("#cValue").val(cValue);
+    $("#cValueToken").val(prettyNumber(cValueToken));
+    $("#cValueDFI").val(prettyNumber(cValueDFI));
+    $("#cValue").val(prettyNumber(cValue));
     
     if (!$("#fPriceToken").val() || !$("#fPriceDFI").val())
         return;
@@ -103,38 +105,38 @@ function calculate() {
     // fAmountToken^2 = cAmountToken * cAmountDFI * fPriceDFI / fPriceToken
     // fAmountToken = sqrt(cAmountToken * cAmountDFI * fPriceDFI / fPriceToken)
     
-    fAmountToken = Number(Math.sqrt(cAmountToken * cAmountDFI * fPriceDFI / fPriceToken).toPrecision(precision));
-    fAmountDFI = Number((fPriceToken / fPriceDFI * fAmountToken).toPrecision(precision));
+    fAmountToken = Math.sqrt(cAmountToken * cAmountDFI * fPriceDFI / fPriceToken);
+    fAmountDFI   = (fPriceToken / fPriceDFI * fAmountToken);
     
-    $("#fAmountToken").val(fAmountToken);
+    $("#fAmountToken").val(prettyNumber(fAmountToken));
     if (fAmountToken > cAmountToken)
-        $("#fAmountTokenDifference").val("(+" + Number((fAmountToken - cAmountToken).toPrecision(precision)) + ")");
+        $("#fAmountTokenDifference").val("(+" + prettyNumber(fAmountToken - cAmountToken) + ")");
     else if (fAmountToken < cAmountToken)
-        $("#fAmountTokenDifference").val("(" + Number((fAmountToken - cAmountToken).toPrecision(precision)) + ")");
+        $("#fAmountTokenDifference").val("(" + prettyNumber(fAmountToken - cAmountToken) + ")");
     else
         $("#fAmountTokenDifference").val("");
     
-    $("#fAmountDFI").val(fAmountDFI);
+    $("#fAmountDFI").val(prettyNumber(fAmountDFI));
     if (fAmountDFI > cAmountDFI)
-        $("#fAmountDFIDifference").val("(+" + Number((fAmountDFI - cAmountDFI).toPrecision(precision)) +")");
+        $("#fAmountDFIDifference").val("(+" + prettyNumber(fAmountDFI - cAmountDFI) +")");
     else if(fAmountDFI < cAmountDFI)
-        $("#fAmountDFIDifference").val("(" + Number((fAmountDFI - cAmountDFI).toPrecision(precision)) + ")");
+        $("#fAmountDFIDifference").val("(" + prettyNumber(fAmountDFI - cAmountDFI) + ")");
     else
         $("#fAmountDFIDifference").val("");
 
     var fValueToken  = fAmountToken * fPriceToken;
     var fValueDFI    = fAmountDFI * fPriceDFI;
     var fValue       = fValueToken + fValueDFI;
-    $("#fValueToken").val(fValueToken);
-    $("#fValueDFI").val(fValueDFI);
-    $("#fValue").val(fValue);
+    $("#fValueToken").val(prettyNumber(fValueToken));
+    $("#fValueDFI").val(prettyNumber(fValueDFI));
+    $("#fValue").val(prettyNumber(fValue));
 
     var fValueTokenH  = cAmountToken * fPriceToken;
     var fValueDFIH    = cAmountDFI * fPriceDFI;
     var fValueH       = fValueTokenH + fValueDFIH;
-    $("#fValueTokenH").val(fValueTokenH);
-    $("#fValueDFIH").val(fValueDFIH);
-    $("#fValueH").val(fValueH);
+    $("#fValueTokenH").val(prettyNumber(fValueTokenH));
+    $("#fValueDFIH").val(prettyNumber(fValueDFIH));
+    $("#fValueH").val(prettyNumber(fValueH));
 
     if (fValue == fValueH) {
         $("#fValue").parent().removeClass("plus");
@@ -158,11 +160,11 @@ function calculate() {
         var fAmountDFII = fAmountDFI + halfDFII;
     else
         var fAmountDFII = fAmountDFI + (2 * halfDFII);
-    $("#fAmountDFII").val(Number((fAmountDFII).toPrecision(precision)));
+    $("#fAmountDFII").val(prettyNumber((fAmountDFII)));
     if (fAmountDFII > cAmountDFI)
-        $("#fAmountDFIIDifference").val("(+" + Number((fAmountDFII - cAmountDFI).toPrecision(precision)) +")");
+        $("#fAmountDFIIDifference").val("(+" + prettyNumber(fAmountDFII - cAmountDFI) +")");
     else if(fAmountDFII < cAmountDFI)
-        $("#fAmountDFIIDifference").val("(" + Number((fAmountDFII - cAmountDFI).toPrecision(precision)) + ")");
+        $("#fAmountDFIIDifference").val("(" + prettyNumber(fAmountDFII - cAmountDFI) + ")");
     else
         $("#fAmountDFIIDifference").val("");
 
@@ -171,15 +173,15 @@ function calculate() {
     else
         var fAmountTokenI = fAmountToken;
 
-    $("#fAmountTokenI").val(fAmountTokenI);
+    $("#fAmountTokenI").val(prettyNumber(fAmountTokenI));
     $("#fAmountTokenIDifference").val($("#fAmountTokenDifference").val());
 
     var fValueTokenI  = fAmountTokenI * fPriceToken;
     var fValueDFII    = fAmountDFII * fPriceDFI;
     var fValueI       = fValueTokenI + fValueDFII;
-    $("#fValueTokenI").val(fValueTokenI);
-    $("#fValueDFII").val(fValueDFII);
-    $("#fValueI").val(fValueI);
+    $("#fValueTokenI").val(prettyNumber(fValueTokenI));
+    $("#fValueDFII").val(prettyNumber(fValueDFII));
+    $("#fValueI").val(prettyNumber(fValueI));
 
     if (fValueI == fValueH) {
         $("#fValueI").parent().removeClass("plus");
