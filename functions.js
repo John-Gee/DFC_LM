@@ -136,6 +136,17 @@ function calculate() {
     $("#fValueDFIH").val(fValueDFIH);
     $("#fValueH").val(fValueH);
 
+    if (fValue == fValueH) {
+        $("#fValue").parent().removeClass("plus");
+        $("#fValue").parent().removeClass("minus");
+    } else if (fValue > fValueH) {
+        $("#fValue").parent().addClass("plus");
+        $("#fValue").parent().removeClass("minus")
+    } else {
+        $("#fValue").parent().removeClass("plus");
+        $("#fValue").parent().addClass("minus")
+    }
+
     if ( !$("#apy").val() || !$("#duration").val() )
         return;
 
@@ -169,4 +180,15 @@ function calculate() {
     $("#fValueTokenI").val(fValueTokenI);
     $("#fValueDFII").val(fValueDFII);
     $("#fValueI").val(fValueI);
+
+    if (fValueI == fValueH) {
+        $("#fValueI").parent().removeClass("plus");
+        $("#fValueI").parent().removeClass("minus");
+    } else if (fValueI > fValueH) {
+        $("#fValueI").parent().addClass("plus");
+        $("#fValueI").parent().removeClass("minus")
+    } else {
+        $("#fValueI").parent().removeClass("plus");
+        $("#fValueI").parent().addClass("minus")
+    }
 }
