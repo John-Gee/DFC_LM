@@ -8,20 +8,8 @@ $(document).ready(function(){
         calculate();
     });
 
-    $("#cAmountToken").on("input", function() {
-        cAmountRatio();
-        calculate();
-    });
     $("#cAmountDFI").on("input", function() {
-        cAmountRatio();
         calculate();
-    });
-
-    $("#cPriceRatio").change(function() {
-        verifyCRatios();
-    });
-    $("#cAmountRatio").change(function() {
-        verifyCRatios();
     });
     
     $("#fPriceToken").on("input", function() {
@@ -34,11 +22,12 @@ $(document).ready(function(){
     });
 
     $("#apy").on("input", function() {
-        fPriceRatio();
         calculate();
     });
     $("#duration").on("input", function() {
-        fPriceRatio();
+        calculate();
+    });
+    $("#split").on("input", function() {
         calculate();
     });
 });
@@ -50,26 +39,6 @@ function cPriceRatio() {
         $("#cPriceRatio").val("1:" + Number(($("#cPriceDFI").val() / $("#cPriceToken").val()).toPrecision(precision))).change();
     } else {
         $("#cPriceRatio").val("").change();
-    }
-}
-
-function cAmountRatio() {
-    if ($("#cAmountToken").val() && $("#cAmountDFI").val()) {
-        $("#cAmountRatio").val("1:" + Number(($("#cAmountToken").val() / $("#cAmountDFI").val()).toPrecision(precision))).change();
-    } else {
-        $("#cAmountRatio").val("").change();
-    }
-}
-
-function verifyCRatios() {
-    if ( $("#cPriceRatio").val() && $("#cAmountRatio").val() && ($("#cPriceRatio").val() != $("#cAmountRatio").val())) {
-        $("#cPriceRatio").addClass("error");
-        $("#cAmountRatio").addClass("error");
-        $("#commentRatio").addClass("error");
-    } else {
-        $("#cPriceRatio").removeClass("error");
-        $("#cAmountRatio").removeClass("error");
-        $("#commentRatio").removeClass("error");
     }
 }
 
@@ -86,14 +55,16 @@ function isInBetween(min, max, value) {
 }
     
 function calculate() {
-    if (!$("#cAmountToken").val() || !$("#cAmountDFI").val() || 
+    if (!$("#cAmountDFI").val() ||
         !$("#cPriceToken").val() || !$("#cPriceDFI").val())
         return;
     
-    var cAmountToken = $("#cAmountToken").val();
     var cAmountDFI   = $("#cAmountDFI").val();
     var cPriceToken  = $("#cPriceToken").val();
     var cPriceDFI    = $("#cPriceDFI").val();
+    var cAmountToken = cPriceDFI/cPriceToken *cAmountDFI;
+    $("#cAmountToken").val(cAmountToken);
+
     var cValueToken  = cAmountToken * cPriceToken;
     var cValueDFI    = cAmountDFI * cPriceDFI;
     var cValue       = cValueToken + cValueDFI;
@@ -106,6 +77,7 @@ function calculate() {
 
     var fPriceToken  = $("#fPriceToken").val();
     var fPriceDFI    = $("#fPriceDFI").val();
+    var fPriceRatio  = fPriceDFI / fPriceToken;
 
     // The ratio of tokens in the pool
     // is the same as the ratio of prices
@@ -169,7 +141,12 @@ function calculate() {
 
     var apy         = $("#apy").val();
     var duration    = $("#duration").val();
-    var fAmountDFII = fAmountDFI + 2 * fAmountDFI * apy * duration /(100*365);
+    var split       = $("#split:checked").val();
+    var halfDFII    = (fAmountDFI * apy * duration /(100*365))
+    if (split)
+        var fAmountDFII = fAmountDFI + halfDFII;
+    else
+        var fAmountDFII = fAmountDFI + (2 * halfDFII);
     $("#fAmountDFII").val(Number((fAmountDFII).toPrecision(precision)));
     if (fAmountDFII > cAmountDFI)
         $("#fAmountDFIIDifference").val("(+" + Number((fAmountDFII - cAmountDFI).toPrecision(precision)) +")");
@@ -178,7 +155,11 @@ function calculate() {
     else
         $("#fAmountDFIIDifference").val("");
 
-    var fAmountTokenI = fAmountToken;
+    if (split)
+        var fAmountTokenI = fAmountToken + (halfDFII * fPriceRatio);
+    else
+        var fAmountTokenI = fAmountToken;
+
     $("#fAmountTokenI").val(fAmountTokenI);
     $("#fAmountTokenIDifference").val($("#fAmountTokenDifference").val());
 
