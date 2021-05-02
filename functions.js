@@ -1,4 +1,16 @@
 $(document).ready(function(){
+    $('#fullpage').fullpage({
+		//options here
+		autoScrolling: true,
+        continuousVertical: true,
+		scrollHorizontally: true,
+        paddingTop: 0,
+        paddingBottom: 0,
+	});
+
+	//methods
+	//$.fn.fullpage.setAllowScrolling(false);
+    
     $("#cPriceToken").on("input", function() {
         cPriceRatio();
         calculate();
@@ -160,34 +172,42 @@ function calculate() {
         $("#fValue").parent().addClass("minus")
     }
 
-    if ( !$("#interest:checked").val() ||
-        !$("#apy").val() || !$("#duration").val() )
-        return;
+    if ( $("#interest:checked").val() &&
+        $("#apy").val() && $("#duration").val() ) {
+        var apy         = $("#apy").val();
+        var duration    = $("#duration").val();
+        var fAmountDFII = fAmountDFI + (2 * fAmountDFI * apy * duration /(100*365));
+        $("#fAmountDFI").val(prettyNumber((fAmountDFII)));
+        if (fAmountDFII > cAmountDFI)
+            $("#fAmountDFIIDifference").val("(+" + prettyNumber(fAmountDFII - cAmountDFI) +")");
+        else if(fAmountDFII < cAmountDFI)
+            $("#fAmountDFIIDifference").val("(" + prettyNumber(fAmountDFII - cAmountDFI) + ")");
+        else
+            $("#fAmountDFIIDifference").val("");
 
-    var apy         = $("#apy").val();
-    var duration    = $("#duration").val();
-    var fAmountDFII = fAmountDFI + (2 * fAmountDFI * apy * duration /(100*365));
-    $("#fAmountDFI").val(prettyNumber((fAmountDFII)));
-    if (fAmountDFII > cAmountDFI)
-        $("#fAmountDFIIDifference").val("(+" + prettyNumber(fAmountDFII - cAmountDFI) +")");
-    else if(fAmountDFII < cAmountDFI)
-        $("#fAmountDFIIDifference").val("(" + prettyNumber(fAmountDFII - cAmountDFI) + ")");
-    else
-        $("#fAmountDFIIDifference").val("");
+        var fValueDFII    = fAmountDFII * fPriceDFI;
+        var fValueI       = fValueToken + fValueDFII;
+        $("#fValueDFI").val(prettyNumber(fValueDFII));
+        $("#fValue").val(prettyNumber(fValueI));
 
-    var fValueDFII    = fAmountDFII * fPriceDFI;
-    var fValueI       = fValueToken + fValueDFII;
-    $("#fValueDFI").val(prettyNumber(fValueDFII));
-    $("#fValue").val(prettyNumber(fValueI));
-
-    if (fValueI == fValueH) {
-        $("#fValue").parent().removeClass("plus");
-        $("#fValue").parent().removeClass("minus");
-    } else if (fValueI > fValueH) {
-        $("#fValue").parent().addClass("plus");
-        $("#fValue").parent().removeClass("minus")
-    } else {
-        $("#fValue").parent().removeClass("plus");
-        $("#fValue").parent().addClass("minus")
+        if (fValueI == fValueH) {
+            $("#fValue").parent().removeClass("plus");
+            $("#fValue").parent().removeClass("minus");
+        } else if (fValueI > fValueH) {
+            $("#fValue").parent().addClass("plus");
+            $("#fValue").parent().removeClass("minus")
+        } else {
+            $("#fValue").parent().removeClass("plus");
+            $("#fValue").parent().addClass("minus")
+        }
     }
+
+    replace();
+}
+
+function replace() {
+    var text = $("#summary").text();
+    text = text.replace("{cAmountDFI}", $("#cAmountDFI").val());
+    
+    $("#summary").text(text);
 }

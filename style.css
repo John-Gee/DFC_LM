@@ -150,3 +150,30 @@ div {
     color: grey;
     font-style: italic;
 }
+
+.fp-tableCell {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.summary {
+    text-align: middle;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    width: 60%;
+}
+
+li {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.lidisabled {
+    display: none;
+}
+
+.cldisabled {
+    display: none;
+}
