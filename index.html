@@ -5,258 +5,166 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/jpg" href="img/favicon-16x16.png"/>
         <script src="3rd Party/jquery/jquery-3.6.0.min.js"></script>
-        <script src="3rd Party/Numeral-js/numeral.min.js"></script>
-        <script src="3rd Party/fullPage/fullpage.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/numbro@2.3.1/dist/numbro.min.js"></script>
         <script src="functions.js"></script>
-        <link href="3rd Party/fullPage/fullpage.css" rel="stylesheet"/>
         <link href="style.css" rel="stylesheet"/>
     </head>
     <body>
-        <div class="header">
-            <a href="https://www.defichain.com"><img src="img/defichain-dfi-logo.png"/></a>
+        <section id="header">
+            <a href="https://www.defichain.com"><img src="img/defichain.svg"/></a>
             <h1> Liquidity Mining: Impermanent Loss Calculator </h1>
-        </div>
-        <div id="fullpage">
-            <div class="section">
-                <div class="subheader">
-                    <p>
-                        This calculator allows you to estimate potential impermanent loss from your holding.
-                    </p>
-                    <p>
-                        As it depends on many external factors not simulated here, actual impermanent loss will be different!
-                    </p>
-                </div>
+        </section>
+        <section id="main">
+            <section id="intro">
+                    This calculator allows you to estimate potential impermanent loss. <br/>
+                    Beware, actual impermanent loss will be somewhat different.
+            </section>
+            <section id="calculator">
                 <h2> Present </h2>
                 <hr/>
-                <div>
-                    <div class="column">
-                        <table>
-                            <caption>Prices</caption>
-                            <tr>
-                                <th>DFI</th>
-                                <td>
-                                    <div class="manualInput">
-                                        $<input type="number" min="0" id="cPriceDFI" name="cPriceDFI"/>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Other</th>
-                                <td>
-                                    <div class="manualInput">
-                                        $<input type="number" min="0" id="cPriceToken" name="cPriceToken"/>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Ratio</th>
-                                <td>
-                                    <div class="autoInput">
-                                        <input class="auto" id="cPriceRatio" name="cPriceRatio" disabled/>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                <section class="twobytwo">
+                    <div class="twobytwo">
+                        <section class="table">
+                            <h3> Prices </h3>
+                            <div id="prices">
+                                <div class="header">DFI</div>
+                                <div class="input">
+                                    $<input class="inputtext" type="number" min="0" id="cPriceDFI"/>
+                                </div>
+                                <div class="header">Other</div>
+                                <div class="input">
+                                    $<input class="inputtext" type="number" min="0" id="cPriceToken"/>
+                                </div>                  
+                                <div class="header">Ratio</div>
+                                <div class="input auto">
+                                    &nbsp;<input class="inputtext" type="text" id="cPriceRatio" disabled/>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="table">
+                            <h3> Amount of tokens </h3>
+                            <div id="amount">
+                                <div class="header">DFI</div>
+                                <div class="input">
+                                    &nbsp;<input class="inputtext" type="number" min="0" id="cAmountDFI"/>
+                                </div>
+                                <div class="header">Other</div>
+                                <div class="input auto">
+                                    &nbsp;<input class="inputtext" type="text" min="0" id="cAmountToken" disabled/>
+                                </div>
+                            </div>
+                        </section>
                     </div>
-                    <div class="column">
-                        <table>
-                            <caption>Amount of tokens</caption>
-                            <tr class="twoonly">
-                                <th>DFI </th>
-                                <td>
-                                    <div class="manualInput">
-                                        <input type="number" min="0" id="cAmountDFI" name="cAmountDFI"/>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="twoonly">
-                                <th>Other </th>
-                                <td>
-                                    <div class="autoInput">
-                                        <input class="auto" id="cAmountToken" name="cAmountToken" disabled/>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                    <div class="twobytwo">
+                        <section class="table">
+                            <h3><input type="checkbox" id="interest"/> Interest </h3>
+                            <div id="interest">
+                                <div class="header">APR</div>
+                                <div class="input auto">
+                                    %<input class="inputtext" type="number" min="0" id="apr" disabled/>
+                                </div>
+                                <div class="header">Fee</div>
+                                <div class="input auto">
+                                    %<input class="inputtext" type="number" min="0" id="fee" disabled/>
+                                </div>
+                                <div class="header">Time</div>
+                                <div class="input auto">
+                                    d.&nbsp;<input class="inputtext" type="number" min="0" id="duration" disabled/>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="table">
+                            <h3> Value </h3>
+                            <div id="value"> 
+                                <div class="header">DFI</div>
+                                <div class="input auto">
+                                    $<input class="inputtext" type="text" min="0" id="cValueDFI" disabled/>
+                                </div>
+                                <div class="header">Other</div>
+                                <div class="input auto">
+                                    $<input class="inputtext" type="text" min="0" id="cValueToken" disabled/>
+                                </div>
+                                <div class="header">Total</div>
+                                <div class="input auto">
+                                    $<input class="inputtext" type="text" min="0" id="cValue" disabled/>
+                                </div>
+                            </div>
+                        </section>
                     </div>
-                    <div class="column">
-                        <table>
-                            <caption>
-                                <input class="split" type="checkbox" id="interest" name="interest"/>
-                                Interest
-                            </caption>
-                            <tr class="twoonly">
-                                <th>APY</th>
-                                <td>
-                                    <div class="manualInput disabled">
-                                        %<input type="number" min="0" id="apy" name="apy" disabled/>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="twoonly">
-                                <th>Time</th>
-                                <td>
-                                    <div class="manualInput disabled">
-                                        d.<input type="number" min="0" id="duration" name="duration" disabled/>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="column">
-                        <table>
-                            <caption>Value</caption>
-                            <tr>
-                                <th>DFI</th>
-                                <td>
-                                    <div class="autoInput">
-                                        $<input class="auto" id="cValueDFI" name="cValueDFI" disabled/>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Other</th>
-                                <td>
-                                    <div class="autoInput">
-                                        $<input class="auto" id="cValueToken" name="cValueToken" disabled/>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Total</th>
-                                <td>
-                                    <div class="autoInput">
-                                        $<input class="auto" id="cValue" name="cValue" disabled/>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+                </section>
                 <h2> Future </h2>
                 <hr/>
-                <div>
-                    <div class="column">
-                        <table>
-                            <caption>Prices</caption>
-                            <tr>
-                                <th>DFI</th>
-                                <td>
-                                    <div class="manualInput">
-                                        $<input type="number" min="0" id="fPriceDFI" name="fPriceDFI"/>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Other</th>
-                                <td>
-                                    <div class="manualInput">
-                                        $<input type="number" min="0" id="fPriceToken" name="fPriceToken"/>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Ratio</td>
-                                <td>
-                                    <div class="autoInput">
-                                        <input class="auto" id="fPriceRatio" name="fPriceRatio" disabled/>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                <section class="twobytwo">
+                    <div class="twobytwo">
+                        <section class="table">
+                            <h3> Prices </h3>
+                            <div id="prices">
+                                <div class="header">DFI</div>
+                                <div class="input">
+                                    $<input class="inputtext" type="number" min="0" id="fPriceDFI"/>
+                                </div>
+                                <div class="header">Other</div>
+                                <div class="input">
+                                    $<input class="inputtext" type="number" min="0" id="fPriceToken"/>
+                                </div>
+                                <div class="header">Ratio</div>
+                                <div class="input auto">
+                                    &nbsp;<input class="inputtext" type="text" id="fPriceRatio" disabled/>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="table">
+                            <h3> Amount of tokens </h3>
+                            <div id="amount">
+                                <div class="header">DFI</div>
+                                <div class="input auto">
+                                    &nbsp;<input class="inputtext" type="text" min="0" id="fAmountDFI" disabled/>
+                                </div>
+                                <div class="header">Other</div>
+                                <div class="input auto">
+                                    &nbsp;<input class="inputtext" type="text" min="0" id="fAmountToken" disabled/>
+                                </div>
+                            </div>
+                        </section>
                     </div>
-                    <div class="column">
-                        <table>
-                            <caption>Amount of tokens</caption>
-                            <tr class="twoonly">
-                                <th>DFI</th>
-                                <td>
-                                    <div class="autoInput">
-                                        <input class="auto" id="fAmountDFI" name="fAmountDFI" disabled/>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="twoonly">
-                                <th>Other</th>
-                                <td>
-                                    <div class="autoInput">
-                                        <input class="auto" id="fAmountToken" name="fAmountToken" disabled/>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                    <div class="twobytwo">
+                        <section class="table">
+                            <h3> Value </h3>
+                            <div id="value">
+                                <div class="header">DFI</div>
+                                <div class="input auto">
+                                    $<input class="inputtext" type="text" min="0" id="fValueDFI" disabled/>
+                                </div>
+                                <div class="header">Other</div>
+                                <div class="input auto">
+                                    $<input class="inputtext" type="text" min="0" id="fValueToken" disabled/>
+                                </div>
+                                <div class="header">Total</div>
+                                <div class="input auto">
+                                    $<input class="inputtext" type="text" min="0" id="fValue" disabled/>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="table">
+                            <h3> Value by holding </h3>
+                            <div id="value">
+                                <div class="header">DFI</div>
+                                <div class="input auto">
+                                    $<input class="inputtext" type="text" min="0" id="fValueDFIH" disabled/>
+                                </div>
+                                <div class="header">Other</div>
+                                <div class="input auto">
+                                    $<input class="inputtext" type="text" min="0" id="fValueTokenH" disabled/>
+                                </div>
+                                <div class="header">Total</div>
+                                <div class="input auto">
+                                    $<input class="inputtext" type="text" min="0" id="fValueH" disabled/>
+                                </div>
+                            </div>
+                        </section>
                     </div>
-                    <div class="column">
-                        <table>
-                            <caption>Value</caption>
-                            <tr>
-                                <th>DFI</th>
-                                <td>
-                                    <div class="autoInput">
-                                        $<input class="auto" id="fValueDFI" name="fValueDFI" disabled/>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Other</th>
-                                <td>
-                                    <div class="autoInput">
-                                        $<input class="auto" id="fValueToken" name="fValueToken" disabled/>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Total</th>
-                                <td>
-                                    <div class="autoInput">
-                                        $<input class="auto" id="fValue" name="fValue" disabled/>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="column">
-                        <table>
-                            <caption>Value by holding</caption>
-                            <tr>
-                                <th>DFI</th>
-                                <td>
-                                    <div class="autoInput">
-                                        $<input class="auto" id="fValueDFIH" name="fValueDFIH" disabled/>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Other</th>
-                                <td>
-                                    <div class="autoInput">
-                                        $<input class="auto" id="fValueTokenH" name="fValueTokenH" disabled/>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Total</th>
-                                <td>
-                                    <div class="autoInput">
-                                        $<input class="auto" id="fValueH" name="fValueH" disabled/>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="section">
-                <div class="summary" id="summary" name="summary">
-                    <ul>
-                        <li>You started with {cAmountDFI} DFI and {cAmountToken} other tokens, costing ${cPriceDFI} and ${cPriceToken} per unit.<br/>The value was ${cValueDFI} for the DFIs and ${cValueToken} for the other, for a total of ${cValue}.</li>
-                        <li>In the future, you assume DFI and the other token will cost ${fPriceDFI} and ${fPriceToken} respectively,<br/>giving you {fAmountDFI} and {fAmountToken} respectively coins in the pool.<br/>
-                        The value for that would be {fValueDFI} for the DFIs and ${fValueToken} for the other, for a total of ${fValue}.</li>
-                        <li>If you had held your tokens instead of putting them in the Liquidity Mining pool,<br/>the value of your coins would be ${fValueDFIH} and ${fValueTokenH}, for a total of ${fValueH}.<div class="cldisabled" id="Isloss" name=""><br/> The pool then brought you a loss of ${fValueDiff}.</div></li>
-                        <li class="lidisabled" id="liInterest" name="liInterest">With an interest rate of {apy} and a duration of {duration} days, you would get around {rDFI} DFIs in rewards,<br/> so an extra ${rValueDFI}, bringing your total to {fValueI}.<br/>The interest bring your loss/winnings to ${fValueIDiff}.</li>
-                    </ul>
-                </div>
-            </div>
-        </div
+                </section>
+            </section>
+        </section>
     </body>
 </html>

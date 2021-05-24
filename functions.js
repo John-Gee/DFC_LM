@@ -1,12 +1,12 @@
 $(document).ready(function(){
-    $('#fullpage').fullpage({
+    /*$('#fullpage').fullpage({
 		//options here
 		autoScrolling: true,
         continuousVertical: true,
 		scrollHorizontally: true,
         paddingTop: 0,
         paddingBottom: 0,
-	});
+	});*/
 
 	//methods
 	//$.fn.fullpage.setAllowScrolling(false);
@@ -35,19 +35,26 @@ $(document).ready(function(){
 
     $("#interest").on("input", function() {
         if ($("#interest:checked").val()) {
-            $("#apy").prop("disabled", false);
-            $("#apy").parent().removeClass("disabled");
+            $("#apr").prop("disabled", false);
+            $("#apr").parent().removeClass("auto");
             $("#duration").prop("disabled", false);
-            $("#duration").parent().removeClass("disabled");
+            $("#duration").parent().removeClass("auto");
+            $("#fee").prop("disabled", false);
+            $("#fee").parent().removeClass("auto");
         } else {
-            $("#apy").prop("disabled", true);
-            $("#apy").parent().addClass("disabled");
+            $("#apr").prop("disabled", true);
+            $("#apr").parent().addClass("auto");
             $("#duration").prop("disabled", true);
-            $("#duration").parent().addClass("disabled");
+            $("#duration").parent().addClass("auto");
+            $("#fee").prop("disabled", true);
+            $("#fee").parent().addClass("auto");
         }
         calculate();
     });
-    $("#apy").on("input", function() {
+    $("#apr").on("input", function() {
+        calculate();
+    });
+    $("#fee").on("input", function() {
         calculate();
     });
     $("#duration").on("input", function() {
@@ -56,29 +63,44 @@ $(document).ready(function(){
 });
 
 function prettyNumber(number) {
-    return numeral(number).format("0,0[.]000");
+    return numbro(number).format({trimMantissa: true,
+                                  average: true,
+                                  totalLength: 9
+    });
 }
 
 function cPriceRatio() {
     if ($("#cPriceToken").val() && $("#cPriceDFI").val()) {
-        $("#cPriceRatio").val("1:" + prettyNumber(($("#cPriceDFI").val() / $("#cPriceToken").val()))).change();
+        $("#cPriceRatio").val("1:" + prettyNumber(($("#cPriceDFI").val() / $("#cPriceToken").val())));
     } else {
-        $("#cPriceRatio").val("").change();
+        $("#cPriceRatio").val("");
     }
 }
 
 function fPriceRatio() {
     if ($("#fPriceToken").val() && $("#fPriceDFI").val()) {
-        $("#fPriceRatio").val("1:" + prettyNumber(($("#fPriceDFI").val() / $("#fPriceToken").val()))).change();
+        $("#fPriceRatio").val("1:" + prettyNumber(($("#fPriceDFI").val() / $("#fPriceToken").val())));
     } else {
-        $("#fPriceRatio").val("").change();
+        $("#fPriceRatio").val("");
     }
 }
 
-function isInBetween(min, max, value) {
-    return value >= min && value <= max;
+function compareValues(id1, id2) {
+    value1 = $(id1).val();
+    value2 = $(id2).val();
+
+    if (value1 == value2) {
+        $(id1).parent().removeClass("plus");
+        $(id1).parent().removeClass("minus");
+    } else if (value1 > value2) {
+        $(id1).parent().addClass("plus");
+        $(id1).parent().removeClass("minus")
+    } else {
+        $(id1).parent().removeClass("plus");
+        $(id1).parent().addClass("minus")
+    }
 }
-    
+
 function calculate() {
     if (!$("#cAmountDFI").val() ||
         !$("#cPriceToken").val() || !$("#cPriceDFI").val())
@@ -161,23 +183,24 @@ function calculate() {
     $("#fValueDFIH").val(prettyNumber(fValueDFIH));
     $("#fValueH").val(prettyNumber(fValueH));
 
-    if (fValue == fValueH) {
-        $("#fValue").parent().removeClass("plus");
-        $("#fValue").parent().removeClass("minus");
-    } else if (fValue > fValueH) {
-        $("#fValue").parent().addClass("plus");
-        $("#fValue").parent().removeClass("minus")
-    } else {
-        $("#fValue").parent().removeClass("plus");
-        $("#fValue").parent().addClass("minus")
-    }
+    compareValues("#fValueDFI", "#cValueDFI");
+    compareValues("#fValueToken", "#cValueToken");
+    compareValues("#fValue", "#cValue");
+    compareValues("#fValueDFIH", "#cValueDFI");
+    compareValues("#fValueTokenH", "#cValueToken");
+    compareValues("#fValueH", "#fValue");
 
     if ( $("#interest:checked").val() &&
-        $("#apy").val() && $("#duration").val() ) {
-        var apy         = $("#apy").val();
-        var duration    = $("#duration").val();
-        var fAmountDFII = fAmountDFI + (2 * fAmountDFI * apy * duration /(100*365));
+        $("#apr").val() && $("#duration").val() ) {
+        var apr      = +$("#apr").val();
+        var fee      = +$("#fee").val();
+        var duration = +$("#duration").val();
+        if (fee == "")
+            fee = 0;
+        var fAmountDFII   = fAmountDFI + (2 * fAmountDFI * ( apr + fee) * duration /(100*365));
+        var fAmountTokenI = fAmountToken + (fAmountDFI * fee * duration /(100*365));
         $("#fAmountDFI").val(prettyNumber((fAmountDFII)));
+        $("#fAmountToken").val(prettyNumber((fAmountTokenI)));
         if (fAmountDFII > cAmountDFI)
             $("#fAmountDFIIDifference").val("(+" + prettyNumber(fAmountDFII - cAmountDFI) +")");
         else if(fAmountDFII < cAmountDFI)
@@ -201,13 +224,4 @@ function calculate() {
             $("#fValue").parent().addClass("minus")
         }
     }
-
-    replace();
-}
-
-function replace() {
-    var text = $("#summary").text();
-    text = text.replace("{cAmountDFI}", $("#cAmountDFI").val());
-    
-    $("#summary").text(text);
 }
