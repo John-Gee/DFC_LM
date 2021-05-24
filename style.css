@@ -138,8 +138,8 @@ h3 {
 
 .input {
     /* position */
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1rem 1fr;
     gap: 0.125rem;
     align-items: center;
 
@@ -152,9 +152,13 @@ h3 {
     padding: 0rem 0.5rem 0rem 0.5rem;
 }
 
-.auto {
+input:disabled, .auto {
     /* style */
     background-color: rgba(240,240,240,1);
+}
+
+input[type=number]:disabled {
+  -moz-appearance: textfield;
 }
 
 .inputtext {

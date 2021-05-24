@@ -33,8 +33,24 @@ $(document).ready(function(){
         calculate();
     });
 
+    toggleInterest();
     $("#interest").on("input", function() {
-        if ($("#interest:checked").val()) {
+        toggleInterest()
+        calculate();
+    });
+    $("#apr").on("input", function() {
+        calculate();
+    });
+    $("#fee").on("input", function() {
+        calculate();
+    });
+    $("#duration").on("input", function() {
+        calculate();
+    });
+});
+
+function toggleInterest() {
+    if ($("#interest:checked").val()) {
             $("#apr").prop("disabled", false);
             $("#apr").parent().removeClass("auto");
             $("#duration").prop("disabled", false);
@@ -49,18 +65,7 @@ $(document).ready(function(){
             $("#fee").prop("disabled", true);
             $("#fee").parent().addClass("auto");
         }
-        calculate();
-    });
-    $("#apr").on("input", function() {
-        calculate();
-    });
-    $("#fee").on("input", function() {
-        calculate();
-    });
-    $("#duration").on("input", function() {
-        calculate();
-    });
-});
+}
 
 function prettyNumber(number) {
     return numbro(number).format({trimMantissa: true,
