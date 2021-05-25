@@ -99,10 +99,10 @@ function compareValues(id1, id2) {
         $(id1).parent().removeClass("minus");
     } else if (value1 > value2) {
         $(id1).parent().addClass("plus");
-        $(id1).parent().removeClass("minus")
+        $(id1).parent().removeClass("minus");
     } else {
         $(id1).parent().removeClass("plus");
-        $(id1).parent().addClass("minus")
+        $(id1).parent().addClass("minus");
     }
 }
 

@@ -154,7 +154,7 @@ h3 {
     padding: 0rem 0.5rem 0rem 0.5rem;
 }
 
-input:disabled, .auto {
+.auto {
     /* style */
     background-color: rgba(240,240,240,1);
 }
@@ -172,6 +172,7 @@ input[type=number]:disabled {
     border: none;
     outline: none;
     color: inherit;
+    background-color: inherit;
 }
 
 input#interest {
