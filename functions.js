@@ -90,17 +90,17 @@ function fPriceRatio() {
     }
 }
 
-function compareValues(id1, id2) {
-    value1 = $(id1).val();
-    value2 = $(id2).val();
-
+function compareValues(value1, value2, id1, id2) {
     // clear previous results
     $(id1).parent().removeClass("plus");
     $(id1).parent().removeClass("minus");
     $(id2).parent().removeClass("plus");
     $(id2).parent().removeClass("minus");
 
-    if (value1 > value2) {
+    if (value1 == value2) {
+        return;
+    }
+    else if (value1 > value2) {
         $(id1).parent().addClass("plus");
         $(id2).parent().addClass("minus");
     } else {
@@ -114,9 +114,9 @@ function calculate() {
         !$("#cPriceToken").val() || !$("#cPriceDFI").val())
         return;
     
-    var cAmountDFI   = $("#cAmountDFI").val();
-    var cPriceToken  = $("#cPriceToken").val();
-    var cPriceDFI    = $("#cPriceDFI").val();
+    var cAmountDFI   = +$("#cAmountDFI").val();
+    var cPriceToken  = +$("#cPriceToken").val();
+    var cPriceDFI    = +$("#cPriceDFI").val();
     var cAmountToken = cPriceDFI/cPriceToken *cAmountDFI;
     $("#cAmountToken").val(prettyNumber(cAmountToken));
 
@@ -130,8 +130,8 @@ function calculate() {
     if (!$("#fPriceToken").val() || !$("#fPriceDFI").val())
         return;
 
-    var fPriceToken  = $("#fPriceToken").val();
-    var fPriceDFI    = $("#fPriceDFI").val();
+    var fPriceToken  = +$("#fPriceToken").val();
+    var fPriceDFI    = +$("#fPriceDFI").val();
     var fPriceRatio  = fPriceDFI / fPriceToken;
 
     // The ratio of tokens in the pool
@@ -177,6 +177,9 @@ function calculate() {
     else
         $("#fAmountDFIDifference").val("");
 
+    compareValues(fAmountDFI, cAmountDFI, "#fAmountDFI", "#cAmountDFI");
+    compareValues(fAmountToken, cAmountToken, "#fAmountToken", "#cAmountToken");
+
     var fValueToken  = fAmountToken * fPriceToken;
     var fValueDFI    = fAmountDFI * fPriceDFI;
     var fValue       = fValueToken + fValueDFI;
@@ -191,9 +194,9 @@ function calculate() {
     $("#fValueDFIH").val(prettyNumber(fValueDFIH));
     $("#fValueH").val(prettyNumber(fValueH));
 
-    compareValues("#fValueDFIH", "#fValueDFI");
-    compareValues("#fValueTokenH", "#fValueToken");
-    compareValues("#fValueH", "#fValue");
+    compareValues(fValueDFIH, fValueDFI, "#fValueDFIH", "#fValueDFI");
+    compareValues(fValueTokenH, fValueToken, "#fValueTokenH", "#fValueToken");
+    compareValues(fValueH, fValue, "#fValueH", "#fValue");
 
     if ( $("#interest:checked").val() &&
         $("#apr").val() && $("#duration").val() ) {
