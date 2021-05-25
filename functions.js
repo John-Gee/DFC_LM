@@ -94,15 +94,18 @@ function compareValues(id1, id2) {
     value1 = $(id1).val();
     value2 = $(id2).val();
 
-    if (value1 == value2) {
-        $(id1).parent().removeClass("plus");
-        $(id1).parent().removeClass("minus");
-    } else if (value1 > value2) {
+    // clear previous results
+    $(id1).parent().removeClass("plus");
+    $(id1).parent().removeClass("minus");
+    $(id2).parent().removeClass("plus");
+    $(id2).parent().removeClass("minus");
+
+    if (value1 > value2) {
         $(id1).parent().addClass("plus");
-        $(id1).parent().removeClass("minus");
+        $(id2).parent().addClass("minus");
     } else {
-        $(id1).parent().removeClass("plus");
         $(id1).parent().addClass("minus");
+        $(id2).parent().addClass("plus");
     }
 }
 
@@ -188,11 +191,8 @@ function calculate() {
     $("#fValueDFIH").val(prettyNumber(fValueDFIH));
     $("#fValueH").val(prettyNumber(fValueH));
 
-    compareValues("#fValueDFI", "#cValueDFI");
-    compareValues("#fValueToken", "#cValueToken");
-    compareValues("#fValue", "#cValue");
-    compareValues("#fValueDFIH", "#cValueDFI");
-    compareValues("#fValueTokenH", "#cValueToken");
+    compareValues("#fValueDFIH", "#fValueDFI");
+    compareValues("#fValueTokenH", "#fValueToken");
     compareValues("#fValueH", "#fValue");
 
     if ( $("#interest:checked").val() &&
