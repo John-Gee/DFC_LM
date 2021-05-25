@@ -162,20 +162,7 @@ function calculate() {
     fAmountDFI   = (fPriceToken / fPriceDFI * fAmountToken);
     
     $("#fAmountToken").val(prettyNumber(fAmountToken));
-    if (fAmountToken > cAmountToken)
-        $("#fAmountTokenDifference").val("(+" + prettyNumber(fAmountToken - cAmountToken) + ")");
-    else if (fAmountToken < cAmountToken)
-        $("#fAmountTokenDifference").val("(" + prettyNumber(fAmountToken - cAmountToken) + ")");
-    else
-        $("#fAmountTokenDifference").val("");
-    
     $("#fAmountDFI").val(prettyNumber(fAmountDFI));
-    if (fAmountDFI > cAmountDFI)
-        $("#fAmountDFIDifference").val("(+" + prettyNumber(fAmountDFI - cAmountDFI) +")");
-    else if(fAmountDFI < cAmountDFI)
-        $("#fAmountDFIDifference").val("(" + prettyNumber(fAmountDFI - cAmountDFI) + ")");
-    else
-        $("#fAmountDFIDifference").val("");
 
     compareValues(fAmountDFI, cAmountDFI, "#fAmountDFI", "#cAmountDFI");
     compareValues(fAmountToken, cAmountToken, "#fAmountToken", "#cAmountToken");
