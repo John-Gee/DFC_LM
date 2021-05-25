@@ -68,6 +68,9 @@ function toggleInterest() {
 }
 
 function prettyNumber(number) {
+    if (number == "")
+        return "";
+
     return numbro(number).format({trimMantissa: true,
                                   average: true,
                                   totalLength: 9
@@ -97,7 +100,7 @@ function compareValues(value1, value2, id1, id2) {
     $(id2).parent().removeClass("plus");
     $(id2).parent().removeClass("minus");
 
-    if (value1 == value2) {
+    if ((value1 == value2) || (value1 == 0) || (value2 == 0)){
         return;
     }
     else if (value1 > value2) {
@@ -110,73 +113,105 @@ function compareValues(value1, value2, id1, id2) {
 }
 
 function calculate() {
-    if (!$("#cAmountDFI").val() ||
-        !$("#cPriceToken").val() || !$("#cPriceDFI").val())
-        return;
-    
-    var cAmountDFI   = +$("#cAmountDFI").val();
-    var cPriceToken  = +$("#cPriceToken").val();
-    var cPriceDFI    = +$("#cPriceDFI").val();
-    var cAmountToken = cPriceDFI/cPriceToken *cAmountDFI;
-    $("#cAmountToken").val(prettyNumber(cAmountToken));
+    var cPriceDFI = 0;
+    var cPriceToken = 0;
 
-    var cValueToken  = cAmountToken * cPriceToken;
-    var cValueDFI    = cAmountDFI * cPriceDFI;
-    var cValue       = cValueToken + cValueDFI;
+    var cAmountDFI = 0;
+    var cAmountToken = 0;
+
+    var cValueToken = 0;
+    var cValueDFI = 0;
+    var cValue = 0;
+
+    var fAmountToken = 0;
+    var fAmountDFI = 0;
+
+    var fValueToken = 0;
+    var fValueDFI = 0;
+    var fValue = 0;
+
+    var fValueTokenH = 0;
+    var fValueDFIH = 0;
+    var fValueH = 0;
+
+    if ($("#cAmountDFI").val() &&
+        $("#cPriceToken").val() && $("#cPriceDFI").val()) {
+    
+        cAmountDFI   = +$("#cAmountDFI").val();
+        cPriceToken  = +$("#cPriceToken").val();
+        cPriceDFI    = +$("#cPriceDFI").val();
+        cAmountToken = cPriceDFI/cPriceToken *cAmountDFI;
+
+        cValueToken  = cAmountToken * cPriceToken;
+        cValueDFI    = cAmountDFI * cPriceDFI;
+        cValue       = cValueToken + cValueDFI;
+
+        if ($("#fPriceToken").val() && $("#fPriceDFI").val()) {
+
+            var fPriceToken  = +$("#fPriceToken").val();
+            var fPriceDFI    = +$("#fPriceDFI").val();
+
+            /* The ratio of tokens in the pool
+               is the same as the ratio of prices
+               cPriceDFI / cPriceToken = cAmountToken / cAmountDFI
+               fPriceDFI / fPriceToken = fAmountToken / fAmountDFI
+
+               AND
+
+               Per the constant product formula x * y = k
+               cAmountToken * cAmountDFI = k
+               and
+               fAmountToken * fAmountDFI = k
+               hence
+               cAmountToken * cAmountDFI = fAmountToken * fAmountDFI
+
+               So
+               fAmountToken = cAmountToken * cAmountDFI / fAmountDFI
+               fAmountDFI = (fPriceToken / fPriceDFI) * fAmountToken
+               fAmountToken = cAmountToken * cAmountDFI / ((fPriceToken / fPriceDFI) * fAmountToken)
+               fAmountToken = cAmountToken * cAmountDFI / ((fPriceToken * fAmountToken) / fPriceDFI)
+               fAmountToken = cAmountToken * cAmountDFI * fPriceDFI / (fPriceToken * fAmountToken)
+               fAmountToken^2 = cAmountToken * cAmountDFI * fPriceDFI / fPriceToken
+               fAmountToken = sqrt(cAmountToken * cAmountDFI * fPriceDFI / fPriceToken) */
+
+            fAmountToken = Math.sqrt(cAmountToken * cAmountDFI * fPriceDFI / fPriceToken);
+            fAmountDFI   = (fPriceToken / fPriceDFI * fAmountToken);
+
+            if ( $("#interest:checked").val() &&
+                $("#apr").val() && $("#duration").val() ) {
+                var apr      = +$("#apr").val();
+                var fee      = +$("#fee").val();
+                var duration = +$("#duration").val();
+
+                fAmountDFI   = fAmountDFI + (2 * fAmountDFI * ( apr + fee) * duration /(100*365));
+                fAmountToken = fAmountToken + (fAmountDFI * fee * duration /(100*365));
+            }
+
+            fValueToken  = fAmountToken * fPriceToken;
+            fValueDFI    = fAmountDFI * fPriceDFI;
+            fValue       = fValueToken + fValueDFI;
+
+            fValueTokenH  = cAmountToken * fPriceToken;
+            fValueDFIH    = cAmountDFI * fPriceDFI;
+            fValueH       = fValueTokenH + fValueDFIH;
+        }
+    }
+
+    $("#cAmountToken").val(prettyNumber(cAmountToken));
     $("#cValueToken").val(prettyNumber(cValueToken));
     $("#cValueDFI").val(prettyNumber(cValueDFI));
     $("#cValue").val(prettyNumber(cValue));
-    
-    if (!$("#fPriceToken").val() || !$("#fPriceDFI").val())
-        return;
 
-    var fPriceToken  = +$("#fPriceToken").val();
-    var fPriceDFI    = +$("#fPriceDFI").val();
-    var fPriceRatio  = fPriceDFI / fPriceToken;
-
-    // The ratio of tokens in the pool
-    // is the same as the ratio of prices
-    // cPriceDFI / cPriceToken = cAmountToken / cAmountDFI
-    // fPriceDFI / fPriceToken = fAmountToken / fAmountDFI
-    
-
-    // AND
-
-    // Per the constant product formula x * y = k
-    // cAmountToken * cAmountDFI = k
-    // and
-    // fAmountToken * fAmountDFI = k
-    // hence
-    // cAmountToken * cAmountDFI = fAmountToken * fAmountDFI
-    
-    // So
-    // fAmountToken = cAmountToken * cAmountDFI / fAmountDFI
-    // fAmountDFI = (fPriceToken / fPriceDFI) * fAmountToken
-    // fAmountToken = cAmountToken * cAmountDFI / ((fPriceToken / fPriceDFI) * fAmountToken)
-    // fAmountToken = cAmountToken * cAmountDFI / ((fPriceToken * fAmountToken) / fPriceDFI)
-    // fAmountToken = cAmountToken * cAmountDFI * fPriceDFI / (fPriceToken * fAmountToken)
-    // fAmountToken^2 = cAmountToken * cAmountDFI * fPriceDFI / fPriceToken
-    // fAmountToken = sqrt(cAmountToken * cAmountDFI * fPriceDFI / fPriceToken)
-    
-    fAmountToken = Math.sqrt(cAmountToken * cAmountDFI * fPriceDFI / fPriceToken);
-    fAmountDFI   = (fPriceToken / fPriceDFI * fAmountToken);
-    
     $("#fAmountToken").val(prettyNumber(fAmountToken));
     $("#fAmountDFI").val(prettyNumber(fAmountDFI));
 
     compareValues(fAmountDFI, cAmountDFI, "#fAmountDFI", "#cAmountDFI");
     compareValues(fAmountToken, cAmountToken, "#fAmountToken", "#cAmountToken");
 
-    var fValueToken  = fAmountToken * fPriceToken;
-    var fValueDFI    = fAmountDFI * fPriceDFI;
-    var fValue       = fValueToken + fValueDFI;
     $("#fValueToken").val(prettyNumber(fValueToken));
     $("#fValueDFI").val(prettyNumber(fValueDFI));
     $("#fValue").val(prettyNumber(fValue));
 
-    var fValueTokenH  = cAmountToken * fPriceToken;
-    var fValueDFIH    = cAmountDFI * fPriceDFI;
-    var fValueH       = fValueTokenH + fValueDFIH;
     $("#fValueTokenH").val(prettyNumber(fValueTokenH));
     $("#fValueDFIH").val(prettyNumber(fValueDFIH));
     $("#fValueH").val(prettyNumber(fValueH));
@@ -184,39 +219,4 @@ function calculate() {
     compareValues(fValueDFIH, fValueDFI, "#fValueDFIH", "#fValueDFI");
     compareValues(fValueTokenH, fValueToken, "#fValueTokenH", "#fValueToken");
     compareValues(fValueH, fValue, "#fValueH", "#fValue");
-
-    if ( $("#interest:checked").val() &&
-        $("#apr").val() && $("#duration").val() ) {
-        var apr      = +$("#apr").val();
-        var fee      = +$("#fee").val();
-        var duration = +$("#duration").val();
-        if (fee == "")
-            fee = 0;
-        var fAmountDFII   = fAmountDFI + (2 * fAmountDFI * ( apr + fee) * duration /(100*365));
-        var fAmountTokenI = fAmountToken + (fAmountDFI * fee * duration /(100*365));
-        $("#fAmountDFI").val(prettyNumber((fAmountDFII)));
-        $("#fAmountToken").val(prettyNumber((fAmountTokenI)));
-        if (fAmountDFII > cAmountDFI)
-            $("#fAmountDFIIDifference").val("(+" + prettyNumber(fAmountDFII - cAmountDFI) +")");
-        else if(fAmountDFII < cAmountDFI)
-            $("#fAmountDFIIDifference").val("(" + prettyNumber(fAmountDFII - cAmountDFI) + ")");
-        else
-            $("#fAmountDFIIDifference").val("");
-
-        var fValueDFII    = fAmountDFII * fPriceDFI;
-        var fValueI       = fValueToken + fValueDFII;
-        $("#fValueDFI").val(prettyNumber(fValueDFII));
-        $("#fValue").val(prettyNumber(fValueI));
-
-        if (fValueI == fValueH) {
-            $("#fValue").parent().removeClass("plus");
-            $("#fValue").parent().removeClass("minus");
-        } else if (fValueI > fValueH) {
-            $("#fValue").parent().addClass("plus");
-            $("#fValue").parent().removeClass("minus")
-        } else {
-            $("#fValue").parent().removeClass("plus");
-            $("#fValue").parent().addClass("minus")
-        }
-    }
 }
