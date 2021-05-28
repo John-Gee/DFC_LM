@@ -10,6 +10,10 @@ $(document).ready(function(){
 
 	//methods
 	//$.fn.fullpage.setAllowScrolling(false);
+
+	$("#OtherTokenValue").on("input", function() {
+        SwitchTokenLabel();
+    });
     
     $("#cPriceToken").on("input", function() {
         cPriceRatio();
@@ -48,6 +52,13 @@ $(document).ready(function(){
         calculate();
     });
 });
+
+function SwitchTokenLabel() {
+    var label = $("#OtherTokenValue").val();
+    $("[name='OtherToken']").map(function() {
+        this.innerHTML = label;
+    });
+}
 
 function toggleInterest() {
     if ($("#interest:checked").val()) {

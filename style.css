@@ -190,3 +190,13 @@ input#interest {
     color: rgba(255,255,255,1);
     font-weight: bold;
 }
+
+select {
+    /* style */
+    background-color: inherit;
+    color: inherit;
+    font: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    border: 1px solid rgba(255,0,176,1);
+}
