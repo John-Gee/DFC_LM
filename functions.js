@@ -98,8 +98,7 @@ function prettyNumber(number) {
         return "";
 
     return numbro(number).format({trimMantissa: true,
-                                  average: true,
-                                  totalLength: 9
+                                  thousandSeparated: true
     });
 }
 
