@@ -14,40 +14,40 @@ $(document).ready(function(){
 	$("#OtherTokenValue").on("input", function() {
         SwitchTokenLabel();
         if ($("#OtherTokenValue").val() == "USDT") {
-            $("#cPriceToken").val(1);
+            $("#cPriceToken").val(1).change();;
             $("#cPriceToken").prop("disabled", true);
             $("#cPriceToken").parent().addClass("auto");
-            $("#fPriceToken").val(1);
+            $("#fPriceToken").val(1).change();;
             $("#fPriceToken").prop("disabled", true);
             $("#fPriceToken").parent().addClass("auto");
         } else {
-            $("#cPriceToken").val("");
+            $("#cPriceToken").val("").change();;
             $("#cPriceToken").prop("disabled", false);
             $("#cPriceToken").parent().removeClass("auto");
-            $("#fPriceToken").val("");
+            $("#fPriceToken").val("").change();;
             $("#fPriceToken").prop("disabled", false);
             $("#fPriceToken").parent().removeClass("auto");
         }
     });
-    
-    $("#cPriceToken").on("input", function() {
+
+    $("#cPriceToken").on("change input", function() {
         cPriceRatio();
         calculate();
     });
-    $("#cPriceDFI").on("input", function() {
+    $("#cPriceDFI").on("change input", function() {
         cPriceRatio();
         calculate();
     });
 
-    $("#cAmountDFI").on("input", function() {
+    $("#cAmountDFI").on("change input", function() {
         calculate();
     });
     
-    $("#fPriceToken").on("input", function() {
+    $("#fPriceToken").on("change input", function() {
         fPriceRatio();
         calculate();
     });
-    $("#fPriceDFI").on("input", function() {
+    $("#fPriceDFI").on("change input", function() {
         fPriceRatio();
         calculate();
     });
@@ -57,13 +57,13 @@ $(document).ready(function(){
         toggleInterest()
         calculate();
     });
-    $("#apr").on("input", function() {
+    $("#apr").on("change input", function() {
         calculate();
     });
-    $("#fee").on("input", function() {
+    $("#fee").on("change input", function() {
         calculate();
     });
-    $("#duration").on("input", function() {
+    $("#duration").on("change input", function() {
         calculate();
     });
 });
