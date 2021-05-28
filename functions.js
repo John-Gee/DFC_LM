@@ -198,7 +198,7 @@ function calculate() {
             fAmountDFI   = (fPriceToken / fPriceDFI * fAmountToken);
 
             if ( $("#interest:checked").val() &&
-                $("#apr").val() && $("#duration").val() ) {
+                ($("#apr").val() || $("#fee").val()) && $("#duration").val() ) {
                 var apr      = +$("#apr").val();
                 var fee      = +$("#fee").val();
                 var duration = +$("#duration").val();
