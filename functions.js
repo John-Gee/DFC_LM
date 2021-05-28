@@ -13,6 +13,15 @@ $(document).ready(function(){
 
 	$("#OtherTokenValue").on("input", function() {
         SwitchTokenLabel();
+        if ($("#OtherTokenValue").val() == "USDT") {
+            $("#cPriceToken").val(1);
+            $("#cPriceToken").prop("disabled", true);
+            $("#cPriceToken").parent().addClass("auto");
+        } else {
+            $("#cPriceToken").val("");
+            $("#cPriceToken").prop("disabled", false);
+            $("#cPriceToken").parent().removeClass("auto");
+        }
     });
     
     $("#cPriceToken").on("input", function() {
