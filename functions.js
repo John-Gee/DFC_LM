@@ -17,10 +17,16 @@ $(document).ready(function(){
             $("#cPriceToken").val(1);
             $("#cPriceToken").prop("disabled", true);
             $("#cPriceToken").parent().addClass("auto");
+            $("#fPriceToken").val(1);
+            $("#fPriceToken").prop("disabled", true);
+            $("#fPriceToken").parent().addClass("auto");
         } else {
             $("#cPriceToken").val("");
             $("#cPriceToken").prop("disabled", false);
             $("#cPriceToken").parent().removeClass("auto");
+            $("#fPriceToken").val("");
+            $("#fPriceToken").prop("disabled", false);
+            $("#fPriceToken").parent().removeClass("auto");
         }
     });
     
