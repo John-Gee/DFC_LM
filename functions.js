@@ -77,14 +77,14 @@ function toggleInterest() {
             $("#duration").parent().removeClass("auto");
             $("#fee").prop("disabled", false);
             $("#fee").parent().removeClass("auto");
-        } else {
-            $("#apr").prop("disabled", true);
-            $("#apr").parent().addClass("auto");
-            $("#duration").prop("disabled", true);
-            $("#duration").parent().addClass("auto");
-            $("#fee").prop("disabled", true);
-            $("#fee").parent().addClass("auto");
-        }
+    } else {
+        $("#apr").prop("disabled", true);
+        $("#apr").parent().addClass("auto");
+        $("#duration").prop("disabled", true);
+        $("#duration").parent().addClass("auto");
+        $("#fee").prop("disabled", true);
+        $("#fee").parent().addClass("auto");
+    }
 }
 
 function prettyNumber(number) {
