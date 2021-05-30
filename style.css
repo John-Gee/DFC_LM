@@ -78,8 +78,6 @@ hr {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 1;
-    //display: grid;
-    //grid-template-columns: repeat(auto-fill, 1fr); /* see notes below */
     justify-content: space-around;
     align-content: space-around;
 }
@@ -132,6 +130,7 @@ div#prices, div#amount , div#interest, div#value {
     /* style */
     font-family: "Arial";
     font-weight: bold;
+    min-width: 4rem;
 }
 
 
@@ -149,6 +148,10 @@ div#prices, div#amount , div#interest, div#value {
     font-weight: bold;
     margin: 0;
     padding: 0rem 0.5rem 0rem 0.5rem;
+}
+
+.input > img {
+    width: 0.75rem;
 }
 
 .auto {
@@ -196,7 +199,7 @@ input#interest {
     font-weight: bold;
 }
 
-select {
+select, select::selection {
     /* style */
     background-color: inherit;
     color: inherit;

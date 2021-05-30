@@ -14,28 +14,36 @@ $(document).ready(function(){
 	$("#OtherTokenValue").on("input", function() {
         SwitchTokenLabel();
         if ($("#OtherTokenValue").val() == "USDT") {
-            $("#cPriceToken").val(1).change();;
+            $("#cPriceToken").val(1).change();
             $("#cPriceToken").prop("disabled", true);
             $("#cPriceToken").parent().addClass("auto");
-            $("#fPriceToken").val(1).change();;
+            $("#fPriceToken").val(1).change();
             $("#fPriceToken").prop("disabled", true);
             $("#fPriceToken").parent().addClass("auto");
         } else {
-            $("#cPriceToken").val("").change();;
-            $("#cPriceToken").prop("disabled", false);
-            $("#cPriceToken").parent().removeClass("auto");
-            $("#fPriceToken").val("").change();;
-            $("#fPriceToken").prop("disabled", false);
-            $("#fPriceToken").parent().removeClass("auto");
+            $("#cPriceToken").val("").change();
+            $("#fPriceToken").val("").change();
+            if (!$("#cPriceDFI").prop("disabled")) {
+                $("#cPriceToken").prop("disabled", false);
+                $("#cPriceToken").parent().removeClass("auto");
+            }
+            if (!$("#fPriceDFI").prop("disabled")) {
+                $("#fPriceToken").prop("disabled", false);
+                $("#fPriceToken").parent().removeClass("auto");
+            }
         }
     });
 
     $("#cPriceToken").on("change input", function() {
-        cPriceRatio();
+        calcPriceRatio("c");
         calculate();
     });
     $("#cPriceDFI").on("change input", function() {
-        cPriceRatio();
+        calcPriceRatio("c");
+        calculate();
+    });
+    $("#cPriceRatio").on("change input", function() {
+        priceRatio("c");
         calculate();
     });
 
@@ -44,11 +52,15 @@ $(document).ready(function(){
     });
     
     $("#fPriceToken").on("change input", function() {
-        fPriceRatio();
+        calcPriceRatio("f");
         calculate();
     });
     $("#fPriceDFI").on("change input", function() {
-        fPriceRatio();
+        calcPriceRatio("f");
+        calculate();
+    });
+    $("#fPriceRatio").on("change input", function() {
+        priceRatio("f");
         calculate();
     });
 
@@ -73,6 +85,10 @@ function SwitchTokenLabel() {
     $("[name='OtherToken']").map(function() {
         this.innerHTML = label;
     });
+    $("[name='OtherRatio']").map(function() {
+        this.innerHTML = "1 " + label;
+    });
+
 }
 
 function toggleInterest() {
@@ -102,19 +118,46 @@ function prettyNumber(number) {
     });
 }
 
-function cPriceRatio() {
-    if ($("#cPriceToken").val() && $("#cPriceDFI").val()) {
-        $("#cPriceRatio").val("1:" + prettyNumber(($("#cPriceDFI").val() / $("#cPriceToken").val())));
+function priceRatio(time) {
+    var priceToken = "#" + time + "PriceToken";
+    var priceDFI   = "#" + time + "PriceDFI";
+    var priceRatio = "#" + time + "PriceRatio";
+
+    if ($(priceRatio).val() ) {
+        $(priceDFI).prop("disabled", true);
+        $(priceDFI).parent().addClass("auto");
+        $(priceToken).prop("disabled", true);
+        $(priceToken).parent().addClass("auto");
     } else {
-        $("#cPriceRatio").val("");
+        $(priceDFI).prop("disabled", false);
+        $(priceDFI).parent().removeClass("auto");
+        $(priceToken).prop("disabled", false);
+        $(priceToken).parent().removeClass("auto");
     }
 }
 
-function fPriceRatio() {
-    if ($("#fPriceToken").val() && $("#fPriceDFI").val()) {
-        $("#fPriceRatio").val("1:" + prettyNumber(($("#fPriceDFI").val() / $("#fPriceToken").val())));
+function calcPriceRatio(time) {
+    var priceToken = "#" + time + "PriceToken";
+    var priceDFI   = "#" + time + "PriceDFI";
+    var priceRatio = "#" + time + "PriceRatio";
+
+    if ($(priceToken).val() || $(priceDFI).val()) {
+        $(priceRatio).prop("disabled", true);
+        $(priceRatio).parent().addClass("auto");
+
+        if ($(priceToken).val() && $(priceDFI).val()) {
+            $(priceRatio).val(prettyNumber(($(priceToken).val() / $(priceDFI).val())));
+            return
+        } else if ($("#OtherTokenValue").val() == "USDT") {
+            $(priceRatio).prop("disabled", false);
+            $(priceRatio).parent().removeClass("auto");
+        }
     } else {
-        $("#fPriceRatio").val("");
+        $(priceRatio).prop("disabled", false);
+        $(priceRatio).parent().removeClass("auto");
+    }
+    if (!$(priceDFI).prop("disabled") && !$(priceDFI).prop("disabled")) {
+        $(priceRatio).val("");
     }
 }
 
@@ -159,13 +202,17 @@ function calculate() {
     var fValueDFIH = 0;
     var fValueH = 0;
 
-    if ($("#cAmountDFI").val() &&
-        $("#cPriceToken").val() && $("#cPriceDFI").val()) {
-    
+    if ($("#cAmountDFI").val()) {
         cAmountDFI   = +$("#cAmountDFI").val();
-        cPriceToken  = +$("#cPriceToken").val();
-        cPriceDFI    = +$("#cPriceDFI").val();
-        cAmountToken = cPriceDFI/cPriceToken *cAmountDFI;
+
+        if ($("#cPriceToken").val() && $("#cPriceDFI").val()) {
+            cPriceToken  = +$("#cPriceToken").val();
+            cPriceDFI    = +$("#cPriceDFI").val();
+            cAmountToken = cPriceDFI/cPriceToken *cAmountDFI;
+        } else if ($("#cPriceRatio").val()) {
+            cPriceRatio  = +$("#cPriceRatio").val();
+            cAmountToken = cPriceRatio * cAmountDFI;
+        }
 
         cValueToken  = cAmountToken * cPriceToken;
         cValueDFI    = cAmountDFI * cPriceDFI;
