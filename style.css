@@ -199,7 +199,7 @@ input#interest {
     font-weight: bold;
 }
 
-select, select::selection {
+select {
     /* style */
     background-color: inherit;
     color: inherit;
@@ -207,6 +207,7 @@ select, select::selection {
     font-size: inherit;
     font-weight: inherit;
     border: 1px solid rgba(255,0,176,1);
+    outline: 0;
     border-radius: 12px;
     padding-left: 0.5rem;
 }
