@@ -1,16 +1,4 @@
 $(document).ready(function(){
-    /*$('#fullpage').fullpage({
-		//options here
-		autoScrolling: true,
-        continuousVertical: true,
-		scrollHorizontally: true,
-        paddingTop: 0,
-        paddingBottom: 0,
-	});*/
-
-	//methods
-	//$.fn.fullpage.setAllowScrolling(false);
-
 	$("#OtherTokenValue").on("input", function() {
         SwitchTokenLabel();
         if ($("#OtherTokenValue").val() == "USDT") {
@@ -84,6 +72,14 @@ $(document).ready(function(){
     $("#duration").on("change input", function() {
         calculate();
     });
+
+    $(document).keydown(function(e){
+    if (e.which == 27) {
+       $('body').chardinJs('stop');
+       return false;
+    }
+});
+    $('body').chardinJs('start');
 });
 
 function SwitchTokenLabel() {

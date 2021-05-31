@@ -1,180 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title> DeFiChain Liquidity Mining Calculator</title>
+        <meta charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> DeFiChain Liquidity Mining Calculator</title>
         <link rel="shortcut icon" type="image/jpg" href="img/favicon-16x16.png"/>
         <script src="3rd Party/jquery/jquery-3.6.0.min.js"></script>
         <script src="3rd Party/select2/select2.min.js"></script>
+        <script src="3rd Party/chardin/chardinjs.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/numbro@2.3.1/dist/numbro.min.js"></script>
         <script src="functions.js"></script>
         <link href="3rd Party/select2/select2.min.css" rel="stylesheet" />
+        <link href="3rd Party/chardin/chardinjs.css" rel="stylesheet" />
         <link href="style.css" rel="stylesheet"/>
     </head>
-    <body>
-        <section id="header">
+    <body data-chardin-sequenced="true">
+        <section id="header" data-intro="This calculator allows you to estimate potential impermanent loss. Beware, actual impermanent loss will be somewhat different. This tutorial can be stopped by pressing the Esc key!" data-position="bottom">
             <a href="https://www.defichain.com"><img src="img/defichain.svg"/></a>
-            <h1> Liquidity Mining: Impermanent Loss Calculator </h1>
+            <h1> Liquidity Mining Calculator </h1>
         </section>
-        <section id="main">
-            <section id="intro">
-                    This calculator allows you to estimate potential impermanent loss. <br/>
-                    Beware, actual impermanent loss will be somewhat different.
+        <section id="calculator">
+            <h2> Start </h2>
+            <hr/>
+            <section class="twobytwo">
+                <div class="twobytwo">
+                    <section class="table" data-intro="This is where you'll be inputting the initial prices or ratio, one or the other! If you chose to go with prices the ratio will be auto-calculated." data-position="right">
+                        <h3> Prices </h3>
+                        <div id="prices">
+                            <div class="header">DFI</div>
+                            <div class="input" data-intro="If you want to go with prices, here you'll input DFI's from your favorite source." data-position="right">
+                                $<input class="inputtext" type="number" min="0" id="cPriceDFI"/>
+                            </div>
+                            <div class="header" data-intro="Here you can pick the other token in the pool." data-position="right">
+                                <select class="js-example-responsive" id="OtherTokenValue">
+                                    <option value="BCH">BCH</option>
+                                    <option value="BTC" selected="selected">BTC</option>
+                                    <option value="DOGE">DOGE</option>
+                                    <option value="ETH">ETH</option>
+                                    <option value="LTC">LTC</option>
+                                    <option value="USDT">USDT</option>
+                                </select>
+                            </div>
+                            <div class="input" data-intro="And here you'll input the other coin's price from the same source." data-position="right">
+                                $<input class="inputtext" type="number" min="0" id="cPriceToken"/>
+                            </div>
+                            <div class="header" name="OtherRatio">1 Other</div>
+                            <div class="input" data-intro="Or here you will input the ratio between the coins, for example from the LM pool." data-position="right">
+                                <img src="img/defichain.svg"/><input class="inputtext" type="text" id="cPriceRatio"/>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="table" data-intro="This is where you'll have your initial coins amounts." data-position="right">
+                        <h3> Amount of tokens </h3>
+                        <div id="amount">
+                            <div class="header">DFI</div>
+                            <div class="input" data-intro="Here you will input the number of DFI you put in the pool." data-position="right">
+                                &nbsp;<input class="inputtext" type="number" min="0" id="cAmountDFI"/>
+                            </div>
+                            <div class="header" name="OtherToken">Other</div>
+                            <div class="input auto" data-intro="The other amount will be automatically calculated." data-position="right">
+                                &nbsp;<input class="inputtext" type="text" min="0" id="cAmountToken" disabled/>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="twobytwo">
+                    <section class="table" data-intro="Here you will input the interest data." data-position="left">
+                        <h3><input type="checkbox" id="interest" data-intro="You can enable/disable the table by checking/unchecking this." data-position="left"/> Interest </h3>
+                        <div id="interest">
+                            <div class="header">APR</div>
+                            <div class="input auto" data-intro="Here you will input the APR percentage." data-position="left">
+                                %<input class="inputtext" type="number" min="0" id="apr" disabled/>
+                            </div>
+                            <div class="header">Fee</div>
+                            <div class="input auto" data-intro="Here you will input the commission from trades on the pool." data-position="left">
+                                %<input class="inputtext" type="number" min="0" id="fee" disabled/>
+                            </div>
+                            <div class="header">Time</div>
+                            <div class="input auto" data-intro="Here you will input the duration in days you will leave your coins in the pool for." data-position="left">
+                                d.<input class="inputtext" type="number" min="0" id="duration" disabled/>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="table" data-intro="Here you will have the initial valuation of your investment calculated from your input." data-position="left">
+                        <h3> Value </h3>
+                        <div id="value">
+                            <div class="header">DFI</div>
+                            <div class="input auto" data-intro="Here you will have the total value of your DFI coins." data-position="left">
+                                $<input class="inputtext" type="text" min="0" id="cValueDFI" disabled/>
+                            </div>
+                            <div class="header" name="OtherToken">Other</div>
+                            <div class="input auto" data-intro="Here you will have the total value of your other coins." data-position="left">
+                                $<input class="inputtext" type="text" min="0" id="cValueToken" disabled/>
+                            </div>
+                            <div class="header">Total</div>
+                            <div class="input auto" data-intro="Here you will have the total value of your investment." data-position="left">
+                                $<input class="inputtext" type="text" min="0" id="cValue" disabled/>
+                            </div>
+                        </div>
+                    </section>
+                </div>
             </section>
-            <section id="calculator">
-                <h2> Start </h2>
-                <hr/>
-                <section class="twobytwo">
-                    <div class="twobytwo">
-                        <section class="table">
-                            <h3> Prices </h3>
-                            <div id="prices">
-                                <div class="header">DFI</div>
-                                <div class="input">
-                                    $<input class="inputtext" type="number" min="0" id="cPriceDFI"/>
-                                </div>
-                                <div class="header">
-                                    <select class="js-example-responsive" id="OtherTokenValue">
-                                        <option value="BCH">BCH</option>
-                                        <option value="BTC" selected="selected">BTC</option>
-                                        <option value="DOGE">DOGE</option>
-                                        <option value="ETH">ETH</option>
-                                        <option value="LTC">LTC</option>
-                                        <option value="USDT">USDT</option>
-                                    </select>
-                                </div>
-                                <div class="input">
-                                    $<input class="inputtext" type="number" min="0" id="cPriceToken"/>
-                                </div>
-                                <div class="header" name="OtherRatio">1 Other</div>
-                                <div class="input">
-                                    <img src="img/defichain.svg"/><input class="inputtext" type="text" id="cPriceRatio"/>
-                                </div>
+            <h2> End </h2>
+            <hr/>
+            <section class="twobytwo">
+                <div class="twobytwo">
+                    <section class="table" data-intro="This is where you'll be inputting the end prices or ratio, one or the other! If you chose to go with prices the ratio will be auto-calculated." data-position="right">
+                        <h3> Prices </h3>
+                        <div id="prices">
+                            <div class="header">DFI</div>
+                            <div class="input" data-intro="If you want to go with prices, here you'll input your estimation for DFI's." data-position="right">
+                                $<input class="inputtext" type="number" min="0" id="fPriceDFI"/>
                             </div>
-                        </section>
-                        <section class="table">
-                            <h3> Amount of tokens </h3>
-                            <div id="amount">
-                                <div class="header">DFI</div>
-                                <div class="input">
-                                    &nbsp;<input class="inputtext" type="number" min="0" id="cAmountDFI"/>
-                                </div>
-                                <div class="header" name="OtherToken">Other</div>
-                                <div class="input auto">
-                                    &nbsp;<input class="inputtext" type="text" min="0" id="cAmountToken" disabled/>
-                                </div>
+                            <div class="header" name="OtherToken">Other</div>
+                            <div class="input" data-intro="And here you'll input your estimation for the other coin's price." data-position="right">
+                                $<input class="inputtext" type="number" min="0" id="fPriceToken"/>
                             </div>
-                        </section>
-                    </div>
-                    <div class="twobytwo">
-                        <section class="table">
-                            <h3><input type="checkbox" id="interest"/> Interest </h3>
-                            <div id="interest">
-                                <div class="header">APR</div>
-                                <div class="input auto">
-                                    %<input class="inputtext" type="number" min="0" id="apr" disabled/>
-                                </div>
-                                <div class="header">Fee</div>
-                                <div class="input auto">
-                                    %<input class="inputtext" type="number" min="0" id="fee" disabled/>
-                                </div>
-                                <div class="header">Time</div>
-                                <div class="input auto">
-                                    d.<input class="inputtext" type="number" min="0" id="duration" disabled/>
-                                </div>
+                            <div class="header" name="OtherRatio">1 Other</div>
+                            <div class="input" data-intro="Or here you will input your estimated ratio between the coins." data-position="right">
+                                <img src="img/defichain.svg"/><input class="inputtext" type="text" id="fPriceRatio"s/>
                             </div>
-                        </section>
-                        <section class="table">
-                            <h3> Value </h3>
-                            <div id="value"> 
-                                <div class="header">DFI</div>
-                                <div class="input auto">
-                                    $<input class="inputtext" type="text" min="0" id="cValueDFI" disabled/>
-                                </div>
-                                <div class="header" name="OtherToken">Other</div>
-                                <div class="input auto">
-                                    $<input class="inputtext" type="text" min="0" id="cValueToken" disabled/>
-                                </div>
-                                <div class="header">Total</div>
-                                <div class="input auto">
-                                    $<input class="inputtext" type="text" min="0" id="cValue" disabled/>
-                                </div>
+                        </div>
+                    </section>
+                    <section class="table">
+                        <h3> Amount of tokens </h3>
+                        <div id="amount">
+                            <div class="header">DFI</div>
+                            <div class="input auto" data-intro="This amount will be automatically calculated and compared to the past one." data-position="right">
+                                &nbsp;<input class="inputtext" type="text" min="0" id="fAmountDFI" disabled/>
                             </div>
-                        </section>
-                    </div>
-                </section>
-                <h2> End </h2>
-                <hr/>
-                <section class="twobytwo">
-                    <div class="twobytwo">
-                        <section class="table">
-                            <h3> Prices </h3>
-                            <div id="prices">
-                                <div class="header">DFI</div>
-                                <div class="input">
-                                    $<input class="inputtext" type="number" min="0" id="fPriceDFI"/>
-                                </div>
-                                <div class="header" name="OtherToken">Other</div>
-                                <div class="input">
-                                    $<input class="inputtext" type="number" min="0" id="fPriceToken"/>
-                                </div>
-                                <div class="header" name="OtherRatio">1 Other</div>
-                                <div class="input">
-                                    <img src="img/defichain.svg"/><input class="inputtext" type="text" id="fPriceRatio"s/>
-                                </div>
+                            <div class="header" name="OtherToken">Other</div>
+                            <div class="input auto" data-intro="This amount will also be automatically calculated and compared to the past one." data-position="right">
+                                &nbsp;<input class="inputtext" type="text" min="0" id="fAmountToken" disabled/>
                             </div>
-                        </section>
-                        <section class="table">
-                            <h3> Amount of tokens </h3>
-                            <div id="amount">
-                                <div class="header">DFI</div>
-                                <div class="input auto">
-                                    &nbsp;<input class="inputtext" type="text" min="0" id="fAmountDFI" disabled/>
-                                </div>
-                                <div class="header" name="OtherToken">Other</div>
-                                <div class="input auto">
-                                    &nbsp;<input class="inputtext" type="text" min="0" id="fAmountToken" disabled/>
-                                </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="twobytwo">
+                    <section class="table" data-intro="Here you will have the end valuations of your investment in the pool calculated from your estimation. All these will be compared to the values on the right." data-position="left">
+                        <h3> Value </h3>
+                        <div id="value">
+                            <div class="header">DFI</div>
+                            <div class="input auto" data-intro="Here you will have the estimated total value of your DFI coins." data-position="left">
+                                $<input class="inputtext" type="text" min="0" id="fValueDFI" disabled/>
                             </div>
-                        </section>
-                    </div>
-                    <div class="twobytwo">
-                        <section class="table">
-                            <h3> Value </h3>
-                            <div id="value">
-                                <div class="header">DFI</div>
-                                <div class="input auto">
-                                    $<input class="inputtext" type="text" min="0" id="fValueDFI" disabled/>
-                                </div>
-                                <div class="header" name="OtherToken">Other</div>
-                                <div class="input auto">
-                                    $<input class="inputtext" type="text" min="0" id="fValueToken" disabled/>
-                                </div>
-                                <div class="header">Total</div>
-                                <div class="input auto">
-                                    $<input class="inputtext" type="text" min="0" id="fValue" disabled/>
-                                </div>
+                            <div class="header" name="OtherToken">Other</div>
+                            <div class="input auto" data-intro="Here you will have the estimated total value of your other coins." data-position="left">
+                                $<input class="inputtext" type="text" min="0" id="fValueToken" disabled/>
                             </div>
-                        </section>
-                        <section class="table">
-                            <h3> Value by holding </h3>
-                            <div id="value">
-                                <div class="header">DFI</div>
-                                <div class="input auto">
-                                    $<input class="inputtext" type="text" min="0" id="fValueDFIH" disabled/>
-                                </div>
-                                <div class="header" name="OtherToken">Other</div>
-                                <div class="input auto">
-                                    $<input class="inputtext" type="text" min="0" id="fValueTokenH" disabled/>
-                                </div>
-                                <div class="header">Total</div>
-                                <div class="input auto">
-                                    $<input class="inputtext" type="text" min="0" id="fValueH" disabled/>
-                                </div>
+                            <div class="header">Total</div>
+                            <div class="input auto" data-intro="Here you will have the estimated total value of your investment." data-position="left">
+                                $<input class="inputtext" type="text" min="0" id="fValue" disabled/>
                             </div>
-                        </section>
-                    </div>
-                </section>
+                        </div>
+                    </section>
+                    <section class="table" data-intro="Here you will have the end valuations of your investment calculated from your estimation if you had kept your coins and not put them in the LM pool. All these will be compared to the values on the left." data-position="left">
+                        <h3> Value by holding </h3>
+                        <div id="value">
+                            <div class="header">DFI</div>
+                            <div class="input auto" data-intro="Here you will have the estimated total value of your DFI coins if you had held." data-position="left">
+                                $<input class="inputtext" type="text" min="0" id="fValueDFIH" disabled/>
+                            </div>
+                            <div class="header" name="OtherToken">Other</div>
+                            <div class="input auto" data-intro="Here you will have the estimated total value of your other coins if you had held." data-position="left">
+                                $<input class="inputtext" type="text" min="0" id="fValueTokenH" disabled/>
+                            </div>
+                            <div class="header">Total</div>
+                            <div class="input auto" data-intro="Here you will have the estimated total value of your investment if you had held." data-position="left">
+                                $<input class="inputtext" type="text" min="0" id="fValueH" disabled/>
+                            </div>
+                        </div>
+                    </section>
+                </div>
             </section>
         </section>
     </body>

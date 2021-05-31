@@ -4,14 +4,14 @@
 }
 
 body {
-    /* sets the grid */
+    /* sets the page */
     display: flex;
     flex-direction: column;
-    flex: 1;
+    min-height: 100vh;
 }
 
 #header {
-    /* current grid */
+    /* children */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -28,22 +28,6 @@ body {
     /* font-family: "Brush Script MT", cursive; */
     font-family: "Times New Roman";
     font-size: 2rem;
-}
-
-#main {
-    /* position */
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-#intro {
-    /* position */
-    text-align: center;
-    margin-top: 0.5rem;
-
-    /* style */
-    font-size: 1.125rem;
 }
 
 #calculator {
