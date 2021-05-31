@@ -5,8 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" type="image/jpg" href="img/favicon-16x16.png"/>
         <script src="3rd Party/jquery/jquery-3.6.0.min.js"></script>
+        <script src="3rd Party/select2/select2.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/numbro@2.3.1/dist/numbro.min.js"></script>
         <script src="functions.js"></script>
+        <link href="3rd Party/select2/select2.min.css" rel="stylesheet" />
         <link href="style.css" rel="stylesheet"/>
     </head>
     <body>
@@ -32,7 +34,7 @@
                                     $<input class="inputtext" type="number" min="0" id="cPriceDFI"/>
                                 </div>
                                 <div class="header">
-                                    <select id="OtherTokenValue">
+                                    <select class="js-example-responsive" id="OtherTokenValue">
                                         <option value="BCH">BCH</option>
                                         <option value="BTC" selected="selected">BTC</option>
                                         <option value="DOGE">DOGE</option>
