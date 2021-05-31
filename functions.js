@@ -33,6 +33,7 @@ $(document).ready(function(){
             }
         }
     });
+    SwitchTokenLabel();
 
     $("#cPriceToken").on("change input", function() {
         calcPriceRatio("c");
