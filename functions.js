@@ -163,22 +163,22 @@ function calcPriceRatio(time) {
     }
 }
 
-function compareValues(value1, value2, id1, id2) {
+function compareValues(value1, value2, id1, id2, colorType) {
     // clear previous results
-    $(id1).parent().removeClass("plus");
-    $(id1).parent().removeClass("minus");
-    $(id2).parent().removeClass("plus");
-    $(id2).parent().removeClass("minus");
+    $(id1).parent().removeClass("plus" + colorType);
+    $(id1).parent().removeClass("minus" + colorType);
+    $(id2).parent().removeClass("plus" + colorType);
+    $(id2).parent().removeClass("minus" + colorType);
 
     if ((value1 == value2) || (value1 == 0) || (value2 == 0)){
         return;
     }
     else if (value1 > value2) {
-        $(id1).parent().addClass("plus");
-        $(id2).parent().addClass("minus");
+        $(id1).parent().addClass("plus" + colorType);
+        $(id2).parent().addClass("minus" + colorType);
     } else {
-        $(id1).parent().addClass("minus");
-        $(id2).parent().addClass("plus");
+        $(id1).parent().addClass("minus" + colorType);
+        $(id2).parent().addClass("plus" + colorType);
     }
 }
 
@@ -279,8 +279,8 @@ function calculate() {
     $("#fAmountToken").val(prettyNumber(fAmountToken));
     $("#fAmountDFI").val(prettyNumber(fAmountDFI));
 
-    compareValues(fAmountDFI, cAmountDFI, "#fAmountDFI", "#cAmountDFI");
-    compareValues(fAmountToken, cAmountToken, "#fAmountToken", "#cAmountToken");
+    compareValues(fAmountDFI, cAmountDFI, "#fAmountDFI", "#cAmountDFI", "-A");
+    compareValues(fAmountToken, cAmountToken, "#fAmountToken", "#cAmountToken", "-A");
 
     $("#fValueToken").val(prettyNumber(fValueToken));
     $("#fValueDFI").val(prettyNumber(fValueDFI));
@@ -290,7 +290,7 @@ function calculate() {
     $("#fValueDFIH").val(prettyNumber(fValueDFIH));
     $("#fValueH").val(prettyNumber(fValueH));
 
-    compareValues(fValueDFIH, fValueDFI, "#fValueDFIH", "#fValueDFI");
-    compareValues(fValueTokenH, fValueToken, "#fValueTokenH", "#fValueToken");
-    compareValues(fValueH, fValue, "#fValueH", "#fValue");
+    compareValues(fValueDFIH, fValueDFI, "#fValueDFIH", "#fValueDFI", "-V");
+    compareValues(fValueTokenH, fValueToken, "#fValueTokenH", "#fValueToken", "-V");
+    compareValues(fValueH, fValue, "#fValueH", "#fValue", "-V");
 }
