@@ -48,7 +48,7 @@ body {
     /* style */
     background-color: white;
     border-radius: 36px;
-    box-shadow: 10px 10px 15px 12px #000000;
+    box-shadow: 6px 6px 15px 10px rgba(75, 75, 75, 1);
 }
 
 h2 {
