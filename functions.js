@@ -25,7 +25,8 @@ $(document).ready(function(){
     $('.js-example-basic-single').select2();
     $('select').select2({
         minimumResultsForSearch: -1,
-        width: '100%'
+        width: '100%',
+        dropdownAutoWidth : true
     });
 
     $("#cPriceToken").on("change input", function() {
