@@ -78,7 +78,7 @@ $(document).ready(function(){
        $('body').chardinJs('stop');
        return false;
     }
-});
+    });
     $('body').chardinJs('start');
 });
 
