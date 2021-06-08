@@ -22,11 +22,15 @@ $(document).ready(function(){
         }
     });
     SwitchTokenLabel();
-    $('.js-example-basic-single').select2();
-    $('select').select2({
+    $('.js-example-templating').select2({
         minimumResultsForSearch: -1,
         width: '100%',
-        dropdownAutoWidth : true
+        dropdownAutoWidth : true,
+        templateResult: formatCoin,
+        templateSelection: formatCoin,
+        escapeMarkup: function (m) {
+				return m;
+			}
     });
 
     $("#cPriceToken").on("change input", function() {
@@ -80,18 +84,31 @@ $(document).ready(function(){
        return false;
     }
     });
-    $('body').chardinJs('start');
+    //$('body').chardinJs('start');
 });
 
 function SwitchTokenLabel() {
     var label = $("#OtherTokenValue").val();
+    $("#OtherTokenValue").innerHTML = coinNameToImg(label);
     $("[name='OtherToken']").map(function() {
-        this.innerHTML = label;
+        this.innerHTML = coinNameToImg(label);
     });
     $("[name='OtherRatio']").map(function() {
-        this.innerHTML = "1 " + label;
+        this.innerHTML = coinNameToImg(label);
     });
+}
 
+function formatCoin(coin) {
+    if (!coin.id) {
+        return coin.text;
+    }
+
+    var $coin = $(coinNameToImg(coin.text));
+    return $coin;
+}
+
+function coinNameToImg(coinName) {
+    return '<img src="img/' + coinName + '.svg" class="img-flag"/>';
 }
 
 function toggleInterest() {
