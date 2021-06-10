@@ -201,79 +201,84 @@ function compareValues(value1, value2, id1, id2, colorType) {
 }
 
 function calculate() {
-    var cPriceDFI = 0;
-    var cPriceToken = 0;
+    var cPriceDFI    = 0;
+    var cPriceToken  = 0;
 
-    var cAmountDFI = 0;
+    var cAmountDFI   = 0;
     var cAmountToken = 0;
 
-    var cValueToken = 0;
-    var cValueDFI = 0;
-    var cValue = 0;
+    var cValueDFI    = 0;
+    var cValueToken  = 0;
+    var cValue       = 0;
 
+    var fAmountDFI   = 0;
     var fAmountToken = 0;
-    var fAmountDFI = 0;
 
-    var fValueToken = 0;
-    var fValueDFI = 0;
-    var fValue = 0;
+    var fValueDFI    = 0;
+    var fValueToken  = 0;
+    var fValue       = 0;
 
+    var fValueDFIH   = 0;
     var fValueTokenH = 0;
-    var fValueDFIH = 0;
-    var fValueH = 0;
+    var fValueH      = 0;
 
     if ($("#cAmountDFI").val()) {
+        var cPriceRatio  = 0;
         cAmountDFI   = +$("#cAmountDFI").val();
 
         if ($("#cPriceToken").val() && $("#cPriceDFI").val()) {
             cPriceToken  = +$("#cPriceToken").val();
             cPriceDFI    = +$("#cPriceDFI").val();
-            cAmountToken = cPriceDFI/cPriceToken *cAmountDFI;
+            cPriceRatio  = cPriceToken / cPriceDFI;
         } else if ($("#cPriceRatio").val()) {
             cPriceRatio  = +$("#cPriceRatio").val();
-            cAmountToken = cPriceRatio * cAmountDFI;
         }
+        cAmountToken = 1/cPriceRatio * cAmountDFI;
 
         cValueToken  = cAmountToken * cPriceToken;
         cValueDFI    = cAmountDFI * cPriceDFI;
         cValue       = cValueToken + cValueDFI;
 
+        var fPriceToken  = +$("#fPriceToken").val();
+        var fPriceDFI    = +$("#fPriceDFI").val();
+        var fPriceRatio  = +$("#fPriceRatio").val();
+
         if ($("#fPriceToken").val() && $("#fPriceDFI").val()) {
 
-            var fPriceToken  = +$("#fPriceToken").val();
-            var fPriceDFI    = +$("#fPriceDFI").val();
+            fPriceRatio  = fPriceToken / fPriceDFI;
 
-            if ((fPriceDFI == cPriceDFI) && (fPriceToken == cPriceRatio) ) {
+            if ((fPriceDFI == cPriceDFI) && (fPriceToken == cPriceToken)) {
                 fAmountDFI   = cAmountDFI;
                 fAmountToken = fAmountToken;
-            } else {
-
-                /* The ratio of tokens in the pool
-                is the same as the ratio of prices
-                cPriceDFI / cPriceToken = cAmountToken / cAmountDFI
-                fPriceDFI / fPriceToken = fAmountToken / fAmountDFI
-
-                AND
-
-                Per the constant product formula x * y = k
-                cAmountToken * cAmountDFI = k
-                and
-                fAmountToken * fAmountDFI = k
-                hence
-                cAmountToken * cAmountDFI = fAmountToken * fAmountDFI
-
-                So
-                fAmountToken = cAmountToken * cAmountDFI / fAmountDFI
-                fAmountDFI = (fPriceToken / fPriceDFI) * fAmountToken
-                fAmountToken = cAmountToken * cAmountDFI / ((fPriceToken / fPriceDFI) * fAmountToken)
-                fAmountToken = cAmountToken * cAmountDFI / ((fPriceToken * fAmountToken) / fPriceDFI)
-                fAmountToken = cAmountToken * cAmountDFI * fPriceDFI / (fPriceToken * fAmountToken)
-                fAmountToken^2 = cAmountToken * cAmountDFI * fPriceDFI / fPriceToken
-                fAmountToken = sqrt(cAmountToken * cAmountDFI * fPriceDFI / fPriceToken) */
-
-                fAmountToken = Math.sqrt(cAmountToken * cAmountDFI * fPriceDFI / fPriceToken);
-                fAmountDFI   = (fPriceToken / fPriceDFI * fAmountToken);
             }
+        }
+
+        if (fPriceRatio) {
+            /* The ratio of tokens in the pool
+            is the same as the ratio of prices
+            cPriceDFI / cPriceToken = cAmountToken / cAmountDFI
+            fPriceDFI / fPriceToken = fAmountToken / fAmountDFI
+
+            AND
+
+            Per the constant product formula x * y = k
+            cAmountToken * cAmountDFI = k
+            and
+            fAmountToken * fAmountDFI = k
+            hence
+            cAmountToken * cAmountDFI = fAmountToken * fAmountDFI
+
+            So
+            fAmountToken = cAmountToken * cAmountDFI / fAmountDFI
+            fAmountDFI = (fPriceToken / fPriceDFI) * fAmountToken
+            fAmountToken = cAmountToken * cAmountDFI / ((fPriceToken / fPriceDFI) * fAmountToken)
+            fAmountToken = cAmountToken * cAmountDFI / ((fPriceToken * fAmountToken) / fPriceDFI)
+            fAmountToken = cAmountToken * cAmountDFI * fPriceDFI / (fPriceToken * fAmountToken)
+            fAmountToken^2 = cAmountToken * cAmountDFI * fPriceDFI / fPriceToken
+            fAmountToken = sqrt(cAmountToken * cAmountDFI * fPriceDFI / fPriceToken) */
+
+            fAmountToken = Math.sqrt(cAmountToken * cAmountDFI * 1/fPriceRatio);
+            fAmountDFI   = (fPriceRatio * fAmountToken);
 
             if ( $("#interest:checked").val() &&
                 ($("#apr").val() || $("#fee").val()) && $("#duration").val() ) {
