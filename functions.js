@@ -233,8 +233,8 @@ function calculate() {
         } else if ($("#cPriceRatio").val()) {
             cPriceRatio  = +$("#cPriceRatio").val();
         }
-        cAmountToken = 1/cPriceRatio * cAmountDFI;
 
+        cAmountToken = cAmountDFI/cPriceRatio;
         cValueToken  = cAmountToken * cPriceToken;
         cValueDFI    = cAmountDFI * cPriceDFI;
         cValue       = cValueToken + cValueDFI;
@@ -249,7 +249,7 @@ function calculate() {
 
             if ((fPriceDFI == cPriceDFI) && (fPriceToken == cPriceToken)) {
                 fAmountDFI   = cAmountDFI;
-                fAmountToken = fAmountToken;
+                fAmountToken = cAmountToken;
             }
         }
 
@@ -277,8 +277,10 @@ function calculate() {
             fAmountToken^2 = cAmountToken * cAmountDFI * fPriceDFI / fPriceToken
             fAmountToken = sqrt(cAmountToken * cAmountDFI * fPriceDFI / fPriceToken) */
 
-            fAmountToken = Math.sqrt(cAmountToken * cAmountDFI * 1/fPriceRatio);
-            fAmountDFI   = (fPriceRatio * fAmountToken);
+            if ((!fAmountToken) && (!fAmountDFI)) {
+                fAmountToken = Math.sqrt(cAmountToken * cAmountDFI * 1/fPriceRatio);
+                fAmountDFI   = (fPriceRatio * fAmountToken);
+            }
 
             if ( $("#interest:checked").val() &&
                 ($("#apr").val() || $("#fee").val()) && $("#duration").val() ) {
