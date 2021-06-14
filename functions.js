@@ -300,8 +300,8 @@ function calculate() {
                 var fee      = +$("#fee").val();
                 var duration = +$("#duration").val();
 
-                fAmountDFII   = fAmountDFI + (2 * fAmountDFI * ( apr + fee) * duration /(100*365));
-                fAmountTokenI = fAmountToken + (fAmountDFI * fee * duration /(100*365));
+                fAmountDFII   = fAmountDFI + (fAmountDFI * ( 2 * apr + fee) * duration /(100*365));
+                fAmountTokenI = fAmountToken + (fAmountToken * fee * duration /(100*365));
                 fValueTokenI  = fAmountTokenI * fPriceToken;
                 fValueDFII    = fAmountDFII * fPriceDFI;
                 fValueI       = fValueTokenI + fValueDFII;
