@@ -218,6 +218,10 @@ function calculate() {
     var fValueToken  = 0;
     var fValue       = 0;
 
+    var fValueDFII   = 0;
+    var fValueTokenI = 0;
+    var fValueI      = 0;
+
     var fValueDFIH   = 0;
     var fValueTokenH = 0;
     var fValueH      = 0;
@@ -282,16 +286,6 @@ function calculate() {
                 fAmountDFI   = (fPriceRatio * fAmountToken);
             }
 
-            if ( $("#interest:checked").val() &&
-                ($("#apr").val() || $("#fee").val()) && $("#duration").val() ) {
-                var apr      = +$("#apr").val();
-                var fee      = +$("#fee").val();
-                var duration = +$("#duration").val();
-
-                fAmountDFI   = fAmountDFI + (2 * fAmountDFI * ( apr + fee) * duration /(100*365));
-                fAmountToken = fAmountToken + (fAmountDFI * fee * duration /(100*365));
-            }
-
             fValueToken  = fAmountToken * fPriceToken;
             fValueDFI    = fAmountDFI * fPriceDFI;
             fValue       = fValueToken + fValueDFI;
@@ -299,6 +293,19 @@ function calculate() {
             fValueTokenH  = cAmountToken * fPriceToken;
             fValueDFIH    = cAmountDFI * fPriceDFI;
             fValueH       = fValueTokenH + fValueDFIH;
+
+            if ( $("#interest:checked").val() &&
+                ($("#apr").val() || $("#fee").val()) && $("#duration").val() ) {
+                var apr      = +$("#apr").val();
+                var fee      = +$("#fee").val();
+                var duration = +$("#duration").val();
+
+                fAmountDFII   = fAmountDFI + (2 * fAmountDFI * ( apr + fee) * duration /(100*365));
+                fAmountTokenI = fAmountToken + (fAmountDFI * fee * duration /(100*365));
+                fValueTokenI  = fAmountTokenI * fPriceToken;
+                fValueDFII    = fAmountDFII * fPriceDFI;
+                fValueI       = fValueTokenI + fValueDFII;
+            }
         }
     }
 
@@ -324,4 +331,12 @@ function calculate() {
     compareValues(fValueDFIH, fValueDFI, "#fValueDFIH", "#fValueDFI", "-V");
     compareValues(fValueTokenH, fValueToken, "#fValueTokenH", "#fValueToken", "-V");
     compareValues(fValueH, fValue, "#fValueH", "#fValue", "-V");
+
+    $("#fValueTokenI").val(prettyNumber(fValueTokenI));
+    $("#fValueDFII").val(prettyNumber(fValueDFII));
+    $("#fValueI").val(prettyNumber(fValueI));
+
+    compareValues(fValueDFIH, fValueDFII, "#fValueDFIH", "#fValueDFII", "-V");
+    compareValues(fValueTokenH, fValueTokenI, "#fValueTokenH", "#fValueTokenI", "-V");
+    compareValues(fValueH, fValueI, "#fValueH", "#fValueI", "-V");
 }
