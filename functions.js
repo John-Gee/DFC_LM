@@ -63,11 +63,6 @@ $(document).ready(function(){
         calculate();
     });
 
-    toggleInterest();
-    $("#interest").on("input", function() {
-        toggleInterest()
-        calculate();
-    });
     $("#apr").on("change input", function() {
         calculate();
     });
@@ -109,24 +104,6 @@ function formatCoin(coin) {
 
 function coinNameToImg(coinName) {
     return '<img src="img/' + coinName + '.svg" class="img-flag"/>';
-}
-
-function toggleInterest() {
-    if ($("#interest:checked").val()) {
-            $("#apr").prop("disabled", false);
-            $("#apr").parent().removeClass("auto");
-            $("#duration").prop("disabled", false);
-            $("#duration").parent().removeClass("auto");
-            $("#fee").prop("disabled", false);
-            $("#fee").parent().removeClass("auto");
-    } else {
-        $("#apr").prop("disabled", true);
-        $("#apr").parent().addClass("auto");
-        $("#duration").prop("disabled", true);
-        $("#duration").parent().addClass("auto");
-        $("#fee").prop("disabled", true);
-        $("#fee").parent().addClass("auto");
-    }
 }
 
 function prettyNumber(number) {
@@ -294,8 +271,7 @@ function calculate() {
             fValueDFIH    = cAmountDFI * fPriceDFI;
             fValueH       = fValueTokenH + fValueDFIH;
 
-            if ( $("#interest:checked").val() &&
-                ($("#apr").val() || $("#fee").val()) && $("#duration").val() ) {
+            if (($("#apr").val() || $("#fee").val()) && $("#duration").val() ) {
                 var apr      = +$("#apr").val();
                 var fee      = +$("#fee").val();
                 var duration = +$("#duration").val();
