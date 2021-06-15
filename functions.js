@@ -72,6 +72,9 @@ $(document).ready(function(){
     $("#duration").on("change input", function() {
         calculate();
     });
+    $("#period").on("change input", function() {
+        calculate();
+    });
 
     $(document).keydown(function(e){
     if (e.which == 27) {
@@ -274,10 +277,19 @@ function calculate() {
             if (($("#apr").val() || $("#fee").val()) && $("#duration").val() ) {
                 var apr      = +$("#apr").val();
                 var fee      = +$("#fee").val();
+                var cPeriod  = +$("#period").val();
                 var duration = +$("#duration").val();
+                var compAPR  = 2 * apr / 100;
+                var compFee  = fee / 100;
 
-                fAmountDFII   = fAmountDFI + (fAmountDFI * ( 2 * apr + fee) * duration /(100*365));
-                fAmountTokenI = fAmountToken + (fAmountToken * fee * duration /(100*365));
+                if (cPeriod) {
+                    var periods  = 365 / cPeriod;
+                    compAPR  = Math.pow( 1 + (compAPR / periods), periods) -1;
+                    compFee  = Math.pow( 1 + (compFee / periods), periods) -1;
+                }
+
+                fAmountDFII   = fAmountDFI + (fAmountDFI * ( compAPR + compFee) * duration /(365));
+                fAmountTokenI = fAmountToken + (fAmountToken * compFee * duration /(365));
                 fValueTokenI  = fAmountTokenI * fPriceToken;
                 fValueDFII    = fAmountDFII * fPriceDFI;
                 fValueI       = fValueTokenI + fValueDFII;
