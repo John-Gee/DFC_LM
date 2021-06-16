@@ -303,7 +303,7 @@ function calculate() {
                 fValueI       = fValueTokenI + fValueDFII;
             }
 
-            createPlot(fValue, fValueI, fValueH);
+            createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH);
         }
     }
 
@@ -343,14 +343,14 @@ function compareNumbers(a, b) {
     return a - b;
 }
 
-function createPlot(fValue, fValueI, fValueH) {
+function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH) {
     $("#chartTitle").prop("hidden", false);
     $("#chartSubTitle").prop("hidden", false);
     $("#yLabel").prop("hidden", false);
     $("#xLabel").prop("hidden", false);
     $("#noInt").prop("hidden", false);
 
-    var current = Math.round(fValue/fValueH * 100);
+    var current = Math.round(fPriceRatio/cPriceRatio * 100);
 
     /* Math:
      * AmountDFI * AmountToken = k
