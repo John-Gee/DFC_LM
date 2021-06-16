@@ -206,6 +206,10 @@ function calculate() {
     var fValueTokenH = 0;
     var fValueH      = 0;
 
+    $("#chartTitle").prop("hidden", true);
+    $("#chartSubTitle").prop("hidden", true);
+    $("#chart .ct-chart-line").remove();
+
     if ($("#cAmountDFI").val()) {
         var cPriceRatio  = 0;
         cAmountDFI   = +$("#cAmountDFI").val();
@@ -294,6 +298,8 @@ function calculate() {
                 fValueDFII    = fAmountDFII * fPriceDFI;
                 fValueI       = fValueTokenI + fValueDFII;
             }
+
+            createPlot(fValue, fValueI, fValueH);
         }
     }
 
@@ -327,4 +333,101 @@ function calculate() {
     compareValues(fValueDFIH, fValueDFII, "#fValueDFIH", "#fValueDFII", "-V");
     compareValues(fValueTokenH, fValueTokenI, "#fValueTokenH", "#fValueTokenI", "-V");
     compareValues(fValueH, fValueI, "#fValueH", "#fValueI", "-V");
+}
+
+function compareNumbers(a, b) {
+  return a - b;
+}
+
+function createPlot(fValue, fValueI, fValueH) {
+    $("#chartTitle").prop("hidden", false);
+    $("#chartSubTitle").prop("hidden", false);
+
+    /* Math:
+     * AmountDFI * AmountToken = k
+     * PriceRatio = AmountToken / AmountDFI
+     * PriceRatio = PriceDFI / PriceToken
+     *
+     * AmountToken = k / AmountDFI
+     * AmountDFI = AmountToken / PriceRatio
+     * AmountToken = k / AmountToken / PriceRatio
+     * AmountToken^2 = k * PriceRatio
+     * AmountToken = sqrt(k * PriceRatio)
+     *
+     * AmountDFI = k / AmountToken
+     * AmountToken = PriceRatio * AmountDFI
+     * AmountDFI = k / (PriceRatio * AmountDFI)
+     * AmountDFI^2 = k / PriceRatio
+     * AmountDFI = sqrt(k / PriceRatio)
+     *
+     * divergenceLoss = (fValue - fValueH) / fValue
+     * divergenceLoss = (fValue / fValueH) - 1
+     * divergenceLoss = (2 * fAmountDFI) / (cAmountDFI + (cAmountToken * fPriceRatio)) -1
+     * divergenceLoss = (2 * sqrt(k/fPriceRatio)) / (sqrt(k/cPriceRatio) + (sqrt(k*cPriceRatio)/fPriceRatio)) - 1
+     * divergenceLoss = (2 * sqrt(1/fPriceRatio)) / (sqrt(1/cPriceRatio) + (sqrt(cPriceRatio)/fPriceRatio)) - 1
+     * divergenceLoss = (2 * sqrt(1/fPriceRatio)) / (1 * sqrt(1/cPriceRatio) + (cPriceRatio/fPriceRatio * sqrt(1/cPriceRatio))) - 1
+     * divergenceLoss = (2 * sqrt(1/fPriceRatio)) / (1 * sqrt(1/cPriceRatio) * (1 + cPriceRatio/fPriceRatio))) - 1
+     * divergenceLoss = (2 * sqrt(cPriceRatio/fPriceRatio) * 1/(1 + cPriceRatio/fPriceRatio)) - 1
+     * divergenceLoss = (2 * sqrt(cPriceRatio/fPriceRatio)/(1 + cPriceRatio/fPriceRatio)) - 1
+     * divergenceLoss = (2 * (fPriceRatio/cPriceRatio * sqrt(cPriceRatio/fPriceRatio))/(fPriceRatio/cPriceRatio * (1 + cPriceRatio/fPriceRatio))) - 1
+     * divergenceLoss = (2 * sqrt(fPriceRatio/cPriceRatio) / (fPriceRatio/cPriceRatio + 1)) -1
+    */
+
+    priceRatios = [];
+    points      = [];
+    points2     = [];
+
+    for (let i = 0; i < 11; i++) {
+        priceRatios.push(50 * i);
+    }
+    priceRatios.push(fValue/fValueH * 100);
+    priceRatios = [...new Set(priceRatios)].sort(compareNumbers);
+    for (let i = 0; i < priceRatios.length; i++) {
+        points.push(100 * ((2 * Math.sqrt(priceRatios[i] / 100) / (1 + (priceRatios[i] / 100))) - 1));
+    }
+    if (fValueI) {
+        interest_ratio = fValueI / fValue;
+        for (let i = 0; i < priceRatios.length; i++) {
+            points2.push(100 * ((2 * interest_ratio * Math.sqrt(priceRatios[i] / 100) / (1 + (priceRatios[i] / 100))) - 1));
+        }
+    }
+
+    new Chartist.Line(".ct-chart", {
+        labels: priceRatios,
+        //series: [{value: points, className: "standard"}, {value: points2, className: "interest"}]
+        //series: [{value: points, className: "standard"}, {value: points2, className: "interest"}]
+        series: [points, points2]
+    }, {
+        high: Math.max.apply(null, points.concat(points2)),
+        low: -100,
+        showArea: false,
+        plugins: [
+            /*Chartist.plugins.ctPointLabels({
+                textAnchor: "end"
+            }),*/
+            Chartist.plugins.ctAxisTitle({
+                axisX: {
+                    axisTitle: "Future ratio as percentage of initial ratio",
+                    axisClass: "ct-axis-title",
+                    offset: {
+                        x: 0,
+                        y: -10
+                    },
+                    textAnchor: "middle"
+                },
+                axisY: {
+                    axisTitle: "Change in percentage of total value",
+                    axisClass: "ct-axis-title",
+                    offset: {
+                        x: 0,
+                        y: -60
+                    },
+                    flipTitle: false
+                }
+            }),
+            /*Chartist.plugins.ctThreshold({
+                threshold: 0
+            })*/
+        ]
+    });
 }
