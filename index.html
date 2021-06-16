@@ -24,8 +24,9 @@
                 <h2> Investment </h2>
                 <hr/>
                 <section class="table">
-                    <h3> Initial Prices </h3>
                     <div class="prices">
+                        <h3> &nbsp; </h3>
+                        <h3> Initial Prices </h3>
                         <div class="title">
                             <img src="img/defichain.svg"/>
                         </div>
@@ -53,8 +54,9 @@
                     </div>
                 </section>
                 <section class="table">
-                    <h3> Final Prices </h3>
                     <div class="prices">
+                        <h3> &nbsp; </h3>
+                        <h3> Final Prices </h3>
                         <div class="title">
                             <img src="img/defichain.svg"/>
                         </div>
@@ -75,8 +77,9 @@
                     </div>
                 </section>
                 <section class="table">
-                    <h3> Amount of Tokens </h3>
                     <div class="amount">
+                        <h3> &nbsp; </h3>
+                        <h3> Amount of Tokens </h3>
                         <div class="title">
                             <img src="img/defichain.svg"/>
                         </div>
@@ -90,8 +93,9 @@
                     </div>
                 </section>
                 <section class="table">
-                    <h3> Interest </h3>
                     <div class="interest">
+                        <h3> &nbsp; </h3>
+                        <h3> Interest </h3>
                         <div class="title">APR</div>
                         <div class="input" data-intro="Here you will input the APR percentage." data-position="left">
                             %<input class="inputtext" type="number" min="0" id="apr"/>
@@ -114,6 +118,7 @@
             <section id="output">
                 <h2> Outcome </h2>
                 <hr/>
+                <!--
                 <h3> Amount of tokens </h3>
                 <section class="table">
                     <div class="amount">
@@ -129,56 +134,70 @@
                         </div>
                     </div>
                 </section>
+                -->
                 <section class="values">
-                    <h3></h3>
-                    <h3>Initial</h3>
-                    <h3>Mining</h3>
-                    <h3>Mining + Interest</h3>
-                    <h3>Holding</h3>
-                    <div class="title">
-                        <img src="img/defichain.svg"/>
+                    <div class="titles">
+                        <h3>
+                            &nbsp;
+                        </h3>
+                        <div class="title">
+                            <img src="img/defichain.svg"/>&nbsp;
+                        </div>
+                        <div class="title" name="OtherToken">Other</div>
+                        <div class="title">Total</div>
                     </div>
-                    <div class="input auto">
-                        $<input class="inputtext" type="text" min="0" id="cValueDFI" disabled/>
-                    </div>
-                    <div class="input auto">
-                        $<input class="inputtext" type="text" min="0" id="fValueDFI" disabled/>
-                    </div>
-                    <div class="input auto">
-                        $<input class="inputtext" type="text" min="0" id="fValueDFII" disabled/>
-                    </div>
-                    <div class="input auto">
-                        $<input class="inputtext" type="text" min="0" id="fValueDFIH" disabled/>
-                    </div>
-                    <div class="title" name="OtherToken">Other</div>
-                    <div class="input auto">
-                        $<input class="inputtext" type="text" min="0" id="cValueToken" disabled/>
-                    </div>
-                    <div class="input auto">
-                        $<input class="inputtext" type="text" min="0" id="fValueToken" disabled/>
-                    </div>
-                    <div class="input auto">
-                        $<input class="inputtext" type="text" min="0" id="fValueTokenI" disabled/>
-                    </div>
-                    <div class="input auto">
-                        $<input class="inputtext" type="text" min="0" id="fValueTokenH" disabled/>
-                    </div>
-                    <div class="title">Total</div>
-                    <div class="input auto">
-                        $<input class="inputtext" type="text" min="0" id="cValue" disabled/>
-                    </div>
-                    <div class="input auto">
-                        $<input class="inputtext" type="text" min="0" id="fValue" disabled/>
-                    </div>
-                    <div class="input auto">
-                        $<input class="inputtext" type="text" min="0" id="fValueI" disabled/>
-                    </div>
-                    <div class="input auto">
-                        $<input class="inputtext" type="text" min="0" id="fValueH" disabled/>
+                    <div class="values2">
+                        <div class="values3">
+                            <h3>Initial</h3>
+                            <div class="input auto">
+                                $<input class="inputtext" type="text" min="0" id="cValueDFI" disabled/>
+                            </div>
+                            <div class="input auto">
+                                $<input class="inputtext" type="text" min="0" id="cValueToken" disabled/>
+                            </div>
+                            <div class="input auto">
+                                $<input class="inputtext" type="text" min="0" id="cValue" disabled/>
+                            </div>
+                        </div>
+                        <div class="values3">
+                            <h3>Mining</h3>
+                            <div class="input auto">
+                                $<input class="inputtext" type="text" min="0" id="fValueDFI" disabled/>
+                            </div>
+                            <div class="input auto">
+                                $<input class="inputtext" type="text" min="0" id="fValueToken" disabled/>
+                            </div>
+                            <div class="input auto">
+                                $<input class="inputtext" type="text" min="0" id="fValue" disabled/>
+                            </div>
+                        </div>
+                        <div class="values3">
+                            <h3>Mining + Interest</h3>
+                            <div class="input auto">
+                                $<input class="inputtext" type="text" min="0" id="fValueDFII" disabled/>
+                            </div>
+                            <div class="input auto">
+                                $<input class="inputtext" type="text" min="0" id="fValueTokenI" disabled/>
+                            </div>
+                            <div class="input auto">
+                                $<input class="inputtext" type="text" min="0" id="fValueI" disabled/>
+                            </div>
+                        </div>
+                        <div class="values3">
+                            <h3>Holding</h3>
+                            <div class="input auto">
+                                $<input class="inputtext" type="text" min="0" id="fValueDFIH" disabled/>
+                            </div>
+                            <div class="input auto">
+                                $<input class="inputtext" type="text" min="0" id="fValueTokenH" disabled/>
+                            </div>
+                            <div class="input auto">
+                                $<input class="inputtext" type="text" min="0" id="fValueH" disabled/>
+                            </div>
+                        </div>
                     </div>
                 </section>
                 <section id="plot">
-                    <br/>
                 </section>
             </section>
         </section>

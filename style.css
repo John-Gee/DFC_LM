@@ -7,7 +7,6 @@ body {
     /* sets the page */
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
     justify-content: space-around;
 
     /* style */
@@ -25,6 +24,9 @@ body {
 
     /* style */
     background-color: rgba(240,240,240,1);
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 1;
 }
 
 #header > h1 {
@@ -33,6 +35,9 @@ body {
     /* font-family: "Brush Script MT", cursive; */
     font-family: "Times New Roman";
     font-size: calc(var(--h));
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 1;
 }
 
 #header > a > img {
@@ -81,6 +86,14 @@ h3 {
     text-align: center;
     font-weight: normal;
     font-size: calc(0.8 * var(--h));
+    margin: -0.4rem;
+}
+
+h4 {
+    text-align: center;
+    font-weight: normal;
+    color: grey;
+    font-size: calc(0.7 * var(--h));
 }
 
 .table {
@@ -104,7 +117,6 @@ h3 {
     /* position of children */
     display: grid;
     grid-template-columns: auto 1fr;
-    padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     gap: 0.5rem;
     align-items: center;
@@ -120,6 +132,7 @@ h3 {
     /* style */
     font-size: calc(1 * var(--fsize));
     min-width: calc(2.32 * var(--fsize));
+    line-height: 1.36rem;
 }
 
 .input {
@@ -138,7 +151,7 @@ h3 {
              0.3em 0.3em 0.5em rgba(0,0,0,0.3);
     color: rgba(255,0,176,1);
     font-weight: bold;
-    font-size: var(--fsize);
+    font-size: calc(1 * var(--fsize));
     margin: 0;
     padding: 0rem 0.5rem 0rem 0.5rem;
 }
@@ -171,6 +184,7 @@ input[type=number] {
     /* style */
     font-size: 100%;
     min-width: 0;
+    max-width: 6rem;
     height: 100%;
     border: none;
     outline: none;
@@ -248,9 +262,43 @@ input[type=number] {
 
 .values {
     /* position */
-    display: grid;
-    grid-template-columns: auto 1fr 1fr 1fr 1fr;
+    display: flex;
+    flex-direction: row;
+    //grid-template-columns: auto 1fr 1fr 1fr 1fr;
+    gap: 0.5rem;
+
+    /* style */q
+    padding-bottom: 0.5rem;
+}
+
+.values2 {
+    /* position */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 0.5rem;
 
     /* style */
+    padding-bottom: 0.5rem;
+}
+
+.values3 {
+    /* position */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    /* style */
+    padding-bottom: 0.5rem;
+}
+
+.titles {
+    /* position */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+
+    /* style */
+    padding-bottom: 0.5rem;
 }

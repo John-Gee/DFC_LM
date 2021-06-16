@@ -106,7 +106,7 @@ function formatCoin(coin) {
 }
 
 function coinNameToImg(coinName) {
-    return '<img src="img/' + coinName + '.svg" class="img-flag"/>';
+    return '<img src="img/' + coinName + '.svg" class="img-flag"/>&nbsp;';
 }
 
 function prettyNumber(number) {
