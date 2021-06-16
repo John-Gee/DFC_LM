@@ -384,7 +384,7 @@ function createPlot(fValue, fValueI, fValueH) {
     for (let i = 0; i < 11; i++) {
         priceRatios.push(50 * i);
     }
-    priceRatios.push(fValue/fValueH * 100);
+    priceRatios.push(Math.round(fValue/fValueH * 100));
     priceRatios = [...new Set(priceRatios)].sort(compareNumbers);
     for (let i = 0; i < priceRatios.length; i++) {
         points.push(100 * ((2 * Math.sqrt(priceRatios[i] / 100) / (1 + (priceRatios[i] / 100))) - 1));
