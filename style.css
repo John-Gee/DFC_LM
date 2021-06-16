@@ -303,10 +303,28 @@ input[type=number] {
     padding-bottom: 0.5rem;
 }
 
+#plot {
+    padding-top: 0.25rem;
+}
+
 .ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
     stroke: rgba(140,140,140,1);
 }
 
 .ct-series-b .ct-bar, .ct-series-b .ct-line, .ct-series-b .ct-point, .ct-series-b .ct-slice-donut {
     stroke: rgba(255,0,176,1);
+}
+
+#xLabel {
+    padding-bottom: 0.25rem;
+}
+
+#yLabel {
+    writing-mode: vertical-lr;
+    transform: rotate(-180deg);
+}
+
+#y {
+    display: flex;
+    flex-direction: row;
 }

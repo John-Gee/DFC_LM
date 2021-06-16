@@ -208,6 +208,8 @@ function calculate() {
 
     $("#chartTitle").prop("hidden", true);
     $("#chartSubTitle").prop("hidden", true);
+    $("#yLabel").prop("hidden", true);
+    $("#xLabel").prop("hidden", true);
     $("#chart .ct-chart-line").remove();
 
     if ($("#cAmountDFI").val()) {
@@ -342,6 +344,8 @@ function compareNumbers(a, b) {
 function createPlot(fValue, fValueI, fValueH) {
     $("#chartTitle").prop("hidden", false);
     $("#chartSubTitle").prop("hidden", false);
+    $("#yLabel").prop("hidden", false);
+    $("#xLabel").prop("hidden", false);
 
     /* Math:
      * AmountDFI * AmountToken = k
@@ -401,33 +405,13 @@ function createPlot(fValue, fValueI, fValueH) {
         high: Math.max.apply(null, points.concat(points2)),
         low: -100,
         showArea: false,
-        plugins: [
-            /*Chartist.plugins.ctPointLabels({
+        /*plugins: [
+            Chartist.plugins.ctPointLabels({
                 textAnchor: "end"
-            }),*/
-            Chartist.plugins.ctAxisTitle({
-                axisX: {
-                    axisTitle: "Future ratio as percentage of initial ratio",
-                    axisClass: "ct-axis-title",
-                    offset: {
-                        x: 0,
-                        y: -10
-                    },
-                    textAnchor: "middle"
-                },
-                axisY: {
-                    axisTitle: "Change in percentage of total value",
-                    axisClass: "ct-axis-title",
-                    offset: {
-                        x: 0,
-                        y: -60
-                    },
-                    flipTitle: false
-                }
             }),
             /*Chartist.plugins.ctThreshold({
                 threshold: 0
-            })*/
-        ]
+            })
+        ]*/
     });
 }
