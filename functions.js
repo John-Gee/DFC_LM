@@ -210,6 +210,8 @@ function calculate() {
     $("#chartSubTitle").prop("hidden", true);
     $("#yLabel").prop("hidden", true);
     $("#xLabel").prop("hidden", true);
+    $("#int").prop("hidden", true);
+    $("#noInt").prop("hidden", true);
     $("#chart .ct-chart-line").remove();
 
     if ($("#cAmountDFI").val()) {
@@ -346,6 +348,7 @@ function createPlot(fValue, fValueI, fValueH) {
     $("#chartSubTitle").prop("hidden", false);
     $("#yLabel").prop("hidden", false);
     $("#xLabel").prop("hidden", false);
+    $("#noInt").prop("hidden", false);
 
     var current = Math.round(fValue/fValueH * 100);
 
@@ -392,6 +395,7 @@ function createPlot(fValue, fValueI, fValueH) {
         points.push(100 * ((2 * Math.sqrt(priceRatios[i] / 100) / (1 + (priceRatios[i] / 100))) - 1));
     }
     if (fValueI) {
+        $("#int").prop("hidden", false);
         interest_ratio = fValueI / fValue;
         for (let i = 0; i < priceRatios.length; i++) {
             points2.push(100 * ((2 * interest_ratio * Math.sqrt(priceRatios[i] / 100) / (1 + (priceRatios[i] / 100))) - 1));

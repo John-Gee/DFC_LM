@@ -345,3 +345,20 @@ input[type=number] {
 .ct-area.ct-threshold-below {
   fill: rgba(255,0,0,1);;
 }
+
+#legend {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+#noInt {
+    color: rgba(140,140,140,1);
+    white-space: nowrap;
+}
+
+#int {
+    color: rgba(255,0,176,1);
+    white-space: nowrap;
+}
