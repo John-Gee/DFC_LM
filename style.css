@@ -92,8 +92,8 @@ h3 {
 h4 {
     text-align: center;
     font-weight: normal;
-    color: grey;
-    font-size: calc(0.7 * var(--h));
+    color: rgba(128, 128, 128, 0.75);
+    font-size: calc(0.66 * var(--h));
 }
 
 .table {
@@ -315,13 +315,22 @@ input[type=number] {
     stroke: rgba(255,0,176,1);
 }
 
+#chartTitle {
+    margin: 0;
+}
+
 #xLabel {
     padding-bottom: 0.25rem;
+    color: rgba(140,140,140,1);
+    font-weight: bold;
 }
 
 #yLabel {
     writing-mode: vertical-lr;
     transform: rotate(-180deg);
+    color: rgba(140,140,140,1);
+    font-weight: bold;
+    padding-left: 0.5rem;
 }
 
 #y {
