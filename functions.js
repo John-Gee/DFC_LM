@@ -386,11 +386,19 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH) {
     points      = [];
     points2     = [];
 
-    for (let i = 0; i < 11; i++) {
-        priceRatios.push(50 * i);
+    if (current < 500) {
+        for (let i = 0; i < 11; i++) {
+            priceRatios.push(50 * i);
+        }
+        priceRatios.push(current);
+        priceRatios = [...new Set(priceRatios)].sort(compareNumbers);
+    } else {
+        var step = Math.round(current / 11);
+        for (let i = 0; i < 11; i++) {
+            priceRatios.push(step * i);
+        }
+        priceRatios.push(current);
     }
-    priceRatios.push(current);
-    priceRatios = [...new Set(priceRatios)].sort(compareNumbers);
     for (let i = 0; i < priceRatios.length; i++) {
         points.push(100 * ((2 * Math.sqrt(priceRatios[i] / 100) / (1 + (priceRatios[i] / 100))) - 1));
     }
