@@ -339,11 +339,11 @@ input[type=number] {
 }
 
 .ct-area.ct-threshold-above {
-  fill: rgba(0,255,0,1);;
+  fill: rgba(0,255,0,1);
 }
 
 .ct-area.ct-threshold-below {
-  fill: rgba(255,0,0,1);;
+  fill: rgba(255,0,0,1);
 }
 
 #legend {
