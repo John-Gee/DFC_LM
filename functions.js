@@ -338,7 +338,7 @@ function calculate() {
 }
 
 function compareNumbers(a, b) {
-  return a - b;
+    return a - b;
 }
 
 function createPlot(fValue, fValueI, fValueH) {
@@ -346,6 +346,8 @@ function createPlot(fValue, fValueI, fValueH) {
     $("#chartSubTitle").prop("hidden", false);
     $("#yLabel").prop("hidden", false);
     $("#xLabel").prop("hidden", false);
+
+    var current = Math.round(fValue/fValueH * 100);
 
     /* Math:
      * AmountDFI * AmountToken = k
@@ -384,7 +386,7 @@ function createPlot(fValue, fValueI, fValueH) {
     for (let i = 0; i < 11; i++) {
         priceRatios.push(50 * i);
     }
-    priceRatios.push(Math.round(fValue/fValueH * 100));
+    priceRatios.push(current);
     priceRatios = [...new Set(priceRatios)].sort(compareNumbers);
     for (let i = 0; i < priceRatios.length; i++) {
         points.push(100 * ((2 * Math.sqrt(priceRatios[i] / 100) / (1 + (priceRatios[i] / 100))) - 1));
@@ -396,22 +398,21 @@ function createPlot(fValue, fValueI, fValueH) {
         }
     }
 
+    priceRatios[priceRatios.indexOf(current)] = current + " (current)";
     new Chartist.Line(".ct-chart", {
         labels: priceRatios,
-        //series: [{value: points, className: "standard"}, {value: points2, className: "interest"}]
-        //series: [{value: points, className: "standard"}, {value: points2, className: "interest"}]
         series: [points, points2]
     }, {
         high: Math.max.apply(null, points.concat(points2)),
         low: -100,
-        showArea: false,
-        /*plugins: [
-            Chartist.plugins.ctPointLabels({
+        showArea: true,
+        plugins: [
+            /**Chartist.plugins.ctPointLabels({
                 textAnchor: "end"
-            }),
-            /*Chartist.plugins.ctThreshold({
+            }),*/
+            Chartist.plugins.ctThreshold({
                 threshold: 0
             })
-        ]*/
+        ]
     });
 }
