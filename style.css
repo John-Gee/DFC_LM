@@ -188,28 +188,12 @@ input[type=number] {
     background-clip: content-box;
 }
 
-.plus-A {
-    background-color: rgba(0,255,0,1);
-    color: rgba(0,0,0,1);
-    font-weight: bold;
+.plus {
+    color: rgba(0,255,0,1);
 }
 
-.minus-A {
-    background-color: rgba(255,0,0,1);
-    color: rgba(255,255,255,1);
-    font-weight: bold;
-}
-
-.plus-V {
-    background-color: rgba(173,255,47,1);
-    color: rgba(0,0,0,1);
-    font-weight: bold;
-}
-
-.minus-V {
-    background-color: rgba(255,127,80,1);
-    color: rgba(255,255,255,1);
-    font-weight: bold;
+.minus {
+    color: rgba(255,0,0,1);
 }
 
 .select2-container--default {

@@ -166,22 +166,18 @@ function calcPriceRatio(time) {
     }
 }
 
-function compareValues(value1, value2, id1, id2, colorType) {
+function compareValues(value1, value2, id1, id2) {
     // clear previous results
-    $(id1).parent().removeClass("plus" + colorType);
-    $(id1).parent().removeClass("minus" + colorType);
-    $(id2).parent().removeClass("plus" + colorType);
-    $(id2).parent().removeClass("minus" + colorType);
+    $(id1).parent().removeClass("minus");
+    $(id2).parent().removeClass("minus");
 
     if ((value1 == value2) || (value1 == 0) || (value2 == 0)){
         return;
     }
     else if (value1 > value2) {
-        $(id1).parent().addClass("plus" + colorType);
-        $(id2).parent().addClass("minus" + colorType);
+        $(id2).parent().children().first().addClass("minus");
     } else {
-        $(id1).parent().addClass("minus" + colorType);
-        $(id2).parent().addClass("plus" + colorType);
+        $(id2).parent().children().first().addClass("plus");
     }
 }
 
@@ -320,9 +316,6 @@ function calculate() {
     $("#fAmountToken").val(prettyNumber(fAmountToken));
     $("#fAmountDFI").val(prettyNumber(fAmountDFI));
 
-    compareValues(fAmountDFI, cAmountDFI, "#fAmountDFI", "#cAmountDFI", "-A");
-    compareValues(fAmountToken, cAmountToken, "#fAmountToken", "#cAmountToken", "-A");
-
     $("#fValueToken").val(prettyNumber(fValueToken));
     $("#fValueDFI").val(prettyNumber(fValueDFI));
     $("#fValue").val(prettyNumber(fValue));
@@ -331,17 +324,17 @@ function calculate() {
     $("#fValueDFIH").val(prettyNumber(fValueDFIH));
     $("#fValueH").val(prettyNumber(fValueH));
 
-    compareValues(fValueDFIH, fValueDFI, "#fValueDFIH", "#fValueDFI", "-V");
-    compareValues(fValueTokenH, fValueToken, "#fValueTokenH", "#fValueToken", "-V");
-    compareValues(fValueH, fValue, "#fValueH", "#fValue", "-V");
+    compareValues(fValueDFIH, fValueDFI, "#fValueDFIH", "#fValueDFI");
+    compareValues(fValueTokenH, fValueToken, "#fValueTokenH", "#fValueToken");
+    compareValues(fValueH, fValue, "#fValueH", "#fValue");
 
     $("#fValueTokenI").val(prettyNumber(fValueTokenI));
     $("#fValueDFII").val(prettyNumber(fValueDFII));
     $("#fValueI").val(prettyNumber(fValueI));
 
-    compareValues(fValueDFIH, fValueDFII, "#fValueDFIH", "#fValueDFII", "-V");
-    compareValues(fValueTokenH, fValueTokenI, "#fValueTokenH", "#fValueTokenI", "-V");
-    compareValues(fValueH, fValueI, "#fValueH", "#fValueI", "-V");
+    compareValues(fValueDFIH, fValueDFII, "#fValueDFIH", "#fValueDFII");
+    compareValues(fValueTokenH, fValueTokenI, "#fValueTokenH", "#fValueTokenI");
+    compareValues(fValueH, fValueI, "#fValueH", "#fValueI");
 }
 
 function compareNumbers(a, b) {
