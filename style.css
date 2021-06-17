@@ -24,9 +24,6 @@ body {
 
     /* style */
     background-color: rgba(240,240,240,1);
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 1;
 }
 
 #header > h1 {
@@ -35,9 +32,6 @@ body {
     /* font-family: "Brush Script MT", cursive; */
     font-family: "Times New Roman";
     font-size: calc(var(--h));
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 1;
 }
 
 #header > a > img {
@@ -50,25 +44,29 @@ body {
     flex-direction: row;
     gap: 1.5rem;
     margin: 1.0rem;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 1;
 }
 
 #input, #output {
-    /* position */
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 1;
-
     /* style */
     background-color: rgba(240,240,240,1);
     border-radius: 36px;
     box-shadow: -5px -5px 15px 5px rgba(250, 250, 250, 1),
                 5px 5px 15px 5px rgba(75, 75, 75, 1);
     --fsize: calc(var(--h) / 1.25);
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+#input {
+    /* size */
+    flex-grow: 0;
+    flex-shrink: 1;
+}
+
+#output {
+    /* size */
+    flex-grow: 1;
+    flex-shrink: 1;
 }
 
 h2 {
@@ -100,9 +98,6 @@ h4 {
     /* position */
     display: grid;
     grid-template-rows: auto;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 1;
 
     /* style */
     margin: 0.5rem;
@@ -265,7 +260,6 @@ input[type=number] {
     display: flex;
     flex-direction: row;
     //grid-template-columns: auto 1fr 1fr 1fr 1fr;
-    gap: 0.5rem;
 
     /* style */q
     padding-bottom: 0.5rem;
@@ -276,10 +270,12 @@ input[type=number] {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    flex: 1;
     gap: 0.5rem;
 
     /* style */
     padding-bottom: 0.5rem;
+    justify-content: space-around;
 }
 
 .values3 {
