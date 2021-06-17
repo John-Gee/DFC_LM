@@ -291,7 +291,7 @@ function calculate() {
                 var compAPR  = 2 * apr / 100;
                 var compFee  = fee / 100;
 
-                if (cPeriod) {
+                if (cPeriod && (cPeriod < duration)) {
                     var periods  = 365 / cPeriod;
                     compAPR  = Math.pow( 1 + (compAPR / periods), periods) -1;
                     compFee  = Math.pow( 1 + (compFee / periods), periods) -1;
