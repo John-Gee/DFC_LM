@@ -168,8 +168,8 @@ function calcPriceRatio(time) {
 
 function compareValues(value1, value2, id1, id2) {
     // clear previous results
-    $(id1).parent().removeClass("minus");
-    $(id2).parent().removeClass("minus");
+    $(id2).parent().children().first().removeClass("minus");
+    $(id2).parent().children().first().removeClass("plus");
 
     if ((value1 == value2) || (value1 == 0) || (value2 == 0)){
         return;
