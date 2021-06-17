@@ -82,7 +82,12 @@ $(document).ready(function(){
        return false;
     }
     });
-    //$('body').chardinJs('start');
+
+    var tutorial = localStorage.getItem("Tutorial");;
+    if ( tutorial != "Started") {
+        $('body').chardinJs('start');
+        localStorage.setItem("Tutorial", "Started");
+    }
 });
 
 function SwitchTokenLabel() {
