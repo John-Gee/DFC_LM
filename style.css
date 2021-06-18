@@ -5,13 +5,13 @@
 
 body {
     /* sets the page */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 
     /* style */
     background-color: rgba(255,0,176,0.15);
-    --h: 1.25rem;
+    height: 100vh;
+    --h: 1.1rem;
 }
 
 #header {
@@ -32,7 +32,7 @@ body {
     color: rgba(255,0,176,1);
     /* font-family: "Brush Script MT", cursive; */
     font-family: "Times New Roman";
-    font-size: calc(var(--h));
+    font-size: calc(1 * var(--h));
 }
 
 #logo {
@@ -55,8 +55,8 @@ body {
 
 #calculator {
     /* position */
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: auto 1fr;
     gap: 1.5rem;
     margin: 1.0rem;
 }
@@ -72,18 +72,6 @@ body {
     padding-right: 0.5rem;
 }
 
-#input {
-    /* size */
-    flex-grow: 0;
-    flex-shrink: 1;
-}
-
-#output {
-    /* size */
-    flex-grow: 1;
-    flex-shrink: 1;
-}
-
 h2 {
     text-align: center;
     color: rgba(255,0,176,1);
@@ -93,6 +81,7 @@ h2 {
 
 hr {
     margin-bottom: 0.5rem;
+    height: 0;
 }
 
 h3 {
@@ -127,8 +116,8 @@ h4 {
     /* position of children */
     display: grid;
     grid-template-columns: auto 1fr;
-    padding-bottom: 0.5rem;
-    gap: 0.5rem;
+    padding-bottom: 0.4rem;
+    gap: 0.4rem;
     align-items: center;
 }
 
@@ -142,7 +131,7 @@ h4 {
     /* style */
     font-size: calc(1 * var(--fsize));
     min-width: calc(2.32 * var(--fsize));
-    line-height: 1.36rem;
+    line-height: calc(1.44 * var(--fsize));
 }
 
 .input {
@@ -164,6 +153,7 @@ h4 {
     font-size: calc(1 * var(--fsize));
     margin: 0;
     padding: 0rem 0.5rem 0rem 0.5rem;
+    line-height: calc(1.33 * var(--fsize));
 }
 
 .select2-selection__rendered > img, .input > img, .title > img {
@@ -197,7 +187,7 @@ input[type=number] {
     font-size: 100%;
     min-width: 0;
     max-width: 5rem;
-    height: 100%;
+    height: 94%;
     border: none;
     outline: none;
     color: inherit;
@@ -232,6 +222,11 @@ input[type=number] {
 
 .select2-container .select2-selection--single .select2-selection__rendered {
     padding: 0;
+    line-height: calc(1.44 * var(--fsize));
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: calc(1.44 * var(--fsize));
 }
 
 .select2-results__options::-webkit-scrollbar {
@@ -263,7 +258,7 @@ input[type=number] {
     //grid-template-columns: auto 1fr 1fr 1fr 1fr;
 
     /* style */q
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
 }
 
 .values2 {
@@ -272,10 +267,10 @@ input[type=number] {
     flex-direction: row;
     flex-wrap: wrap;
     flex: 1;
-    gap: 0.5rem;
+    gap: 0.4rem;
 
     /* style */
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
     justify-content: space-around;
 }
 
@@ -283,10 +278,10 @@ input[type=number] {
     /* position */
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.4rem;
 
     /* style */
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
 }
 
 .titles {
@@ -294,10 +289,10 @@ input[type=number] {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
 
     /* style */
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
 }
 
 #plot {
