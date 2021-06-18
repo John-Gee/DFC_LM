@@ -76,17 +76,26 @@ $(document).ready(function(){
         calculate();
     });
 
-    $(document).keydown(function(e){
-    if (e.which == 27) {
-       $('body').chardinJs('stop');
-       return false;
-    }
+    $(document).keydown(function(e) {
+        if (e.which == 27) {
+        $('body').chardinJs('stop');
+        return false;
+        }
     });
 
-    var tutorial = localStorage.getItem("Tutorial");;
-    if ( tutorial != "Started") {
-        $('body').chardinJs('start');
-        localStorage.setItem("Tutorial", "Started");
+    $("#play").on("mouseover", function() {
+        $("#play").hide();
+        $("#play2").show();
+    });
+    $("#play").on("mouseout", function() {
+        $("#play").show();
+        $("#play2").hide();
+    });
+    $("#play2").on("click", function() {
+        startTutorial();
+    });
+    if ( localStorage.getItem("Tutorial") != "Started") {
+        startTutorial();
     }
 });
 
@@ -164,6 +173,11 @@ function calcPriceRatio(time) {
     if (!$(priceDFI).prop("disabled") && !$(priceDFI).prop("disabled")) {
         $(priceRatio).val("");
     }
+}
+
+function startTutorial() {
+    $('body').chardinJs('start');
+    localStorage.setItem("Tutorial", "Started");
 }
 
 function compareValues(value1, value2, id1, id2) {

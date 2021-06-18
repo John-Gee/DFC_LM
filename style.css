@@ -16,8 +16,8 @@ body {
 
 #header {
     /* children */
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
     align-items: center;
     gap: 0.75rem;
     padding: 0.15rem;
@@ -35,7 +35,21 @@ body {
     font-size: calc(var(--h));
 }
 
-#header > a > img {
+#logo {
+    /* style */
+    width: calc(2 * var(--h));
+}
+
+.buttons {
+    /* children */
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin: 0 2rem 0 2rem;
+}
+
+#play, #play2 {
     width: calc(2 * var(--h));
 }
 
