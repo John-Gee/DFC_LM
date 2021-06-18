@@ -304,14 +304,16 @@ function calculate() {
                 var duration = +$("#duration").val();
                 var compAPR  = 2 * apr / 100;
                 var compFee  = fee / 100;
+                var periods  = 0;
+                var transFee = 0.0001634;
 
                 if (cPeriod && (cPeriod < duration)) {
-                    var periods  = 365 / cPeriod;
+                    periods  = 365 / cPeriod;
                     compAPR  = Math.pow( 1 + (compAPR / periods), periods) -1;
                     compFee  = Math.pow( 1 + (compFee / periods), periods) -1;
                 }
 
-                fAmountDFII   = fAmountDFI + (fAmountDFI * ( compAPR + compFee) * duration /(365));
+                fAmountDFII   = fAmountDFI + (fAmountDFI * ( compAPR + compFee) * duration /(365)) - (transFee * periods);
                 fAmountTokenI = fAmountToken + (fAmountToken * compFee * duration /(365));
                 fValueTokenI  = fAmountTokenI * fPriceToken;
                 fValueDFII    = fAmountDFII * fPriceDFI;
