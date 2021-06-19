@@ -226,7 +226,9 @@ function calculate() {
     $("#int").prop("hidden", true);
     createEmptyPlot();
 
-    if ($("#cAmountDFI").val()) {
+    if ((($("#cPriceToken").val() && $("#cPriceDFI").val()) ||
+         ($("#cPriceRatio").val())) &&
+        ($("#cAmountDFI").val())) {
         var cPriceRatio  = 0;
         cAmountDFI   = +$("#cAmountDFI").val();
 
