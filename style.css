@@ -64,8 +64,9 @@ body {
 
 #calculator {
     /* position */
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 1.5rem;
     margin: 1.0rem;
 }
@@ -76,12 +77,14 @@ body {
     flex-direction: column;
 
     /* style */
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
     background-color: rgba(240,240,240,1);
     border-radius: 36px;
     box-shadow: -5px -5px 15px 5px rgba(250, 250, 250, 1),
                 5px 5px 15px 5px rgba(75, 75, 75, 1);
     --fsize: calc(var(--h) / 1.25);
-    padding-left: 0.5rem;
     padding-right: 0.5rem;
 }
 
@@ -102,9 +105,10 @@ body {
     gap: 1.25rem;
 
     /* style */
+    flex-grow: 5;
+    flex-shrink: 1;
+    flex-basis: auto;
     --fsize: calc(var(--h) / 1.25);
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
 }
 
 #numbers, #plot {
@@ -337,7 +341,7 @@ input[type=number] {
 
     /* style */
     padding-bottom: 0.4rem;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .values3 {
