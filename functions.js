@@ -450,9 +450,6 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH) {
         showArea: true,
         //fullWidth: true,
         plugins: [
-            /**Chartist.plugins.ctPointLabels({
-                textAnchor: "end"
-            }),*/
             Chartist.plugins.ctThreshold({
                 threshold: 0
             })
