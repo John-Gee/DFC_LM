@@ -76,6 +76,8 @@ $(document).ready(function(){
         calculate();
     });
 
+    createEmptyPlot();
+
     $(document).keydown(function(e) {
         if (e.which == 27) {
         $('body').chardinJs('stop');
@@ -221,13 +223,8 @@ function calculate() {
     var fValueTokenH = 0;
     var fValueH      = 0;
 
-    $("#chartTitle").prop("hidden", true);
-    $("#chartSubTitle").prop("hidden", true);
-    $("#yLabel").prop("hidden", true);
-    $("#xLabel").prop("hidden", true);
     $("#int").prop("hidden", true);
-    $("#noInt").prop("hidden", true);
-    $("#chart .ct-chart-line").remove();
+    createEmptyPlot();
 
     if ($("#cAmountDFI").val()) {
         var cPriceRatio  = 0;
@@ -357,6 +354,16 @@ function compareNumbers(a, b) {
     return a - b;
 }
 
+function createEmptyPlot() {
+    new Chartist.Line(".ct-chart", {
+        labels: [0, 25, 50, 100, 125, 150, 175, 200],
+        series: [[]]
+    }, {
+        high: 100,
+        low: -100,
+        //fullWidth: true,
+    });
+}
 function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH) {
     $("#chartTitle").prop("hidden", false);
     $("#chartSubTitle").prop("hidden", false);
@@ -433,6 +440,7 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH) {
         high: Math.max.apply(null, points.concat(points2)),
         low: -100,
         showArea: true,
+        //fullWidth: true,
         plugins: [
             /**Chartist.plugins.ctPointLabels({
                 textAnchor: "end"
