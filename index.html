@@ -122,7 +122,7 @@
                                 d.<input class="inputtext" type="number" min="0" id="duration"/>
                             </div>
                             <div class="title">Comp.</div>
-                            <div class="input" data-intro="Here you will enter the period in days you will compound at" data-position="right">
+                            <div class="input" data-intro="Here you will enter the period in days you will compound at. The minimum compounding is once per block, currently 1 / (2 * 60 * 24) ~= 0.0003472 day, anything smaller will be set to that value, except 0 which means no compounding. Also beware, compounding has a cost in conversion fee and transaction fee." data-position="right">
                                 d.<input class="inputtext" type="number" min="0" id="period"/>
                             </div>
                         </div>

@@ -302,16 +302,22 @@ function calculate() {
                 var compAPR  = 2 * apr / 100;
                 var compFee  = fee / 100;
                 var periods  = 0;
-                var transFee = 0.0001634;
 
                 if (cPeriod && (cPeriod < duration)) {
+                    if (cPeriod < (1 / 2880))
+                        cPeriod = (1 / 2880);
+                    var convFee = 0.0001;
+
                     periods  = 365 / cPeriod;
-                    compAPR  = Math.pow( 1 + (compAPR / periods), periods) -1;
-                    compFee  = Math.pow( 1 + (compFee / periods), periods) -1;
+                    compAPR  = Math.pow( 1 + (compAPR * (1 - convFee) / periods), periods) - 1;
+                    compFee  = Math.pow( 1 + (compFee * (1 - convFee) / periods), periods) - 1;
                 }
 
-                fAmountDFII   = fAmountDFI + (fAmountDFI * ( compAPR + compFee) * duration /(365)) - (transFee * periods);
-                fAmountTokenI = fAmountToken + (fAmountToken * compFee * duration /(365));
+                var transFee = 0.0001634;
+
+                // 2 transaction fees (one to convert, one to pool) + 1 convertion fee per period
+                fAmountDFII   = fAmountDFI + (((fAmountDFI * ( compAPR + compFee)) - (2 * transFee * periods)) * duration / 365);
+                fAmountTokenI = fAmountToken + (fAmountToken * compFee * duration / 365);
                 fValueTokenI  = fAmountTokenI * fPriceToken;
                 fValueDFII    = fAmountDFII * fPriceDFI;
                 fValueI       = fValueTokenI + fValueDFII;
