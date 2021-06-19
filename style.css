@@ -49,6 +49,15 @@ body {
     margin: 0 2rem 0 2rem;
 }
 
+#playButtons {
+    /* children */
+    display: flex;
+    flex-direction: row;
+
+    /* style */
+    cursor: pointer;
+}
+
 #play, #play2 {
     width: calc(2 * var(--h));
 }

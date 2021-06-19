@@ -93,7 +93,7 @@ $(document).ready(function(){
         $("#play").show();
         $("#play2").hide();
     });
-    $("#play2").on("click", function() {
+    $("#playButtons").on("click", function() {
         startTutorial();
     });
     if ( localStorage.getItem("Tutorial") != "Started") {
