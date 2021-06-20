@@ -18,15 +18,15 @@
         <link href="style.css" rel="stylesheet"/>
     </head>
     <body data-chardin-sequenced="true">
-        <section id="header" data-intro="This calculator allows you to estimate potential divergent change. This tutorial can be stopped by pressing the Esc key!" data-position="bottom">
+        <section id="header" data-intro="This calculator estimates potential divergent changes. This tutorial can be stopped by pressing the 'Esc' key!" data-position="bottom">
             <a href="https://www.defichain.com">
                 <img id="logo" src="img/defichain.svg"/>
             </a>
             <h1> Liquidity Mining Calculator </h1>
             <div class="buttons">
                 <div id="playButtons">
-                    <img id="play" src="img/play.svg" data-intro="This button allows you to replay this tutorial later." data-position="left"/>
-                    <img id="play2" src="img/play2.svg" data-intro="This button allows you to replay this tutorial later." data-position="left" hidden/>
+                    <img id="play" src="img/play.svg" data-intro="Replays this tutorial." data-position="left"/>
+                    <img id="play2" src="img/play2.svg" data-intro="Replays this tutorial." data-position="left" hidden/>
                 </div>
             </div>
         </section>
@@ -37,17 +37,17 @@
                     <hr/>
                 </div>
                 <div id="inputBody">
-                    <section class="table" data-intro="This is where you'll be entering the initial prices" data-position="right">
+                    <section class="table">
                         <div class="prices">
                             <h3> &nbsp; </h3>
                             <h3> Initial prices </h3>
                             <div class="title">
                                 <img src="img/defichain.svg"/>
                             </div>
-                            <div class="input" data-intro="This is where you'll be entering the initial price of DFI" data-position="right">
+                            <div class="input" data-intro="Enter DFI's initial price." data-position="right">
                                 <div>$</div><input class="inputtext" type="number" min="0" id="cPriceDFI"/>
                             </div>
-                            <div class="title" data-intro="This is where you'll pick the other coin" data-position="right">
+                            <div class="title" data-intro="Select the other coin." data-position="right">
                                 <select class="js-example-templating" id="OtherTokenValue">
                                     <option value="BCH">BCH</option>
                                     <option value="BTC" selected="selected">BTC</option>
@@ -57,18 +57,18 @@
                                     <option value="USDT">USDT</option>
                                 </select>
                             </div>
-                            <div class="input" data-intro="This is where you'll be entering the initial price of the other coin" data-position="right">
+                            <div class="input" data-intro="Enter other coin's initial price." data-position="right">
                                 <div>$</div><input class="inputtext" type="number" min="0" id="cPriceToken"/>
                             </div>
                             <div class="title" name="OtherRatio">Other</div>
-                            <div class="input" data-intro="This will give you the initial price of the other coin in DFI" data-position="right">
+                            <div class="input" data-intro="Gives the other coin's initial price in DFI." data-position="right">
                                 <img src="img/defichain.svg"/>
                                 <input class="inputtext" type="text" id="cPriceRatio"/>
                             </div>
                         </div>
                     </section>
                     <section class="table">
-                        <div class="prices" data-intro="This is where you'll be entering the final prices" data-position="right">
+                        <div class="prices" data-intro="Enter final prices." data-position="right">
                             <h3> &nbsp; </h3>
                             <h3> Final prices </h3>
                             <div class="title">
@@ -97,34 +97,34 @@
                             <div class="title">
                                 <img src="img/defichain.svg"/>
                             </div>
-                            <div class="input" data-intro="Here you will enter the number of DFI you put in the pool" data-position="right">
+                            <div class="input" data-intro="Enter amount of DFI provided to the pool." data-position="right">
                                 <div>&nbsp;</div><input class="inputtext" type="number" min="0" id="cAmountDFI"/>
                             </div>
                             <div class="title" name="OtherToken">Other</div>
-                            <div class="input auto" data-intro="The other amount will be automatically calculated" data-position="right">
+                            <div class="input auto" data-intro="The other coin's provided amount is automatically calculated." data-position="right">
                                 <div>&nbsp;</div><input class="inputtext" type="text" min="0" id="cAmountToken" disabled/>
                             </div>
                         </div>
                     </section>
                     <section class="table">
-                        <div class="interest" data-intro="This is where you'll be entering the optional interest numbers" data-position="right">
+                        <div class="interest" data-intro="This section is optional." data-position="right">
                             <h3> &nbsp; </h3>
                             <h3> Interest </h3>
                             <div class="title">APR</div>
-                            <div class="input" data-intro="Here you will enter the pool's rewards APR" data-position="right">
+                            <div class="input" data-intro="Enter pool's rewards in APR." data-position="right">
                                 %<input class="inputtext" type="number" min="0" id="apr"/>
                             </div>
                             <div class="title">Fee</div>
-                            <div class="input" data-intro="Here you will enter the pool's commission APR" data-position="right">
+                            <div class="input" data-intro="Enter pool's commissions in APR." data-position="right">
                                 %<input class="inputtext" type="number" min="0" id="fee"/>
                             </div>
                             <div class="title">Time</div>
-                            <div class="input" data-intro="Here you will enter the time in days you will liquidity mine for" data-position="right">
+                            <div class="input" data-intro="Enter time in days of liquidity mining." data-position="right">
                                 d.<input class="inputtext" type="number" min="0" id="duration"/>
                             </div>
                             <div class="title">Comp.</div>
-                            <div class="input" data-intro="Here you will enter the period in days you will compound at. The minimum compounding is once per block, currently 1 / (2 * 60 * 24) ~= 0.0003472 day, anything smaller will be set to that value, except 0 which means no compounding. Also beware, compounding has a cost in conversion fee and transaction fee." data-position="right">
-                                d.<input class="inputtext" type="number" min="0" id="period"/>
+                            <div class="input" data-intro="Enter period in days to compound, min is 0.0003472, 0 is off." data-position="right">
+                                d.<input class="inputtext" type="number" min="0" id="period" data-intro=" Beware of conversion and transaction fees." data-position="right"/>
                             </div>
                         </div>
                     </section>
@@ -134,7 +134,7 @@
                 <section id="numbers">
                     <h2> Outcome </h2>
                     <hr/>
-                    <section class="values" data-intro="Here the calculator will provide estimated values based on the data provided" data-position="left">
+                    <section class="values" data-intro="This provides values based on the input data." data-position="left">
                         <div class="titles">
                             <h3>
                                 &nbsp;
@@ -146,7 +146,7 @@
                             <div class="title">Total</div>
                         </div>
                         <div class="values2">
-                            <div class="values3" data-intro="Here the calculator will provide the estimated amount of both coins (without interest)" data-position="bottom">
+                            <div class="values3" data-intro="Final amount of both coins, without interest." data-position="bottom">
                                 <h3> Amount of coins </h3>
                                 <div class="input auto">
                                     <div>&nbsp;</div><input class="inputtext" type="text" min="0" id="fAmountDFI" disabled/>
@@ -155,7 +155,7 @@
                                     <div>&nbsp;</div><input class="inputtext" type="text" min="0" id="fAmountToken" disabled/>
                                 </div>
                             </div>
-                            <div class="values3" data-intro="Here the calculator will provide the initial values, based on initial prices and amounts" data-position="bottom">
+                            <div class="values3" data-intro="Initial values, based on initial prices and amounts." data-position="bottom">
                                 <h3> Initial values </h3>
                                 <div class="input auto">
                                     <div>$</div><input class="inputtext" type="text" min="0" id="cValueDFI" disabled/>
@@ -167,7 +167,7 @@
                                     <div>$</div><input class="inputtext" type="text" min="0" id="cValue" disabled/>
                                 </div>
                             </div>
-                            <div class="values3" data-intro="Here the calculator will provide the final values of not putting the coins in the pool, based on the estimated final prices and the initial amount of coins" data-position="bottom">
+                            <div class="values3" data-intro="Final values of just holding, based on initial amounts and final prices." data-position="bottom">
                                 <h3> Holding values </h3>
                                 <div class="input auto">
                                     <div>$</div><input class="inputtext" type="text" min="0" id="fValueDFIH" disabled/>
@@ -179,7 +179,7 @@
                                     <div>$</div><input class="inputtext" type="text" min="0" id="fValueH" disabled/>
                                 </div>
                             </div>
-                            <div class="values3" data-intro="Here the calculator will provide the final values based on the estimated final amounts and price but without interest" data-position="bottom">
+                            <div class="values3" data-intro="Final values of mining, based on final amounts and prices, without interest." data-position="bottom">
                                 <h3> Divergent values </h3>
                                 <div class="input auto">
                                     <div>$</div><input class="inputtext" type="text" min="0" id="fValueDFI" disabled/>
@@ -191,7 +191,7 @@
                                     <div>$</div><input class="inputtext" type="text" min="0" id="fValue" disabled/>
                                 </div>
                             </div>
-                            <div class="values3" data-intro="Here the calculator will provide the final values based on the estimated final amounts, prices and accruing interest" data-position="bottom">
+                            <div class="values3" data-intro="Final values of mining, based on final amounts and prices, with interest." data-position="bottom">
                                 <h3> Interest values </h3>
                                 <div class="input auto">
                                     <div>$</div><input class="inputtext" type="text" min="0" id="fValueDFII" disabled/>
@@ -206,7 +206,7 @@
                         </div>
                     </section>
                 </section>
-                <section id="plot" data-intro="And finally here the calculator will plot potential value changes, depending on the change of the other coin's price in DFI" data-position="left">
+                <section id="plot" data-intro="This plots potential values, depending on the change of the other coin's price in DFI." data-position="left">
                     <h3 id="chartTitle"> Change in total value due to prices variations </h3>
                     <h4 id="chartSubTitle"> In percentage, compared to holding the original funds </h4>
                     <div id="aroundChart">
