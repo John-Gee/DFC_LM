@@ -1,3 +1,9 @@
+@font-face {
+    font-family: "TITLE";
+    //src: url("fonts/Reckoner_Bold.ttf");
+    src: url("fonts/AROMA-Bold.ttf");
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -19,7 +25,8 @@ body {
     display: grid;
     grid-template-columns: auto 1fr 1fr;
     align-items: center;
-    gap: 0.75rem;
+    align-content: center;
+    gap: 0.25rem;
     padding: 0.15rem;
 
     /* style */
@@ -30,14 +37,19 @@ body {
 #header > h1 {
     /* style */
     color: rgba(255,0,176,1);
-    /* font-family: "Brush Script MT", cursive; */
-    font-family: "Times New Roman";
+    font-family: TITLE;
     font-size: calc(1 * var(--h));
+    vertical-align: middle;
+    display: block;
+    padding-top: calc(0.2 * var(--h));
+    text-shadow: calc(0.05 * var(--h)) calc(0.05 * var(--h)) rgba(140,140,140,1);
 }
 
 #logo {
     /* style */
     width: calc(2 * var(--h));
+    vertical-align: middle;
+    display: block;
 }
 
 .buttons {
