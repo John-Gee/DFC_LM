@@ -164,14 +164,14 @@ function calcPriceRatio(time) {
         if ($(priceToken).val() && $(priceDFI).val()) {
             $(priceRatio).val(prettyNumber(($(priceToken).val() / $(priceDFI).val())));
             return
-        } else if ($("#OtherTokenValue").val() == "USDT") {
+        } /*else if ($("#OtherTokenValue").val() == "USDT") {
             $(priceRatio).prop("disabled", false);
             $(priceRatio).parent().removeClass("auto");
-        }
-    } else {
+        }*/
+    } /*else {
         $(priceRatio).prop("disabled", false);
         $(priceRatio).parent().removeClass("auto");
-    }
+    }*/
     if (!$(priceDFI).prop("disabled") && !$(priceDFI).prop("disabled")) {
         $(priceRatio).val("");
     }
