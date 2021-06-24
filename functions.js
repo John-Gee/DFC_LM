@@ -45,41 +45,41 @@ $(document).ready(function(){
         calcPriceRatio("c");
         calculate();
     });
-    $("#cPriceRatio").on("change input", function() {
+    my$("#cPriceRatio").addEventListener("input", function() {
         priceRatio("c");
         calculate();
     });
 
-    $("#cAmountDFI").on("change input", function() {
+    my$("#cAmountDFI").addEventListener("input", function() {
         calculate();
     });
     
-    $("#fPriceToken").on("change input", function() {
+    my$("#fPriceToken").addEventListener("input", function() {
         calcPriceRatio("f");
         calculate();
     });
-    $("#fPriceDFI").on("change input", function() {
+    my$("#fPriceDFI").addEventListener("input", function() {
         calcPriceRatio("f");
         calculate();
     });
-    $("#fPriceRatio").on("change input", function() {
+    my$("#fPriceRatio").addEventListener("input", function() {
         priceRatio("f");
         calculate();
     });
 
-    $("#apr").on("change input", function() {
+    my$("#apr").addEventListener("input", function() {
         calculate();
     });
-    $("#fee").on("change input", function() {
+    my$("#fee").addEventListener("input", function() {
         calculate();
     });
-    $("#duration").on("change input", function() {
+    my$("#duration").addEventListener("input", function() {
         calculate();
     });
-    $("#period").on("change input", function() {
+    my$("#period").addEventListener("input", function() {
         calculate();
     });
-    $("#period").on("change input", function() {
+    my$("#period").addEventListener("input", function() {
         calculate();
     });
 
@@ -96,15 +96,15 @@ $(document).ready(function(){
         }
     });
 
-    $("#play").on("mouseover", function() {
-        $("#play").hide();
-        $("#play2").show();
+    my$("#play").addEventListener("mouseover", function() {
+        my$("#play").style.display = "none";
+        my$("#play2").style.display = "block";
     });
-    $("#play").on("mouseout", function() {
-        $("#play").show();
-        $("#play2").hide();
+    my$("#play").addEventListener("mouseout", function() {
+        my$("#play").style.display = "block";
+        my$("#play2").style.display = "none";
     });
-    $("#playButtons").on("click", function() {
+    my$("#playButtons").addEventListener("click", function() {
         startTutorial();
     });
     if ( localStorage.getItem("Tutorial") != "Started") {
