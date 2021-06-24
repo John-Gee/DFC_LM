@@ -386,12 +386,6 @@ function createEmptyPlot() {
     });
 }
 function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH) {
-    $("#chartTitle").prop("hidden", false);
-    $("#chartSubTitle").prop("hidden", false);
-    $("#yLabel").prop("hidden", false);
-    $("#xLabel").prop("hidden", false);
-    $("#noInt").prop("hidden", false);
-
     var current = Math.round(fPriceRatio/cPriceRatio * 100);
 
     /* Math:
@@ -446,7 +440,7 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH) {
         points.push(100 * ((2 * Math.sqrt(priceRatios[i] / 100) / (1 + (priceRatios[i] / 100))) - 1));
     }
     if (fValueI) {
-        $("#int").prop("hidden", false);
+        my$("#int").hidden = false;
         interest_ratio = fValueI / fValue;
         for (let i = 0; i < priceRatios.length; i++) {
             points2.push(100 * ((2 * interest_ratio * Math.sqrt(priceRatios[i] / 100) / (1 + (priceRatios[i] / 100))) - 1));
