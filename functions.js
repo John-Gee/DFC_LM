@@ -4,24 +4,24 @@ $(document).ready(function(){
         if (my$("#OtherTokenValue").value == "USDT") {
             my$("#cPriceToken").value = 1;
             inputEvent("#cPriceToken");
-            $("#cPriceToken").prop("disabled", true);
-            $("#cPriceToken").parent().addClass("auto");
+            my$("#cPriceToken").disabled = true;
+            my$("#cPriceToken").parentElement.classList.add("auto");
             my$("#fPriceToken").value = 1;
             inputEvent("#fPriceToken");
-            $("#fPriceToken").prop("disabled", true);
-            $("#fPriceToken").parent().addClass("auto");
+            my$("#fPriceToken").disabled = true;
+            my$("#fPriceToken").parentElement.classList.add("auto");
         } else {
             my$("#cPriceToken").value = "";
             inputEvent("#cPriceToken");
             my$("#fPriceToken").value = "";
             inputEvent("#fPriceToken");
-            if (!$("#cPriceDFI").prop("disabled")) {
-                $("#cPriceToken").prop("disabled", false);
-                $("#cPriceToken").parent().removeClass("auto");
+            if (!my$("#cPriceDFI").disabled) {
+                my$("#cPriceToken").disabled = false;
+                my$("#cPriceToken").parentElement.classList.remove("auto");
             }
-            if (!$("#fPriceDFI").prop("disabled")) {
-                $("#fPriceToken").prop("disabled", false);
-                $("#fPriceToken").parent().removeClass("auto");
+            if (!my$("#fPriceDFI").disabled) {
+                my$("#fPriceToken").disabled = false;
+                my$("#fPriceToken").parentElement.classList.remove("auto");
             }
         }
     });
