@@ -194,16 +194,16 @@ function startTutorial() {
 
 function compareValues(value1, value2, id1, id2) {
     // clear previous results
-    $(id2).parent().children().first().removeClass("minus");
-    $(id2).parent().children().first().removeClass("plus");
+    my$(id2).parentElement.firstElementChild.classList.remove("minus");
+    my$(id2).parentElement.firstElementChild.classList.remove("plus");
 
     if ((value1 == value2) || (value1 == 0) || (value2 == 0)){
         return;
     }
     else if (value1 > value2) {
-        $(id2).parent().children().first().addClass("minus");
+        my$(id2).parentElement.firstElementChild.classList.add("minus");
     } else {
-        $(id2).parent().children().first().addClass("plus");
+        my$(id2).parentElement.firstElementChild.classList.add("plus");
     }
 }
 
