@@ -1,5 +1,5 @@
-$(document).ready(function(){
-	$("#OtherTokenValue").on("input", function() {
+document.addEventListener('DOMContentLoaded', function() {
+	my$("#OtherTokenValue").addEventListener("input", function() {
         SwitchTokenLabel();
         if (my$("#OtherTokenValue").value == "USDT") {
             my$("#cPriceToken").value = 1;
