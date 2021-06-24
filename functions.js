@@ -113,13 +113,12 @@ $(document).ready(function(){
 });
 
 function SwitchTokenLabel() {
-    var label = $("#OtherTokenValue").val();
-    $("#OtherTokenValue").innerHTML = coinNameToImg(label);
-    $("[name='OtherToken']").map(function() {
-        this.innerHTML = coinNameToImg(label);
+    var label = my$("#OtherTokenValue").value;
+    myMap("[name='OtherToken']", function(el) {
+        el.innerHTML = coinNameToImg(label);
     });
-    $("[name='OtherRatio']").map(function() {
-        this.innerHTML = coinNameToImg(label);
+    myMap("[name='OtherRatio']", function(el) {
+        el.innerHTML = coinNameToImg(label);
     });
 }
 
@@ -498,6 +497,10 @@ function getPrices() {
 
 function inputEvent(selector) {
     my$(selector).dispatchEvent(new Event('input'));
+}
+
+function myMap(selector, func) {
+    return Array.prototype.map.call(document.querySelectorAll(selector), func);
 }
 
 function my$(selector) {
