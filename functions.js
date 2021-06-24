@@ -233,21 +233,21 @@ function calculate() {
     var fValueTokenH = 0;
     var fValueH      = 0;
 
-    $("#int").prop("hidden", true);
+    my$("#int").hidden = true;
     createEmptyPlot();
 
-    if ((($("#cPriceToken").val() && $("#cPriceDFI").val()) ||
-         ($("#cPriceRatio").val())) &&
-        ($("#cAmountDFI").val())) {
+    if (((my$("#cPriceToken").value && my$("#cPriceDFI").value) ||
+         (my$("#cPriceRatio").value)) &&
+        (my$("#cAmountDFI").value)) {
         var cPriceRatio  = 0;
-        cAmountDFI   = +$("#cAmountDFI").val();
+        cAmountDFI   = +my$("#cAmountDFI").value;
 
-        if ($("#cPriceToken").val() && $("#cPriceDFI").val()) {
-            cPriceToken  = +$("#cPriceToken").val();
-            cPriceDFI    = +$("#cPriceDFI").val();
+        if (my$("#cPriceToken").value && my$("#cPriceDFI").value) {
+            cPriceToken  = +my$("#cPriceToken").value;
+            cPriceDFI    = +my$("#cPriceDFI").value;
             cPriceRatio  = cPriceToken / cPriceDFI;
-        } else if ($("#cPriceRatio").val()) {
-            cPriceRatio  = +$("#cPriceRatio").val();
+        } else if (my$("#cPriceRatio").value) {
+            cPriceRatio  = +my$("#cPriceRatio").value;
         }
 
         cAmountToken = cAmountDFI/cPriceRatio;
@@ -255,11 +255,11 @@ function calculate() {
         cValueDFI    = cAmountDFI * cPriceDFI;
         cValue       = cValueToken + cValueDFI;
 
-        var fPriceToken  = +$("#fPriceToken").val();
-        var fPriceDFI    = +$("#fPriceDFI").val();
-        var fPriceRatio  = +$("#fPriceRatio").val();
+        var fPriceToken  = +my$("#fPriceToken").value;
+        var fPriceDFI    = +my$("#fPriceDFI").value;
+        var fPriceRatio  = +my$("#fPriceRatio").value;
 
-        if ($("#fPriceToken").val() && $("#fPriceDFI").val()) {
+        if (my$("#fPriceToken").value && my$("#fPriceDFI").value) {
 
             fPriceRatio  = fPriceToken / fPriceDFI;
 
@@ -306,11 +306,11 @@ function calculate() {
             fValueDFIH    = cAmountDFI * fPriceDFI;
             fValueH       = fValueTokenH + fValueDFIH;
 
-            if (($("#apr").val() || $("#fee").val()) && $("#duration").val() ) {
-                var apr      = +$("#apr").val();
-                var fee      = +$("#fee").val();
-                var cPeriod  = +$("#period").val();
-                var duration = +$("#duration").val();
+            if ((my$("#apr").value || my$("#fee").value) && my$("#duration").value ) {
+                var apr      = +my$("#apr").value;
+                var fee      = +my$("#fee").value;
+                var cPeriod  = +my$("#period").value;
+                var duration = +my$("#duration").value;
                 var compAPR  = apr / 100;
                 var compFee  = fee / 100;
                 var periods  = 0;
@@ -342,29 +342,29 @@ function calculate() {
         }
     }
 
-    $("#cAmountToken").val(prettyNumber(cAmountToken));
-    $("#cValueToken").val(prettyNumber(cValueToken));
-    $("#cValueDFI").val(prettyNumber(cValueDFI));
-    $("#cValue").val(prettyNumber(cValue));
+    my$("#cAmountToken").value = prettyNumber(cAmountToken);
+    my$("#cValueToken").value = prettyNumber(cValueToken);
+    my$("#cValueDFI").value = prettyNumber(cValueDFI);
+    my$("#cValue").value = prettyNumber(cValue);
 
-    $("#fAmountToken").val(prettyNumber(fAmountToken));
-    $("#fAmountDFI").val(prettyNumber(fAmountDFI));
+    my$("#fAmountToken").value = prettyNumber(fAmountToken);
+    my$("#fAmountDFI").value = prettyNumber(fAmountDFI);
 
-    $("#fValueToken").val(prettyNumber(fValueToken));
-    $("#fValueDFI").val(prettyNumber(fValueDFI));
-    $("#fValue").val(prettyNumber(fValue));
+    my$("#fValueToken").value = prettyNumber(fValueToken);
+    my$("#fValueDFI").value = prettyNumber(fValueDFI);
+    my$("#fValue").value = prettyNumber(fValue);
 
-    $("#fValueTokenH").val(prettyNumber(fValueTokenH));
-    $("#fValueDFIH").val(prettyNumber(fValueDFIH));
-    $("#fValueH").val(prettyNumber(fValueH));
+    my$("#fValueTokenH").value = prettyNumber(fValueTokenH);
+    my$("#fValueDFIH").value = prettyNumber(fValueDFIH);
+    my$("#fValueH").value = prettyNumber(fValueH);
 
     compareValues(fValueDFIH, fValueDFI, "#fValueDFIH", "#fValueDFI");
     compareValues(fValueTokenH, fValueToken, "#fValueTokenH", "#fValueToken");
     compareValues(fValueH, fValue, "#fValueH", "#fValue");
 
-    $("#fValueTokenI").val(prettyNumber(fValueTokenI));
-    $("#fValueDFII").val(prettyNumber(fValueDFII));
-    $("#fValueI").val(prettyNumber(fValueI));
+    my$("#fValueTokenI").value = prettyNumber(fValueTokenI);
+    my$("#fValueDFII").value = prettyNumber(fValueDFII);
+    my$("#fValueI").value = prettyNumber(fValueI);
 
     compareValues(fValueDFIH, fValueDFII, "#fValueDFIH", "#fValueDFII");
     compareValues(fValueTokenH, fValueTokenI, "#fValueTokenH", "#fValueTokenI");
