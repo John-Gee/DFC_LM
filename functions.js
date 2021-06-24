@@ -149,16 +149,16 @@ function priceRatio(time) {
     var priceDFI   = "#" + time + "PriceDFI";
     var priceRatio = "#" + time + "PriceRatio";
 
-    if ($(priceRatio).val() ) {
-        $(priceDFI).prop("disabled", true);
-        $(priceDFI).parent().addClass("auto");
-        $(priceToken).prop("disabled", true);
-        $(priceToken).parent().addClass("auto");
+    if (my$(priceRatio).value ) {
+        my$(priceDFI).disabled = true;
+        my$(priceDFI).parentElement.classList.add("auto");
+        my$(priceToken).disabled = true;
+        my$(priceToken).parentElement.classList.add("auto");
     } else {
-        $(priceDFI).prop("disabled", false);
-        $(priceDFI).parent().removeClass("auto");
-        $(priceToken).prop("disabled", false);
-        $(priceToken).parent().removeClass("auto");
+        my$(priceDFI).disabled = false;
+        my$(priceDFI).parentElement.classList.remove("auto");
+        my$(priceToken).disabled = false;
+        my$(priceToken).parentElement.classList.remove("auto");
     }
 }
 
@@ -167,23 +167,23 @@ function calcPriceRatio(time) {
     var priceDFI   = "#" + time + "PriceDFI";
     var priceRatio = "#" + time + "PriceRatio";
 
-    if ($(priceToken).val() || $(priceDFI).val()) {
-        $(priceRatio).prop("disabled", true);
-        $(priceRatio).parent().addClass("auto");
+    if (my$(priceToken).value || my$(priceDFI).value) {
+        my$(priceRatio).disabled = true;
+        my$(priceRatio).parentElement.classList.add("auto");
 
-        if ($(priceToken).val() && $(priceDFI).val()) {
-            $(priceRatio).val(prettyNumber(($(priceToken).val() / $(priceDFI).val())));
+        if (my$(priceToken).value && my$(priceDFI).value) {
+            my$(priceRatio).value = prettyNumber(my$(priceToken).value / my$(priceDFI).value);
             return
-        } /*else if ($("#OtherTokenValue").val() == "USDT") {
-            $(priceRatio).prop("disabled", false);
-            $(priceRatio).parent().removeClass("auto");
+        } /*else if (my$("#OtherTokenValue").value == "USDT") {
+            my$(priceRatio).disabled = false;
+            my$(priceRatio).parentElement.classList.remove("auto");
         }*/
     } /*else {
-        $(priceRatio).prop("disabled", false);
-        $(priceRatio).parent().removeClass("auto");
+        my$(priceRatio).disabled = false;
+        my$(priceRatio).parentElement.classList.remove("auto");
     }*/
-    if (!$(priceDFI).prop("disabled") && !$(priceDFI).prop("disabled")) {
-        $(priceRatio).val("");
+    if (!my$(priceDFI).disabled && !my$(priceDFI).disabled) {
+        my$(priceRatio).value = "";
     }
 }
 
