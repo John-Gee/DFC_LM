@@ -80,6 +80,9 @@ body {
     width: calc(2 * var(--h));
     vertical-align: middle;
     display: block;
+
+    /* style */
+    cursor: pointer;
 }
 
 .buttons {
@@ -252,6 +255,24 @@ h4 {
     font-family: KEYS;
 }
 
+#sync {
+    /* style */
+    cursor: pointer;
+}
+
+.rotate {
+    animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 .input {
     /* position */
     display: grid;
@@ -275,7 +296,7 @@ h4 {
     line-height: calc(1.33 * var(--fsize));
 }
 
-.select2-selection__rendered > img, .input > img, .title > img {
+.select2-selection__rendered > img, .input > img, .title > img, .prices > img {
     width: calc(0.9 * var(--fsize));
     vertical-align: middle;
 }

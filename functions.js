@@ -1,16 +1,20 @@
 $(document).ready(function(){
 	$("#OtherTokenValue").on("input", function() {
         SwitchTokenLabel();
-        if ($("#OtherTokenValue").val() == "USDT") {
-            $("#cPriceToken").val(1).change();
+        if (my$("#OtherTokenValue").value == "USDT") {
+            my$("#cPriceToken").value = 1;
+            inputEvent("#cPriceToken");
             $("#cPriceToken").prop("disabled", true);
             $("#cPriceToken").parent().addClass("auto");
-            $("#fPriceToken").val(1).change();
+            my$("#fPriceToken").value = 1;
+            inputEvent("#fPriceToken");
             $("#fPriceToken").prop("disabled", true);
             $("#fPriceToken").parent().addClass("auto");
         } else {
-            $("#cPriceToken").val("").change();
-            $("#fPriceToken").val("").change();
+            my$("#cPriceToken").value = "";
+            inputEvent("#cPriceToken");
+            my$("#fPriceToken").value = "";
+            inputEvent("#fPriceToken");
             if (!$("#cPriceDFI").prop("disabled")) {
                 $("#cPriceToken").prop("disabled", false);
                 $("#cPriceToken").parent().removeClass("auto");
@@ -29,15 +33,15 @@ $(document).ready(function(){
         templateResult: formatCoin,
         templateSelection: formatCoin,
         escapeMarkup: function (m) {
-				return m;
-			}
+            return m;
+        }
     });
 
-    $("#cPriceToken").on("change input", function() {
+    my$("#cPriceToken").addEventListener("input", function() {
         calcPriceRatio("c");
         calculate();
     });
-    $("#cPriceDFI").on("change input", function() {
+    my$("#cPriceDFI").addEventListener("input", function() {
         calcPriceRatio("c");
         calculate();
     });
@@ -74,6 +78,13 @@ $(document).ready(function(){
     });
     $("#period").on("change input", function() {
         calculate();
+    });
+    $("#period").on("change input", function() {
+        calculate();
+    });
+
+    my$("#sync").addEventListener("click", function() {
+        getPrices();
     });
 
     createEmptyPlot();
@@ -117,7 +128,7 @@ function formatCoin(coin) {
         return coin.text;
     }
 
-    var $coin = $(coinNameToImg(coin.text));
+    var $coin = $(coinNameToImg(coin.id));
     return $coin;
 }
 
@@ -458,4 +469,37 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH) {
             })
         ]
     });
+}
+
+function getPrices() {
+    // showing loading
+    my$("#sync").classList.add("rotate");
+    var defichain = "defichain"
+    var otherCoin = my$("#OtherTokenValue").options[my$("#OtherTokenValue").selectedIndex].innerHTML.toLowerCase();
+    var currency  = "usd"
+    var url = "https://api.coingecko.com/api/v3/simple/price?ids=" + defichain + "%2C" + otherCoin + "&vs_currencies=" + currency;
+    fetch(url)
+    .then((response) => response.json())
+    .then(function(data){
+        my$("#cPriceDFI").value = data[defichain].usd;
+        inputEvent("#cPriceDFI");
+        if (otherCoin != "tether") {
+            my$("#cPriceToken").value = data[otherCoin].usd;
+            inputEvent("#cPriceToken");
+        }
+        // hiding loading
+        my$("#sync").classList.remove("rotate");
+    })
+    .catch(function(error) {
+        // hiding loading
+        my$("#sync").classList.remove("rotate");
+    });
+}
+
+function inputEvent(selector) {
+    my$(selector).dispatchEvent(new Event('input'));
+}
+
+function my$(selector) {
+    return document.querySelector(selector);
 }
