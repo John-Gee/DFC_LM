@@ -64,6 +64,10 @@ body {
     box-shadow: 0px 25px 13px -20px rgba(175, 175, 175, 1);
 }
 
+#header > *, h2 {
+    filter: drop-shadow(calc(0.075 * var(--h)) calc(0.075 * var(--h)) 0 rgba(140,140,140,1));
+}
+
 #header > h1 {
     /* style */
     color: rgba(255,0,176,1);
@@ -72,7 +76,6 @@ body {
     vertical-align: middle;
     display: block;
     padding-top: calc(0.2 * var(--h));
-    text-shadow: calc(0.05 * var(--h)) calc(0.05 * var(--h)) rgba(140,140,140,1);
 }
 
 #logo {
@@ -80,8 +83,6 @@ body {
     width: calc(2 * var(--h));
     vertical-align: middle;
     display: block;
-
-    /* style */
     cursor: pointer;
 }
 
@@ -193,7 +194,6 @@ h2 {
     //font-weight: bold;
     font-size: calc(0.95 * var(--h));
     font-family: SUB;
-    text-shadow: calc(0.05 * 0.9 * var(--h)) calc(0.05 * 0.9 * var(--h)) rgba(140,140,140,1);
 }
 
 hr {
