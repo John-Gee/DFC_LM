@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     SwitchTokenLabel();
-    $('.js-example-templating').select2({
+    new TsSelect2(my$("#OtherTokenValue"), {
         minimumResultsForSearch: -1,
         width: '100%',
         dropdownAutoWidth : true,
@@ -122,13 +122,16 @@ function SwitchTokenLabel() {
     });
 }
 
+
 function formatCoin(coin) {
     if (!coin.id) {
         return coin.text;
     }
 
-    var $coin = $(coinNameToImg(coin.id));
-    return $coin;
+    var img = document.createElement('img');
+    img.src = "img/" + coin.id + ".svg";
+    img.class = "img-flag";
+    return img;
 }
 
 function coinNameToImg(coinName) {
