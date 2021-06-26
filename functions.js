@@ -75,8 +75,127 @@ function calcPriceRatio(time) {
     }
 }
 
-function startTutorial() {
-    $('body').chardinJs('start');
+function createTutorial() {
+    var tour = [
+        {
+            title: "Welcome to the tutorial!"
+        },
+        {
+            title: "This calculator estimates potential divergent changes."
+        },
+        {
+            element: "#play",
+            title: "Replay this tutorial."
+        },
+        {
+            element: "#OtherTokenValueDiv",
+            title: "Select the other coin.",
+            position: "right"
+        },
+        {
+            element: "#sync",
+            title: "Get prices from CoinGecko.",
+            position: "right"
+        },
+        {
+            element: "#cPriceDFIDiv",
+            title: "Enter DFI's initial price.",
+            position: "right"
+        },
+        {
+            element: "#cPriceTokenDiv",
+            title: "Enter other coin's initial price.",
+            position: "right"
+        },
+        {
+            element: "#cPriceRatioDiv",
+            title: "Gives the other coin's initial price in DFI.",
+            position: "right"
+        },
+        {
+            element: "#finalPricesDiv",
+            title: "Enter final prices.",
+            position: "right"
+        },
+        {
+            element: "#cAmountDFIDiv",
+            title: "Enter amount of DFI provided to the pool.",
+            position: "right"
+        },
+        {
+            element: "#cAmountTokenDiv",
+            title: "The other coin's provided amount is automatically calculated.",
+            position: "right"
+        },
+        {
+            element: "#interestDiv",
+            title: "This section is optional.",
+            position: "top"
+        },
+        {
+            element: "#aprDiv",
+            title: "Enter pool's rewards in APR.",
+            position: "top"
+        },
+        {
+            element: "#feeDiv",
+            title: "Enter pool's commissions in APR.",
+            position: "top"
+        },
+        {
+            element: "#durationDiv",
+            title: "Enter time in days of liquidity mining.",
+            position: "top"
+        },
+        {
+            element: "#periodDiv",
+            title: "Enter period in days to compound, the minimum is 0.0003472 apart from 0 which means no compounding. Beware of conversion and transaction fees.",
+            position: "top"
+        },
+        {
+            element: "#outcomeDiv",
+            title: "This provides values based on the input data.",
+            position: "bottom"
+        },
+        {
+            element: "#finalAmounts",
+            title: "Final amounts of coins, without interest.",
+            position: "bottom"
+        },
+        {
+            element: "#initialValues",
+            title: "Initial values, based on initial prices and amounts.",
+            position: "bottom"
+        },
+        {
+            element: "#holding",
+            title: "Final values of just holding, based on initial amounts and final prices.",
+            position: "bottom"
+        },
+        {
+            element: "#mining",
+            title: "Final values of mining, based on final amounts and prices, without interest.",
+            position: "bottom"
+        },
+        {
+            element: "#miningI",
+            title: "Final values of mining, based on final amounts and prices, with interest.",
+            position: "bottom"
+        },
+        {
+            element: "#plot",
+            title: "This plots potential values, depending on the change of the other coin's price in DFI.",
+            position: "top"
+        }
+    ];
+    return GuideChimp(tour);
+}
+function startTutorial(guideChimp) {
+    var step = localStorage.getItem("Tutorial-N");
+    if (step)
+        guideChimp.start(step);
+    else
+        guideChimp.start();
     localStorage.setItem("Tutorial", "Started");
 }
 

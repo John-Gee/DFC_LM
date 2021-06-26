@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function() {
     my$("#OtherTokenValue").addEventListener("input", function() {
         SwitchTokenLabel();
         if (my$("#OtherTokenValue").value == "USDT") {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     SwitchTokenLabel();
     new TsSelect2(my$("#OtherTokenValue"), {
         minimumResultsForSearch: -1,
-        width: '100%',
+        width: "100%",
         dropdownAutoWidth : true,
         templateResult: formatCoin,
         templateSelection: formatCoin,
@@ -89,13 +89,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     createEmptyPlot();
 
-    $(document).keydown(function(e) {
-        if (e.which == 27) {
-        $('body').chardinJs('stop');
-        return false;
-        }
+    var guideChimp = createTutorial();
+    guideChimp.on("onStop", ()=>{
+        localStorage.setItem("Tutorial-N", guideChimp.currentStepIndex);
     });
-
+    guideChimp.on("onComplete", ()=>{
+        localStorage.removeItem("Tutorial-N");
+    });
     my$("#play").addEventListener("mouseover", function() {
         my$("#play").style.display = "none";
         my$("#play2").style.display = "block";
@@ -105,9 +105,9 @@ document.addEventListener('DOMContentLoaded', function() {
         my$("#play2").style.display = "none";
     });
     my$("#playButtons").addEventListener("click", function() {
-        startTutorial();
+        startTutorial(guideChimp);
     });
-    if ( localStorage.getItem("Tutorial") != "Started") {
-        startTutorial();
+    if (localStorage.getItem("Tutorial") != "Started") {
+        startTutorial(guideChimp);
     }
 });
