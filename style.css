@@ -2,11 +2,13 @@
     font-family: "TITLE";
     //src: url("fonts/Reckoner_Bold.ttf");
     src: url("fonts/AROMA-Bold.ttf");
+    font-display: swap
 }
 
 @font-face {
     font-family: "SUB";
-    src: url("fonts/Comodo/Comodo Regular Free.otf");   
+    src: url("fonts/Comodo/Comodo Regular Free.otf");
+    font-display: swap
 }
 
 @font-face {
@@ -32,6 +34,7 @@
     //src: url("fonts/Summit/Summit_TrueType/SummitRegular-Display.ttf");
     src: url("fonts/Jupitex/Jupitex Sans Serif.otf");
     //src: url("fonts/MINISTRY.otf");
+    font-display: swap
 }
 
 * {
