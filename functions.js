@@ -153,7 +153,7 @@ function createTutorial() {
             position: "top"
         },
         {
-            element: "#outcomeDiv",
+            element: "#numbers",
             title: "This provides values based on the input data.",
             position: "bottom"
         },
@@ -188,7 +188,7 @@ function createTutorial() {
             position: "top"
         }
     ];
-    return GuideChimp(tour);
+    return GuideChimp(tour, {padding: 20});
 }
 function startTutorial(guideChimp) {
     var step = localStorage.getItem("Tutorial-N");
