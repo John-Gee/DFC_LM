@@ -190,6 +190,7 @@ function createTutorial() {
     ];
     return GuideChimp(tour, {padding: 20});
 }
+
 function startTutorial(guideChimp) {
     var step = localStorage.getItem("Tutorial-N");
     if (step)
