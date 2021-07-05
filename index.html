@@ -47,7 +47,8 @@
                                 <img src="img/defichain.svg"/>
                             </div>
                             <div class="input" id="cPriceDFIDiv">
-                                <div>$</div><input class="inputtext" type="number" min="0" id="cPriceDFI"/>
+                                <div>$</div>
+                                <input class="inputtext" type="number" min="0" id="cPriceDFI" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();"/>
                             </div>
                             <div class="title" id="OtherTokenValueDiv">
                                 <select class="js-example-templating" id="OtherTokenValue">
@@ -60,7 +61,8 @@
                                 </select>
                             </div>
                             <div class="input" id="cPriceTokenDiv">
-                                <div>$</div><input class="inputtext" type="number" min="0" id="cPriceToken"/>
+                                <div>$</div>
+                                <input class="inputtext" type="number" min="0" id="cPriceToken" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();"/>
                             </div>
                             <div class="title" name="OtherRatio">Other</div>
                             <div class="input auto" id="cPriceRatioDiv">
@@ -77,13 +79,15 @@
                                 <img src="img/defichain.svg"/>
                             </div>
                             <div class="input">
-                                <div>$</div><input class="inputtext" type="number" min="0" id="fPriceDFI"/>
+                                <div>$</div>
+                                <input class="inputtext" type="number" min="0" id="fPriceDFI" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();"/>
                             </div>
                             <div class="title" name="OtherRatio">
                                 Other
                             </div>
                             <div class="input">
-                                <div>$</div><input class="inputtext" type="number" min="0" id="fPriceToken"/>
+                                <div>$</div>
+                                <input class="inputtext" type="number" min="0" id="fPriceToken" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();"/>
                             </div>
                             <div class="title" name="OtherRatio">Other</div>
                             <div class="input auto">
@@ -100,11 +104,13 @@
                                 <img src="img/defichain.svg"/>
                             </div>
                             <div class="input" id="cAmountDFIDiv">
-                                <div>&nbsp;</div><input class="inputtext" type="number" min="0" id="cAmountDFI"/>
+                                <div>&nbsp;</div>
+                                <input class="inputtext" type="number" min="0" id="cAmountDFI" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();"/>
                             </div>
                             <div class="title" name="OtherToken">Other</div>
                             <div class="input auto" id="cAmountTokenDiv">
-                                <div>&nbsp;</div><input class="inputtext" type="text" min="0" id="cAmountToken" disabled/>
+                                <div>&nbsp;</div>
+                                <input class="inputtext" type="text" min="0" id="cAmountToken" disabled/>
                             </div>
                         </div>
                     </section>
@@ -114,19 +120,19 @@
                             <h3> Interest </h3>
                             <div class="title">APR</div>
                             <div class="input" id="aprDiv">
-                                %<input class="inputtext" type="number" min="0" id="apr"/>
+                                %<input class="inputtext" type="number" min="0" id="apr" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();"/>
                             </div>
                             <div class="title">Fee</div>
                             <div class="input" id="feeDiv">
-                                %<input class="inputtext" type="number" min="0" id="fee"/>
+                                %<input class="inputtext" type="number" min="0" id="fee" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();"/>
                             </div>
                             <div class="title">Time</div>
                             <div class="input" id="durationDiv">
-                                d.<input class="inputtext" type="number" min="0" id="duration"/>
+                                d.<input class="inputtext" type="number" min="0" id="duration" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();"/>
                             </div>
                             <div class="title">Comp.</div>
                             <div class="input" id="periodDiv">
-                                d.<input class="inputtext" type="number" min="0" id="period"/>
+                                d.<input class="inputtext" type="number" min="0" id="period" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();"/>
                             </div>
                         </div>
                     </section>

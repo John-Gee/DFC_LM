@@ -37,55 +37,29 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    my$("#cPriceToken").addEventListener("input", function() {
-        calcPriceRatio("c");
-        calculate();
-    });
-    my$("#cPriceDFI").addEventListener("input", function() {
-        calcPriceRatio("c");
-        calculate();
-    });
-    my$("#cPriceRatio").addEventListener("input", function() {
+    my$("#cPriceToken").addEventListener("input", cCalculate);
+    my$("#cPriceDFI").addEventListener("input", cCalculate);
+    /*my$("#cPriceRatio").addEventListener("input", function() {
         priceRatio("c");
         calculate();
-    });
+    });*/
 
-    my$("#cAmountDFI").addEventListener("input", function() {
-        calculate();
-    });
+    my$("#cAmountDFI").addEventListener("input", calculate);
     
-    my$("#fPriceToken").addEventListener("input", function() {
-        calcPriceRatio("f");
-        calculate();
-    });
-    my$("#fPriceDFI").addEventListener("input", function() {
-        calcPriceRatio("f");
-        calculate();
-    });
-    my$("#fPriceRatio").addEventListener("input", function() {
+    my$("#fPriceToken").addEventListener("input", fCalculate);
+    my$("#fPriceDFI").addEventListener("input", fCalculate);
+    /*my$("#fPriceRatio").addEventListener("input", function() {
         priceRatio("f");
         calculate();
-    });
+    });*/
 
-    my$("#apr").addEventListener("input", function() {
-        calculate();
-    });
-    my$("#fee").addEventListener("input", function() {
-        calculate();
-    });
-    my$("#duration").addEventListener("input", function() {
-        calculate();
-    });
-    my$("#period").addEventListener("input", function() {
-        calculate();
-    });
-    my$("#period").addEventListener("input", function() {
-        calculate();
-    });
+    my$("#apr").addEventListener("input", calculate);
+    my$("#fee").addEventListener("input", calculate);
+    my$("#duration").addEventListener("input", calculate);
+    my$("#period").addEventListener("input", calculate);
+    my$("#period").addEventListener("input", calculate);
 
-    my$("#sync").addEventListener("click", function() {
-        getPrices();
-    });
+    my$("#sync").addEventListener("click", getPrices);
 
     createEmptyPlot();
 

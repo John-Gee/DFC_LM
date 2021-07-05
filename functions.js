@@ -32,6 +32,19 @@ function prettyNumber(number) {
     });
 }
 
+function cCalculate() {
+    xCalculate("c");
+}
+
+function fCalculate() {
+    xCalculate("f");
+}
+
+function xCalculate(letter) {
+    calcPriceRatio(letter);
+    calculate();
+}
+
 function priceRatio(time) {
     var priceToken = "#" + time + "PriceToken";
     var priceDFI   = "#" + time + "PriceDFI";
