@@ -220,6 +220,36 @@ function compareValues(value1, value2, id1, id2) {
     }
 }
 
+function compareTotalValues(cValue, fValueH, fValue, fValueI) {
+    var best    = "#cValue";
+    var biggest = cValue;
+
+    if (cValue < fValueH) {
+        best    = "#fValueH"
+        biggest = fValueH;
+    }
+
+    if (biggest < fValue) {
+        best    = "#fValue";
+        biggest = fValue;
+    }
+
+    if (biggest < fValueI) {
+        best    = "#fValueI";
+        biggest = fValueI;
+    }
+
+    if (biggest) {
+        my$(best).parentElement.parentElement.classList.add("best");
+        my$(best).parentElement.parentElement.classList.remove("nonbest");
+    }
+}
+
+function clearBest(id) {
+    my$(id).parentElement.parentElement.classList.remove("best");
+    my$(id).parentElement.parentElement.classList.add("nonbest");
+}
+
 function calculate() {
     var cPriceDFI    = 0;
     var cPriceToken  = 0;
@@ -246,6 +276,10 @@ function calculate() {
     var fValueTokenH = 0;
     var fValueH      = 0;
 
+    clearBest("#cValue");
+    clearBest("#fValueH");
+    clearBest("#fValue");
+    clearBest("#fValueI");
     my$("#int").hidden = true;
     createEmptyPlot();
 
@@ -382,6 +416,8 @@ function calculate() {
     compareValues(fValueDFIH, fValueDFII, "#fValueDFIH", "#fValueDFII");
     compareValues(fValueTokenH, fValueTokenI, "#fValueTokenH", "#fValueTokenI");
     compareValues(fValueH, fValueI, "#fValueH", "#fValueI");
+
+    compareTotalValues(cValue, fValueH, fValue, fValueI);
 }
 
 function compareNumbers(a, b) {
