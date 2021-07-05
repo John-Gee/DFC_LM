@@ -78,14 +78,11 @@ function calcPriceRatio(time) {
 function createTutorial() {
     var tour = [
         {
-            title: "Welcome to the tutorial!"
+            element: "#play",
+            title: "Welcome to the tutorial! This button replays it."
         },
         {
             title: "This calculator estimates potential divergent changes."
-        },
-        {
-            element: "#play",
-            title: "Replay this tutorial."
         },
         {
             element: "#OtherTokenValueDiv",
@@ -104,7 +101,7 @@ function createTutorial() {
         },
         {
             element: "#cPriceTokenDiv",
-            title: "Enter other coin's initial price.",
+            title: "Enter the other coin's initial price.",
             position: "right"
         },
         {
@@ -119,7 +116,7 @@ function createTutorial() {
         },
         {
             element: "#cAmountDFIDiv",
-            title: "Enter amount of DFI provided to the pool.",
+            title: "Enter the amount of DFI provided to the pool.",
             position: "right"
         },
         {
@@ -134,57 +131,52 @@ function createTutorial() {
         },
         {
             element: "#aprDiv",
-            title: "Enter pool's rewards in APR.",
+            title: "Enter the pool's rewards in APR.",
             position: "top"
         },
         {
             element: "#feeDiv",
-            title: "Enter pool's commissions in APR.",
+            title: "Enter the pool's commissions in APR.",
             position: "top"
         },
         {
             element: "#durationDiv",
-            title: "Enter time in days of liquidity mining.",
+            title: "Enter days in liquidity mining.",
             position: "top"
         },
         {
             element: "#periodDiv",
-            title: "Enter period in days to compound, the minimum is 0.0003472 apart from 0 which means no compounding. Beware of conversion and transaction fees.",
+            title: "Enter period in days to compound, the minimum is 0.0003472, apart from 0 which means no compounding. Beware of conversion and transaction fees.",
             position: "top"
         },
         {
-            element: "#numbers",
-            title: "This provides values based on the input data.",
-            position: "bottom"
-        },
-        {
             element: "#finalAmounts",
-            title: "Final amounts of coins, without interest.",
+            title: "Without interest.",
             position: "bottom"
         },
         {
             element: "#initialValues",
-            title: "Initial values, based on initial prices and amounts.",
+            title: "Based on initial prices and amounts.",
             position: "bottom"
         },
         {
             element: "#holding",
-            title: "Final values of just holding, based on initial amounts and final prices.",
+            title: "Based on initial amounts and final prices.",
             position: "bottom"
         },
         {
             element: "#mining",
-            title: "Final values of mining, based on final amounts and prices, without interest.",
+            title: "Based on final amounts and prices, without interest.",
             position: "bottom"
         },
         {
             element: "#miningI",
-            title: "Final values of mining, based on final amounts and prices, with interest.",
+            title: "Based on final amounts and prices, with interest.",
             position: "bottom"
         },
         {
             element: "#plot",
-            title: "This plots potential values, depending on the change of the other coin's price in DFI.",
+            title: "This plots potential values, based on the other coin's final price in DFI.",
             position: "top"
         }
     ];
