@@ -252,35 +252,44 @@ function clearBest(id) {
 }
 
 function calculate() {
-    var cPriceDFI    = 0;
-    var cPriceToken  = 0;
+    var cPriceDFI     = 0;
+    var cPriceToken   = 0;
 
-    var cAmountDFI   = 0;
-    var cAmountToken = 0;
+    var cAmountDFI    = 0;
+    var cAmountToken  = 0;
 
-    var cValueDFI    = 0;
-    var cValueToken  = 0;
-    var cValue       = 0;
+    var cValueDFI     = 0;
+    var cValueToken   = 0;
+    var cValue        = 0;
 
-    var fAmountDFI   = 0;
-    var fAmountToken = 0;
+    var fAmountDFI    = 0;
+    var fAmountToken  = 0;
 
-    var fValueDFI    = 0;
-    var fValueToken  = 0;
-    var fValue       = 0;
+    var fAmountDFII   = 0;
+    var fAmountTokenI = 0;
 
-    var fValueDFII   = 0;
-    var fValueTokenI = 0;
-    var fValueI      = 0;
+    var fValueDFI     = 0;
+    var fValueToken   = 0;
+    var fValue        = 0;
 
-    var fValueDFIH   = 0;
-    var fValueTokenH = 0;
-    var fValueH      = 0;
+    var fValueDFII    = 0;
+    var fValueTokenI  = 0;
+    var fValueI       = 0;
+
+    var fValueDFIH    = 0;
+    var fValueTokenH  = 0;
+    var fValueH       = 0;
 
     clearBest("#cValue");
     clearBest("#fValueH");
     clearBest("#fValue");
     clearBest("#fValueI");
+    my$("#fAmounts").classList.add("shadow");
+    my$("#fAmountsI").classList.add("shadow");
+    my$("#initialValues").classList.add("shadow");
+    my$("#holding").classList.add("shadow");
+    my$("#mining").classList.add("shadow");
+    my$("#miningI").classList.add("shadow");
     my$("#int").hidden = true;
     createEmptyPlot();
 
@@ -316,6 +325,8 @@ function calculate() {
                 fAmountToken = cAmountToken;
             }
         }
+
+        my$("#initialValues").classList.remove("shadow");
 
         if (fPriceRatio) {
             /* The ratio of tokens in the pool
@@ -354,6 +365,10 @@ function calculate() {
             fValueDFIH    = cAmountDFI * fPriceDFI;
             fValueH       = fValueTokenH + fValueDFIH;
 
+            my$("#fAmounts").classList.remove("shadow");
+            my$("#holding").classList.remove("shadow");
+            my$("#mining").classList.remove("shadow");
+
             if ((my$("#apr").value || my$("#fee").value) && my$("#duration").value ) {
                 var apr      = +my$("#apr").value;
                 var fee      = +my$("#fee").value;
@@ -384,6 +399,9 @@ function calculate() {
                 fValueTokenI  = fAmountTokenI * fPriceToken;
                 fValueDFII    = fAmountDFII * fPriceDFI;
                 fValueI       = fValueTokenI + fValueDFII;
+
+                my$("#fAmountsI").classList.remove("shadow");
+                my$("#miningI").classList.remove("shadow");
             }
 
             createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH);
@@ -397,6 +415,9 @@ function calculate() {
 
     my$("#fAmountToken").value = prettyNumber(fAmountToken);
     my$("#fAmountDFI").value = prettyNumber(fAmountDFI);
+
+    my$("#fAmountTokenI").value = prettyNumber(fAmountTokenI);
+    my$("#fAmountDFII").value = prettyNumber(fAmountDFII);
 
     my$("#fValueToken").value = prettyNumber(fValueToken);
     my$("#fValueDFI").value = prettyNumber(fValueDFI);

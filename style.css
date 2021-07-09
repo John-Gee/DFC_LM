@@ -559,3 +559,7 @@ input[type=number] {
 .nonbest {
     padding-top: 0.5rem;
 }
+
+.shadow {
+    filter: opacity(15%);
+}
