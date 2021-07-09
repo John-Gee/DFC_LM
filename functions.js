@@ -6,6 +6,7 @@ function SwitchTokenLabel() {
     myMap("[name='OtherRatio']", function(el) {
         el.innerHTML = coinNameToImg(label);
     });
+    my$("#xLabel").innerHTML = "Final/Initial price of " + label + " in DFI, in %.";
 }
 
 function formatCoin(coin) {
@@ -496,7 +497,7 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH) {
         }
     }
 
-    priceRatios[priceRatios.indexOf(current)] = current + " (current)";
+    priceRatios[priceRatios.indexOf(current)] = current + " (from input)";
     new Chartist.Line(".ct-chart", {
         labels: priceRatios,
         series: [points, points2]

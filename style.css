@@ -461,19 +461,26 @@ input[type=number] {
     stroke: rgba(255,0,176,1);
 }
 
-#chartTitle {
-    margin: 0;
-}
-
 #xLabel {
     padding: 0.5rem 0 0.5rem 0;
-    font-size: calc(0.8 * var(--fsize));
+    font-size: calc(0.9 * var(--fsize));
     font-family: KEYS;
+    font-style: italic;
+}
+
+#yLabel {
+    padding: 0.5rem 0 0.5rem 0;
+    font-size: calc(0.9 * var(--fsize));
+    font-family: KEYS;
+    writing-mode: vertical-lr;
+    transform: rotate(-180deg);
+    font-style: italic;
 }
 
 #aroundChart {
     display: flex;
     flex-direction: row;
+    align-items: center
 }
 
 .ct-area.ct-threshold-above {
