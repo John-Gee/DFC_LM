@@ -163,8 +163,8 @@ function createTutorial() {
             position: "top"
         },
         {
-            element: "#finalAmounts",
-            title: "Without interest.",
+            element: "#amountsParent",
+            title: "Amounts of coins after liquidity mining",
             position: "bottom"
         },
         {
