@@ -538,6 +538,19 @@ function getPrices() {
     });
 }
 
+function WindowResize() {
+    if (isNumbersWrapped())
+        my$("#verticalHR").hidden = true;
+    else
+        my$("#verticalHR").hidden = false;
+}
+
+function isNumbersWrapped() {
+    if (my$("#values").getBoundingClientRect().top > my$("#amounts").getBoundingClientRect().top)
+        return true;
+    return false;
+}
+
 function inputEvent(selector) {
     my$(selector).dispatchEvent(new Event('input'));
 }

@@ -202,7 +202,9 @@ h2 {
 hr {
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
-    height: 0;
+    height: 1px;
+    border: 0;
+    background-color: rgba(200,200,200,1);
 }
 
 h3 {
@@ -324,7 +326,7 @@ input[type=number] {
     /* style */
     font-size: 100%;
     min-width: 0;
-    max-width: 6rem;
+    max-width: 5rem;
     height: 94%;
     border: none;
     outline: none;
@@ -393,7 +395,6 @@ input[type=number] {
     /* position */
     display: flex;
     flex-direction: row;
-    //grid-template-columns: auto 1fr 1fr 1fr 1fr;
 
     /* style */q
     padding-bottom: 0.4rem;
@@ -408,8 +409,26 @@ input[type=number] {
     gap: 0.4rem;
 
     /* style */
+    justify-content: space-evenly;
+}
+
+#amounts, #values {
+    /* position */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1;
+    gap: 0.4rem;
+
+    /* style */
     padding-bottom: 0.4rem;
     justify-content: space-evenly;
+}
+
+#verticalHR {
+    width: calc(0.08 * var(--fsize));
+    height: calc(8.85 * var(--fsize));
+    background-color: rgba(200,200,200,1);
 }
 
 .values3 {
