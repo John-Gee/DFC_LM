@@ -194,7 +194,7 @@ function createTutorial() {
             position: "top"
         }
     ];
-    return GuideChimp(tour, {padding: 20});
+    return GuideChimp(tour, {padding: 5});
 }
 
 function startTutorial(guideChimp) {
