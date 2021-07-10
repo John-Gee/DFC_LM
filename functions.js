@@ -222,6 +222,9 @@ function compareValues(value1, value2, id1, id2) {
 }
 
 function compareTotalValues(cValue, fValueH, fValue, fValueI) {
+    if (!fValue)
+        return;
+
     var best    = "#cValue";
     var biggest = cValue;
 
