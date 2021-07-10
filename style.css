@@ -134,8 +134,8 @@ body {
     box-shadow: -5px -5px 15px 5px rgba(250, 250, 250, 1),
                 5px 5px 15px 5px rgba(75, 75, 75, 1);
     --fsize: calc(var(--h) / 1.25);
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
+    padding-right: 0.25rem;
+    padding-left: 0.25rem;
 }
 
 #inputBody {
@@ -167,8 +167,8 @@ body {
     border-radius: 36px;
     box-shadow: -5px -5px 15px 5px rgba(250, 250, 250, 1),
                 5px 5px 15px 5px rgba(75, 75, 75, 1);
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
 }
 
 #numbers {
@@ -328,7 +328,7 @@ input[type=number] {
     /* style */
     font-size: 100%;
     min-width: 0;
-    max-width: 5rem;
+    max-width: 4.25rem;
     height: 94%;
     border: none;
     outline: none;
@@ -558,7 +558,7 @@ input[type=number] {
 }
 
 .nonbest {
-    padding-top: 0.5rem;
+    padding: 0.5rem;
 }
 
 .shadow {
