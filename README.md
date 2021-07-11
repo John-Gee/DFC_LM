@@ -1,1 +1,1 @@
-A liquidit mining calculator.
+A liquidity mining calculator for DeFiChain.
