@@ -16,7 +16,7 @@ function addCSUM() {
         xxcsum=`xxh32sum "$cleanLine"`
         csum="${xxcsum:0:8}"
         sed -i "s|\"$line\"|\"$cleanLine?c=$csum\"|" index.html
-        echo $line $csum
+        #echo $line $csum
 
     done
 }
