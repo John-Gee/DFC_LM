@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "TITLE";
+    src: url("../../site/fonts/AROMA-Bold.ttf");
+    font-display: swap
+}
+
+@font-face {
+    font-family: "SUB";
+    src: url("../../site/fonts/Comodo/Comodo Regular Free.otf");
+    font-display: swap
+}
+
+@font-face {
+    font-family: "KEYS";
+    src: url("../../site/fonts/Jupitex/Jupitex Sans Serif.otf");
+    font-display: swap
+}
