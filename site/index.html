@@ -6,34 +6,34 @@
         <title> DeFiChain Liquidity Mining Calculator</title>
 
         <script src="https://unpkg.com/ts-select2@0.1.0/dist/ts-select2.min.js" defer></script>
-        <script src="../site/Libraries/chartist/chartist.min.js" defer></script>
-        <script src="../site/Libraries/chartist/plugins/threshold/chartist-plugin-threshold.min.js?c=a77e8e22" defer></script>
-        <script src="../site/Libraries/numbro/numbro.min.js" defer></script>
-        <script src="../site/Libraries/GuideChimp/guidechimp.min.js" defer></script>
-        <script src="js/functions.js" defer></script>
-        <script src="js/events.js" defer></script>
+        <script src="Libraries/chartist/chartist.min.js?c=826a427d" defer></script>
+        <script src="Libraries/chartist/plugins/threshold/chartist-plugin-threshold.min.js?c=a77e8e22" defer></script>
+        <script src="Libraries/numbro/numbro.min.js?c=b2d90903" defer></script>
+        <script src="Libraries/GuideChimp/guidechimp.min.js?c=28196ba2" defer></script>
+        <script src="js/functions.js?c=0e93a743" defer></script>
+        <script src="js/events.js?c=6555e6ee" defer></script>
 
-        <link href="../site/Libraries/select2/select2.min.css" rel="stylesheet"/>
-        <link href="../site/Libraries/chartist/chartist.min.css" rel="stylesheet"/>
-        <link href="../site/Libraries/GuideChimp/guidechimp.min.css" rel="stylesheet"/>
-        <link href="css/chart.css" rel="stylesheet"/>
-        <link href="css/fonts.css" rel="stylesheet"/>
-        <link href="css/guide.css" rel="stylesheet"/>
-        <link href="css/select2.css" rel="stylesheet"/>
-        <link href="css/style.css" rel="stylesheet"/>
+        <link href="Libraries/select2/select2.min.css?c=b62c55ad" rel="stylesheet"/>
+        <link href="Libraries/chartist/chartist.min.css?c=49d54bc6" rel="stylesheet"/>
+        <link href="Libraries/GuideChimp/guidechimp.min.css?c=202763b7" rel="stylesheet"/>
+        <link href="css/chart.css?c=406f5bb2" rel="stylesheet"/>
+        <link href="css/fonts.css?c=4bc7dc10" rel="stylesheet"/>
+        <link href="css/guide.css?c=0bca784b" rel="stylesheet"/>
+        <link href="css/select2.css?c=878b29d5" rel="stylesheet"/>
+        <link href="css/style.css?c=7cdd4c6a" rel="stylesheet"/>
 
-        <link href="../site/img/favicon-16x16.png" rel="shortcut icon" type="image/jpg"/>
+        <link href="img/favicon-16x16.png" rel="shortcut icon" type="image/jpg"/>
     </head>
     <body>
         <section id="header">
             <a href="https://www.defichain.com" target="_blank">
-                <img id="logo" src="../site/img/defichain.svg"/>
+                <img id="logo" src="img/defichain.svg"/>
             </a>
             <h1> Liquidity Mining Calculator </h1>
             <div class="buttons">
                 <div id="playButtons">
-                    <img id="play" src="../site/img/play.svg"/>
-                    <img id="play2" src="../site/img/play2.svg" hidden/>
+                    <img id="play" src="img/play.svg"/>
+                    <img id="play2" src="img/play2.svg" hidden/>
                 </div>
             </div>
         </section>
@@ -45,10 +45,10 @@
                 </div>
                 <div id="inputBody">
                     <div class="prices">
-                        <img id="sync" src="../site/img/sync.svg"/>
+                        <img id="sync" src="img/sync.svg"/>
                         <h3> Initial Prices </h3>
                         <div class="title">
-                            <img src="../site/img/defichain.svg"/>
+                            <img src="img/defichain.svg"/>
                         </div>
                         <div class="input" id="cPriceDFIDiv">
                             <div>$</div>
@@ -70,7 +70,7 @@
                         </div>
                         <div class="title" name="OtherRatio">Other</div>
                         <div class="input auto" id="cPriceRatioDiv">
-                            <img src="../site/img/defichain.svg"/>
+                            <img src="img/defichain.svg"/>
                             <input class="inputtext" type="text" id="cPriceRatio" disabled/>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                         <h3> &nbsp; </h3>
                         <h3> Final Prices </h3>
                         <div class="title">
-                            <img src="../site/img/defichain.svg"/>
+                            <img src="img/defichain.svg"/>
                         </div>
                         <div class="input">
                             <div>$</div>
@@ -93,7 +93,7 @@
                         </div>
                         <div class="title" name="OtherRatio">Other</div>
                         <div class="input auto">
-                            <img src="../site/img/defichain.svg"/>
+                            <img src="img/defichain.svg"/>
                             <input class="inputtext" type="text" id="fPriceRatio" disabled/>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                         <h3> &nbsp; </h3>
                         <h3> Initial Amounts </h3>
                         <div class="title">
-                            <img src="../site/img/defichain.svg"/>
+                            <img src="img/defichain.svg"/>
                         </div>
                         <div class="input" id="cAmountDFIDiv">
                             <div>&nbsp;</div>
@@ -148,7 +148,7 @@
                                 &nbsp;
                             </h3>
                             <div class="title">
-                                <img src="../site/img/defichain.svg"/>&nbsp;
+                                <img src="img/defichain.svg"/>&nbsp;
                             </div>
                             <div class="title" name="OtherToken">Other</div>
                             <div class="title">Total</div>

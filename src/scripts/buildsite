@@ -4,7 +4,7 @@
 function addCSUM() {
     extension="$1"
 
-    grep -o -P -e "\".*\.$extension.*?\"" index.html | while read -r line
+    grep -o -P -e "\".*\.$extension.*?\"" ../site/index.html | while read -r line
     do
         if [[ $line == *"http"* ]]
         then
@@ -15,18 +15,17 @@ function addCSUM() {
         cleanLine="${line%\?*}"
         xxcsum=`xxh32sum "$cleanLine"`
         csum="${xxcsum:0:8}"
-        sed -i "s|\"$line\"|\"$cleanLine?c=$csum\"|" index.html
+        sed -i "s|\"$line\"|\"$cleanLine?c=$csum\"|" ../site/index.html
         #echo $line $csum
 
     done
 }
 
 function cleanPaths() {
-    sed -i "s|../site/||" index.html
+    sed -i "s|../site/||" ../site/index.html
 }
 
+cp -ar index.html css js ../site/
 addCSUM js
 addCSUM css
-
-
-cp -ar index.html css js ../site/
+cleanPaths

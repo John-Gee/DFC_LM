@@ -1,0 +1,33 @@
+.gc-copyright {
+    width: 0;
+    height: 0;
+    font-size: 0px;
+}
+
+.gc-tooltip {
+    border-radius: 12px;
+}
+
+/* Change overlay color and transparency */
+.gc-overlay {
+    opacity: 0.75;
+}
+
+/* Change progressbar color */
+.gc-progressbar {
+    background-color: rgba(255,0,176,1);
+}
+
+.gc-pagination-theme-numbers .gc-pagination-item.gc-pagination-active, .gc-pagination-theme-numbers .gc-pagination-item:hover {
+    background-color: rgba(255,0,176,1);
+}
+
+.gc-navigation-next:hover, .gc-navigation-prev:hover {
+    border-color: rgba(255,0,176,1);
+}
+
+.gc-title {
+    font-family: KEYS;
+    font-weight: normal;
+    text-align: center;
+}

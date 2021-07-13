@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
 root=`git rev-parse --show-toplevel`
-cd "$root"
-./pre_commit.sh
+cd "$root/src"
+scripts/buildsite
 
 git add index.html
-
-echo "index.html has been modified to include latest hashes."
