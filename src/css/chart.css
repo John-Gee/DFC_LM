@@ -1,0 +1,63 @@
+.ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
+    stroke: rgba(140,140,140,1);
+}
+
+.ct-series-b .ct-bar, .ct-series-b .ct-line, .ct-series-b .ct-point, .ct-series-b .ct-slice-donut {
+    stroke: rgba(255,0,176,1);
+}
+
+.ct-area.ct-threshold-above {
+  fill: rgba(0,255,0,1);
+}
+
+.ct-area.ct-threshold-below {
+  fill: rgba(255,0,0,1);
+}
+
+
+#xLabel {
+    padding: 0.5rem 0 0.5rem 0;
+    font-size: calc(0.9 * var(--fsize));
+    font-family: KEYS;
+    font-style: italic;
+}
+
+#yLabel {
+    padding: 0.5rem 0 0.5rem 0;
+    font-size: calc(0.9 * var(--fsize));
+    font-family: KEYS;
+    writing-mode: vertical-lr;
+    transform: rotate(-180deg);
+    font-style: italic;
+}
+
+#aroundChart {
+    display: flex;
+    flex-direction: row;
+    align-items: center
+}
+
+#legend {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+#noInt {
+    /* style */
+    color: rgba(140,140,140,1);
+    white-space: nowrap;
+    font-size: calc(0.8 * var(--fsize));
+    font-family: SUB;
+    padding-right: 0.5rem;
+}
+
+#int {
+    /* style */
+    color: rgba(255,0,176,1);
+    white-space: nowrap;
+    font-size: calc(0.8 * var(--fsize));
+    font-family: SUB;
+    padding-right: 0.5rem;
+}
