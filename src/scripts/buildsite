@@ -21,5 +21,12 @@ function addCSUM() {
     done
 }
 
+function cleanPaths() {
+    sed -i "s|../site/||" index.html
+}
+
 addCSUM js
 addCSUM css
+
+
+cp -ar index.html css js ../site/

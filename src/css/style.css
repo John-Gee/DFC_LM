@@ -1,39 +1,18 @@
 @font-face {
     font-family: "TITLE";
-    //src: url("fonts/Reckoner_Bold.ttf");
-    src: url("fonts/AROMA-Bold.ttf");
+    src: url("../../site/fonts/AROMA-Bold.ttf");
     font-display: swap
 }
 
 @font-face {
     font-family: "SUB";
-    src: url("fonts/Comodo/Comodo Regular Free.otf");
+    src: url("../../site/fonts/Comodo/Comodo Regular Free.otf");
     font-display: swap
 }
 
 @font-face {
     font-family: "KEYS";
-    //src: url("fonts/ONEDAY.otf");
-
-    //src: url("fonts/Balqis.ttf");
-    //src: url("fonts/Vanity - OTF/Vanity-Bold.otf");
-    //src: url("fonts/Monastic.ttf");
-    //src: url("fonts/accent.ttf");
-    //src: url("fonts/Coco - Family - OTF/Coco-Bold.otf");
-    //src: url("fonts/Ailerons-Regular.otf")
-    //src: url("fonts/aqua.ttf");
-    //src: url("fonts/Modeka.otf");
-    //src: url("fonts/Higher.otf");
-    //src: url("fonts/Nordic Alternative Regular.ttf");
-    //src: url("fonts/Metria.ttf");
-    //src: url("fonts/Arenq.otf");
-    //src: url("fonts/Moka-Regular.otf");
-    //src: url("fonts/Glamor - TTF/Glamor-Regular.ttf");
-    //src: url("fonts/Comodo/Comodo Regular Free.otf");   
-
-    //src: url("fonts/Summit/Summit_TrueType/SummitRegular-Display.ttf");
-    src: url("fonts/Jupitex/Jupitex Sans Serif.otf");
-    //src: url("fonts/MINISTRY.otf");
+    src: url("../../site/fonts/Jupitex/Jupitex Sans Serif.otf");
     font-display: swap
 }
 

@@ -15,13 +15,13 @@ function formatCoin(coin) {
     }
 
     var img = document.createElement('img');
-    img.src = "img/" + coin.id + ".svg";
+    img.src = "../site/img/" + coin.id + ".svg";
     img.class = "img-flag";
     return img;
 }
 
 function coinNameToImg(coinName) {
-    return '<img src="img/' + coinName + '.svg" class="img-flag"/>&nbsp;';
+    return '<img src="../site/img/' + coinName + '.svg" class="img-flag"/>&nbsp;';
 }
 
 function prettyNumber(number) {
