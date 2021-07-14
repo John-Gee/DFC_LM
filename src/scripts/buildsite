@@ -25,7 +25,22 @@ function cleanPaths() {
     sed -i "s|../site/||" ../site/index.html
 }
 
-cp -ar index.html css js ../site/
+function concatFiles() {
+    cat css/{chart,fonts,guide,select2,style}.css > ../site/css/style.css
+    for f in {chart,fonts,guide,select2}.css
+    do
+        sed -i "/^.*$f.*$/d" ../site/index.html
+    done
+
+    cat js/{events,functions}.js > ../site/js/functions.js
+    for f in events.js
+    do
+        sed -i "/^.*$f.*$/d" ../site/index.html
+    done
+}
+
+cp -a index.html ../site/
+concatFiles
 addCSUM js
 addCSUM css
 cleanPaths

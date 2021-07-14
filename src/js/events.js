@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });*/
 
     my$("#cAmountDFI").addEventListener("input", calculate);
-    
+
     my$("#fPriceToken").addEventListener("input", fCalculate);
     my$("#fPriceDFI").addEventListener("input", fCalculate);
     /*my$("#fPriceRatio").addEventListener("input", function() {
