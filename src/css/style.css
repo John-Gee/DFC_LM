@@ -81,7 +81,7 @@ body {
     margin: 1.0rem;
 }
 
-#input {
+#investment {
     /* children */
     display: flex;
     flex-direction: column;
@@ -99,7 +99,7 @@ body {
     padding-left: 0.25rem;
 }
 
-#inputBody {
+#investmentBody {
     /* children */
     display: flex;
     flex-direction: column;
