@@ -305,9 +305,6 @@ input[type=number] {
     /* position */
     display: flex;
     flex-direction: row;
-
-    /* style */
-    padding-bottom: 0.4rem;
 }
 
 .values2 {
