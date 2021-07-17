@@ -4,7 +4,7 @@
 function addCSUM() {
     extension="$1"
 
-    grep -o -P -e "\".*\.$extension.*?\"" ../site/index.html | while read -r line
+    grep -o -P -e "\".*\.$extension.*?\"" index.html | while read -r line
     do
         if [[ $line == *"http"* ]]
         then
@@ -15,24 +15,25 @@ function addCSUM() {
         cleanLine="${line%\?*}"
         xxcsum=`xxh32sum "$cleanLine"`
         csum="${xxcsum:0:8}"
-        sed -i "s|\"$line\"|\"$cleanLine?c=$csum\"|" ../site/index.html
-        #echo $line $csum
-
+        sed -i "s|\"$line\"|\"$cleanLine?c=$csum\"|" index.html
     done
 }
 
 function cleanPaths() {
-    sed -i "s|../site/||" ../site/index.html
+    sed -i "s|../site/||" index.html
 }
 
 function concatFiles() {
-    cat css/{chart,fonts,guide,select2,style}.css > ../site/css/style.css
+    cat css/{chart,fonts,guide,select2,style}.css | npx postcss -m  > ../site/css/style.min.css
+    sed -i "s/style.css/style.min.css/" ../site/index.html
     for f in {chart,fonts,guide,select2}.css
     do
         sed -i "/^.*$f.*$/d" ../site/index.html
     done
 
-    cat js/{events,functions}.js > ../site/js/functions.js
+    uglifyjs js/{events,functions}.js -o ../site/js/functions.min.js \
+    -c -m --source-map "root='../src/js',url='functions.min.js.map'"
+    sed -i "s/functions.js/functions.min.js/" ../site/index.html
     for f in events.js
     do
         sed -i "/^.*$f.*$/d" ../site/index.html
@@ -41,6 +42,7 @@ function concatFiles() {
 
 cp -a index.html ../site/
 concatFiles
+cd ../site/
+cleanPaths
 addCSUM js
 addCSUM css
-cleanPaths
