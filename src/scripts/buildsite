@@ -20,29 +20,37 @@ function addCSUM() {
 }
 
 function cleanPaths() {
-    sed -i "s|../docs/||" index.html
+    sed -i "s|../docs/||" "$1"
 }
 
 function concatFiles() {
-    cat css/{chart,fonts,guide,select2,style}.css | npx postcss -m  > ../docs/css/style.min.css
+    cat css/{chart,fonts,guide,select2,style}.css | sed "s|../docs/||" | npx postcss -m > ../docs/css/style.min.css
     sed -i "s/style.css/style.min.css/" ../docs/index.html
     for f in {chart,fonts,guide,select2}.css
     do
         sed -i "/^.*$f.*$/d" ../docs/index.html
     done
 
+    for f in {events,functions}
+    do
+        cp js/"$f"{.js,2.js}
+        cleanPaths js/$f.js
+    done
     uglifyjs js/{events,functions}.js -o ../docs/js/functions.min.js \
     -c -m --source-map "root='../src/js',url='functions.min.js.map'"
     sed -i "s/functions.js/functions.min.js/" ../docs/index.html
-    for f in events.js
+    for f in events
     do
-        sed -i "/^.*$f.*$/d" ../docs/index.html
+        sed -i "/^.*$f\.js.*$/d" ../docs/index.html
+        mv js/"$f"2.js js/"$f".js
     done
+    mv js/functions2.js js/functions.js
 }
 
 cp -a index.html ../docs/
 concatFiles
 cd ../docs/
-cleanPaths
+cleanPaths index.html
+cleanPaths js/functions.min.js
 addCSUM js
 addCSUM css
