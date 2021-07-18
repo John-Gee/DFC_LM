@@ -23,13 +23,14 @@ function cleanPaths() {
     sed -i "s|../docs/||" "$1"
 }
 
-function concatFiles() {
-    cat css/{chart,fonts,guide,select2,style}.css | sed "s|../docs/||" | npx postcss -m > ../docs/css/style.min.css
-    sed -i "s/style.css/style.min.css/" ../docs/index.html
+function minify() {
+    minCSS=`cat css/{chart,fonts,guide,select2,style}.css |
+    sed "s|../docs/||" | sed "s|../fonts/|fonts/|" |npx postcss -m`
     for f in {chart,fonts,guide,select2}.css
     do
         sed -i "/^.*$f.*$/d" ../docs/index.html
     done
+    sed -i "s|^.*style.css.*$|<style type=text/css>$minCSS</style>|" ../docs/index.html
 
     for f in {events,functions}
     do
@@ -38,19 +39,26 @@ function concatFiles() {
     done
     uglifyjs js/{events,functions}.js -o ../docs/js/functions.min.js \
     -c -m --source-map "root='../src/js',url='functions.min.js.map'"
-    sed -i "s/functions.js/functions.min.js/" ../docs/index.html
+    sed -i "s|functions.js|functions.min.js|" ../docs/index.html
     for f in events
     do
         sed -i "/^.*$f\.js.*$/d" ../docs/index.html
         mv js/"$f"2.js js/"$f".js
     done
     mv js/functions2.js js/functions.js
+
+    cleanPaths ../docs/index.html
+    npx html-minifier --collapse-boolean-attributes --collapse-inline-tag-whitespace \
+    --collapse-whitespace --conservative-collapse --decode-entities --minify-urls \
+    --no-include-auto-generated-tags --prevent-attributes-escaping \
+    --process-conditional-comments --quote-character "'" --remove-attribute-quotes \
+    --remove-comments --remove-empty-attributes --remove-optional-tags \
+    --remove-redundant-attributes --sort-attributes --sort-class-name \
+    --trim-custom-fragments --use-short-doctype ../docs/index.html  -o ../docs/index.html
 }
 
 cp -a index.html ../docs/
-concatFiles
+minify
 cd ../docs/
-cleanPaths index.html
-cleanPaths js/functions.min.js
 addCSUM js
 addCSUM css

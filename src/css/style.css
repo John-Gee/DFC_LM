@@ -159,6 +159,7 @@ h2 {
     //font-weight: bold;
     font-size: calc(0.95 * var(--h));
     font-family: SUB;
+    //text-transform: uppercase; 
 }
 
 hr {
@@ -172,15 +173,7 @@ hr {
 h3 {
     text-align: center;
     font-weight: normal;
-    font-size: calc(0.8 * var(--h));
-    font-family: KEYS;
-}
-
-h4 {
-    text-align: center;
-    font-weight: normal;
-    color: rgba(128, 128, 128, 0.75);
-    font-size: calc(0.66 * var(--h));
+    font-size: calc(0.7 * var(--h));
     font-family: KEYS;
 }
 
@@ -209,7 +202,7 @@ h4 {
     justify-content: beginning;
 
     /* style */
-    font-size: calc(1 * var(--fsize));
+    font-size: calc(0.8 * var(--fsize));
     min-width: calc(2.32 * var(--fsize));
     line-height: calc(1.44 * var(--fsize));
     font-family: KEYS;
@@ -284,7 +277,7 @@ input[type=number] {
     /* style */
     font-size: 100%;
     min-width: 0;
-    max-width: 4.25rem;
+    max-width: 4rem;
     height: 94%;
     border: none;
     outline: none;

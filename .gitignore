@@ -1,3 +1,2 @@
-fonts/*
-docs/fonts/*
 **/node_modules
+old*/*
