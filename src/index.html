@@ -25,6 +25,7 @@
         <link href="css/guide.css" rel="stylesheet" type="text/css">
         <link href="css/select2.css" rel="stylesheet" type="text/css">
         <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="css/queries.css" rel="stylesheet" type="text/css">
 
         <link href="../docs/img/DFI.svg" rel="icon" type="image/svg+xml">
         <link href="../docs/img/DFI.png" rel="alternate icon" type="image/jpg">
@@ -84,7 +85,7 @@
                         </div>
                     </div>
                     <div class="prices" id="finalPricesDiv">
-                        <h3> &nbsp; </h3>
+                        <h3> <br> </h3>
                         <h3> Final Prices </h3>
                         <div class="title">
                             <img src="../docs/img/DFI.svg" alt="DFI">
@@ -107,23 +108,23 @@
                         </div>
                     </div>
                     <div class="amount">
-                        <h3> &nbsp; </h3>
+                        <h3> <br> </h3>
                         <h3> Initial Amounts </h3>
                         <div class="title">
                             <img src="../docs/img/DFI.svg" alt="DFI">
                         </div>
                         <div class="input" id="cAmountDFIDiv">
-                            <div>&nbsp;</div>
+                            <div> <br> </div>
                             <input class="inputtext" type="number" min="0" id="cAmountDFI" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
                         </div>
                         <div class="title" name="OtherToken">Other</div>
                         <div class="input auto" id="cAmountTokenDiv">
-                            <div>&nbsp;</div>
+                            <div> <br> </div>
                             <input class="inputtext" type="text" min="0" id="cAmountToken" disabled>
                         </div>
                     </div>
                     <div class="interest" id="interestDiv">
-                        <h3> &nbsp; </h3>
+                        <h3> <br> </h3>
                         <h3> Interest </h3>
                         <div class="title">APR</div>
                         <div class="input" id="aprDiv">
@@ -144,53 +145,68 @@
                     </div>
                 </div>
             </section>
-            <section id="output">
-                <section id="numbers">
+            <section id="future">
+                <section id="outcome">
                     <h2> Outcome </h2>
                     <hr>
-                    <section class="values">
-                        <div class="titles">
-                            <h3>
-                                &nbsp;
-                            </h3>
-                            <h3>
-                                &nbsp;
-                            </h3>
-                            <div class="title">
-                                <img src="../docs/img/DFI.svg" alt="DFI">&nbsp;
+                    <section id="numbers">
+                        <div class="protectDiv">
+                            <div id="amountsTitles" class="titles">
+                                <h3>
+                                    <br>
+                                </h3>
+                                <h3>
+                                   <br>
+                                </h3>
+                                <div class="title">
+                                    <img src="../docs/img/DFI.svg" alt="DFI"><br>
+                                </div>
+                                <div class="title" name="OtherToken">Other</div>
+                                <div class="title">Total</div>
                             </div>
-                            <div class="title" name="OtherToken">Other</div>
-                            <div class="title">Total</div>
-                        </div>
-                        <div class="values2">
                             <div id="amountsParent">
                                 <h3> Liquidity Mining Amounts </h3>
                                 <div id="amounts">
-                                    <div class="values3 nonbest shadow" id="fAmounts">
+                                    <div class="table shadow" id="fAmounts">
                                         <h3> W/o Interest </h3>
                                         <div class="input auto">
-                                            <div>&nbsp;</div><input class="inputtext" type="text" min="0" id="fAmountDFI" disabled>
+                                            <div><br></div><input class="inputtext" type="text" min="0" id="fAmountDFI" disabled>
                                         </div>
                                         <div class="input auto">
-                                            <div>&nbsp;</div><input class="inputtext" type="text" min="0" id="fAmountToken" disabled>
+                                            <div><br></div><input class="inputtext" type="text" min="0" id="fAmountToken" disabled>
                                         </div>
                                     </div>
-                                    <div class="values3 nonbest shadow" id="fAmountsI">
+                                    <div class="table shadow" id="fAmountsI">
                                         <h3> With Interest </h3>
                                         <div class="input auto">
-                                            <div>&nbsp;</div><input class="inputtext" type="text" min="0" id="fAmountDFII" disabled>
+                                            <div><br></div><input class="inputtext" type="text" min="0" id="fAmountDFII" disabled>
                                         </div>
                                         <div class="input auto">
-                                            <div>&nbsp;</div><input class="inputtext" type="text" min="0" id="fAmountTokenI" disabled>
+                                            <div><br></div><input class="inputtext" type="text" min="0" id="fAmountTokenI" disabled>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <hr id="verticalHR">
+                        </div>
+                        <hr id="AVS" class="verticalHR">
+                        <div class="protectDiv">
+                            <div id="valuesTitles" class="titles hidden">
+                                <h3>
+                                    <br>
+                                </h3>
+                                <h3>
+                                    <br>
+                                </h3>
+                                <div class="title">
+                                    <img src="../docs/img/DFI.svg" alt="DFI"><br>
+                                </div>
+                                <div class="title" name="OtherToken">Other</div>
+                                <div class="title">Total</div>
+                            </div>
                             <div>
                                 <h3> Values </h3>
                                 <div id="values">
-                                    <div class="values3 nonbest shadow" id="initialValues">
+                                    <div class="table shadow" id="initialValues">
                                         <h3> Initial </h3>
                                         <div class="input auto">
                                             <div>$</div><input class="inputtext" type="text" min="0" id="cValueDFI" disabled>
@@ -202,7 +218,7 @@
                                             <div>$</div><input class="inputtext" type="text" min="0" id="cValue" disabled>
                                         </div>
                                     </div>
-                                    <div class="values3 nonbest shadow" id="holding">
+                                    <div class="table shadow" id="holding">
                                         <h3> Holding </h3>
                                         <div class="input auto">
                                             <div>$</div><input class="inputtext" type="text" min="0" id="fValueDFIH" disabled>
@@ -214,7 +230,7 @@
                                             <div>$</div><input class="inputtext" type="text" min="0" id="fValueH" disabled>
                                         </div>
                                     </div>
-                                    <div class="values3 nonbest shadow" id="mining">
+                                    <div class="table shadow" id="mining">
                                         <h3> LM w/o Int. </h3>
                                         <div class="input auto">
                                             <div>$</div><input class="inputtext" type="text" min="0" id="fValueDFI" disabled>
@@ -226,7 +242,7 @@
                                             <div>$</div><input class="inputtext" type="text" min="0" id="fValue" disabled>
                                         </div>
                                     </div>
-                                    <div class="values3 nonbest shadow" id="miningI">
+                                    <div class="table shadow" id="miningI">
                                         <h3> LM with Int. </h3>
                                         <div class="input auto">
                                             <div>$</div><input class="inputtext" type="text" min="0" id="fValueDFII" disabled>

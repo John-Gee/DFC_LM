@@ -564,16 +564,25 @@ function getPrices() {
 }
 
 function WindowResize() {
-    if (isNumbersWrapped())
-        my$("#verticalHR").hidden = true;
-    else
-        my$("#verticalHR").hidden = false;
+    if (isNumbersWrapped()) {
+        my$("#AVS").classList.remove("verticalHR");
+        my$("#amountsTitles").lastElementChild.classList.add("hidden");
+        my$("#valuesTitles").classList.remove("hidden");
+    }
+    else {
+        my$("#AVS").classList.add("verticalHR");
+        my$("#amountsTitles").lastElementChild.classList.remove("hidden");
+        my$("#valuesTitles").classList.add("hidden");
+    }
 }
 
 function isNumbersWrapped() {
-    if (my$("#values").getBoundingClientRect().top > my$("#amounts").getBoundingClientRect().top)
-        return true;
-    return false;
+    return (my$("#values").getBoundingClientRect().top > my$("#amounts").getBoundingClientRect().top)
+}
+
+function AreAmountsTitlesWrapped() {
+    return (my$("#fAmounts").firstElementChild.clientHeight >
+            my$("#initialValues").firstElementChild.clientHeight);
 }
 
 function inputEvent(selector) {

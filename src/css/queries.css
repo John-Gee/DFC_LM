@@ -1,0 +1,17 @@
+@media only screen and (max-width: 1000px) {
+    #calculator {
+        grid-template-columns: initial;
+    }
+    #investmentBody {
+        grid-template-rows: auto auto;
+        grid-template-columns: 1fr 1fr;
+    }
+    #numbers {
+        grid-template-columns: 1fr;
+    }
+    @media only screen and (max-width: 600px) {
+        #values {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
