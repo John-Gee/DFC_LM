@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
+    font-size: 1.35vw;
 }
 
 body {
@@ -11,7 +12,6 @@ body {
     /* style */
     background-color: rgba(255,0,176,0.15);
     height: 100vh;
-    --h: 1rem;
 }
 
 #header {
@@ -29,22 +29,22 @@ body {
 }
 
 #header > *, h2 {
-    filter: drop-shadow(calc(0.075 * var(--h)) calc(0.075 * var(--h)) 0 rgba(140,140,140,1));
+    filter: drop-shadow(calc(0.075 * 1rem) calc(0.075 * 1rem) 0 rgba(140,140,140,1));
 }
 
 #header > h1 {
     /* style */
     color: rgba(255,0,176,1);
     font-family: TITLE;
-    font-size: calc(1 * var(--h));
+    font-size: calc(1 * 1rem);
     vertical-align: middle;
     display: block;
-    padding-top: calc(0.2 * var(--h));
+    padding-top: calc(0.2 * 1rem);
 }
 
 #logo {
     /* style */
-    width: calc(2 * var(--h));
+    width: calc(2 * 1rem);
     vertical-align: middle;
     display: block;
     cursor: pointer;
@@ -69,7 +69,7 @@ body {
 }
 
 #play, #play2 {
-    width: calc(2 * var(--h));
+    width: calc(2 * 1rem);
 }
 
 #calculator {
@@ -110,7 +110,7 @@ body {
     border-radius: 36px;
     box-shadow: -5px -5px 15px 5px rgba(250, 250, 250, 1),
                 5px 5px 15px 5px rgba(75, 75, 75, 1);
-    --fsize: calc(var(--h) / 1.25);
+    --fsize: calc(1rem / 1.25);
     padding-right: 0.25rem;
     padding-left: 0.25rem;
 }
@@ -159,7 +159,7 @@ body {
 h2 {
     text-align: center;
     color: rgba(255,0,176,1);
-    font-size: calc(0.95 * var(--h));
+    font-size: calc(0.95 * 1rem);
     font-family: SUB;
 }
 
@@ -174,7 +174,7 @@ hr {
 h3 {
     text-align: center;
     font-weight: normal;
-    font-size: calc(0.7 * var(--h));
+    font-size: calc(0.7 * 1rem);
     font-family: KEYS;
 }
 
