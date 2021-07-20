@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    font-size: 1.35vw;
+    font-size: 1.33vw;
 }
 
 body {
@@ -203,7 +203,7 @@ h3 {
     justify-content: beginning;
 
     /* style */
-    font-size: calc(0.8 * var(--fsize));
+    font-size: 0.7rem;
     min-width: calc(2.32 * var(--fsize));
     line-height: calc(1.44 * var(--fsize));
     font-family: KEYS;
@@ -232,7 +232,7 @@ h3 {
 .input {
     /* position */
     display: grid;
-    grid-template-columns: var(--fsize) 1fr;
+    grid-template-columns: 0.66rem 1fr;
     gap: 0.25rem;
     align-items: center;
 
@@ -247,10 +247,9 @@ h3 {
              0.3em 0.3em 0.5em rgba(0,0,0,0.3);
     color: rgba(255,0,176,1);
     font-weight: bold;
-    font-size: calc(1 * var(--fsize));
+    font-size: 0.9rem;
     margin: 0;
     padding: 0rem 0.5rem 0rem 0.5rem;
-    line-height: calc(1.33 * var(--fsize));
 }
 
 .auto {
@@ -313,8 +312,8 @@ input[type=number] {
 }
 
 .verticalHR {
-    width: calc(0.08 * var(--fsize));
-    height: calc(8.85 * var(--fsize));
+    width: 0.05rem;
+    height: 90%;
     background-color: rgba(200,200,200,1);
 }
 
