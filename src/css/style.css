@@ -75,12 +75,16 @@ body {
 #calculator {
     /* position */
     display: grid;
+    grid-template-areas: "inv out"
+                         "inv chart";
     grid-template-columns: 1fr 4.89fr;
     gap: 1.5rem;
+    //gap: 1.25rem;
     margin: 1.0rem;
 }
 
 #investment {
+    grid-area: inv;
     /* children */
     display: grid;
     grid-template-areas: "header header"
@@ -109,13 +113,6 @@ body {
     padding: 1rem;
     padding-top: 0;
     padding-left: 0.5rem;
-}
-
-#future {
-    /* children */
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
 }
 
 #investment, #outcome, #plot {
