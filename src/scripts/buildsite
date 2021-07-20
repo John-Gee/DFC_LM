@@ -34,20 +34,13 @@ function minifyCSS() {
 }
 
 function minifyJS() {
-    for f in {events,functions}
-    do
-        cp js/"$f"{.js,2.js}
-        cleanPaths js/$f.js
-    done
-    uglifyjs js/{events,functions}.js -o ../docs/js/functions.min.js \
+    cat js/{events,functions}.js | sed "s|../docs/||" | uglifyjs -o ../docs/js/functions.min.js \
     -c -m --source-map "root='../src/js',url='functions.min.js.map'"
     sed -i "s|functions.js|functions.min.js|" ../docs/index.html
     for f in events
     do
         sed -i "/^.*$f\.js.*$/d" ../docs/index.html
-        mv js/"$f"2.js js/"$f".js
     done
-    mv js/functions2.js js/functions.js
 }
 
 function minifyHTML() {
