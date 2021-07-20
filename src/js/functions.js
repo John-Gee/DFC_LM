@@ -566,12 +566,12 @@ function getPrices() {
 function WindowResize() {
     if (isNumbersWrapped()) {
         my$("#AVS").classList.remove("verticalHR");
-        my$("#amountsTitles").lastElementChild.classList.add("hidden");
+        my$("#amountsTitles").lastElementChild.classList.add("almostHidden");
         my$("#valuesTitles").classList.remove("hidden");
     }
     else {
         my$("#AVS").classList.add("verticalHR");
-        my$("#amountsTitles").lastElementChild.classList.remove("hidden");
+        my$("#amountsTitles").lastElementChild.classList.remove("almostHidden");
         my$("#valuesTitles").classList.add("hidden");
     }
 }

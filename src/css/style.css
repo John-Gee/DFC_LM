@@ -356,3 +356,8 @@ input[type=number] {
 .hidden {
     display: none !important;
 }
+
+.almostHidden {
+    opacity: 0;
+    line-height: 0;
+}
