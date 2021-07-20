@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    font-size: 1.33vw;
+    font-size: 1.3vw;
 }
 
 body {
@@ -82,19 +82,33 @@ body {
 
 #investment {
     /* children */
-    display: flex;
-    flex-direction: column;
-}
-
-#investmentBody {
-    /* children */
     display: grid;
-    grid-template-rows: auto auto auto auto;
-    grid-template-columns: 1fr;
-    justify-content: space-between;
+    grid-template-areas: "header header"
+                         "line line"
+                         "title sheader"
+                         "title sheader"
+                         "title sheader"
+                         "title sheader"
+                         "title sheader"
+                         "title sheader"
+                         "title sheader"
+                         "title sheader"
+                         "title sheader"
+                         "title sheader"
+                         "title sheader"
+                         "title sheader"
+                         "title sheader"
+                         "title sheader"
+                         "title sheader"
+                         "title sheader";
+    grid-template-rows: auto 0.25rem auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+    grid-template-columns: 25% 1fr;
+    align-items: center;
 
     /* style */
-    flex: 1;
+    padding: 1rem;
+    padding-top: 0;
+    padding-left: 0.5rem;
 }
 
 #future {
@@ -111,8 +125,6 @@ body {
     box-shadow: -5px -5px 15px 5px rgba(250, 250, 250, 1),
                 5px 5px 15px 5px rgba(75, 75, 75, 1);
     --fsize: calc(1rem / 1.25);
-    padding-right: 0.25rem;
-    padding-left: 0.25rem;
 }
 
 #numbers {
@@ -157,6 +169,7 @@ body {
 }
 
 h2 {
+    grid-area: header;
     text-align: center;
     color: rgba(255,0,176,1);
     font-size: calc(0.95 * 1rem);
@@ -164,6 +177,7 @@ h2 {
 }
 
 hr {
+    grid-area: line;
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
     height: 1px;
