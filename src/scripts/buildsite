@@ -23,7 +23,7 @@ function cleanPaths() {
     sed -i "s|../docs/||" "$1"
 }
 
-function minify() {
+function minifyCSS() {
     minCSS=`cat css/{chart,fonts,guide,select2,style,queries}.css |
     sed "s|../docs/||" | sed "s|../fonts/|fonts/|" |npx postcss -m`
     for f in {chart,fonts,guide,select2,queries}.css
@@ -31,7 +31,9 @@ function minify() {
         sed -i "/^.*$f.*$/d" ../docs/index.html
     done
     sed -i "s|^.*style.css.*$|<style type=text/css>$minCSS</style>|" ../docs/index.html
+}
 
+function minifyJS() {
     for f in {events,functions}
     do
         cp js/"$f"{.js,2.js}
@@ -46,19 +48,26 @@ function minify() {
         mv js/"$f"2.js js/"$f".js
     done
     mv js/functions2.js js/functions.js
+}
 
-    cleanPaths ../docs/index.html
+function minifyHTML() {
+    #
+    #--remove-attribute-quotes
+    #--minify-urls
     npx html-minifier --collapse-boolean-attributes --collapse-inline-tag-whitespace \
-    --collapse-whitespace --conservative-collapse --decode-entities --minify-urls \
+    --collapse-whitespace --conservative-collapse --decode-entities \
     --no-include-auto-generated-tags --prevent-attributes-escaping \
-    --process-conditional-comments --quote-character "'" --remove-attribute-quotes \
-    --remove-comments --remove-empty-attributes --remove-optional-tags \
-    --remove-redundant-attributes --sort-attributes --sort-class-name \
+    --process-conditional-comments --remove-comments --remove-empty-attributes \
+    --remove-optional-tags --remove-redundant-attributes --sort-attributes --sort-class-name \
     --trim-custom-fragments --use-short-doctype ../docs/index.html  -o ../docs/index.html
 }
 
 cp -a index.html ../docs/
-minify
-cd ../docs/
+minifyCSS
+minifyJS
+cd ../docs
+cleanPaths index.html
 addCSUM js
 addCSUM css
+cd ../src
+minifyHTML
