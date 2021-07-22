@@ -1,0 +1,58 @@
+#header {
+    grid-area: head;
+    /* children */
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    align-items: center;
+    align-content: center;
+    gap: 0.25rem;
+    padding: 0.15rem;
+
+    /* style */
+    background-color: rgba(240,240,240,1);
+    box-shadow: 0px 25px 13px -20px rgba(175, 175, 175, 1);
+    margin-bottom: 0.25rem;
+}
+
+#header > *, h2 {
+    filter: drop-shadow(calc(0.075 * 1rem) calc(0.075 * 1rem) 0 rgba(140,140,140,1));
+}
+
+#header > h1 {
+    /* style */
+    color: rgba(255,0,176,1);
+    font-family: TITLE;
+    vertical-align: middle;
+    display: block;
+    padding-top: 0.2rem;
+}
+
+#logo {
+    /* style */
+    width: calc(2 * 1rem);
+    vertical-align: middle;
+    display: block;
+    cursor: pointer;
+}
+
+.buttons {
+    /* children */
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin: 0 2rem 0 2rem;
+}
+
+#playButtons {
+    /* children */
+    display: flex;
+    flex-direction: row;
+
+    /* style */
+    cursor: pointer;
+}
+
+#play, #play2 {
+    width: calc(2 * 1rem);
+}
