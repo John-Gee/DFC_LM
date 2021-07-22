@@ -1,3 +1,35 @@
+#outcome {
+    grid-area: out;
+}
+
+#numbers {
+    /* position */
+    display: grid;
+    grid-template-columns: 1fr auto 1.78fr;
+    gap: 0.4rem;
+
+    /* style */
+    justify-content: space-evenly;
+}
+
+.protectDiv {
+    /* position */
+    display: flex;
+    flex-direction: row;
+
+    /* style */
+    flex: 1;
+}
+
+#amountsParent {
+    /* position */
+    display: flex;
+    flex-direction: column;
+
+    /* style */
+    flex: 1;
+}
+
 #amounts, #values {
     /* position */
     display: grid;

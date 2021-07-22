@@ -1,3 +1,17 @@
+#plot {
+    grid-area: chart;
+    /* children */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+
+    /* style */
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+}
+
 .ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
     stroke: rgba(140,140,140,1);
 }
@@ -17,14 +31,14 @@
 
 #xLabel {
     padding: 0.5rem 0 0.5rem 0;
-    font-size: calc(0.9 * var(--fsize));
+    font-size: 0.9rem;
     font-family: KEYS;
     font-style: italic;
 }
 
 #yLabel {
     padding: 0.5rem 0 0.5rem 0;
-    font-size: calc(0.9 * var(--fsize));
+    font-size: 0.9rem;
     font-family: KEYS;
     writing-mode: vertical-lr;
     transform: rotate(-180deg);
@@ -48,7 +62,7 @@
     /* style */
     color: rgba(140,140,140,1);
     white-space: nowrap;
-    font-size: calc(0.8 * var(--fsize));
+    font-size: 0.8rem;
     font-family: SUB;
     padding-right: 0.5rem;
 }
@@ -57,7 +71,7 @@
     /* style */
     color: rgba(255,0,176,1);
     white-space: nowrap;
-    font-size: calc(0.8 * var(--fsize));
+    font-size: 0.8rem;
     font-family: SUB;
     padding-right: 0.5rem;
 }
