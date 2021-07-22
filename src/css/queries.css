@@ -24,13 +24,14 @@
         grid-area: 2 / 1 / 3 / 6;
     }
 
-    #investment > .empty:nth-of-type(even), #investment > .title:nth-of-type(n+9):nth-of-type(-n+13),
-    #investment > .title:nth-of-type(n+21):nth-of-type(-n+29){
+    #investment > .empty:nth-of-type(15), #investment > .empty:nth-of-type(20),
+    #investment > .title:nth-of-type(n+16):nth-of-type(-n+22),
+    #investment > .title:nth-of-type(n+21):nth-of-type(-n+29) {
         grid-column-start: 4;
         grid-column-end: 5;
     }
 
-    #investment > h3:nth-of-type(even), #investment > .input:nth-of-type(n+10):nth-of-type(-n+14),
+    #investment > h3:nth-of-type(n+3):nth-of-type(-n+4), #investment > .input:nth-of-type(n+17):nth-of-type(-n+19),
     #investment > .input:nth-of-type(n+22):nth-of-type(-n+30){
         grid-column-start: 5;
         grid-column-end: 6;
