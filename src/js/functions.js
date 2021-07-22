@@ -124,8 +124,13 @@ function createTutorial() {
             position: "right"
         },
         {
-            element: "#finalPricesDiv",
-            title: "Enter final prices.",
+            element: "#fPriceDFIDiv",
+            title: "Enter DFI's final price.",
+            position: "right"
+        },
+        {
+            element: "#fPriceTokenDiv",
+            title: "Enter the other coin's final price.",
             position: "right"
         },
         {
@@ -139,7 +144,7 @@ function createTutorial() {
             position: "right"
         },
         {
-            element: "#interestDiv",
+            element: "#interestH",
             title: "This section is optional.",
             position: "top"
         },

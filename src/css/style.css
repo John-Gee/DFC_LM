@@ -125,3 +125,7 @@ input[type=number] {
     width: 0.9rem;
     vertical-align: middle;
 }
+
+.flat {
+    display: contents;
+}
