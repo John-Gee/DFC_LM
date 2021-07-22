@@ -10,7 +10,7 @@ body {
     grid-template-areas: "head head"
                          "inv out"
                          "inv chart";
-    grid-template-columns: 1fr 4.89fr;
+    grid-template-columns: 1fr 4.1fr;
     grid-template-rows: auto 1fr 1fr;
 
     /* style */
@@ -81,32 +81,33 @@ body {
     grid-area: inv;
     /* children */
     display: grid;
-    grid-template-areas: "header header"
-                         "line line"
-                         "title sheader"
-                         "title sheader"
-                         "title sheader"
-                         "title sheader"
-                         "title sheader"
-                         "title sheader"
-                         "title sheader"
-                         "title sheader"
-                         "title sheader"
-                         "title sheader"
-                         "title sheader"
-                         "title sheader"
-                         "title sheader"
-                         "title sheader"
-                         "title sheader"
-                         "title sheader";
+    grid-template-columns: auto 1fr;
     grid-template-rows: auto 0.25rem auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
-    grid-template-columns: 25% 1fr;
     align-items: center;
+    gap: 0.5rem;
 
     /* style */
-    padding: 1rem;
+    padding: 1.5rem;
     padding-top: 0;
-    padding-left: 0.5rem;
+    padding-left: 1rem;
+}
+
+#investment > h2 {
+    grid-area: 1 / 1 / 2 / 3;
+}
+
+#investment > hr {
+    grid-area: 2 / 1 / 3 / 3;
+}
+
+#investment > .title, #investment > .empty {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+#investment > .input, #investment > h3 {
+    grid-column-start: 2;
+    grid-column-end: 3;
 }
 
 #outcome {
@@ -116,7 +117,7 @@ body {
 #investment, #outcome, #plot {
     /* style */
     background-color: rgba(240,240,240,1);
-    border-radius: 36px;
+    border-radius: 2rem;
     box-shadow: -5px -5px 15px 5px rgba(250, 250, 250, 1),
                 5px 5px 15px 5px rgba(75, 75, 75, 1);
     --fsize: calc(1rem / 1.25);
@@ -166,7 +167,6 @@ body {
 }
 
 h2 {
-    grid-area: header;
     text-align: center;
     color: rgba(255,0,176,1);
     font-size: calc(0.95 * 1rem);
@@ -174,7 +174,6 @@ h2 {
 }
 
 hr {
-    grid-area: line;
     margin-top: 0.25rem;
     margin-bottom: 0.25rem;
     height: 1px;
