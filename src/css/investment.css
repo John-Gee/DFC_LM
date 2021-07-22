@@ -1,0 +1,52 @@
+#investment {
+    grid-area: inv;
+    /* children */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 0.25rem auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+    align-items: center;
+    gap: 0.5rem;
+
+    /* style */
+    padding: 1.5rem;
+    padding-top: 0;
+    padding-left: 1rem;
+}
+
+#investment > h2 {
+    grid-area: 1 / 1 / 2 / 3;
+}
+
+#investment > hr {
+    grid-area: 2 / 1 / 3 / 3;
+}
+
+#investment > .title, #investment > .empty {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+#investment > .input, #investment > h3 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+#sync {
+    /* style */
+    cursor: pointer;
+    margin-bottom: -0.1rem;
+    margin-top: -0.4rem;
+}
+
+.rotate {
+    animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

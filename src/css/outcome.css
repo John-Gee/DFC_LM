@@ -1,0 +1,75 @@
+#amounts, #values {
+    /* position */
+    display: grid;
+    gap: 0.4rem;
+
+    /* style */
+    padding-bottom: 0.4rem;
+    justify-content: space-evenly;
+}
+
+#amounts{
+    grid-template-columns: 1fr 1fr;
+}
+
+#values {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.verticalHR {
+    width: 0.05rem;
+    height: 90%;
+    background-color: rgba(200,200,200,1);
+}
+
+.table {
+    /* position */
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    /* style */
+    padding: 0.5rem;
+}
+
+.best {
+    border: 0.25rem solid rgba(0, 255, 0, 0.25);
+    border-radius: 24px;
+    padding: 0.25rem;
+}
+
+.shadow {
+    filter: opacity(15%);
+}
+
+.titles {
+    /* position */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+
+    /* style */
+    padding-bottom: 0.4rem;
+}
+
+.titles > h3:nth-child(2) {
+    padding-top: 0.1rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.almostHidden {
+    opacity: 0;
+    line-height: 0;
+}
+
+.plus {
+    color: rgba(0,255,0,1);
+}
+
+.minus {
+    color: rgba(255,0,0,1);
+}
