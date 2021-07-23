@@ -1,8 +1,12 @@
 #plot {
     grid-area: chart;
     /* children */
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "chheader chheader chheader"
+                         "y ch legend"
+                         "x x x";
     justify-content: center;
     gap: 0;
 
@@ -12,24 +16,14 @@
     flex-basis: auto;
 }
 
-.ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
-    stroke: rgba(140,140,140,1);
+#chartTitle {
+    grid-area: chheader;
 }
-
-.ct-series-b .ct-bar, .ct-series-b .ct-line, .ct-series-b .ct-point, .ct-series-b .ct-slice-donut {
-    stroke: rgba(255,0,176,1);
-}
-
-.ct-area.ct-threshold-above {
-  fill: rgba(0,255,0,1);
-}
-
-.ct-area.ct-threshold-below {
-  fill: rgba(255,0,0,1);
-}
-
 
 #xLabel {
+    grid-area: x;
+
+    /* style */
     padding: 0.5rem 0 0.5rem 0;
     font-size: 0.9rem;
     font-family: KEYS;
@@ -37,18 +31,15 @@
 }
 
 #yLabel {
+    grid-area: y;
+
+    /* style */
     padding: 0.5rem 0 0.5rem 0;
     font-size: 0.9rem;
     font-family: KEYS;
     writing-mode: vertical-lr;
     transform: rotate(-180deg);
     font-style: italic;
-}
-
-#aroundChart {
-    display: flex;
-    flex-direction: row;
-    align-items: center
 }
 
 #legend {
@@ -74,4 +65,20 @@
     font-size: 0.8rem;
     font-family: SUB;
     padding-right: 0.5rem;
+}
+
+.ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
+    stroke: rgba(140,140,140,1);
+}
+
+.ct-series-b .ct-bar, .ct-series-b .ct-line, .ct-series-b .ct-point, .ct-series-b .ct-slice-donut {
+    stroke: rgba(255,0,176,1);
+}
+
+.ct-area.ct-threshold-above {
+  fill: rgba(0,255,0,1);
+}
+
+.ct-area.ct-threshold-below {
+  fill: rgba(255,0,0,1);
 }
