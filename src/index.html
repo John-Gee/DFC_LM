@@ -150,45 +150,46 @@
         <section id="outcome">
             <h2> Outcome </h2>
             <hr>
-            <div class="protectDiv">
-                <div id="amountsTitles" class="titles">
-                    <h3>
-                        <br>
-                    </h3>
-                    <h3>
-                        <br>
-                    </h3>
-                    <div class="title">
-                        <img src="../docs/img/DFI.svg" alt="DFI"><br>
-                    </div>
-                    <div class="title" name="OtherToken">Other</div>
-                    <div class="title">Total</div>
+            <div id="amountsTitles" class="flat titles">
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <div class="title">
+                    <img src="../docs/img/DFI.svg" alt="DFI"><br>
                 </div>
-                <div id="amountsParent">
-                    <h3> Liquidity Mining Amounts </h3>
-                    <div id="amounts">
-                        <div class="table shadow" id="fAmounts">
-                            <h3> W/o Interest </h3>
-                            <div class="input auto">
-                                <div><br></div><input class="inputtext" type="text" min="0" id="fAmountDFI" disabled>
-                            </div>
-                            <div class="input auto">
-                                <div><br></div><input class="inputtext" type="text" min="0" id="fAmountToken" disabled>
-                            </div>
+                <div class="title" name="OtherToken">Other</div>
+                <div class="title">Total</div>
+            </div>
+            <div id="amountsParent" class="flat">
+                <h3> Liquidity Mining Amounts </h3>
+                <h3> W/o Interest </h3>
+                <div id="amounts" class="flat">
+                    
+                </div>
+            </div>
+                <!--
+                <div id="amounts" class="flat">
+                    <div class="table flat shadow" id="fAmounts">
+                        <h3> W/o Interest </h3>
+                        <div class="input auto">
+                            <div><br></div><input class="inputtext" type="text" min="0" id="fAmountDFI" disabled>
                         </div>
-                        <div class="table shadow" id="fAmountsI">
-                            <h3> With Interest </h3>
-                            <div class="input auto">
-                                <div><br></div><input class="inputtext" type="text" min="0" id="fAmountDFII" disabled>
-                            </div>
-                            <div class="input auto">
-                                <div><br></div><input class="inputtext" type="text" min="0" id="fAmountTokenI" disabled>
-                            </div>
+                        <div class="input auto">
+                            <div><br></div><input class="inputtext" type="text" min="0" id="fAmountToken" disabled>
+                        </div>
+                    </div>
+                    <div class="table shadow" id="fAmountsI">
+                        <h3> With Interest </h3>
+                        <div class="input auto">
+                            <div><br></div><input class="inputtext" type="text" min="0" id="fAmountDFII" disabled>
+                        </div>
+                        <div class="input auto">
+                            <div><br></div><input class="inputtext" type="text" min="0" id="fAmountTokenI" disabled>
                         </div>
                     </div>
                 </div>
             </div>
             <hr id="AVS" class="verticalHR">
+            <!--
             <div class="protectDiv">
                 <div id="valuesTitles" class="titles hidden">
                     <h3>
@@ -257,6 +258,7 @@
                     </div>
                 </div>
             </div>
+            -->
         </section>
         <section id="plot">
             <h3 id="chartTitle"> Changes in LM/Holding total value due to prices variations </h3>
