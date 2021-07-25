@@ -568,28 +568,6 @@ function getPrices() {
     });
 }
 
-function WindowResize() {
-    if (isNumbersWrapped()) {
-        my$("#AVS").classList.remove("verticalHR");
-        my$("#amountsTitles").lastElementChild.classList.add("almostHidden");
-        my$("#valuesTitles").classList.remove("hidden");
-    }
-    else {
-        my$("#AVS").classList.add("verticalHR");
-        my$("#amountsTitles").lastElementChild.classList.remove("almostHidden");
-        my$("#valuesTitles").classList.add("hidden");
-    }
-}
-
-function isNumbersWrapped() {
-    return (my$("#values").getBoundingClientRect().top > my$("#amounts").getBoundingClientRect().top)
-}
-
-function AreAmountsTitlesWrapped() {
-    return (my$("#fAmounts").firstElementChild.clientHeight >
-            my$("#initialValues").firstElementChild.clientHeight);
-}
-
 function inputEvent(selector) {
     my$(selector).dispatchEvent(new Event('input'));
 }

@@ -4,13 +4,7 @@
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 0.25rem auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
-    align-items: center;
     gap: 0.5rem;
-
-    /* style */
-    padding: 1.5rem;
-    padding-top: 0;
-    padding-left: 1rem;
 }
 
 #investment > h2 {

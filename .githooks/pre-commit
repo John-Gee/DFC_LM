@@ -4,4 +4,4 @@ root=`git rev-parse --show-toplevel`
 cd "$root/src"
 scripts/buildsite
 
-git add index.html
+#git add index.html

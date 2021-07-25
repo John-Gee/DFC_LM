@@ -37,9 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    window.addEventListener('resize', WindowResize);
-    WindowResize();
-
     my$("#cPriceToken").addEventListener("input", cCalculate);
     my$("#cPriceDFI").addEventListener("input", cCalculate);
     /*my$("#cPriceRatio").addEventListener("input", function() {

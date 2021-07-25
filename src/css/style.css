@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    font-size: 1.3vw;
+    font-size: 1.25vw;
 }
 
 body {
@@ -24,7 +24,9 @@ body {
     border-radius: 2rem;
     box-shadow: -5px -5px 15px 5px rgba(250, 250, 250, 1),
                 5px 5px 15px 5px rgba(75, 75, 75, 1);
-    margin: 0.75rem;
+    margin: 1rem;
+    padding: 0 1rem 0.5rem 1rem;
+    align-items: center;
 }
 
 h2 {
@@ -32,6 +34,8 @@ h2 {
     color: rgba(255,0,176,1);
     font-size: calc(0.95 * 1rem);
     font-family: SUB;
+    margin-top: -0.25rem;
+    margin-bottom: -0.25rem;
 }
 
 hr {

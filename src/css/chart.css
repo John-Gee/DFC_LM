@@ -3,29 +3,28 @@
     /* children */
     display: grid;
     grid-template-columns: auto 1fr auto;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto 0.25rem 1fr auto;
     grid-template-areas: "chheader chheader chheader"
+                         "h h h"
                          "y ch legend"
                          "x x x";
     justify-content: center;
-    gap: 0;
-
-    /* style */
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: auto;
+    gap: 0.5rem 0;
 }
 
 #chartTitle {
     grid-area: chheader;
 }
 
+#plot > hr {
+    grid-area: h;
+}
+
 #xLabel {
     grid-area: x;
 
     /* style */
-    padding: 0.5rem 0 0.5rem 0;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     font-family: KEYS;
     font-style: italic;
 }
@@ -34,8 +33,7 @@
     grid-area: y;
 
     /* style */
-    padding: 0.5rem 0 0.5rem 0;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     font-family: KEYS;
     writing-mode: vertical-lr;
     transform: rotate(-180deg);
