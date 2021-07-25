@@ -102,10 +102,6 @@
     filter: opacity(15%);
 }
 
-.hidden {
-    display: none !important;
-}
-
 .plus {
     color: rgba(0,255,0,1);
 }
