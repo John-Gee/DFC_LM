@@ -21,7 +21,7 @@ function formatCoin(coin) {
 }
 
 function coinNameToImg(coinName) {
-    return '<img src="../docs/img/' + coinName + '.svg" class="img-flag"/>&nbsp;';
+    return '<img src="../docs/img/' + coinName + '.svg" class="img-flag"/>';
 }
 
 function prettyNumber(number) {
@@ -230,33 +230,27 @@ function compareTotalValues(cValue, fValueH, fValue, fValueI) {
     if (!fValue)
         return;
 
-    var best    = "#cValue";
+    var best    = "c";
     var biggest = cValue;
 
     if (cValue < fValueH) {
-        best    = "#fValueH"
+        best    = "fh"
         biggest = fValueH;
     }
 
     if (biggest < fValue) {
-        best    = "#fValue";
+        best    = "f";
         biggest = fValue;
     }
 
     if (biggest < fValueI) {
-        best    = "#fValueI";
+        best    = "fi";
         biggest = fValueI;
     }
 
     if (biggest) {
-        my$(best).parentElement.parentElement.classList.add("best");
-        my$(best).parentElement.parentElement.classList.remove("nonbest");
+        my$("#best").classList.add("best-" + best);
     }
-}
-
-function clearBest(id) {
-    my$(id).parentElement.parentElement.classList.remove("best");
-    my$(id).parentElement.parentElement.classList.add("nonbest");
 }
 
 function calculate() {
@@ -288,10 +282,7 @@ function calculate() {
     var fValueTokenH  = 0;
     var fValueH       = 0;
 
-    clearBest("#cValue");
-    clearBest("#fValueH");
-    clearBest("#fValue");
-    clearBest("#fValueI");
+    my$("#best").className = "";
     my$("#fAmounts").classList.add("shadow");
     my$("#fAmountsI").classList.add("shadow");
     my$("#initialValues").classList.add("shadow");

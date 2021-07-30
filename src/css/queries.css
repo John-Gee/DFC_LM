@@ -38,114 +38,95 @@
 
     #outcome {
         grid-template-columns: minmax(3rem, auto) 1fr 1fr;
-        grid-template-rows: auto 0.25rem auto auto auto auto auto auto auto auto auto auto;
+        grid-template-rows: auto 0.25rem repeat(4, 1fr) 0.25rem repeat(5, 1fr) auto repeat(4, 1fr)) auto;
         gap: 1rem 0.5rem;
+        grid-template-areas: "o-h2   o-h2  o-h2"
+                             "o-hr   o-hr  o-hr"
+                             "...    o-LMA o-LMA"
+                             "...    o-a   o-ai"
+                             "o-aD   o-Da  o-Dai"
+                             "o-aT   o-Ta  o-Tai"
+                             "o-AVS  o-AVS o-AVS"
+                             "....   o-V   o-V"
+                             "....   o-i   o-h"
+                             "o-vD   o-Di  o-Dh"
+                             "o-vT   o-Ti  o-Th"
+                             "o-vTo  o-Toi o-Toh"
+                             ".....  ..... ....."
+                             ".....  o-lm  o-lmi"
+                             "o-vD2  o-Dlm  o-Dlmi"
+                             "o-vT2  o-Tlm  o-Tlmi"
+                             "o-vTo2 o-Tolm o-Tolmi"
+                             "...... ...... .....";
 
         /* style */
         margin: 1.5rem;
     }
-
-    #outcome > h2 {
-    grid-area: 1 / 1 / 2 / 4;
-    }
-
-    #outcome > hr:nth-of-type(1) {
-        grid-area: 2 / 1 / 3 / 4;
-    }
     
-    /*#amountsTitles > div:nth-of-type(1) {
-        grid-area: 3 / 1 / 4 / 2;
-    }*/
-
     #amountsTitles > div:last-child {
+        grid-area: unset;
         display: none !important;
     }
 
-    /*#amountsParent > h3 {
-        grid-area: 3 / 2 / 4 / 4;
-    }
-
-    #fAmounts > h3 {
-        grid-area: 4 / 2 / 5 / 3;
-    }
-
-    #fAmounts > div {
-        grid-column-start: 2;
-        grid-column-end: 3;
-    }
-
-    #fAmountsI > h3 {
-        grid-area: 4 / 3 / 5 / 4;
-    }
-
-    #fAmountsI > div {
-        grid-column-start: 3;
-        grid-column-end: 4;
-    }*/
-    
-    #AVS {
-        grid-area: 7 / 1 / 8 / 4;
+    #AVS {;
         /* style */
         width: 100%;
         height: 0.02rem;
     }
 
-    #values > h3 {
-        grid-area: 8 / 2 / 9 / 4;
-    }
-
     #valuesTitles {
-        display: contents;
-    }
-    
-    /*#valuesTitles > div {
-        grid-column-start: 1;
-        grid-column-end: 2;
-    }*/
-
-    #initialValues > h3 {
-        grid-area: 9 / 2 / 10 / 3;
+        display: contents !important;
     }
 
-    #initialValues > div {
-        grid-column-start: 2;
-        grid-column-end: 3;
+    #valuesTitles > div:nth-of-type(1) {
+        grid-area: o-vD;
     }
 
-    #holding > h3 {
-        grid-area: 9 / 3 / 10 / 4;
+    #valuesTitles > div:nth-of-type(2) {
+        grid-area: o-vT;
     }
 
-    #holding > div {
-        grid-column-start: 3;
-        grid-column-end: 4;
+    #valuesTitles > div:nth-of-type(3) {
+        grid-area: o-vTo;
     }
 
-    #mining > h3 {
-        grid-area: 13 / 2 / 14 / 3;
+    #valuesTitles2 {
+        display: contents !important;
     }
 
-    #mining > div {
-        grid-column-start: 2;
-        grid-column-end: 3;
+    #valuesTitles2 > div:nth-of-type(1) {
+        grid-area: o-vD2;
     }
 
-    #miningI > h3 {
-        grid-area: 13 / 3 / 14 / 4;
+    #valuesTitles2 > div:nth-of-type(2) {
+        grid-area: o-vT2;
     }
 
-    #miningI > div {
-        grid-column-start: 3;
-        grid-column-end: 4;
+    #valuesTitles2 > div:nth-of-type(3) {
+        grid-area: o-vTo2;
+    }
+
+    .best-c {
+        display: initial !important;
+        grid-area: 9 / 2 / 13 / 3;
+    }
+
+    .best-fh {
+        display: initial !important;
+        grid-area: 9 / 3 / 13 / 4;
+    }
+
+    .best-f {
+        display: initial !important;
+        grid-area: 9 / 4 / 13 / 5;
+    }
+
+    .best-fi {
+        display: initial !important;
+        grid-area: 9 / 5 / 13 / 6;
     }
 
     #plot {
         margin: 1.5rem;
-    }
-
-    @media only screen and (max-width: 600px) {
-        #values {
-            grid-template-columns: 1fr 1fr;
-        }
     }
 }
