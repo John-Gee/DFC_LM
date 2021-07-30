@@ -169,27 +169,27 @@ function createTutorial() {
             position: "top"
         },
         {
-            element: "#amountsParent",
+            element: "#LMA",
             title: "Amounts of coins after liquidity mining",
             position: "bottom"
         },
         {
-            element: "#initialValues",
+            element: "#IV",
             title: "Based on initial prices and amounts.",
             position: "bottom"
         },
         {
-            element: "#holding",
+            element: "#HV",
             title: "Based on initial amounts and final prices.",
             position: "bottom"
         },
         {
-            element: "#mining",
+            element: "#LMV",
             title: "Based on final amounts and prices, without interest.",
             position: "bottom"
         },
         {
-            element: "#miningI",
+            element: "#LMIV",
             title: "Based on final amounts and prices, with interest.",
             position: "bottom"
         },
