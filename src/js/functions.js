@@ -90,6 +90,19 @@ function calcPriceRatio(time) {
 }
 
 function createTutorial() {
+    var pricesPosition    = "right";
+    var interestsPosition = "right";
+    var lmaPosition       = "right";
+    var valuesLPosition   = "left";
+    var valuesRPosition   = "left";
+
+    const mediaQuery = window.matchMedia('(max-width: 900px)')
+    if (mediaQuery.matches) {
+        interestsPosition = "left";
+        lmaPosition       = "top";
+        valuesLPosition   = "right";
+        valuesRPosition   = "left";
+    }
     var tour = [
         {
             element: "#play",
@@ -101,97 +114,97 @@ function createTutorial() {
         {
             element: "#OtherTokenValueDiv",
             title: "Select the other coin.",
-            position: "right"
+            position: pricesPosition
         },
         {
             element: "#sync",
             title: "Get prices from CoinGecko.",
-            position: "right"
+            position: pricesPosition
         },
         {
             element: "#cPriceDFIDiv",
             title: "Enter DFI's initial price.",
-            position: "right"
+            position: pricesPosition
         },
         {
             element: "#cPriceTokenDiv",
             title: "Enter the other coin's initial price.",
-            position: "right"
+            position: pricesPosition
         },
         {
             element: "#cPriceRatioDiv",
             title: "Gives the other coin's initial price in DFI.",
-            position: "right"
+            position: pricesPosition
         },
         {
             element: "#fPriceDFIDiv",
             title: "Enter DFI's final price.",
-            position: "right"
+            position: pricesPosition
         },
         {
             element: "#fPriceTokenDiv",
             title: "Enter the other coin's final price.",
-            position: "right"
+            position: pricesPosition
         },
         {
             element: "#cAmountDFIDiv",
             title: "Enter the amount of DFI provided to the pool.",
-            position: "right"
+            position: interestsPosition
         },
         {
             element: "#cAmountTokenDiv",
             title: "The other coin's provided amount is automatically calculated.",
-            position: "right"
+            position: interestsPosition
         },
         {
             element: "#interestH",
             title: "This section is optional.",
-            position: "top"
+            position: interestsPosition
         },
         {
             element: "#aprDiv",
             title: "Enter the pool's rewards in APR.",
-            position: "top"
+            position: interestsPosition
         },
         {
             element: "#feeDiv",
             title: "Enter the pool's commissions in APR.",
-            position: "top"
+            position: interestsPosition
         },
         {
             element: "#durationDiv",
             title: "Enter days in liquidity mining.",
-            position: "top"
+            position: interestsPosition
         },
         {
             element: "#periodDiv",
-            title: "Enter period in days to compound, the minimum is 0.0003472, apart from 0 which means no compounding. Beware of conversion and transaction fees.",
-            position: "top"
+            title: "Enter period in days to compound, the minimum is 0.0003472, apart from 0 which means no compounding.",
+            position: interestsPosition
         },
         {
             element: "#LMA",
             title: "Amounts of coins after liquidity mining",
-            position: "bottom"
+            position: lmaPosition
         },
         {
             element: "#IV",
             title: "Based on initial prices and amounts.",
-            position: "bottom"
+            position: valuesLPosition
         },
         {
             element: "#HV",
             title: "Based on initial amounts and final prices.",
-            position: "bottom"
+            position: valuesRPosition
         },
         {
             element: "#LMV",
             title: "Based on final amounts and prices, without interest.",
-            position: "bottom"
+            position: valuesLPosition
         },
         {
             element: "#LMIV",
             title: "Based on final amounts and prices, with interest.",
-            position: "bottom"
+            position: valuesRPosition
         },
         {
             element: "#plot",
