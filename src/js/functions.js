@@ -91,7 +91,7 @@ function calcPriceRatio(time) {
 
 function createTutorial() {
     var pricesPosition    = "right";
-    var interestsPosition = "right";
+    var interestsPosition = "top";
     var lmaPosition       = "right";
     var valuesLPosition   = "left";
     var valuesRPosition   = "left";
