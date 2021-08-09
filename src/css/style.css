@@ -10,7 +10,7 @@ body {
     grid-template-areas: "head head"
                          "inv out"
                          "inv chart";
-    grid-template-columns: 1fr 4.1fr;
+    grid-template-columns: 1fr 3.87fr;
     grid-template-rows: auto 1fr 1fr;
 
     /* style */
