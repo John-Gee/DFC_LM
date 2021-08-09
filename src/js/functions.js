@@ -384,8 +384,8 @@ function calculate() {
                 fAmountToken = Math.sqrt(cAmountToken * cAmountDFI * 1/fPriceRatio);
                 fAmountDFI   = (fPriceRatio * fAmountToken);
             }
-            addDiffToolTip("#fAmountDFI", fAmountDFI - cAmountDFI);
-            addDiffToolTip("#fAmountToken", fAmountToken - cAmountToken);
+            addDiffToolTip("#fAmountDFI", fAmountDFI, cAmountDFI);
+            addDiffToolTip("#fAmountToken", fAmountToken, cAmountToken);
 
             fValueToken  = fAmountToken * fPriceToken;
             fValueDFI    = fAmountDFI * fPriceDFI;
@@ -395,9 +395,9 @@ function calculate() {
             fValueDFIH    = cAmountDFI * fPriceDFI;
             fValueH       = fValueTokenH + fValueDFIH;
 
-            addDiffToolTip("#fValueDFI", fValueDFI - fValueDFIH);
-            addDiffToolTip("#fValueToken", fValueToken - fValueTokenH);
-            addDiffToolTip("#fValue", fValue - fValueH);
+            addDiffToolTip("#fValueDFI", fValueDFI, fValueDFIH);
+            addDiffToolTip("#fValueToken", fValueToken, fValueTokenH);
+            addDiffToolTip("#fValue", fValue, fValueH);
 
             my$("#fAmounts").classList.remove("shadow");
             my$("#holding").classList.remove("shadow");
@@ -429,15 +429,15 @@ function calculate() {
                     fAmountDFII   = fAmountDFI + ((fAmountDFI * ( 2 * compAPR + compFee)) * duration / 365);
                     fAmountTokenI = fAmountToken + (fAmountToken * compFee * duration / 365);
                 }
-                addDiffToolTip("#fAmountDFII", fAmountDFII - cAmountDFI);
-                addDiffToolTip("#fAmountTokenI", fAmountTokenI - cAmountToken);
+                addDiffToolTip("#fAmountDFII", fAmountDFII, cAmountDFI);
+                addDiffToolTip("#fAmountTokenI", fAmountTokenI, cAmountToken);
 
                 fValueTokenI  = fAmountTokenI * fPriceToken;
                 fValueDFII    = fAmountDFII * fPriceDFI;
                 fValueI       = fValueTokenI + fValueDFII;
-                addDiffToolTip("#fValueDFII", fValueDFII - fValueDFIH);
-                addDiffToolTip("#fValueTokenI", fValueTokenI - fValueTokenH);
-                addDiffToolTip("#fValueI", fValueI - fValueH);
+                addDiffToolTip("#fValueDFII", fValueDFII, fValueDFIH);
+                addDiffToolTip("#fValueTokenI", fValueTokenI, fValueTokenH);
+                addDiffToolTip("#fValueI", fValueI, fValueH);
 
                 my$("#fAmountsI").classList.remove("shadow");
                 my$("#miningI").classList.remove("shadow");
@@ -599,12 +599,14 @@ function getPrices() {
     });
 }
 
-function addDiffToolTip(selector, number) {
-    var tip = "";
-    if (number > 0)
-        tip = "+" + number;
-    else if (number < 0)
-        tip = number;
+function addDiffToolTip(selector, fNumber, cNumber) {
+    var tip  = "";
+    var diff = fNumber - cNumber;
+    var pct  = prettyNumber(diff / cNumber * 100);
+    if (diff > 0)
+        tip = "$ +" + prettyNumber(diff) + "\n% +" + pct;
+    else if (diff< 0)
+        tip = "$ "  + prettyNumber(diff) + "\n% "  + pct;
     my$(selector).parentElement.dataset.tooltip = tip;
 }
 
