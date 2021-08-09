@@ -8,6 +8,11 @@
                              "chart";
     }
 
+    .input {
+        /* position */
+        grid-template-columns: 3rem 1fr;
+    }
+
     #investment {
         grid-template-columns: minmax(3rem, auto) 1fr 3rem auto 1fr;
         grid-template-rows: auto 0.25rem auto auto auto auto auto auto auto auto auto;
@@ -128,5 +133,15 @@
 
     #plot {
         margin: 1.5rem;
+    }
+
+    @media only screen and (max-width: 500px) {
+        .input {
+            grid-template-columns: 5rem 1fr;
+        }
+
+        #investment {
+            grid-template-columns: minmax(5rem, auto) 1fr 3rem auto 1fr;
+        }
     }
 }

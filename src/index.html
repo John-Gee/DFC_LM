@@ -65,7 +65,16 @@
                     <img src="../docs/img/DFI.svg" alt="DFI">
                 </div>
                 <div class="input" id="cPriceDFIDiv">
-                    <div>$</div>
+                    <div id="CurrencyValueDiv">
+                        <select class="js-example-templating" id="CurrencyValue">
+                            <option value="cny">元</option>
+                            <option value="eur">€</option>
+                            <option value="jpy">¥</option>
+                            <option value="krw">₩</option>
+                            <option value="gbp">£</option>
+                            <option value="usd" selected="selected">$</option>
+                        </select>
+                    </div>
                     <input class="inputtext" type="number" min="0" id="cPriceDFI" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
                 </div>
                 <div class="title" id="OtherTokenValueDiv">
@@ -80,7 +89,7 @@
                     </select>
                 </div>
                 <div class="input" id="cPriceTokenDiv">
-                    <div>$</div>
+                    <div name="Currency">$</div>
                     <input class="inputtext" type="number" min="0" id="cPriceToken" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
                 </div>
                 <div class="title" name="OtherRatio">Other</div>
@@ -96,14 +105,14 @@
                     <img src="../docs/img/DFI.svg" alt="DFI">
                 </div>
                 <div class="input" id="fPriceDFIDiv">
-                    <div>$</div>
+                    <div name="Currency">$</div>
                     <input class="inputtext" type="number" min="0" id="fPriceDFI" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
                 </div>
                 <div class="title" name="OtherRatio">
                     Other
                 </div>
                 <div class="input" id="fPriceTokenDiv">
-                    <div>$</div>
+                    <div name="Currency">$</div>
                     <input class="inputtext" type="number" min="0" id="fPriceToken" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
                 </div>
                 <div class="title" name="OtherRatio">Other</div>
@@ -200,49 +209,49 @@
                 <div class="flat shadow" id="initialValues">
                     <h3 id="IV"> Initial </h3>
                     <div class="input auto">
-                        <div>$</div><input class="inputtext" type="text" min="0" id="cValueDFI" disabled>
+                        <div name="Currency">$</div><input class="inputtext" type="text" min="0" id="cValueDFI" disabled>
                     </div>
                     <div class="input auto">
-                        <div>$</div><input class="inputtext" type="text" min="0" id="cValueToken" disabled>
+                        <div name="Currency">$</div><input class="inputtext" type="text" min="0" id="cValueToken" disabled>
                     </div>
                     <div class="input auto">
-                        <div>$</div><input class="inputtext" type="text" min="0" id="cValue" disabled>
+                        <div name="Currency">$</div><input class="inputtext" type="text" min="0" id="cValue" disabled>
                     </div>
                 </div>
                 <div class="flat shadow" id="holding">
                     <h3 id="HV"> Holding </h3>
                     <div class="input auto">
-                        <div>$</div><input class="inputtext" type="text" min="0" id="fValueDFIH" disabled>
+                        <div name="Currency">$</div><input class="inputtext" type="text" min="0" id="fValueDFIH" disabled>
                     </div>
                     <div class="input auto">
-                        <div>$</div><input class="inputtext" type="text" min="0" id="fValueTokenH" disabled>
+                        <div name="Currency">$</div><input class="inputtext" type="text" min="0" id="fValueTokenH" disabled>
                     </div>
                     <div class="input auto">
-                        <div>$</div><input class="inputtext" type="text" min="0" id="fValueH" disabled>
+                        <div name="Currency">$</div><input class="inputtext" type="text" min="0" id="fValueH" disabled>
                     </div>
                 </div>
                 <div class="flat shadow" id="mining">
                     <h3 id="LMV"> LM w/o Int. </h3>
                     <div class="input auto">
-                        <div>$</div><input class="inputtext" type="text" min="0" id="fValueDFI" disabled>
+                        <div name="Currency">$</div><input class="inputtext" type="text" min="0" id="fValueDFI" disabled>
                     </div>
                     <div class="input auto">
-                        <div>$</div><input class="inputtext" type="text" min="0" id="fValueToken" disabled>
+                        <div name="Currency">$</div><input class="inputtext" type="text" min="0" id="fValueToken" disabled>
                     </div>
                     <div class="input auto">
-                        <div>$</div><input class="inputtext" type="text" min="0" id="fValue" disabled>
+                        <div name="Currency">$</div><input class="inputtext" type="text" min="0" id="fValue" disabled>
                     </div>
                 </div>
                 <div class="flat shadow" id="miningI">
                     <h3 id="LMIV"> LM with Int. </h3>
                     <div class="input auto">
-                        <div>$</div><input class="inputtext" type="text" min="0" id="fValueDFII" disabled>
+                        <div name="Currency">$</div><input class="inputtext" type="text" min="0" id="fValueDFII" disabled>
                     </div>
                     <div class="input auto">
-                        <div>$</div><input class="inputtext" type="text" min="0" id="fValueTokenI" disabled>
+                        <div name="Currency">$</div><input class="inputtext" type="text" min="0" id="fValueTokenI" disabled>
                     </div>
                     <div class="input auto">
-                        <div>$</div><input class="inputtext" type="text" min="0" id="fValueI" disabled>
+                        <div name="Currency">$</div><input class="inputtext" type="text" min="0" id="fValueI" disabled>
                     </div>
                 </div>
                 <div id="best"></div>

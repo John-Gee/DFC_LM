@@ -1,4 +1,17 @@
 document.addEventListener("DOMContentLoaded", function() {
+    my$("#CurrencyValue").addEventListener("input", function() {
+        SwitchCurrencyLabel();
+    });
+    SwitchCurrencyLabel();
+    new TsSelect2(my$("#CurrencyValue"), {
+        minimumResultsForSearch: -1,
+        width: "100%",
+        dropdownAutoWidth : true,
+        escapeMarkup: function (m) {
+            return m;
+        }
+    });
+
     my$("#OtherTokenValue").addEventListener("input", function() {
         SwitchTokenLabel();
         if ((my$("#OtherTokenValue").value == "USDC") || (my$("#OtherTokenValue").value == "USDT")) {

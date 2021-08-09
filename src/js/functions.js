@@ -1,3 +1,10 @@
+function SwitchCurrencyLabel() {
+    var label = my$("#CurrencyValue").options[my$("#CurrencyValue").selectedIndex].innerHTML;
+    myMap("[name='Currency']", function(el) {
+        el.innerHTML = label;
+    });
+}
+
 function SwitchTokenLabel() {
     var label = my$("#OtherTokenValue").value;
     myMap("[name='OtherToken']", function(el) {
@@ -110,6 +117,11 @@ function createTutorial() {
         },
         {
             title: "This calculator estimates potential divergent changes."
+        },
+        {
+            element: "#CurrencyValueDiv",
+            title: "Select the currency.",
+            position: pricesPosition
         },
         {
             element: "#OtherTokenValueDiv",
@@ -577,17 +589,17 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH) {
 function getPrices() {
     // showing loading
     my$("#sync").classList.add("rotate");
-    var defichain = "defichain"
+    var defichain = "defichain";
     var otherCoin = my$("#OtherTokenValue").options[my$("#OtherTokenValue").selectedIndex].innerHTML.toLowerCase();
-    var currency  = "usd"
+    var currency  = my$("#CurrencyValue").value;
     var url = "https://api.coingecko.com/api/v3/simple/price?ids=" + defichain + "%2C" + otherCoin + "&vs_currencies=" + currency;
     fetch(url)
     .then((response) => response.json())
     .then(function(data){
-        my$("#cPriceDFI").value = data[defichain].usd;
+        my$("#cPriceDFI").value = data[defichain][currency];
         inputEvent("#cPriceDFI");
         if (otherCoin != "tether") {
-            my$("#cPriceToken").value = data[otherCoin].usd;
+            my$("#cPriceToken").value = data[otherCoin][currency];
             inputEvent("#cPriceToken");
         }
         // hiding loading

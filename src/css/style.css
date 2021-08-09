@@ -73,7 +73,7 @@ h3 {
 .input {
     /* position */
     display: grid;
-    grid-template-columns: 0.66rem 1fr;
+    grid-template-columns: 2rem 1fr;
     gap: 0.25rem;
     align-items: center;
 
@@ -91,7 +91,7 @@ h3 {
     font-size: 0.9rem;
     margin: 0 0.5rem;
     padding: 0rem 0.5rem 0rem 0.5rem;
-    text-align: center;
+    text-align: left;
 }
 
 .auto {
@@ -101,6 +101,10 @@ h3 {
     box-shadow: inset 0.1em 0.1em rgba(50, 50, 50, 1),
              0 0 0 2px rgb(255,255,255),
              0.3em 0.3em 0.5em rgba(0,0,0,0.3);
+}
+
+div[name="Currency"] {
+  color: rgba(255,0,176,1) !important;
 }
 
 /* Chrome, Safari, Edge, Opera */
