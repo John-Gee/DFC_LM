@@ -1,4 +1,22 @@
 document.addEventListener("DOMContentLoaded", function() {
+    new TsSelect2(my$("#i18n-toggler"), {
+        minimumResultsForSearch: -1,
+        width: "100%",
+        dropdownAutoWidth : true,
+        templateSelection: removeAccents,
+        escapeMarkup: function (m) {
+            return m;
+        }
+    });
+    my$("#i18n-toggler").addEventListener("change", function() {
+        translate();
+    });
+    if (localStorage.getItem("lang")) {
+        my$("#i18n-toggler").selectedIndex = localStorage.getItem("lang");
+        changeEvent("#i18n-toggler");
+    }
+    translate();
+
     new TsSelect2(my$("#CurrencyValue"), {
         minimumResultsForSearch: -1,
         width: "100%",

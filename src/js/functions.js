@@ -1,3 +1,7 @@
+function removeAccents(obj) {
+    return obj.text.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+}
+
 function SwitchCurrencyLabel() {
     var label = my$("#CurrencyValue").options[my$("#CurrencyValue").selectedIndex].innerHTML;
     myMap("[name='Currency']", function(el) {
@@ -14,7 +18,7 @@ function SwitchTokenLabel() {
     myMap("[name='OtherRatio']", function(el) {
         el.innerHTML = coinNameToImg(label);
     });
-    my$("#xLabel").innerHTML = "Final/Initial price of " + label + " in DFI, in %.";
+    my$("#xLabel").children[1].innerHTML = label;
     localStorage.setItem("OtherToken", my$("#OtherTokenValue").selectedIndex);
 }
 
@@ -622,6 +626,20 @@ function addDiffToolTip(selector, fNumber, cNumber) {
     else if (diff< 0)
         tip = "$ "  + prettyNumber(diff) + "\n% "  + pct;
     my$(selector).parentElement.dataset.tooltip = tip;
+}
+
+function translate() {
+    var translator = new Translator({
+        detectLanguage: false,
+        filesLocation: '/i18n'
+    });
+
+    var lang = my$("#i18n-toggler").value;
+    translator.fetch([lang]).then(() => {
+        translator.translatePageTo(lang);
+    });
+
+    localStorage.setItem("lang", my$("#i18n-toggler").selectedIndex);
 }
 
 function inputEvent(selector) {

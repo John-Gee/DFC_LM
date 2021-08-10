@@ -2,7 +2,7 @@
     grid-area: head;
     /* children */
     display: grid;
-    grid-template-columns: auto 1fr 1fr;
+    grid-template-columns: auto 1fr 1.95fr;
     align-items: center;
     align-content: center;
     gap: 0.25rem;
@@ -18,7 +18,7 @@
     filter: drop-shadow(calc(0.075 * 1rem) calc(0.075 * 1rem) 0 rgba(140,140,140,1));
 }
 
-#header > h1 {
+#header > h1, .select2-container .select2-selection--single .select2-selection__rendered {
     /* style */
     color: rgba(255,0,176,1);
     font-family: TITLE;

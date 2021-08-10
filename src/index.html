@@ -14,6 +14,7 @@
         <script src="../docs/Libraries/chartist/plugins/threshold/chartist-plugin-threshold.min.js?c=a77e8e22" defer></script>
         <script src="../docs/Libraries/GuideChimp/guidechimp.min.js" defer></script>
         <script src="../docs/Libraries/numbro/numbro.min.js" defer></script>
+        <script src="../docs/Libraries/simple-translator/translator.min.js" defer></script>
         <script src="js/functions.js" defer></script>
         <script src="js/events.js" defer></script>
 
@@ -45,7 +46,13 @@
             <a href="https://www.defichain.com" target="_blank" rel="noopener">
                 <img id="logo" src="../docs/img/DFI.svg">
             </a>
-            <h1> Liquidity Mining Calculator </h1>
+            <h1>
+                <select class="js-example-templating" id="i18n-toggler">
+                    <option value="de"></option>
+                    <option value="en" selected="selected">Liquidity Mining Calculator</option>
+                    <option value="fr">Calculateur Pour Minage De Liquidité</option>
+                </select>
+            </h1>
             <div class="buttons">
                 <div id="playButtons">
                     <img id="play" src="../docs/img/play.svg" alt="Replay">
@@ -54,13 +61,13 @@
             </div>
         </section>
         <section id="investment">
-            <h2> Investment </h2>
+            <h2 data-i18n="investment.inv"></h2>
             <hr>
             <div class="flat">
                 <div class="title">
                     <img id="sync" src="../docs/img/sync.svg" alt="Sync">
                 </div>
-                <h3> Initial Prices </h3>
+                <h3 data-i18n="investment.IP"></h3>
                 <div class="title">
                     <img src="../docs/img/DFI.svg" alt="DFI">
                 </div>
@@ -100,7 +107,7 @@
             </div>
             <div class="flat" id="finalPricesDiv">
                 <div class="empty"></div>
-                <h3> Final Prices </h3>
+                <h3 data-i18n="investment.FP"></h3>
                 <div class="title">
                     <img src="../docs/img/DFI.svg" alt="DFI">
                 </div>
@@ -123,7 +130,7 @@
             </div>
             <div class="flat">
                 <div class="empty"></div>
-                <h3> Initial Amounts </h3>
+                <h3 data-i18n="investment.IA"></h3>
                 <div class="title">
                     <img src="../docs/img/DFI.svg" alt="DFI">
                 </div>
@@ -139,27 +146,27 @@
             </div>
             <div class="flat" id="interestDiv">
                 <div class="empty"></div>
-                <h3 id="interestH"> Interest </h3>
-                <div class="title">APR</div>
+                <h3 id="interestH" data-i18n="investment.int"></h3>
+                <div class="title" data-i18n="investment.APR"></div>
                 <div class="input" id="aprDiv">
                     %<input class="inputtext" type="number" min="0" id="apr" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
                 </div>
-                <div class="title">Fee</div>
+                <div class="title" data-i18n="investment.fee"></div>
                 <div class="input" id="feeDiv">
                     %<input class="inputtext" type="number" min="0" id="fee" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
                 </div>
-                <div class="title">Time</div>
+                <div class="title" data-i18n="investment.time"></div>
                 <div class="input" id="durationDiv">
                     d.<input class="inputtext" type="number" min="0" id="duration" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
                 </div>
-                <div class="title">Comp.</div>
+                <div class="title" data-i18n="investment.comp"></div>
                 <div class="input" id="periodDiv">
                     d.<input class="inputtext" type="number" min="0" id="period" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
                 </div>
             </div>
         </section>
         <section id="outcome">
-            <h2> Outcome </h2>
+            <h2 data-i18n="outcome.out"></h2>
             <hr>
             <div id="amountsTitles" class="flat">
                 <div class="title">
@@ -169,9 +176,9 @@
                 <div class="title">Total</div>
             </div>
             <div id="amountsParent" class="flat">
-                <h3 id="LMA"> Liquidity Mining Amounts </h3>
+                <h3 id="LMA" data-i18n="outcome.LMA"></h3>
                 <div id="fAmounts" class="flat shadow">
-                    <h3> W/o Interest </h3>
+                    <h3 data-i18n="outcome.WOINT"></h3>
                     <div class="input auto">
                         <div></div><input class="inputtext" type="text" min="0" id="fAmountDFI" disabled>
                     </div>
@@ -180,7 +187,7 @@
                     </div>
                 </div>
                 <div id="fAmountsI" class="flat shadow">
-                    <h3> With Interest </h3>
+                    <h3 data-i18n="outcome.WINT"></h3>
                     <div class="input auto">
                         <div></div><input class="inputtext" type="text" min="0" id="fAmountDFII" disabled>
                     </div>
@@ -205,9 +212,9 @@
                 <div class="title">Total</div>
             </div>
             <div id="values" class="flat">
-                <h3> Values </h3>
+                <h3 data-i18n="outcome.values"></h3>
                 <div class="flat shadow" id="initialValues">
-                    <h3 id="IV"> Initial </h3>
+                    <h3 id="IV" data-i18n="outcome.init"></h3>
                     <div class="input auto">
                         <div name="Currency">$</div><input class="inputtext" type="text" min="0" id="cValueDFI" disabled>
                     </div>
@@ -219,7 +226,7 @@
                     </div>
                 </div>
                 <div class="flat shadow" id="holding">
-                    <h3 id="HV"> Holding </h3>
+                    <h3 id="HV" data-i18n="outcome.hold"></h3>
                     <div class="input auto">
                         <div name="Currency">$</div><input class="inputtext" type="text" min="0" id="fValueDFIH" disabled>
                     </div>
@@ -231,7 +238,7 @@
                     </div>
                 </div>
                 <div class="flat shadow" id="mining">
-                    <h3 id="LMV"> LM w/o Int. </h3>
+                    <h3 id="LMV" data-i18n="outcome.LMWOI"></h3>
                     <div class="input auto">
                         <div name="Currency">$</div><input class="inputtext" type="text" min="0" id="fValueDFI" disabled>
                     </div>
@@ -243,7 +250,7 @@
                     </div>
                 </div>
                 <div class="flat shadow" id="miningI">
-                    <h3 id="LMIV"> LM with Int. </h3>
+                    <h3 id="LMIV" data-i18n="outcome.LMWI"></h3>
                     <div class="input auto">
                         <div name="Currency">$</div><input class="inputtext" type="text" min="0" id="fValueDFII" disabled>
                     </div>
@@ -258,15 +265,15 @@
             </div>
         </section>
         <section id="plot">
-            <h2 id="chartTitle"> Changes in LM/Holding total value due to prices variations </h2>
+            <h2 id="chartTitle" data-i18n="plot.title"></h2>
             <hr>
-            <div id="yLabel"> LM/Holding total value, in %. </div>
+            <div id="yLabel" data-i18n="plot.y"></div>
             <div id="chart" class="ct-chart ct-major-twelfth"></div>
             <div id="legend">
-                <div id="int" hidden>&#9632;with interest</div>
-                <div id="noInt">&#9632;w/o interest</div>
+                <div id="int" data-i18n="plot.lint" hidden></div>
+                <div id="noInt" data-i18n="plot.lnint"></div>
             </div>
-            <h3 id="xLabel"> Final/Initial price of TOKEN in DFI, in %.</h3>
+            <h3 id="xLabel"> <div data-i18n="plot.x1"></div> <div> TOKEN </div> <div data-i18n="plot.x2"> </div></h3>
         </section>
     </body>
 </html>

@@ -20,13 +20,16 @@
     grid-area: h;
 }
 
-#xLabel {
+#xLabel, #xLabel > div {
     grid-area: x;
+    display: flex;
 
     /* style */
     font-size: 0.7rem;
     font-family: KEYS;
     font-style: italic;
+    justify-content: center;
+    white-space: pre;
 }
 
 #yLabel {
