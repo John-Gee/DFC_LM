@@ -600,7 +600,7 @@ function getPrices() {
     .then(function(data){
         my$("#cPriceDFI").value = data[defichain][currency];
         inputEvent("#cPriceDFI");
-        if (otherCoin != "tether") {
+        if ( (otherCoin != "tether") && (otherCoin != "usd-coin")) {
             my$("#cPriceToken").value = data[otherCoin][currency];
             inputEvent("#cPriceToken");
         }
