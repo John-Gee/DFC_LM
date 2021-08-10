@@ -1,8 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    my$("#CurrencyValue").addEventListener("input", function() {
-        SwitchCurrencyLabel();
-    });
-    SwitchCurrencyLabel();
     new TsSelect2(my$("#CurrencyValue"), {
         minimumResultsForSearch: -1,
         width: "100%",
@@ -11,7 +7,25 @@ document.addEventListener("DOMContentLoaded", function() {
             return m;
         }
     });
+    my$("#CurrencyValue").addEventListener("input", function() {
+        SwitchCurrencyLabel();
+    });
+    if (localStorage.getItem("Currency")) {
+        my$("#CurrencyValue").selectedIndex = localStorage.getItem("Currency");
+        changeEvent("#CurrencyValue");
+    }
+    SwitchCurrencyLabel();
 
+    new TsSelect2(my$("#OtherTokenValue"), {
+        minimumResultsForSearch: -1,
+        width: "100%",
+        dropdownAutoWidth : true,
+        templateResult: formatCoin,
+        templateSelection: formatCoin,
+        escapeMarkup: function (m) {
+            return m;
+        }
+    });
     my$("#OtherTokenValue").addEventListener("input", function() {
         SwitchTokenLabel();
         if ((my$("#OtherTokenValue").value == "USDC") || (my$("#OtherTokenValue").value == "USDT")) {
@@ -38,17 +52,11 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     });
+    if (localStorage.getItem("OtherToken")) {
+        my$("#OtherTokenValue").selectedIndex = localStorage.getItem("OtherToken");
+        changeEvent("#OtherTokenValue");
+    }
     SwitchTokenLabel();
-    new TsSelect2(my$("#OtherTokenValue"), {
-        minimumResultsForSearch: -1,
-        width: "100%",
-        dropdownAutoWidth : true,
-        templateResult: formatCoin,
-        templateSelection: formatCoin,
-        escapeMarkup: function (m) {
-            return m;
-        }
-    });
 
     my$("#cPriceToken").addEventListener("input", cCalculate);
     my$("#cPriceDFI").addEventListener("input", cCalculate);

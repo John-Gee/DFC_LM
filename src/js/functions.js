@@ -3,6 +3,7 @@ function SwitchCurrencyLabel() {
     myMap("[name='Currency']", function(el) {
         el.innerHTML = label;
     });
+    localStorage.setItem("Currency", my$("#CurrencyValue").selectedIndex);
 }
 
 function SwitchTokenLabel() {
@@ -14,6 +15,7 @@ function SwitchTokenLabel() {
         el.innerHTML = coinNameToImg(label);
     });
     my$("#xLabel").innerHTML = "Final/Initial price of " + label + " in DFI, in %.";
+    localStorage.setItem("OtherToken", my$("#OtherTokenValue").selectedIndex);
 }
 
 function formatCoin(coin) {
@@ -624,6 +626,10 @@ function addDiffToolTip(selector, fNumber, cNumber) {
 
 function inputEvent(selector) {
     my$(selector).dispatchEvent(new Event('input'));
+}
+
+function changeEvent(selector) {
+    my$(selector).dispatchEvent(new Event("change"));
 }
 
 function runOnChildren(selector, func) {
