@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return m;
         }
     });
-    my$("#CurrencyValue").addEventListener("input", function() {
+    my$("#CurrencyValue").addEventListener("change", function() {
         SwitchCurrencyLabel();
     });
     if (localStorage.getItem("Currency")) {
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return m;
         }
     });
-    my$("#OtherTokenValue").addEventListener("input", function() {
+    my$("#OtherTokenValue").addEventListener("change", function() {
         SwitchTokenLabel();
         if ((my$("#OtherTokenValue").value == "USDC") || (my$("#OtherTokenValue").value == "USDT")) {
             my$("#cPriceToken").value = 1;
