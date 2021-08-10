@@ -635,9 +635,7 @@ function translate() {
     });
 
     var lang = my$("#i18n-toggler").value;
-    translator.fetch([lang]).then(() => {
-        translator.translatePageTo(lang);
-    });
+    translator.add(lang, eval(lang)).translatePageTo(lang);
 
     localStorage.setItem("lang", my$("#i18n-toggler").selectedIndex);
 }
