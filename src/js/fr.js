@@ -30,5 +30,30 @@ const fr = {
         x2: " en DFI, en %.",
         lint: "&#9632;Avec Interets",
         lnint: "&#9632;Sans Interets"
+    },
+    tour: {
+        play: "Bienvenue au tutoriel! Ce boutton le relance.",
+        title: "Ce calculateur estime des changements divergents  potentiels.",
+        CurrencyValueDiv: "Choisissez la devise.",
+        OtherTokenValueDiv: "Choisissez l'autre monnaie.",
+        sync: "Récupérez les prix depuis CoinGecko.",
+        cPriceDFIDiv: "Entrez le prix initial de DFI.",
+        cPriceTokenDiv: "Entrez le prix initial de l'autre monnaie.",
+        cPriceRatioDiv: "Donne le prix initial de l'autre monnaie en DFI.",
+        fPriceDFIDiv: "Entrer le prix final de DFI.",
+        fPriceTokenDiv: "Entrer le prix final de l'autre monnaie.",
+        cAmountDFIDiv: "Entrer le montant de DFI fournit au fond.",
+        cAmountTokenDiv: "Le montant de l'autre monnaie fournit est calculé automatiquement.",
+        interestH: "Cette section est optionelle.",
+        aprDiv: "Entrez le taux annuel d'intérêt du fond.",
+        feeDiv: "Entrez le taux annuel de commissions du fond.",
+        durationDiv: "Entrez le nombre de jour du placement dans le fond.",
+        periodDiv: "Entrez la fréquence en jour de composition des intérêts, le minimum est 0.0003472, mis à part 0 qui veut dire pas de composition.",
+        LMA: "Montant de monnaies après minage de liquidité.",
+        IV: "Basés sur les prix et montants initiaux.",
+        HV: "Basés sur les montants initiaux et  prix finaux.",
+        LMV: "Basés sur les montants et prix finaux, sans intérêt.",
+        LMIV: "Basés sur les montants et prix finaux, avec intérêt.",
+        plot: "Ceci trace les valeurs potentielles, selon le changement de valeur de l'autre monnaie en DFI."
     }
 }

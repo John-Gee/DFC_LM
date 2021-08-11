@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+function setupi18n() {
     new TsSelect2(my$("#i18n-toggler"), {
         minimumResultsForSearch: -1,
         width: "100%",
@@ -10,13 +10,16 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     my$("#i18n-toggler").addEventListener("change", function() {
         translate();
+        setupGuide();
     });
     if (localStorage.getItem("lang")) {
         my$("#i18n-toggler").selectedIndex = localStorage.getItem("lang");
         changeEvent("#i18n-toggler");
     }
     translate();
+}
 
+function setupCurrency() {
     new TsSelect2(my$("#CurrencyValue"), {
         minimumResultsForSearch: -1,
         width: "100%",
@@ -33,7 +36,9 @@ document.addEventListener("DOMContentLoaded", function() {
         changeEvent("#CurrencyValue");
     }
     SwitchCurrencyLabel();
+}
 
+function setupOtherCurrency() {
     new TsSelect2(my$("#OtherTokenValue"), {
         minimumResultsForSearch: -1,
         width: "100%",
@@ -75,6 +80,43 @@ document.addEventListener("DOMContentLoaded", function() {
         changeEvent("#OtherTokenValue");
     }
     SwitchTokenLabel();
+}
+
+var guideChimp = null;
+function setupGuide() {
+    if (guideChimp != null) {
+        createTutorial(guideChimp);
+        return;
+    }
+    guideChimp = createTutorial(guideChimp);
+    guideChimp.on("onStop", ()=>{
+        localStorage.setItem("Tutorial-N", guideChimp.currentStepIndex);
+    });
+    guideChimp.on("onComplete", ()=>{
+        localStorage.removeItem("Tutorial-N");
+    });
+    my$("#play").addEventListener("mouseover", function() {
+        my$("#play").style.display = "none";
+        my$("#play2").style.display = "block";
+    });
+    my$("#play").addEventListener("mouseout", function() {
+        my$("#play").style.display = "block";
+        my$("#play2").style.display = "none";
+    });
+    my$("#playButtons").addEventListener("click", function() {
+        startTutorial(guideChimp);
+    });
+    if (localStorage.getItem("Tutorial") != "Started") {
+        startTutorial(guideChimp);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    setupi18n();
+
+    setupCurrency();
+
+    setupOtherCurrency();
 
     my$("#cPriceToken").addEventListener("input", cCalculate);
     my$("#cPriceDFI").addEventListener("input", cCalculate);
@@ -101,26 +143,4 @@ document.addEventListener("DOMContentLoaded", function() {
     my$("#sync").addEventListener("click", getPrices);
 
     createEmptyPlot();
-
-    var guideChimp = createTutorial();
-    guideChimp.on("onStop", ()=>{
-        localStorage.setItem("Tutorial-N", guideChimp.currentStepIndex);
-    });
-    guideChimp.on("onComplete", ()=>{
-        localStorage.removeItem("Tutorial-N");
-    });
-    my$("#play").addEventListener("mouseover", function() {
-        my$("#play").style.display = "none";
-        my$("#play2").style.display = "block";
-    });
-    my$("#play").addEventListener("mouseout", function() {
-        my$("#play").style.display = "block";
-        my$("#play2").style.display = "none";
-    });
-    my$("#playButtons").addEventListener("click", function() {
-        startTutorial(guideChimp);
-    });
-    if (localStorage.getItem("Tutorial") != "Started") {
-        startTutorial(guideChimp);
-    }
 });

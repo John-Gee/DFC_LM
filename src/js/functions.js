@@ -102,7 +102,7 @@ function calcPriceRatio(time) {
     }
 }
 
-function createTutorial() {
+function createTutorial(guideChimp) {
     var pricesPosition    = "right";
     var interestsPosition = "top";
     var lmaPosition       = "right";
@@ -116,121 +116,128 @@ function createTutorial() {
         valuesLPosition   = "right";
         valuesRPosition   = "left";
     }
+
+    var lang = getLanguageObj();
     var tour = [
         {
             element: "#play",
-            title: "Welcome to the tutorial! This button replays it."
+            title: lang["tour"]["play"]
         },
         {
-            title: "This calculator estimates potential divergent changes."
+            title: lang["tour"]["title"]
         },
         {
             element: "#CurrencyValueDiv",
-            title: "Select the currency.",
+            title: lang["tour"]["CurrencyValueDiv"],
             position: pricesPosition
         },
         {
             element: "#OtherTokenValueDiv",
-            title: "Select the other coin.",
+            title: lang["tour"]["OtherTokenValueDiv"],
             position: pricesPosition
         },
         {
             element: "#sync",
-            title: "Get prices from CoinGecko.",
+            title: lang["tour"]["sync"],
             position: pricesPosition
         },
         {
             element: "#cPriceDFIDiv",
-            title: "Enter DFI's initial price.",
+            title: lang["tour"]["cPriceDFIDiv"],
             position: pricesPosition
         },
         {
             element: "#cPriceTokenDiv",
-            title: "Enter the other coin's initial price.",
+            title: lang["tour"]["cPriceTokenDiv"],
             position: pricesPosition
         },
         {
             element: "#cPriceRatioDiv",
-            title: "Gives the other coin's initial price in DFI.",
+            title: lang["tour"]["cPriceRatioDiv"],
             position: pricesPosition
         },
         {
             element: "#fPriceDFIDiv",
-            title: "Enter DFI's final price.",
+            title: lang["tour"]["fPriceDFIDiv"],
             position: pricesPosition
         },
         {
             element: "#fPriceTokenDiv",
-            title: "Enter the other coin's final price.",
+            title: lang["tour"]["fPriceTokenDiv"],
             position: pricesPosition
         },
         {
             element: "#cAmountDFIDiv",
-            title: "Enter the amount of DFI provided to the pool.",
+            title: lang["tour"]["cAmountDFIDiv"],
             position: interestsPosition
         },
         {
             element: "#cAmountTokenDiv",
-            title: "The other coin's provided amount is automatically calculated.",
+            title: lang["tour"]["cAmountTokenDiv"],
             position: interestsPosition
         },
         {
             element: "#interestH",
-            title: "This section is optional.",
+            title: lang["tour"]["interestH"],
             position: interestsPosition
         },
         {
             element: "#aprDiv",
-            title: "Enter the pool's rewards in APR.",
+            title: lang["tour"]["aprDiv"],
             position: interestsPosition
         },
         {
             element: "#feeDiv",
-            title: "Enter the pool's commissions in APR.",
+            title: lang["tour"]["feeDiv"],
             position: interestsPosition
         },
         {
             element: "#durationDiv",
-            title: "Enter days in liquidity mining.",
+            title: lang["tour"]["durationDiv"],
             position: interestsPosition
         },
         {
             element: "#periodDiv",
-            title: "Enter period in days to compound, the minimum is 0.0003472, apart from 0 which means no compounding.",
+            title: lang["tour"]["periodDiv"],
             position: interestsPosition
         },
         {
             element: "#LMA",
-            title: "Amounts of coins after liquidity mining",
+            title: lang["tour"]["LMA"],
             position: lmaPosition
         },
         {
             element: "#IV",
-            title: "Based on initial prices and amounts.",
+            title: lang["tour"]["IV"],
             position: valuesLPosition
         },
         {
             element: "#HV",
-            title: "Based on initial amounts and final prices.",
+            title: lang["tour"]["HV"],
             position: valuesRPosition
         },
         {
             element: "#LMV",
-            title: "Based on final amounts and prices, without interest.",
+            title: lang["tour"]["LMV"],
             position: valuesLPosition
         },
         {
             element: "#LMIV",
-            title: "Based on final amounts and prices, with interest.",
+            title: lang["tour"]["LMIV"],
             position: valuesRPosition
         },
         {
             element: "#plot",
-            title: "This plots potential values, based on the other coin's final price in DFI.",
+            title: lang["tour"]["plot"],
             position: "top"
         }
     ];
-    return GuideChimp(tour, {padding: 5});
+    if (guideChimp != null) {
+        guideChimp.tour = tour;
+        return guideChimp;
+    } else {
+        return GuideChimp(tour, {padding: 5});
+    }
 }
 
 function startTutorial(guideChimp) {
@@ -628,6 +635,10 @@ function addDiffToolTip(selector, fNumber, cNumber) {
     my$(selector).parentElement.dataset.tooltip = tip;
 }
 
+function getLanguageObj() {
+    return eval(my$("#i18n-toggler").value);
+}
+
 function translate() {
     var translator = new Translator({
         detectLanguage: false,
@@ -635,7 +646,7 @@ function translate() {
     });
 
     var lang = my$("#i18n-toggler").value;
-    translator.add(lang, eval(lang)).translatePageTo(lang);
+    translator.add(lang, getLanguageObj()).translatePageTo(lang);
 
     localStorage.setItem("lang", my$("#i18n-toggler").selectedIndex);
 }
