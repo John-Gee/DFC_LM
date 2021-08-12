@@ -7,15 +7,27 @@
 body {
     /* sets the page */
     display: grid;
-    grid-template-areas: "head head"
-                         "inv out"
-                         "inv chart";
-    grid-template-columns: 1fr 3.87fr;
-    grid-template-rows: auto 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "head"
+                         "calc";
 
     /* style */
     background-color: rgba(255,0,176,0.15);
     height: 100vh;
+}
+
+#calc {
+    grid-area: calc;
+}
+
+#LM {
+    /* sets the page */
+    display: grid;
+    grid-template-areas: "inv out"
+                         "inv chart";
+    grid-template-columns: 1fr 3.87fr;
+    grid-template-rows: repeat(2, auto);
 }
 
 #investment, #outcome, #plot {
