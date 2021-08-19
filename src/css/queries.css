@@ -1,11 +1,19 @@
 @media only screen and (max-width: 900px) {
     body {
         grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr 1fr 1fr;
+        grid-template-rows: auto 1fr;
         grid-template-areas: "head"
-                             "inv"
+                             "calc";
+        overflow: initial;
+    }
+
+    #LM {
+        /* sets the page */
+        grid-template-areas: "inv"
                              "out"
                              "chart";
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, auto);
     }
 
     .input {

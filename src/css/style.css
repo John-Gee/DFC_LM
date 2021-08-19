@@ -21,15 +21,33 @@ body {
 
 #calc {
     grid-area: calc;
+
+    /* sets the page */
+    display: grid;
+    grid-template-areas: "LM";
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    /* style */
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
 #LM {
+    grid-area: LM;
+
     /* sets the page */
     display: grid;
     grid-template-areas: "inv out"
                          "inv chart";
     grid-template-columns: 1fr 3.87fr;
     grid-template-rows: repeat(2, auto);
+
+    /* style */
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
 #investment, #outcome, #plot {
