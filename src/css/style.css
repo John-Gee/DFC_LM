@@ -23,10 +23,7 @@ body {
     grid-area: calc;
 
     /* sets the page */
-    display: grid;
-    grid-template-areas: "LM";
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    display: block;
 
     /* style */
     height: 100%;

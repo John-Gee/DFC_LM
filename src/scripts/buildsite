@@ -24,9 +24,9 @@ function cleanPaths() {
 }
 
 function minifyCSS() {
-    minCSS=`cat css/{chart,fonts,guide,header,investment,outcome,select2,style,tooltips,queries}.css |
+    minCSS=`cat css/{chart,fonts,guide,header,info,investment,outcome,select2,style,tooltips,queries}.css |
     sed "s|../docs/||" | sed "s|../fonts/|fonts/|" |npx postcss -m`
-    for f in {chart,fonts,guide,header,investment,outcome,select2,tooltips,queries}.css
+    for f in {chart,fonts,guide,header,info,investment,outcome,select2,tooltips,queries}.css
     do
         sed -i "/^.*$f.*$/d" ../docs/index.html
     done

@@ -651,6 +651,19 @@ function translate() {
     localStorage.setItem("lang", my$("#i18n-toggler").selectedIndex);
 }
 
+function info() {
+    if (my$("#calc").style.display == "") {
+        my$("#calc").style.display = "none";
+        my$("#info").style.display = "grid";
+        my$("body").style.gridTemplateAreas = '"head" "info"';
+    }
+    else {
+        my$("#calc").style.display = "";
+        my$("#info").style.display = "none";
+        my$("body").style.gridTemplateAreas = '"head" "calc"';
+    }
+}
+
 function inputEvent(selector) {
     my$(selector).dispatchEvent(new Event('input'));
 }

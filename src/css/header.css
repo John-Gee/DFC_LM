@@ -44,7 +44,7 @@
     margin: 0 2rem 0 2rem;
 }
 
-#playButtons {
+#playButtons, #infoButtons {
     /* children */
     display: flex;
     flex-direction: row;
@@ -53,6 +53,6 @@
     cursor: pointer;
 }
 
-#play, #play2 {
+#play, #play2, #infoB, #infoB2 {
     width: calc(2 * 1rem);
 }

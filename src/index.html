@@ -28,6 +28,7 @@
         <link href="css/fonts.css" rel="stylesheet" type="text/css">
         <link href="css/guide.css" rel="stylesheet" type="text/css">
         <link href="css/header.css" rel="stylesheet" type="text/css">
+        <link href="css/info.css" rel="stylesheet" type="text/css">
         <link href="css/investment.css" rel="stylesheet" type="text/css">
         <link href="css/outcome.css" rel="stylesheet" type="text/css">
         <link href="css/select2.css" rel="stylesheet" type="text/css">
@@ -57,6 +58,10 @@
                 </select>
             </h1>
             <div class="buttons">
+                <div id="infoButtons">
+                    <img id="infoB" src="../docs/img/info.svg" alt="Info">
+                    <img id="infoB2" src="../docs/img/info2.svg" alt="Info" hidden>
+                </div>
                 <div id="playButtons">
                     <img id="play" src="../docs/img/play.svg" alt="Replay">
                     <img id="play2" src="../docs/img/play2.svg" alt="Replay" hidden>
@@ -280,6 +285,31 @@
                     </div>
                     <h3 id="xLabel"> <div data-i18n="plot.x1"></div> <div> TOKEN </div> <div data-i18n="plot.x2"> </div></h3>
                 </section>
+            </section>
+        </section>
+        <section id="info">
+            <section id="welcome">
+                <h2> Welcome </h2>
+                <hr>
+                <p data-i18n="info.welcome"></p>
+                <p data-i18n="info.welcome2"></p>
+            </section>
+            <section id="links">
+                <h2> Links </h2>
+                <hr>
+                <p data-i18n="info.links"></p>
+                <p data-i18n="info.ipfs">The first is on IPFS so if you know the checksum of the site you can access it with any IPFS client.</p>
+            </section>
+            <section id="contact">
+                <h2> Contact </h2>
+                <hr>
+                <p data-i18n="info.gh"></p>
+            </section>
+            <section id="donation">
+                <h2> Donation </h2>
+                <hr>
+                <p data-i18n="info.donation"></p>
+                <p class="DFC">dULgsGdvwnB7HoHeEdx8GCCLKCoH1y2Axx</p>
             </section>
         </section>
     </body>

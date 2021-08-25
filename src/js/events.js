@@ -111,8 +111,24 @@ function setupGuide() {
     }
 }
 
+function setupInfo() {
+    my$("#infoB").addEventListener("mouseover", function() {
+        my$("#infoB").style.display = "none";
+        my$("#infoB2").style.display = "block";
+    });
+    my$("#infoB").addEventListener("mouseout", function() {
+        my$("#infoB").style.display = "block";
+        my$("#infoB2").style.display = "none";
+    });
+    my$("#infoButtons").addEventListener("click", function() {
+        info();
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     setupi18n();
+
+    setupInfo();
 
     setupCurrency();
 

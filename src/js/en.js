@@ -55,5 +55,13 @@ const en = {
         LMV: "Based on final amounts and prices, without interest.",
         LMIV: "Based on final amounts and prices, with interest.",
         plot: "This plots potential values, based on the other coin's final price in DFI."
+    },
+    info: {
+        welcome: "Welcome to DeFiChain Tools!",
+        welcome2: "This site currently only offers a Liquidity Mining Calculator, but more will be added soon.",
+        links: "This site is accessible on both <a href=\"https://www.defichain.tools\">https://www.defichain.tools</a> and <a href=\"https://john-gee.github.io/DFC_LM/\">https://john-gee.github.io/DFC_LM/</a>.",
+        ipfs: "The first is on IPFS so if you know the checksum of the site you can access it with any IPFS client.",
+        gh: "You can find the source to this site and file feature requests/bugs at <a href=\"https://github.com/John-Gee/DFC_LM/\">https://github.com/John-Gee/DFC_LM/</a>.",
+        donation: "If you appreciate this site and want to support it, you can donate to this DeFiChain address:"
     }
 }

@@ -55,5 +55,13 @@ const fr = {
         LMV: "Basés sur les montants et prix finaux, sans intérêt.",
         LMIV: "Basés sur les montants et prix finaux, avec intérêt.",
         plot: "Ceci trace les valeurs potentielles, selon le changement de valeur de l'autre monnaie en DFI."
+    },
+    info: {
+        welcome: "Bienvenue sur DeFiChain Tools !",
+        welcome2: "Ce site n'offre qu'un calculateur pour Minage de Liquidité, mais d'autres outils seront bientôt ajoutés .",
+        links: "Ce site est accessible sur <a href=\"https://www.defichain.tools\">https://www.defichain.tools</a> et <a href=\"https://john-gee.github.io/DFC_LM/\">https://john-gee.github.io/DFC_LM/</a> .",
+        ipfs: "Le premier est sur IPFS, si vous connaissez la somme de contrôle vous pouvez y accéder avec tout client IPFS .",
+        gh: "Vous pouvez trouver les sources de ce site et remplir des requêtes de fonctionnalités/rapports de bogues sur <a href=\"https://github.com/John-Gee/DFC_LM/\">https://github.com/John-Gee/DFC_LM/</a> .",
+        donation: "Si vous appréciez ce site et voulez le supporter, vous pouvez faire une donation sur cette adresse DeFiChain :"
     }
 }
