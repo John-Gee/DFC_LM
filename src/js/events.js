@@ -95,17 +95,25 @@ function setupGuide() {
     guideChimp.on("onComplete", ()=>{
         localStorage.removeItem("Tutorial-N");
     });
+
     my$("#play").addEventListener("mouseover", function() {
+        if (my$("#calc").style.display != "")
+            return;
         my$("#play").style.display = "none";
         my$("#play2").style.display = "block";
     });
     my$("#play").addEventListener("mouseout", function() {
+        if (my$("#calc").style.display != "")
+            return;
         my$("#play").style.display = "block";
         my$("#play2").style.display = "none";
     });
     my$("#playButtons").addEventListener("click", function() {
+        if (my$("#calc").style.display != "")
+            return;
         startTutorial(guideChimp);
     });
+
     if (localStorage.getItem("Tutorial") != "Started") {
         startTutorial(guideChimp);
     }
