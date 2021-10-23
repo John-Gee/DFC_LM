@@ -634,10 +634,11 @@ function addDiffToolTip(selector, fNumber, cNumber) {
     var tip  = "";
     var diff = fNumber - cNumber;
     var pct  = prettyNumber(diff / cNumber * 100);
+    if (selector.includes("Value"))
+        tip = "$ ";
     if (diff > 0)
-        tip = "$ +" + prettyNumber(diff) + "\n% +" + pct;
-    else if (diff< 0)
-        tip = "$ "  + prettyNumber(diff) + "\n% "  + pct;
+        tip = tip + "+";
+    tip = tip + prettyNumber(diff) + "\n% " + pct;
     my$(selector).parentElement.dataset.tooltip = tip;
 }
 
