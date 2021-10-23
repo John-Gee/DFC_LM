@@ -3,14 +3,15 @@ const fr = {
     },
     investment: {
         inv: "Investissement",
-        "IP": "Prix Initiaux",
-        "FP": "Prix Finaux",
-        "IA": "Montants Initiaux",
+        IP: "Prix Initiaux",
+        FP: "Prix Finaux",
+        IA: "Montants Initiaux",
         int: "Interets",
         APR: "TA",
         fee: "Comm.",
         time: "Temps",
-        comp: "Comp."
+        comp: "Comp.",
+        tax: "Taxe"
     },
     outcome: {
         out: "Resultat",
@@ -49,6 +50,7 @@ const fr = {
         feeDiv: "Entrez le taux annuel de commissions du fond.",
         durationDiv: "Entrez le nombre de jour du placement dans le fond.",
         periodDiv: "Entrez la fréquence en jour de composition des intérêts, le minimum est 0.0003472, mis à part 0 qui veut dire pas de composition.",
+        taxDiv: "Entrez le taux de taxe.",
         LMA: "Montant de monnaies après minage de liquidité.",
         IV: "Basés sur les prix et montants initiaux.",
         HV: "Basés sur les montants initiaux et  prix finaux.",

@@ -10,7 +10,8 @@ const en = {
         APR: "APR",
         fee: "Comm.",
         time: "Time",
-        comp: "Comp."
+        comp: "Comp.",
+        tax: "Tax"
     },
     outcome: {
         out: "Outcome",
@@ -49,6 +50,7 @@ const en = {
         feeDiv: "Enter the pool's commissions in APR.",
         durationDiv: "Enter days in liquidity mining.",
         periodDiv: "Enter period in days to compound, the minimum is 0.0003472, apart from 0 which means no compounding.",
+        taxDiv: "Enter tax rate.",
         LMA: "Amounts of coins after liquidity mining",
         IV: "Based on initial prices and amounts.",
         HV: "Based on initial amounts and final prices.",

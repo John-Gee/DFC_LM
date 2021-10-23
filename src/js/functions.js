@@ -202,6 +202,11 @@ function createTutorial(guideChimp) {
             position: interestsPosition
         },
         {
+            element: "#taxDiv",
+            title: lang["tour"]["taxDiv"],
+            position: interestsPosition
+        },
+        {
             element: "#LMA",
             title: lang["tour"]["LMA"],
             position: lmaPosition
@@ -433,6 +438,7 @@ function calculate() {
                 var fee      = +my$("#fee").value;
                 var cPeriod  = +my$("#period").value;
                 var duration = +my$("#duration").value;
+                var tax      = +my$("#tax").value;
                 var compAPR  = apr / 100;
                 var compFee  = fee / 100;
                 var periods  = 0;
@@ -448,11 +454,11 @@ function calculate() {
 
                     var transFee = 0.0001634;
                     // 2 transaction fees (one to convert, one to pool) + 1 convertion fee per period
-                    fAmountDFII   = fAmountDFI + (((fAmountDFI * (compAPR + compFee)) - (2 * transFee * periods)) * duration / 365);
-                    fAmountTokenI = fAmountToken + (fAmountToken * (compAPR + compFee) * duration / 365);
+                    fAmountDFII   = fAmountDFI + (((fAmountDFI * (compAPR + compFee)) - (2 * transFee * periods)) * duration / 365) * (100 - tax) / 100;
+                    fAmountTokenI = fAmountToken + (fAmountToken * (compAPR + compFee) * duration / 365) * (100 - tax) / 100;
                 } else {
-                    fAmountDFII   = fAmountDFI + ((fAmountDFI * ( 2 * compAPR + compFee)) * duration / 365);
-                    fAmountTokenI = fAmountToken + (fAmountToken * compFee * duration / 365);
+                    fAmountDFII   = fAmountDFI + ((fAmountDFI * ( 2 * compAPR + compFee)) * duration / 365) * (100 - tax) / 100;
+                    fAmountTokenI = fAmountToken + (fAmountToken * compFee * duration / 365) * (100 - tax) / 100;
                 }
                 addDiffToolTip("#fAmountDFII", fAmountDFII, cAmountDFI);
                 addDiffToolTip("#fAmountTokenI", fAmountTokenI, cAmountToken);

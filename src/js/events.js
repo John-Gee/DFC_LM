@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function() {
     my$("#fee").addEventListener("input", calculate);
     my$("#duration").addEventListener("input", calculate);
     my$("#period").addEventListener("input", calculate);
-    my$("#period").addEventListener("input", calculate);
+    my$("#tax").addEventListener("input", calculate);
 
     my$("#sync").addEventListener("click", getPrices);
 
