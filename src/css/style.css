@@ -103,7 +103,7 @@ h3 {
     display: grid;
     grid-template-columns: 1.75rem 1fr;
     gap: 0rem;
-    align-items: end;
+    align-items: center;
 
     /* style */
     border: 1px;
