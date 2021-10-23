@@ -1,18 +1,18 @@
 #outcome {
     grid-area: out;
     display: grid;
-    grid-template-columns: auto repeat(2, 1fr) auto repeat(4, 1fr);
+    grid-template-columns: auto repeat(2, 1fr) auto repeat(5, 1fr);
     grid-template-rows: auto 0.25rem repeat(5, 1fr) auto;
     grid-auto-flow: column;
     gap: 0.5rem 0rem;
-    grid-template-areas: "o-h2  o-h2  o-h2  o-h2  o-h2  o-h2  o-h2   o-h2"
-                         "o-hr  o-hr  o-hr  o-hr  o-hr  o-hr  o-hr   o-hr"
-                         "...   o-LMA o-LMA o-AVS o-V   o-V   o-V    o-V"
-                         "...   o-a   o-ai  o-AVS o-i   o-h   o-lm   o-lmi"
-                         "o-aD  o-Da  o-Dai o-AVS o-Di  o-Dh  o-Dlm  o-Dlmi"
-                         "o-aT  o-Ta  o-Tai o-AVS o-Ti  o-Th  o-Tlm  o-Tlmi"
-                         "o-aTo ....  ..... o-AVS o-Toi o-Toh o-Tolm o-Tolmi"
-                         "..... ....  ..... ..... ..... ..... ...... .......";
+    grid-template-areas: "o-h2  o-h2  o-h2  o-h2  o-h2  o-h2  o-h2  o-h2   o-h2"
+                         "o-hr  o-hr  o-hr  o-hr  o-hr  o-hr  o-hr  o-hr   o-hr"
+                         "...   o-LMA o-LMA o-AVS o-V   o-V   o-V   o-V    o-V"
+                         "...   o-a   o-ai  o-AVS o-i   o-h   o-h1  o-lm   o-lmi"
+                         "o-aD  o-Da  o-Dai o-AVS o-Di  o-Dh  o-DhD o-Dlm  o-Dlmi"
+                         "o-aT  o-Ta  o-Tai o-AVS o-Ti  o-Th  o-ThT o-Tlm  o-Tlmi"
+                         "o-aTo ....  ..... o-AVS o-Toi o-Toh ..... o-Tolm o-Tolmi"
+                         "..... ....  ..... ..... ..... ..... ..... ...... .......";
 
     /* style */
     justify-content: space-evenly;
@@ -78,6 +78,10 @@
     display: none;
 }
 
+#valuesTitles3 {
+    display: none;
+}
+
 #initialValues > h3 {
     grid-area: o-i;
 }
@@ -108,6 +112,26 @@
 
 #holding > div:nth-of-type(3) {
     grid-area: o-Toh;
+}
+
+#holding1 > h3:nth-of-type(1) {
+    grid-area: o-h1;
+}
+
+#holding1 > h3:nth-of-type(2) {
+    display: none;
+}
+
+#holding1 > h3:nth-of-type(3) {
+    display: none;
+}
+
+#holding1 > div:nth-of-type(1) {
+    grid-area: o-DhD;
+}
+
+#holding1 > div:nth-of-type(2) {
+    grid-area: o-ThT;
 }
 
 #mining > h3 {
@@ -151,7 +175,7 @@
     background-color: rgba(200,200,200,1);
 }
 
-#best {
+#best, #best1 {
     display: none;
     border: 0.25rem solid rgba(0, 255, 0, 0.25);
     border-radius: 1rem;
@@ -171,14 +195,29 @@
     grid-area: 4 / 6 / 9 / 7;
 }
 
+.best-fh1 { 
+    display: initial !important;
+    grid-area: 4 / 7 / 5 / 8;
+}
+
+.best-fhDFI {
+    display: initial !important;
+    grid-area: 5 / 7 / 6 / 8;
+}
+
+.best-fhT {
+    display: initial !important;
+    grid-area: 6 / 7 / 7 / 8;
+}
+
 .best-f {
     display: initial !important;
-    grid-area: 4 / 7 / 9 / 8;
+    grid-area: 4 / 8 / 9 / 9;
 }
 
 .best-fi {
     display: initial !important;
-    grid-area: 4 / 8 / 9 / 9;
+    grid-area: 4 / 9 / 9 / 10;
 }
 
 .shadow > * {
@@ -191,4 +230,8 @@
 
 .minus {
     color: rgba(255,0,0,1);
+}
+
+#HVT {
+    display: flex;
 }

@@ -51,7 +51,7 @@
 
     #outcome {
         grid-template-columns: minmax(3rem, auto) 1fr 1fr;
-        grid-template-rows: auto 0.25rem repeat(4, 1fr) 0.25rem repeat(5, 1fr) auto repeat(4, 1fr)) auto;
+        grid-template-rows: auto 0.25rem repeat(4, 1fr) 0.25rem repeat(5, 1fr) auto repeat(3, 1fr) auto repeat(4, 1fr) auto;
         gap: 1rem 0.5rem;
         grid-template-areas: "o-h2   o-h2  o-h2"
                              "o-hr   o-hr  o-hr"
@@ -65,6 +65,10 @@
                              "o-vD   o-Di  o-Dh"
                              "o-vT   o-Ti  o-Th"
                              "o-vTo  o-Toi o-Toh"
+                             ".....  ..... ....."
+                             ".....  o-hD  o-hT"
+                             "o-vD3  o-DhD ....."
+                             "o-vT3  ..... o-ThT"
                              ".....  ..... ....."
                              ".....  o-lm  o-lmi"
                              "o-vD2  o-Dlm  o-Dlmi"
@@ -103,10 +107,37 @@
         grid-area: o-vTo;
     }
 
+    #holding1 > h3:nth-of-type(1) {
+        display: none;
+    }
+
+    #holding1 > h3:nth-of-type(2) {
+        display: block;
+        grid-area: o-hD;
+    }
+
+    #holding1 > h3:nth-of-type(3) {
+        display: flex;
+        justify-content: center;
+        grid-area: o-hT;
+    }
+    
+    #valuesTitles3 {
+        display: contents !important;
+    }
+    
+    #valuesTitles3 > div:nth-of-type(1) {
+        grid-area: o-vD3;
+    }
+
+    #valuesTitles3 > div:nth-of-type(2) {
+        grid-area: o-vT3;
+    }
+
     #valuesTitles2 {
         display: contents !important;
     }
-
+    
     #valuesTitles2 > div:nth-of-type(1) {
         grid-area: o-vD2;
     }
@@ -129,6 +160,19 @@
         grid-area: 9 / 3 / 13 / 4;
     }
 
+    .best-fh1 { 
+        display: none;
+    }
+
+    .best-fhDFI {
+        display: initial !important;
+        grid-area: 14 / 2 / 16 / 3;
+    }
+
+    .best-fhT {
+        display: initial !important;
+        grid-area: 14 / 3 / 17 / 4;
+    }
     .best-f {
         display: initial !important;
         grid-area: 9 / 4 / 13 / 5;
@@ -137,6 +181,10 @@
     .best-fi {
         display: initial !important;
         grid-area: 9 / 5 / 13 / 6;
+    }
+    
+    #best1 {
+        display: none !important;
     }
 
     #plot {

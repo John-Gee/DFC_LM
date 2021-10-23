@@ -28,7 +28,6 @@ body {
     /* style */
     height: 100%;
     width: 100%;
-    overflow: hidden;
 }
 
 #LM {
@@ -38,7 +37,7 @@ body {
     display: grid;
     grid-template-areas: "inv out"
                          "inv chart";
-    grid-template-columns: 1fr 3.87fr;
+    grid-template-columns: 1fr 4.2fr;
     grid-template-rows: repeat(2, auto);
 
     /* style */
@@ -102,9 +101,9 @@ h3 {
 .input {
     /* position */
     display: grid;
-    grid-template-columns: 2rem 1fr;
-    gap: 0.25rem;
-    align-items: center;
+    grid-template-columns: 1.75rem 1fr;
+    gap: 0rem;
+    align-items: end;
 
     /* style */
     border: 1px;

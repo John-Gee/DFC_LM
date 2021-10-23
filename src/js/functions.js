@@ -222,6 +222,16 @@ function createTutorial(guideChimp) {
             position: valuesRPosition
         },
         {
+            element: "#HV",
+            title: lang["tour"]["HVDFI"],
+            position: valuesRPosition
+        },
+        {
+            element: "#HV",
+            title: lang["tour"]["HVT"],
+            position: valuesRPosition
+        },
+        {
             element: "#LMV",
             title: lang["tour"]["LMV"],
             position: valuesLPosition
@@ -269,7 +279,7 @@ function compareValues(value1, value2, id1, id2) {
     }
 }
 
-function compareTotalValues(cValue, fValueH, fValue, fValueI) {
+function compareTotalValues(cValue, fValueH, fValueHDFI, fValueHToken, fValue, fValueI) {
     if (!fValue)
         return;
 
@@ -279,6 +289,16 @@ function compareTotalValues(cValue, fValueH, fValue, fValueI) {
     if (cValue < fValueH) {
         best    = "fh"
         biggest = fValueH;
+    }
+    
+    if (biggest < fValueHDFI) {
+        best    = "fhDFI"
+        biggest = fValueHDFI;
+    }
+    
+    if (biggest < fValueHToken) {
+        best    = "fhT"
+        biggest = fValueHToken;
     }
 
     if (biggest < fValue) {
@@ -293,39 +313,45 @@ function compareTotalValues(cValue, fValueH, fValue, fValueI) {
 
     if (biggest) {
         my$("#best").classList.add("best-" + best);
+        if ((best == "fhDFI") || (best == "fhT"))
+            my$("#best1").classList.add("best-fh1");
     }
 }
 
 function calculate() {
-    var cPriceDFI     = 0;
-    var cPriceToken   = 0;
+    var cPriceDFI         = 0;
+    var cPriceToken       = 0;
 
-    var cAmountDFI    = 0;
-    var cAmountToken  = 0;
+    var cAmountDFI        = 0;
+    var cAmountToken      = 0;
 
-    var cValueDFI     = 0;
-    var cValueToken   = 0;
-    var cValue        = 0;
+    var cValueDFI         = 0;
+    var cValueToken       = 0;
+    var cValue            = 0;
 
-    var fAmountDFI    = 0;
-    var fAmountToken  = 0;
+    var fAmountDFI        = 0;
+    var fAmountToken      = 0;
 
-    var fAmountDFII   = 0;
-    var fAmountTokenI = 0;
+    var fAmountDFII       = 0;
+    var fAmountTokenI     = 0;
 
-    var fValueDFI     = 0;
-    var fValueToken   = 0;
-    var fValue        = 0;
+    var fValueDFI         = 0;
+    var fValueToken       = 0;
+    var fValue            = 0;
 
-    var fValueDFII    = 0;
-    var fValueTokenI  = 0;
-    var fValueI       = 0;
+    var fValueDFII        = 0;
+    var fValueTokenI      = 0;
+    var fValueI           = 0;
 
-    var fValueDFIH    = 0;
-    var fValueTokenH  = 0;
-    var fValueH       = 0;
+    var fValueDFIH        = 0;
+    var fValueTokenH      = 0;
+    var fValueH           = 0;
+
+    var fValueDFIHDFI     = 0;
+    var fValueTokenHToken = 0;
 
     my$("#best").className = "";
+    my$("#best1").className = "";
 
     runOnChildren("#amountsParent > div", function(el) {
         el.classList.add("shadow");
@@ -333,6 +359,7 @@ function calculate() {
     runOnChildren("#values > div", function(el) {
         el.classList.add("shadow");
     });
+    my$("#valuesTitles3").classList.remove("shadow");
 
     runOnChildren("#fAmounts > div", function(el) {
         el.dataset.tooltip="";
@@ -417,13 +444,16 @@ function calculate() {
             addDiffToolTip("#fAmountDFI", fAmountDFI, cAmountDFI);
             addDiffToolTip("#fAmountToken", fAmountToken, cAmountToken);
 
-            fValueToken  = fAmountToken * fPriceToken;
-            fValueDFI    = fAmountDFI * fPriceDFI;
-            fValue       = fValueToken + fValueDFI;
+            fValueToken       = fAmountToken * fPriceToken;
+            fValueDFI         = fAmountDFI * fPriceDFI;
+            fValue            = fValueToken + fValueDFI;
 
-            fValueTokenH  = cAmountToken * fPriceToken;
-            fValueDFIH    = cAmountDFI * fPriceDFI;
-            fValueH       = fValueTokenH + fValueDFIH;
+            fValueTokenH      = cAmountToken * fPriceToken;
+            fValueDFIH        = cAmountDFI * fPriceDFI;
+            fValueH           = fValueTokenH + fValueDFIH;
+            
+            fValueDFIHDFI     = 2 * cAmountDFI * fPriceDFI;
+            fValueTokenHToken = 2 * cAmountToken * fPriceToken;
 
             addDiffToolTip("#fValueDFI", fValueDFI, fValueDFIH);
             addDiffToolTip("#fValueToken", fValueToken, fValueTokenH);
@@ -431,6 +461,7 @@ function calculate() {
 
             my$("#fAmounts").classList.remove("shadow");
             my$("#holding").classList.remove("shadow");
+            my$("#holding1").classList.remove("shadow");
             my$("#mining").classList.remove("shadow");
 
             if ((my$("#apr").value || my$("#fee").value) && my$("#duration").value ) {
@@ -497,6 +528,9 @@ function calculate() {
     my$("#fValueDFIH").value = prettyNumber(fValueDFIH);
     my$("#fValueH").value = prettyNumber(fValueH);
 
+    my$("#fValueDFIHDFI").value = prettyNumber(fValueDFIHDFI);
+    my$("#fValueTokenHToken").value = prettyNumber(fValueTokenHToken);
+
     compareValues(fValueDFIH, fValueDFI, "#fValueDFIH", "#fValueDFI");
     compareValues(fValueTokenH, fValueToken, "#fValueTokenH", "#fValueToken");
     compareValues(fValueH, fValue, "#fValueH", "#fValue");
@@ -509,7 +543,7 @@ function calculate() {
     compareValues(fValueTokenH, fValueTokenI, "#fValueTokenH", "#fValueTokenI");
     compareValues(fValueH, fValueI, "#fValueH", "#fValueI");
 
-    compareTotalValues(cValue, fValueH, fValue, fValueI);
+    compareTotalValues(cValue, fValueH, fValueDFIHDFI, fValueTokenHToken, fValue, fValueI);
 }
 
 function compareNumbers(a, b) {

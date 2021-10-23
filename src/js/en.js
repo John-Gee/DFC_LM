@@ -21,6 +21,9 @@ const en = {
         values: "Values",
         init: "Initial",
         hold: "Holding",
+        hold1: "Holding One",
+        holdD: "Holding DFI",
+        holdT: "Holding ",
         LMWOI: "LM w/o Int.",
         LMWI: "LM with Int."
     },
@@ -54,6 +57,7 @@ const en = {
         LMA: "Amounts of coins after liquidity mining",
         IV: "Based on initial prices and amounts.",
         HV: "Based on initial amounts and final prices.",
+        HV1: "Only holding one of the two.",
         LMV: "Based on final amounts and prices, without interest.",
         LMIV: "Based on final amounts and prices, with interest.",
         plot: "This plots potential values, based on the other coin's final price in DFI."

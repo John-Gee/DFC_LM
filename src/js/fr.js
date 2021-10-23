@@ -21,6 +21,9 @@ const fr = {
         values: "Valeurs",
         init: "Initiales",
         hold: "Gardees",
+        hold1: "Gardees d'un",
+        holdD: "Gardees de DFI",
+        holdT: "Gardees de ",
         LMWOI: "MDL Sans Interets",
         LMWI: "MDL Avec Interets"
     },
@@ -53,7 +56,8 @@ const fr = {
         taxDiv: "Entrez le taux de taxe.",
         LMA: "Montant de monnaies après minage de liquidité.",
         IV: "Basés sur les prix et montants initiaux.",
-        HV: "Basés sur les montants initiaux et  prix finaux.",
+        HV: "Basés sur les montants initiaux et prix finaux.",
+        HV1: "En ne gardant qu'un des deux.",
         LMV: "Basés sur les montants et prix finaux, sans intérêt.",
         LMIV: "Basés sur les montants et prix finaux, avec intérêt.",
         plot: "Ceci trace les valeurs potentielles, selon le changement de valeur de l'autre monnaie en DFI."
