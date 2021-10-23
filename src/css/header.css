@@ -53,6 +53,11 @@
     cursor: pointer;
 }
 
+/* until server issue is fixed */
+#infoButtons {
+    display: none !important;
+}
+
 #play, #play2, #infoB, #infoB2 {
     width: calc(2 * 1rem);
 }
