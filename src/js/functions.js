@@ -670,6 +670,12 @@ function info() {
     }
 }
 
+function copyPrices() {
+    my$("#fPriceDFI").value = my$("#cPriceDFI").value;
+    my$("#fPriceToken").value = my$("#cPriceToken").value;
+    inputEvent("#fPriceToken");
+}
+
 function inputEvent(selector) {
     my$(selector).dispatchEvent(new Event('input'));
 }

@@ -165,6 +165,7 @@ document.addEventListener("DOMContentLoaded", function() {
     my$("#tax").addEventListener("input", calculate);
 
     my$("#sync").addEventListener("click", getPrices);
+    my$("#copy").addEventListener("click", copyPrices);
 
     createEmptyPlot();
 });
