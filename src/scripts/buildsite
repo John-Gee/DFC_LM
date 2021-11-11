@@ -34,7 +34,7 @@ function minifyCSS() {
 }
 
 function minifyJS() {
-    cat js/{de,en,fr,events,functions}.js | sed "s|../docs/||" | sed "s|'\"head\" \"calc\"'|'\"h\" \"Y\"'|" | sed "s|'\"head\" \"info\"'|'\"h\" \"i\"'|" | \
+    cat js/{de,en,fr,events,functions}.js | sed "s|../docs/||" | sed "s|'\"head\" \"calc\"'|'\"h\" \"ca\"'|" | sed "s|'\"head\" \"info\"'|'\"h\" \"i\"'|" | \
     uglifyjs -o ../docs/js/functions.min.js \
     -c -m --source-map "root='../src/js',url='functions.min.js.map'"
     sed -i "s|functions.js|functions.min.js|" ../docs/index.html
