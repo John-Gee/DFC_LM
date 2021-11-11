@@ -41,8 +41,11 @@ function prettyNumber(number) {
     if (number == "")
         return "";
 
-    return numbro(number).format({trimMantissa: true,
-                                  thousandSeparated: true
+    return numbro(number).format({/*average: true,
+                                  totalLength: 10,*/
+                                  optionalMantissa: true,
+                                  thousandSeparated: true,
+                                  trimMantissa: true
     });
 }
 
