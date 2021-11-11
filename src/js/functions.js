@@ -467,7 +467,7 @@ function calculate() {
             my$("#holding1").classList.remove("shadow");
             my$("#mining").classList.remove("shadow");
 
-            if ((my$("#apr").value || my$("#fee").value) && my$("#duration").value ) {
+            if ((my$("#apr").value || my$("#fee").value) && (my$("#duration").value && my$("#duration").value > 0) ) {
                 var apr      = +my$("#apr").value;
                 var fee      = +my$("#fee").value;
                 var cPeriod  = +my$("#period").value;
