@@ -225,13 +225,8 @@ function createTutorial(guideChimp) {
             position: valuesRPosition
         },
         {
-            element: "#HV",
-            title: lang["tour"]["HVDFI"],
-            position: valuesRPosition
-        },
-        {
-            element: "#HV",
-            title: lang["tour"]["HVT"],
+            element: "#HV1",
+            title: lang["tour"]["HV1"],
             position: valuesRPosition
         },
         {
