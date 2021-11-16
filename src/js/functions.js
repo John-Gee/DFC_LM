@@ -663,11 +663,13 @@ function getPrices() {
 }
 
 function addDiffToolTip(selector, fNumber, cNumber) {
-    var tip  = "";
+    var tip;
     var diff = fNumber - cNumber;
     var pct  = prettyNumber(diff / cNumber * 100);
     if (selector.includes("Value"))
-        tip = "$ ";
+        tip = "Compared to Holding Value\n$ ";
+    else
+        tip = "Compared to the Initial Amount\n";
     if (diff > 0)
         tip = tip + "+";
     tip = tip + prettyNumber(diff) + "\n% " + pct;
