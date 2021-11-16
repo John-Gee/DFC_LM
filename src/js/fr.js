@@ -22,7 +22,7 @@ const fr = {
         init: "Initiales",
         hold: "Gardees",
         hold1: "Gardees d'un",
-        holdD: "Gardees de DFI",
+        holdD: "Gardees de ",
         holdT: "Gardees de ",
         LMWOI: "MDL Sans Interets",
         LMWI: "MDL Avec Interets"

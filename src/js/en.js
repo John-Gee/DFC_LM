@@ -22,7 +22,7 @@ const en = {
         init: "Initial",
         hold: "Holding",
         hold1: "Holding One",
-        holdD: "Holding DFI",
+        holdD: "Holding ",
         holdT: "Holding ",
         LMWOI: "LM w/o Int.",
         LMWI: "LM with Int."
