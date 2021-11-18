@@ -63,8 +63,8 @@ const fr = {
         plot: "Ceci trace les valeurs potentielles, selon le changement de valeur de l'autre monnaie en DFI."
     },
     info: {
-        welcome: "Bienvenue sur DeFiChain Tools !",
-        welcome2: "Ce site n'offre qu'un calculateur pour Minage de Liquidité, mais d'autres outils seront bientôt ajoutés .",
+        welcome: "Bienvenue sur DeFiChain Tools!",
+        welcome2: "Ce site n'offre qu'un calculateur pour Minage de Liquidité, mais d'autres outils seront bientôt ajoutés.",
         links: "Ce site est accessible sur le web à <a href=\"https://www.defichain.tools\">https://www.defichain.tools</a>",
         ipfs: "Il est aussi accessible sur IPFS à <a href=\"IPFS://ipns/defichain.tools/\">IPFS://ipns/defichain.tools/</a>",
         gh: "Vous pouvez trouver les sources de ce site et remplir des requêtes de fonctionnalités/rapports de bogues sur <a href=\"https://github.com/John-Gee/DFC_LM/\">https://github.com/John-Gee/DFC_LM/</a>",
