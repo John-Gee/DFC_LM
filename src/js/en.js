@@ -31,7 +31,8 @@ const en = {
         title: "Changes in LM/Holding total value due to prices variations",
         y: "LM/Holding total value, in %.",
         x1: "Final/Initial price of ",
-        x2: " in DFI, in %.",
+        x2: " in ",
+        x3: ", in %.",
         lint: "&#9632;with interest",
         lnint: "&#9632;w/o interest"
     },

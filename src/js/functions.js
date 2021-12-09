@@ -10,7 +10,19 @@ function SwitchCurrencyLabel() {
     localStorage.setItem("Currency", my$("#CurrencyValue").selectedIndex);
 }
 
-function SwitchTokenLabel() {
+function SwitchFirstTokenLabel() {
+    var label = my$("#FirstTokenValue").value;
+    myMap("[name='FirstToken']", function(el) {
+        el.innerHTML = coinNameToImg(label);
+    });
+    myMap("[name='FirstRatio']", function(el) {
+        el.innerHTML = coinNameToImg(label);
+    });
+    my$("#xLabel").children[3].innerHTML = label;
+    localStorage.setItem("FirstToken", my$("#FirstTokenValue").selectedIndex);
+}
+
+function SwitchOtherTokenLabel() {
     var label = my$("#OtherTokenValue").value;
     myMap("[name='OtherToken']", function(el) {
         el.innerHTML = coinNameToImg(label);
@@ -22,7 +34,13 @@ function SwitchTokenLabel() {
     localStorage.setItem("OtherToken", my$("#OtherTokenValue").selectedIndex);
 }
 
-function formatCoin(coin) {
+function formatCoin(coin, container) {
+    if(coin.element) {
+        if(coin.element.className) {
+            container.classList.add(coin.element.className);
+        }
+    }
+
     if (!coin.id) {
         return coin.text;
     }

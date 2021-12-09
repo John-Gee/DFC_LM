@@ -48,3 +48,7 @@
 #select2-CurrencyValue-container {
     color: rgba(255,0,176,1);
 }
+
+.select2-container .select2-results__option.optInvisible {
+    display: none;
+}

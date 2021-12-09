@@ -31,7 +31,8 @@ const fr = {
         title: "Changements des valeurs totales MDL/Gardees dues aux variations de prix",
         y: "Valeurs totales MDL/Gardees, en %.",
         x1: "Prix final/initial de ",
-        x2: " en DFI, en %.",
+        x2: " en ",
+        x3: ", en %.",
         lint: "&#9632;Avec Interets",
         lnint: "&#9632;Sans Interets"
     },

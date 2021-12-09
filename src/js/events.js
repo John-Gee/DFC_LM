@@ -38,7 +38,50 @@ function setupCurrency() {
     SwitchCurrencyLabel();
 }
 
-function setupOtherCurrency() {
+function setupFirstToken() {
+    new TsSelect2(my$("#FirstTokenValue"), {
+        minimumResultsForSearch: -1,
+        width: "100%",
+        dropdownAutoWidth : true,
+        templateResult: formatCoin,
+        templateSelection: formatCoin,
+        escapeMarkup: function (m) {
+            return m;
+        }
+    });
+    my$("#FirstTokenValue").addEventListener("change", function() {
+        SwitchFirstTokenLabel();
+        var OtherTokenOptions = my$("#OtherTokenValue");
+        var dfiIndex = -1;
+        for(var i=0; i < OtherTokenOptions.length; i++) {
+            if (OtherTokenOptions[i].value == "DFI") {
+                dfiIndex = i;
+                break;
+            }
+        }
+        if (my$("#FirstTokenValue").selectedIndex == 0) {
+            for(var i=0; i < dfiIndex; i++)
+                OtherTokenOptions[i].className = "";
+            for(var i=dfiIndex; i < OtherTokenOptions.length; i++)
+                OtherTokenOptions[i].className = "optInvisible";
+            OtherTokenOptions.selectedIndex = 1;
+        } else if (my$("#FirstTokenValue").selectedIndex == 1) {
+            for(var i=0; i < dfiIndex; i++)
+                OtherTokenOptions[i].className = "optInvisible";
+            for(var i=dfiIndex; i < OtherTokenOptions.length; i++)
+                OtherTokenOptions[i].className = "";
+            OtherTokenOptions.selectedIndex = dfiIndex;
+        }
+        changeEvent("#OtherTokenValue");
+    });
+    if (localStorage.getItem("FirstToken")) {
+        my$("#FirstTokenValue").selectedIndex = localStorage.getItem("FirstToken");
+        changeEvent("#FirstTokenValue");
+    }
+    SwitchFirstTokenLabel();
+}
+
+function setupOtherToken() {
     new TsSelect2(my$("#OtherTokenValue"), {
         minimumResultsForSearch: -1,
         width: "100%",
@@ -50,7 +93,7 @@ function setupOtherCurrency() {
         }
     });
     my$("#OtherTokenValue").addEventListener("change", function() {
-        SwitchTokenLabel();
+        SwitchOtherTokenLabel();
         if ((my$("#OtherTokenValue").value == "USDC") || (my$("#OtherTokenValue").value == "USDT")) {
             my$("#cPriceToken").value = 1;
             inputEvent("#cPriceToken");
@@ -79,7 +122,7 @@ function setupOtherCurrency() {
         my$("#OtherTokenValue").selectedIndex = localStorage.getItem("OtherToken");
         changeEvent("#OtherTokenValue");
     }
-    SwitchTokenLabel();
+    SwitchOtherTokenLabel();
 }
 
 var guideChimp = null;
@@ -140,7 +183,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     setupCurrency();
 
-    setupOtherCurrency();
+    setupFirstToken();
+    setupOtherToken();
 
     my$("#cPriceToken").addEventListener("input", cCalculate);
     my$("#cPriceDFI").addEventListener("input", cCalculate);
