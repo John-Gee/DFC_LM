@@ -145,6 +145,10 @@ function createTutorial(guideChimp) {
             title: lang["tour"]["play"]
         },
         {
+            element: "#infoB",
+            title: lang["tour"]["infoB"]
+        },
+        {
             title: lang["tour"]["title"]
         },
         {

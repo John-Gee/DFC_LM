@@ -37,7 +37,8 @@ const fr = {
         lnint: "&#9632;Sans Intérêts"
     },
     tour: {
-        play: "Bienvenue au tutoriel! Ce boutton le relance.",
+        play: "Bienvenue au tutoriel! Ce bouton le relance.",
+        infoB: "Ce bouton bascule l'onglet d'information.",
         title: "Ce calculateur estime des changements divergents potentiels.",
         CurrencyValueDiv: "Choisissez la devise.",
         FirstTokenValueDiv: "Choisissez la 1ère monnaie dans la paire.",

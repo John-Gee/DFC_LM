@@ -38,6 +38,7 @@ const en = {
     },
     tour: {
         play: "Welcome to the tutorial! This button replays it.",
+        infoB: "This button toggles the information tab.",
         title: "This calculator estimates potential divergent changes.",
         CurrencyValueDiv: "Select the currency.",
         FirstTokenValueDiv: "Select the first coin in the pool.",
