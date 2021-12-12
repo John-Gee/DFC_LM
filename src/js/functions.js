@@ -665,6 +665,10 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH) {
 }
 
 function getPrices() {
+    if (my$("#FirstTokenValue").value == "dUSD") {
+        alert("Stock tokens are not yet supported here, sorry!");
+        return;
+    }
     // showing loading
     my$("#sync").classList.add("rotate");
     var defichain = "defichain";

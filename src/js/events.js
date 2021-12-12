@@ -51,6 +51,10 @@ function setupFirstToken() {
     });
     my$("#FirstTokenValue").addEventListener("change", function() {
         SwitchFirstTokenLabel();
+        my$("#cPriceDFI").value = "";
+        inputEvent("#cPriceDFI");
+        my$("#fPriceDFI").value = "";
+        inputEvent("#fPriceDFI");
         var OtherTokenOptions = my$("#OtherTokenValue");
         var dfiIndex = -1;
         for(var i=0; i < OtherTokenOptions.length; i++) {
