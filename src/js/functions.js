@@ -153,6 +153,11 @@ function createTutorial(guideChimp) {
             position: pricesPosition
         },
         {
+            element: "#FirstTokenValueDiv",
+            title: lang["tour"]["FirstTokenValueDiv"],
+            position: pricesPosition
+        },
+        {
             element: "#OtherTokenValueDiv",
             title: lang["tour"]["OtherTokenValueDiv"],
             position: pricesPosition

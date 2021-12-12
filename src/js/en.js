@@ -40,6 +40,7 @@ const en = {
         play: "Welcome to the tutorial! This button replays it.",
         title: "This calculator estimates potential divergent changes.",
         CurrencyValueDiv: "Select the currency.",
+        FirstTokenValueDiv: "Select the first coin in the pool.",
         OtherTokenValueDiv: "Select the other coin.",
         sync: "Get prices from CoinGecko.",
         cPriceDFIDiv: "Enter DFI's initial price.",
