@@ -489,32 +489,32 @@ function calculate() {
             my$("#holding1").classList.remove("shadow");
             my$("#mining").classList.remove("shadow");
 
-            if ((my$("#apr").value || my$("#fee").value) && (my$("#duration").value && my$("#duration").value > 0) ) {
+            if ((my$("#apr").value > 0 || my$("#fee").value > 0) && (my$("#duration").value && my$("#duration").value > 0) ) {
                 var apr      = +my$("#apr").value;
                 var fee      = +my$("#fee").value;
                 var cPeriod  = +my$("#period").value;
                 var duration = +my$("#duration").value;
-                var tax      = +my$("#tax").value;
-                var compAPR  = apr / 100;
-                var compFee  = fee / 100;
+                var tax      = +my$("#tax").value / 100;
+                var compAPR  = apr / 100 * duration / 365;
+                var compFee  = fee / 100 * duration / 365;
                 var periods  = 0;
 
                 if (cPeriod && (cPeriod < duration)) {
                     if (cPeriod < (1 / 2880))
                         cPeriod = (1 / 2880);
-                    var convFee = 0.0001;
+                    var convFee = 0.002;
 
-                    periods  = 365 / cPeriod;
+                    periods  = duration / cPeriod;
                     compAPR  = Math.pow( 1 + (compAPR * (1 - convFee) / periods), periods) - 1;
                     compFee  = Math.pow( 1 + (compFee * (1 - convFee) / periods), periods) - 1;
 
                     var transFee = 0.0001634;
                     // 2 transaction fees (one to convert, one to pool) + 1 convertion fee per period
-                    fAmountDFII   = fAmountDFI + (((fAmountDFI * (compAPR + compFee)) - (2 * transFee * periods)) * duration / 365) * (100 - tax) / 100;
-                    fAmountTokenI = fAmountToken + (fAmountToken * (compAPR + compFee) * duration / 365) * (100 - tax) / 100;
+                    fAmountDFII   = fAmountDFI + (((fAmountDFI * (compAPR + compFee))) - (2 * transFee * periods)) * (1 - tax);
+                    fAmountTokenI = fAmountToken + (fAmountToken * (compAPR + compFee)) * (1 - tax);
                 } else {
-                    fAmountDFII   = fAmountDFI + ((fAmountDFI * ( 2 * compAPR + compFee)) * duration / 365) * (100 - tax) / 100;
-                    fAmountTokenI = fAmountToken + (fAmountToken * compFee * duration / 365) * (100 - tax) / 100;
+                    fAmountDFII   = fAmountDFI + ((fAmountDFI * ( 2 * compAPR + compFee))) * (1 - tax);
+                    fAmountTokenI = fAmountToken + (fAmountToken * compFee) * (1 - tax);
                 }
                 addDiffToolTip("#fAmountDFII", fAmountDFII, cAmountDFI);
                 addDiffToolTip("#fAmountTokenI", fAmountTokenI, cAmountToken);
