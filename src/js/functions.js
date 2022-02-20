@@ -704,31 +704,47 @@ async function getPrices() {
     // showing loading
     my$("#sync").classList.add("rotate");
 
+    var price1    = 1;
     var otherCoin = my$("#OtherTokenValue").value;
-    var price1 = 1;
     if (my$("#FirstTokenValue").value == "dUSD")
         otherCoin = otherCoin.substring(1);
     else
         price1 = await getOraclePrice(my$("#FirstTokenValue").value);
 
-    var price2 = 1;
-    if ((otherCoin != "tether") && (otherCoin != "usd-coin"))
-        price2 = await getOraclePrice(otherCoin);
-
-    var ratio = 1;
+    var price2 = await getOraclePrice(otherCoin);
+    var ratio    = 1;
     var currency = my$("#CurrencyValue").value;
     if (currency != "usd") {
         ratio = await getCurrencyUSDRatio(currency);
     }
 
     if ( (price1 == 0) || (price2 == 0) || (ratio == 0) ) {
-        my$("#cPriceDFI").value = "";
-        my$("#cPriceToken").value = "";
+        price1 = "";
+        price2 = "";
     } else {
-        my$("#cPriceDFI").value = price1 * ratio;
-        my$("#cPriceToken").value = price2 * ratio;
+        price1 = price1 * ratio;
+        price2 = price2 * ratio;
     }
 
+    if ((otherCoin == "USDT") || (otherCoin == "USDC")) {
+        if (currency == "usd")
+            price2 = 1;
+    } else if (otherCoin == "BTC") {
+        if (currency == "btc")
+            price2 = 1;
+        else if (currency == "bits")
+            price2 = 1000000;
+        else if (currency == "sats")
+            price2 = 100000000;
+        else
+            price2 = await getOraclePrice(otherCoin);
+    } else if (otherCoin == "ETH") {
+        if (currency == "eth")
+            price2 = 1;
+    }
+
+    my$("#cPriceDFI").value = price1;
+    my$("#cPriceToken").value = price2;
     inputEvent("#cPriceDFI");
     inputEvent("#cPriceToken");
     my$("#sync").classList.remove("rotate");
