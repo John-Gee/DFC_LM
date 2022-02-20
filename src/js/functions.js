@@ -706,9 +706,7 @@ async function getPrices() {
 
     var price1    = 1;
     var otherCoin = my$("#OtherTokenValue").value;
-    if (my$("#FirstTokenValue").value == "dUSD")
-        otherCoin = otherCoin.substring(1);
-    else
+    if (my$("#FirstTokenValue").value != "dUSD")
         price1 = await getOraclePrice(my$("#FirstTokenValue").value);
 
     var price2 = await getOraclePrice(otherCoin);
