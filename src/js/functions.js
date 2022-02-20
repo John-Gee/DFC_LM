@@ -664,33 +664,74 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH) {
     });
 }
 
-function getPrices() {
-    if (my$("#FirstTokenValue").value == "dUSD") {
-        alert("Stock tokens are not yet supported here, sorry!");
-        return;
-    }
-    // showing loading
-    my$("#sync").classList.add("rotate");
-    var defichain = "defichain";
-    var otherCoin = my$("#OtherTokenValue").options[my$("#OtherTokenValue").selectedIndex].innerHTML.toLowerCase();
-    var currency  = my$("#CurrencyValue").value;
-    var url = "https://api.coingecko.com/api/v3/simple/price?ids=" + defichain + "%2C" + otherCoin + "&vs_currencies=" + currency;
-    fetch(url)
+async function getOraclePrice(name) {
+    var url   = "https://ocean.defichain.com/v0/mainnet/prices/" + name + "-USD";
+    return await fetch(url)
     .then((response) => response.json())
     .then(function(data){
-        my$("#cPriceDFI").value = data[defichain][currency];
-        inputEvent("#cPriceDFI");
-        if ( (otherCoin != "tether") && (otherCoin != "usd-coin")) {
-            my$("#cPriceToken").value = data[otherCoin][currency];
-            inputEvent("#cPriceToken");
-        }
-        // hiding loading
-        my$("#sync").classList.remove("rotate");
+        return data["data"]["price"]["aggregated"]["amount"];
     })
     .catch(function(error) {
-        // hiding loading
-        my$("#sync").classList.remove("rotate");
+        alert("An error happened while querying the oracle.");
+        return 0;
     });
+}
+
+async function getCoinGeckoPrice(coin, currency) {
+    var url = "https://api.coingecko.com/api/v3/simple/price?ids=" + coin + "&vs_currencies=" + currency;
+    return await fetch(url)
+    .then((response) => response.json())
+    .then(function(data){
+        return data[coin][currency];
+    })
+    .catch(function(error) {
+        alert("An error happened while querying CoinGecko.");
+        return 0;
+    });
+}
+
+async function getCurrencyUSDRatio(currency) {
+    var btcUSD   = await getCoinGeckoPrice("bitcoin", "usd");
+    if (btcUSD == 0)
+        return 0;
+
+    var btcOther = await getCoinGeckoPrice("bitcoin", currency);
+
+    return btcOther / btcUSD;
+}
+
+async function getPrices() {
+    // showing loading
+    my$("#sync").classList.add("rotate");
+
+    var otherCoin = my$("#OtherTokenValue").value;
+    var price1 = 1;
+    if (my$("#FirstTokenValue").value == "dUSD")
+        otherCoin = otherCoin.substring(1);
+    else
+        price1 = await getOraclePrice(my$("#FirstTokenValue").value);
+
+    var price2 = 1;
+    if ((otherCoin != "tether") && (otherCoin != "usd-coin"))
+        price2 = await getOraclePrice(otherCoin);
+
+    var ratio = 1;
+    var currency = my$("#CurrencyValue").value;
+    if (currency != "usd") {
+        ratio = await getCurrencyUSDRatio(currency);
+    }
+
+    if ( (price1 == 0) || (price2 == 0) || (ratio == 0) ) {
+        my$("#cPriceDFI").value = "";
+        my$("#cPriceToken").value = "";
+    } else {
+        my$("#cPriceDFI").value = price1 * ratio;
+        my$("#cPriceToken").value = price2 * ratio;
+    }
+
+    inputEvent("#cPriceDFI");
+    inputEvent("#cPriceToken");
+    my$("#sync").classList.remove("rotate");
 }
 
 function addDiffToolTip(selector, fNumber, cNumber) {
