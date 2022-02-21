@@ -28,7 +28,9 @@ function setupCurrency() {
             return m;
         }
     });
+
     my$("#CurrencyValue").addEventListener("change", function() {
+        mousedownEvent("body");
         SwitchCurrencyLabel();
         changeEvent("#FirstTokenValue");
         changeEvent("#OtherTokenValue");
@@ -54,6 +56,7 @@ function setupFirstToken() {
         }
     });
     my$("#FirstTokenValue").addEventListener("change", function() {
+        mousedownEvent("body");
         SwitchFirstTokenLabel();
         if ((my$("#CurrencyValue").value == "usd") && (my$("#FirstTokenValue").value == "dUSD")) {
             my$("#cPriceDFI").value = 1;
@@ -116,6 +119,7 @@ function setupOtherToken() {
         }
     });
     my$("#OtherTokenValue").addEventListener("change", function() {
+        mousedownEvent("body");
         SwitchOtherTokenLabel();
         if (((my$("#CurrencyValue").value == "usd") && ((my$("#OtherTokenValue").value == "USDC") || (my$("#OtherTokenValue").value == "USDT"))) ||
             ((my$("#CurrencyValue").value == "btc") && (my$("#OtherTokenValue").value == "BTC")) ||

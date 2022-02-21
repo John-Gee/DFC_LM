@@ -782,6 +782,10 @@ function copyPrices() {
     inputEvent("#fPriceToken");
 }
 
+function mousedownEvent(selector) {
+    my$(selector).dispatchEvent(new Event('mousedown'));
+}
+
 function inputEvent(selector) {
     my$(selector).dispatchEvent(new Event('input'));
 }
