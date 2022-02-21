@@ -52,3 +52,7 @@
 .select2-container .select2-results__option.optInvisible {
     display: none;
 }
+
+.select2-results__options {
+    scrollbar-width: thin;
+}
