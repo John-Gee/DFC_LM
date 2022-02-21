@@ -30,12 +30,16 @@ function setupCurrency() {
     });
     my$("#CurrencyValue").addEventListener("change", function() {
         SwitchCurrencyLabel();
+        changeEvent("#FirstTokenValue");
+        changeEvent("#OtherTokenValue");
     });
     if (localStorage.getItem("Currency")) {
         my$("#CurrencyValue").selectedIndex = localStorage.getItem("Currency");
         changeEvent("#CurrencyValue");
     }
     SwitchCurrencyLabel();
+    changeEvent("#FirstTokenValue");
+    changeEvent("#OtherTokenValue");
 }
 
 function setupFirstToken() {
@@ -51,10 +55,25 @@ function setupFirstToken() {
     });
     my$("#FirstTokenValue").addEventListener("change", function() {
         SwitchFirstTokenLabel();
-        my$("#cPriceDFI").value = "";
-        inputEvent("#cPriceDFI");
-        my$("#fPriceDFI").value = "";
-        inputEvent("#fPriceDFI");
+        if ((my$("#CurrencyValue").value == "usd") && (my$("#FirstTokenValue").value == "dUSD")) {
+            my$("#cPriceDFI").value = 1;
+            inputEvent("#cPriceDFI");
+            my$("#cPriceDFI").disabled = true;
+            my$("#cPriceDFI").parentElement.classList.add("auto");
+            my$("#fPriceDFI").value = 1;
+            inputEvent("#fPriceDFI");
+            my$("#fPriceDFI").disabled = true;
+            my$("#fPriceDFI").parentElement.classList.add("auto");
+        } else {
+            my$("#cPriceDFI").value = "";
+            inputEvent("#cPriceDFI");
+            my$("#cPriceDFI").disabled = false;
+            my$("#cPriceDFI").parentElement.classList.remove("auto");
+            my$("#fPriceDFI").value = "";
+            inputEvent("#fPriceDFI");
+            my$("#fPriceDFI").disabled = false;
+            my$("#fPriceDFI").parentElement.classList.remove("auto");
+        }
         var OtherTokenOptions = my$("#OtherTokenValue");
         var dfiIndex = -1;
         for(var i=0; i < OtherTokenOptions.length; i++) {
@@ -80,9 +99,9 @@ function setupFirstToken() {
     });
     if (localStorage.getItem("FirstToken")) {
         my$("#FirstTokenValue").selectedIndex = localStorage.getItem("FirstToken");
-        changeEvent("#FirstTokenValue");
     }
     SwitchFirstTokenLabel();
+    changeEvent("#FirstTokenValue");
 }
 
 function setupOtherToken() {
@@ -98,12 +117,32 @@ function setupOtherToken() {
     });
     my$("#OtherTokenValue").addEventListener("change", function() {
         SwitchOtherTokenLabel();
-        if ((my$("#OtherTokenValue").value == "USDC") || (my$("#OtherTokenValue").value == "USDT")) {
+        if (((my$("#CurrencyValue").value == "usd") && ((my$("#OtherTokenValue").value == "USDC") || (my$("#OtherTokenValue").value == "USDT"))) ||
+            ((my$("#CurrencyValue").value == "btc") && (my$("#OtherTokenValue").value == "BTC")) ||
+            ((my$("#CurrencyValue").value == "eth") && (my$("#OtherTokenValue").value == "ETH"))) {
             my$("#cPriceToken").value = 1;
             inputEvent("#cPriceToken");
             my$("#cPriceToken").disabled = true;
             my$("#cPriceToken").parentElement.classList.add("auto");
             my$("#fPriceToken").value = 1;
+            inputEvent("#fPriceToken");
+            my$("#fPriceToken").disabled = true;
+            my$("#fPriceToken").parentElement.classList.add("auto");
+        } else if ((my$("#CurrencyValue").value == "bits") && (my$("#OtherTokenValue").value == "BTC")) {
+            my$("#cPriceToken").value = 1000000;
+            inputEvent("#cPriceToken");
+            my$("#cPriceToken").disabled = true;
+            my$("#cPriceToken").parentElement.classList.add("auto");
+            my$("#fPriceToken").value = 1000000;
+            inputEvent("#fPriceToken");
+            my$("#fPriceToken").disabled = true;
+            my$("#fPriceToken").parentElement.classList.add("auto");
+        } else if ((my$("#CurrencyValue").value == "sats") && (my$("#OtherTokenValue").value == "BTC")) {
+            my$("#cPriceToken").value = 100000000;
+            inputEvent("#cPriceToken");
+            my$("#cPriceToken").disabled = true;
+            my$("#cPriceToken").parentElement.classList.add("auto");
+            my$("#fPriceToken").value = 100000000;
             inputEvent("#fPriceToken");
             my$("#fPriceToken").disabled = true;
             my$("#fPriceToken").parentElement.classList.add("auto");
@@ -124,9 +163,9 @@ function setupOtherToken() {
     });
     if (localStorage.getItem("OtherToken")) {
         my$("#OtherTokenValue").selectedIndex = localStorage.getItem("OtherToken");
-        changeEvent("#OtherTokenValue");
     }
     SwitchOtherTokenLabel();
+    changeEvent("#OtherTokenValue");
 }
 
 var guideChimp = null;
@@ -215,5 +254,9 @@ document.addEventListener("DOMContentLoaded", function() {
     my$("#sync").addEventListener("click", getPrices);
     my$("#copy").addEventListener("click", copyPrices);
 
+    //changeEvent("#FirstTokenValue");
+    //changeEvent("#OtherTokenValue");
+    cCalculate();
+    fCalculate();
     createEmptyPlot();
 });

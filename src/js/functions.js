@@ -724,27 +724,12 @@ async function getPrices() {
         price2 = price2 * ratio;
     }
 
-    if ((otherCoin == "USDT") || (otherCoin == "USDC")) {
-        if (currency == "usd")
-            price2 = 1;
-    } else if (otherCoin == "BTC") {
-        if (currency == "btc")
-            price2 = 1;
-        else if (currency == "bits")
-            price2 = 1000000;
-        else if (currency == "sats")
-            price2 = 100000000;
-        else
-            price2 = await getOraclePrice(otherCoin);
-    } else if (otherCoin == "ETH") {
-        if (currency == "eth")
-            price2 = 1;
-    }
-
     my$("#cPriceDFI").value = price1;
-    my$("#cPriceToken").value = price2;
     inputEvent("#cPriceDFI");
-    inputEvent("#cPriceToken");
+    if (!my$("#cPriceToken").disabled) {
+        my$("#cPriceToken").value = price2;
+        inputEvent("#cPriceToken");
+    }
     my$("#sync").classList.remove("rotate");
 }
 
