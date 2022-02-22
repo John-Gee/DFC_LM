@@ -57,3 +57,11 @@
     scrollbar-width: thin;
     scrollbar-color: rgba(255,0,176,1);
 }
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-color: rgba(255,0,176,1) transparent transparent transparent;
+}
+
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+    border-color: transparent transparent rgba(255,0,176,1) transparent;
+}

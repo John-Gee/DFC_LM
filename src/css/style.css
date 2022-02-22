@@ -101,7 +101,7 @@ h3 {
 .input {
     /* position */
     display: grid;
-    grid-template-columns: 1.75rem 1fr;
+    grid-template-columns: 2.25rem 1fr;
     gap: 0rem;
     align-items: center;
 
