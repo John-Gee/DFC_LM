@@ -297,8 +297,6 @@ document.addEventListener("DOMContentLoaded", function() {
     my$("#sync").addEventListener("click", getPrices);
     my$("#copy").addEventListener("click", copyPrices);
 
-    //changeEvent("#FirstTokenValue");
-    //changeEvent("#OtherTokenValue");
     cCalculate();
     fCalculate();
     createEmptyPlot();
