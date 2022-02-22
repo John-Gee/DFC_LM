@@ -1,5 +1,14 @@
+var gSelects;
+
+function closeDropDowns() {
+    for (const select of gSelects) {
+        if (select.isOpen())
+            select.close();
+    }
+}
+
 function setupi18n() {
-    new TsSelect2(my$("#i18n-toggler"), {
+    var select = new TsSelect2(my$("#i18n-toggler"), {
         minimumResultsForSearch: -1,
         width: "100%",
         dropdownAutoWidth : true,
@@ -8,6 +17,11 @@ function setupi18n() {
             return m;
         }
     });
+
+    my$("#i18n-toggler").addEventListener("select2:opening", function() {
+        closeDropDowns();
+    });
+
     my$("#i18n-toggler").addEventListener("change", function() {
         translate();
         setupGuide();
@@ -17,10 +31,12 @@ function setupi18n() {
         changeEvent("#i18n-toggler");
     }
     translate();
+
+    return select;
 }
 
 function setupCurrency() {
-    new TsSelect2(my$("#CurrencyValue"), {
+    var select = new TsSelect2(my$("#CurrencyValue"), {
         minimumResultsForSearch: -1,
         width: "100%",
         dropdownAutoWidth : true,
@@ -29,12 +45,16 @@ function setupCurrency() {
         }
     });
 
+    my$("#CurrencyValue").addEventListener("select2:opening", function() {
+        closeDropDowns();
+    });
+
     my$("#CurrencyValue").addEventListener("change", function() {
-        mousedownEvent("body");
         SwitchCurrencyLabel();
         changeEvent("#FirstTokenValue");
         changeEvent("#OtherTokenValue");
     });
+
     if (localStorage.getItem("Currency")) {
         my$("#CurrencyValue").selectedIndex = localStorage.getItem("Currency");
         changeEvent("#CurrencyValue");
@@ -42,10 +62,12 @@ function setupCurrency() {
     SwitchCurrencyLabel();
     changeEvent("#FirstTokenValue");
     changeEvent("#OtherTokenValue");
+
+    return select;
 }
 
 function setupFirstToken() {
-    new TsSelect2(my$("#FirstTokenValue"), {
+    var select = new TsSelect2(my$("#FirstTokenValue"), {
         minimumResultsForSearch: -1,
         width: "100%",
         dropdownAutoWidth : true,
@@ -55,8 +77,12 @@ function setupFirstToken() {
             return m;
         }
     });
+
+    my$("#FirstTokenValue").addEventListener("select2:opening", function() {
+        closeDropDowns();
+    });
+
     my$("#FirstTokenValue").addEventListener("change", function() {
-        mousedownEvent("body");
         SwitchFirstTokenLabel();
         if ((my$("#CurrencyValue").value == "usd") && (my$("#FirstTokenValue").value == "dUSD")) {
             my$("#cPriceDFI").value = 1;
@@ -100,15 +126,19 @@ function setupFirstToken() {
         }
         changeEvent("#OtherTokenValue");
     });
+
     if (localStorage.getItem("FirstToken")) {
         my$("#FirstTokenValue").selectedIndex = localStorage.getItem("FirstToken");
     }
+
     SwitchFirstTokenLabel();
     changeEvent("#FirstTokenValue");
+
+    return select;
 }
 
 function setupOtherToken() {
-    new TsSelect2(my$("#OtherTokenValue"), {
+    var select = new TsSelect2(my$("#OtherTokenValue"), {
         minimumResultsForSearch: -1,
         width: "100%",
         dropdownAutoWidth : true,
@@ -118,8 +148,12 @@ function setupOtherToken() {
             return m;
         }
     });
+
+    my$("#OtherTokenValue").addEventListener("select2:opening", function() {
+            closeDropDowns();
+    });
+
     my$("#OtherTokenValue").addEventListener("change", function() {
-        mousedownEvent("body");
         SwitchOtherTokenLabel();
         if (((my$("#CurrencyValue").value == "usd") && ((my$("#OtherTokenValue").value == "USDC") || (my$("#OtherTokenValue").value == "USDT"))) ||
             ((my$("#CurrencyValue").value == "btc") && (my$("#OtherTokenValue").value == "BTC")) ||
@@ -165,11 +199,14 @@ function setupOtherToken() {
             }
         }
     });
+
     if (localStorage.getItem("OtherToken")) {
         my$("#OtherTokenValue").selectedIndex = localStorage.getItem("OtherToken");
     }
     SwitchOtherTokenLabel();
     changeEvent("#OtherTokenValue");
+
+    return select;
 }
 
 var guideChimp = null;
@@ -224,14 +261,16 @@ function setupInfo() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    setupi18n();
+    gSelects = new Array();
+
+    gSelects.push(setupi18n());
 
     setupInfo();
 
-    setupCurrency();
+    gSelects.push(setupCurrency());
 
-    setupFirstToken();
-    setupOtherToken();
+    gSelects.push(setupFirstToken());
+    gSelects.push(setupOtherToken());
 
     my$("#cPriceToken").addEventListener("input", cCalculate);
     my$("#cPriceDFI").addEventListener("input", cCalculate);
