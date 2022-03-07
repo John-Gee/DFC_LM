@@ -535,6 +535,11 @@ function calculate() {
                 var compFee  = fee / 100 * duration / 365;
                 var periods  = 0;
 
+                if (tax > 100) {
+                    alert("Tax cannot be bigger than 100%!");
+                    tax = 100;
+                }
+
                 if (cPeriod && (cPeriod < duration)) {
                     if (cPeriod < (1 / 2880))
                         cPeriod = (1 / 2880);
