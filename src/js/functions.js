@@ -148,47 +148,15 @@ function xCalculate(letter) {
     calculate();
 }
 
-function priceRatio(time) {
-    var priceToken = "#" + time + "PriceToken";
-    var priceDFI   = "#" + time + "PriceDFI";
-    var priceRatio = "#" + time + "PriceRatio";
-
-    if (my$(priceRatio).value ) {
-        my$(priceDFI).disabled = true;
-        my$(priceDFI).parentElement.classList.add("auto");
-        my$(priceToken).disabled = true;
-        my$(priceToken).parentElement.classList.add("auto");
-    } else {
-        my$(priceDFI).disabled = false;
-        my$(priceDFI).parentElement.classList.remove("auto");
-        my$(priceToken).disabled = false;
-        my$(priceToken).parentElement.classList.remove("auto");
-    }
-}
-
 function calcPriceRatio(time) {
     var priceToken = "#" + time + "PriceToken";
     var priceDFI   = "#" + time + "PriceDFI";
     var priceRatio = "#" + time + "PriceRatio";
 
-    if (my$(priceToken).value || my$(priceDFI).value) {
-        my$(priceRatio).disabled = true;
-        my$(priceRatio).parentElement.classList.add("auto");
-
-        if (my$(priceToken).value && my$(priceDFI).value) {
-            my$(priceRatio).value = prettyNumber(my$(priceToken).value / my$(priceDFI).value);
-            return
-        } /*else if (my$("#OtherTokenValue").value == "USDT") {
-            my$(priceRatio).disabled = false;
-            my$(priceRatio).parentElement.classList.remove("auto");
-        }*/
-    } /*else {
-        my$(priceRatio).disabled = false;
-        my$(priceRatio).parentElement.classList.remove("auto");
-    }*/
-    if (!my$(priceDFI).disabled && !my$(priceDFI).disabled) {
+    if (!my$(priceDFI).value || !my$(priceToken).value)
         my$(priceRatio).value = "";
-    }
+    else
+        my$(priceRatio).value = prettyNumber(my$(priceToken).value / my$(priceDFI).value);
 }
 
 function createTutorial(guideChimp) {

@@ -214,19 +214,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     my$("#cPriceToken").addEventListener("input", cCalculate);
     my$("#cPriceDFI").addEventListener("input", cCalculate);
-    /*my$("#cPriceRatio").addEventListener("input", function() {
-        priceRatio("c");
-        calculate();
-    });*/
 
     my$("#cAmountDFI").addEventListener("input", calculate);
 
     my$("#fPriceToken").addEventListener("input", fCalculate);
     my$("#fPriceDFI").addEventListener("input", fCalculate);
-    /*my$("#fPriceRatio").addEventListener("input", function() {
-        priceRatio("f");
-        calculate();
-    });*/
 
     my$("#apr").addEventListener("input", calculate);
     my$("#fee").addEventListener("input", calculate);
