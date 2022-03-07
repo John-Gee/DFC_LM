@@ -2,70 +2,70 @@ function removeAccents(obj) {
     return obj.text.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
 }
 
-function clearCPriceDFI() {
+function clearCPriceFirstToken() {
     if ((my$("#CurrencyValue").value == "usd") && (my$("#FirstTokenValue").value == "dUSD")) {
-        my$("#cPriceDFI").value = 1;
-        inputEvent("#cPriceDFI");
-        my$("#cPriceDFI").disabled = true;
-        my$("#cPriceDFI").parentElement.classList.add("auto");
-        my$("#fPriceDFI").value = 1;
-        inputEvent("#fPriceDFI");
-        my$("#fPriceDFI").disabled = true;
-        my$("#fPriceDFI").parentElement.classList.add("auto");
+        my$("#cPriceFirstToken").value = 1;
+        inputEvent("#cPriceFirstToken");
+        my$("#cPriceFirstToken").disabled = true;
+        my$("#cPriceFirstToken").parentElement.classList.add("auto");
+        my$("#fPriceFirstToken").value = 1;
+        inputEvent("#fPriceFirstToken");
+        my$("#fPriceFirstToken").disabled = true;
+        my$("#fPriceFirstToken").parentElement.classList.add("auto");
     } else {
-        my$("#cPriceDFI").value = "";
-        inputEvent("#cPriceDFI");
-        my$("#cPriceDFI").disabled = false;
-        my$("#cPriceDFI").parentElement.classList.remove("auto");
-        my$("#fPriceDFI").value = "";
-        inputEvent("#fPriceDFI");
-        my$("#fPriceDFI").disabled = false;
-        my$("#fPriceDFI").parentElement.classList.remove("auto");
+        my$("#cPriceFirstToken").value = "";
+        inputEvent("#cPriceFirstToken");
+        my$("#cPriceFirstToken").disabled = false;
+        my$("#cPriceFirstToken").parentElement.classList.remove("auto");
+        my$("#fPriceFirstToken").value = "";
+        inputEvent("#fPriceFirstToken");
+        my$("#fPriceFirstToken").disabled = false;
+        my$("#fPriceFirstToken").parentElement.classList.remove("auto");
     }
 }
 
-function clearCPriceToken() {
+function clearCPriceOtherToken() {
     if (((my$("#CurrencyValue").value == "usd") && ((my$("#OtherTokenValue").value == "USDC") || (my$("#OtherTokenValue").value == "USDT"))) ||
         ((my$("#CurrencyValue").value == "btc") && (my$("#OtherTokenValue").value == "BTC")) ||
         ((my$("#CurrencyValue").value == "eth") && (my$("#OtherTokenValue").value == "ETH"))) {
-        my$("#cPriceToken").value = 1;
-        inputEvent("#cPriceToken");
-        my$("#cPriceToken").disabled = true;
-        my$("#cPriceToken").parentElement.classList.add("auto");
-        my$("#fPriceToken").value = 1;
-        inputEvent("#fPriceToken");
-        my$("#fPriceToken").disabled = true;
-        my$("#fPriceToken").parentElement.classList.add("auto");
+        my$("#cPriceOtherToken").value = 1;
+        inputEvent("#cPriceOtherToken");
+        my$("#cPriceOtherToken").disabled = true;
+        my$("#cPriceOtherToken").parentElement.classList.add("auto");
+        my$("#fPriceOtherToken").value = 1;
+        inputEvent("#fPriceOtherToken");
+        my$("#fPriceOtherToken").disabled = true;
+        my$("#fPriceOtherToken").parentElement.classList.add("auto");
     } else if ((my$("#CurrencyValue").value == "bits") && (my$("#OtherTokenValue").value == "BTC")) {
-        my$("#cPriceToken").value = 1000000;
-        inputEvent("#cPriceToken");
-        my$("#cPriceToken").disabled = true;
-        my$("#cPriceToken").parentElement.classList.add("auto");
-        my$("#fPriceToken").value = 1000000;
-        inputEvent("#fPriceToken");
-        my$("#fPriceToken").disabled = true;
-        my$("#fPriceToken").parentElement.classList.add("auto");
+        my$("#cPriceOtherToken").value = 1000000;
+        inputEvent("#cPriceOtherToken");
+        my$("#cPriceOtherToken").disabled = true;
+        my$("#cPriceOtherToken").parentElement.classList.add("auto");
+        my$("#fPriceOtherToken").value = 1000000;
+        inputEvent("#fPriceOtherToken");
+        my$("#fPriceOtherToken").disabled = true;
+        my$("#fPriceOtherToken").parentElement.classList.add("auto");
     } else if ((my$("#CurrencyValue").value == "sats") && (my$("#OtherTokenValue").value == "BTC")) {
-        my$("#cPriceToken").value = 100000000;
-        inputEvent("#cPriceToken");
-        my$("#cPriceToken").disabled = true;
-        my$("#cPriceToken").parentElement.classList.add("auto");
-        my$("#fPriceToken").value = 100000000;
-        inputEvent("#fPriceToken");
-        my$("#fPriceToken").disabled = true;
-        my$("#fPriceToken").parentElement.classList.add("auto");
+        my$("#cPriceOtherToken").value = 100000000;
+        inputEvent("#cPriceOtherToken");
+        my$("#cPriceOtherToken").disabled = true;
+        my$("#cPriceOtherToken").parentElement.classList.add("auto");
+        my$("#fPriceOtherToken").value = 100000000;
+        inputEvent("#fPriceOtherToken");
+        my$("#fPriceOtherToken").disabled = true;
+        my$("#fPriceOtherToken").parentElement.classList.add("auto");
     } else {
-        my$("#cPriceToken").value = "";
-        inputEvent("#cPriceToken");
-        my$("#fPriceToken").value = "";
-        inputEvent("#fPriceToken");
-        if (!my$("#cPriceDFI").disabled) {
-            my$("#cPriceToken").disabled = false;
-            my$("#cPriceToken").parentElement.classList.remove("auto");
+        my$("#cPriceOtherToken").value = "";
+        inputEvent("#cPriceOtherToken");
+        my$("#fPriceOtherToken").value = "";
+        inputEvent("#fPriceOtherToken");
+        if (!my$("#cPriceFirstToken").disabled) {
+            my$("#cPriceOtherToken").disabled = false;
+            my$("#cPriceOtherToken").parentElement.classList.remove("auto");
         }
-        if (!my$("#fPriceDFI").disabled) {
-            my$("#fPriceToken").disabled = false;
-            my$("#fPriceToken").parentElement.classList.remove("auto");
+        if (!my$("#fPriceFirstToken").disabled) {
+            my$("#fPriceOtherToken").disabled = false;
+            my$("#fPriceOtherToken").parentElement.classList.remove("auto");
         }
     }
 }
@@ -149,14 +149,14 @@ function xCalculate(letter) {
 }
 
 function calcPriceRatio(time) {
-    var priceToken = "#" + time + "PriceToken";
-    var priceDFI   = "#" + time + "PriceDFI";
-    var priceRatio = "#" + time + "PriceRatio";
+    var priceToken = "#" + time + "PriceOtherToken";
+    var priceFirstToken = "#" + time + "PriceFirstToken";
+    var priceRatio      = "#" + time + "PriceRatio";
 
-    if (!my$(priceDFI).value || !my$(priceToken).value)
+    if (!my$(priceFirstToken).value || !my$(priceToken).value)
         my$(priceRatio).value = "";
     else
-        my$(priceRatio).value = prettyNumber(my$(priceToken).value / my$(priceDFI).value);
+        my$(priceRatio).value = prettyNumber(my$(priceToken).value / my$(priceFirstToken).value);
 }
 
 function createTutorial(guideChimp) {
@@ -208,13 +208,13 @@ function createTutorial(guideChimp) {
             position: pricesPosition
         },
         {
-            element: "#cPriceDFIDiv",
-            title: lang["tour"]["cPriceDFIDiv"],
+            element: "#cPriceFirstTokenDiv",
+            title: lang["tour"]["cPriceFirstTokenDiv"],
             position: pricesPosition
         },
         {
-            element: "#cPriceTokenDiv",
-            title: lang["tour"]["cPriceTokenDiv"],
+            element: "#cPriceOtherTokenDiv",
+            title: lang["tour"]["cPriceOtherTokenDiv"],
             position: pricesPosition
         },
         {
@@ -223,23 +223,23 @@ function createTutorial(guideChimp) {
             position: pricesPosition
         },
         {
-            element: "#fPriceDFIDiv",
-            title: lang["tour"]["fPriceDFIDiv"],
+            element: "#fPriceFirstTokenDiv",
+            title: lang["tour"]["fPriceFirstTokenDiv"],
             position: pricesPosition
         },
         {
-            element: "#fPriceTokenDiv",
-            title: lang["tour"]["fPriceTokenDiv"],
+            element: "#fPriceOtherTokenDiv",
+            title: lang["tour"]["fPriceOtherTokenDiv"],
             position: pricesPosition
         },
         {
-            element: "#cAmountDFIDiv",
-            title: lang["tour"]["cAmountDFIDiv"],
+            element: "#cAmountFirstTokenDiv",
+            title: lang["tour"]["cAmountFirstTokenDiv"],
             position: interestsPosition
         },
         {
-            element: "#cAmountTokenDiv",
-            title: lang["tour"]["cAmountTokenDiv"],
+            element: "#cAmountOtherTokenDiv",
+            title: lang["tour"]["cAmountOtherTokenDiv"],
             position: interestsPosition
         },
         {
@@ -380,21 +380,21 @@ function compareTotalValues(cValue, fValueH, fValueHDFI, fValueHToken, fValue, f
 }
 
 function calculate() {
-    var cPriceDFI         = 0;
-    var cPriceToken       = 0;
+    var cPriceFirstToken  = 0;
+    var cPriceOtherToken       = 0;
 
-    var cAmountDFI        = 0;
-    var cAmountToken      = 0;
+    var cAmountFirstToken = 0;
+    var cAmountOtherToken      = 0;
 
     var cValueDFI         = 0;
     var cValueToken       = 0;
     var cValue            = 0;
 
-    var fAmountDFI        = 0;
-    var fAmountToken      = 0;
+    var fAmountFirstToken = 0;
+    var fAmountOtherToken      = 0;
 
-    var fAmountDFII       = 0;
-    var fAmountTokenI     = 0;
+    var fAmountFirstTokenI= 0;
+    var fAmountOtherTokenI     = 0;
 
     var fValueDFI         = 0;
     var fValueToken       = 0;
@@ -411,7 +411,7 @@ function calculate() {
     var fValueDFIHDFI     = 0;
     var fValueTokenHToken = 0;
 
-    my$("#best").className = "";
+    my$("#best").className  = "";
     my$("#best1").className = "";
 
     runOnChildren("#amountsParent > div", function(el) {
@@ -439,36 +439,36 @@ function calculate() {
     my$("#int").hidden = true;
     createEmptyPlot();
 
-    if (((my$("#cPriceToken").value && my$("#cPriceDFI").value) ||
+    if (((my$("#cPriceOtherToken").value && my$("#cPriceFirstToken").value) ||
          (my$("#cPriceRatio").value)) &&
-        (my$("#cAmountDFI").value)) {
+        (my$("#cAmountFirstToken").value)) {
         var cPriceRatio  = 0;
-        cAmountDFI   = +my$("#cAmountDFI").value;
+        cAmountFirstToken   = +my$("#cAmountFirstToken").value;
 
-        if (my$("#cPriceToken").value && my$("#cPriceDFI").value) {
-            cPriceToken  = +my$("#cPriceToken").value;
-            cPriceDFI    = +my$("#cPriceDFI").value;
-            cPriceRatio  = cPriceToken / cPriceDFI;
+        if (my$("#cPriceOtherToken").value && my$("#cPriceFirstToken").value) {
+            cPriceOtherToken  = +my$("#cPriceOtherToken").value;
+            cPriceFirstToken    = +my$("#cPriceFirstToken").value;
+            cPriceRatio  = cPriceOtherToken / cPriceFirstToken;
         } else if (my$("#cPriceRatio").value) {
             cPriceRatio  = +my$("#cPriceRatio").value;
         }
 
-        cAmountToken = cAmountDFI/cPriceRatio;
-        cValueToken  = cAmountToken * cPriceToken;
-        cValueDFI    = cAmountDFI * cPriceDFI;
+        cAmountOtherToken = cAmountFirstToken/cPriceRatio;
+        cValueToken  = cAmountOtherToken * cPriceOtherToken;
+        cValueDFI    = cAmountFirstToken * cPriceFirstToken;
         cValue       = cValueToken + cValueDFI;
 
-        var fPriceToken  = +my$("#fPriceToken").value;
-        var fPriceDFI    = +my$("#fPriceDFI").value;
+        var fPriceOtherToken  = +my$("#fPriceOtherToken").value;
+        var fPriceFirstToken    = +my$("#fPriceFirstToken").value;
         var fPriceRatio  = +my$("#fPriceRatio").value;
 
-        if (my$("#fPriceToken").value && my$("#fPriceDFI").value) {
+        if (my$("#fPriceOtherToken").value && my$("#fPriceFirstToken").value) {
 
-            fPriceRatio  = fPriceToken / fPriceDFI;
+            fPriceRatio  = fPriceOtherToken / fPriceFirstToken;
 
-            if ((fPriceDFI == cPriceDFI) && (fPriceToken == cPriceToken)) {
-                fAmountDFI   = cAmountDFI;
-                fAmountToken = cAmountToken;
+            if ((fPriceFirstToken == cPriceFirstToken) && (fPriceOtherToken == cPriceOtherToken)) {
+                fAmountFirstToken   = cAmountFirstToken;
+                fAmountOtherToken = cAmountOtherToken;
             }
         }
 
@@ -477,44 +477,44 @@ function calculate() {
         if (fPriceRatio) {
             /* The ratio of tokens in the pool
             is the same as the ratio of prices
-            cPriceDFI / cPriceToken = cAmountToken / cAmountDFI
-            fPriceDFI / fPriceToken = fAmountToken / fAmountDFI
+            cPriceFirstToken / cPriceOtherToken = cAmountOtherToken / cAmountFirstToken
+            fPriceFirstToken / fPriceOtherToken = fAmountOtherToken / fAmountFirstToken
 
             AND
 
             Per the constant product formula x * y = k
-            cAmountToken * cAmountDFI = k
+            cAmountOtherToken * cAmountFirstToken = k
             and
-            fAmountToken * fAmountDFI = k
+            fAmountOtherToken * fAmountFirstToken = k
             hence
-            cAmountToken * cAmountDFI = fAmountToken * fAmountDFI
+            cAmountOtherToken * cAmountFirstToken = fAmountOtherToken * fAmountFirstToken
 
             So
-            fAmountToken = cAmountToken * cAmountDFI / fAmountDFI
-            fAmountDFI = (fPriceToken / fPriceDFI) * fAmountToken
-            fAmountToken = cAmountToken * cAmountDFI / ((fPriceToken / fPriceDFI) * fAmountToken)
-            fAmountToken = cAmountToken * cAmountDFI / ((fPriceToken * fAmountToken) / fPriceDFI)
-            fAmountToken = cAmountToken * cAmountDFI * fPriceDFI / (fPriceToken * fAmountToken)
-            fAmountToken^2 = cAmountToken * cAmountDFI * fPriceDFI / fPriceToken
-            fAmountToken = sqrt(cAmountToken * cAmountDFI * fPriceDFI / fPriceToken) */
+            fAmountOtherToken = cAmountOtherToken * cAmountFirstToken / fAmountFirstToken
+            fAmountFirstToken = (fPriceOtherToken / fPriceFirstToken) * fAmountOtherToken
+            fAmountOtherToken = cAmountOtherToken * cAmountFirstToken / ((fPriceOtherToken / fPriceFirstToken) * fAmountOtherToken)
+            fAmountOtherToken = cAmountOtherToken * cAmountFirstToken / ((fPriceOtherToken * fAmountOtherToken) / fPriceFirstToken)
+            fAmountOtherToken = cAmountOtherToken * cAmountFirstToken * fPriceFirstToken / (fPriceOtherToken * fAmountOtherToken)
+            fAmountOtherToken^2 = cAmountOtherToken * cAmountFirstToken * fPriceFirstToken / fPriceOtherToken
+            fAmountOtherToken = sqrt(cAmountOtherToken * cAmountFirstToken * fPriceFirstToken / fPriceOtherToken) */
 
-            if ((!fAmountToken) && (!fAmountDFI)) {
-                fAmountToken = Math.sqrt(cAmountToken * cAmountDFI * 1/fPriceRatio);
-                fAmountDFI   = (fPriceRatio * fAmountToken);
+            if ((!fAmountOtherToken) && (!fAmountFirstToken)) {
+                fAmountOtherToken = Math.sqrt(cAmountOtherToken * cAmountFirstToken * 1/fPriceRatio);
+                fAmountFirstToken   = (fPriceRatio * fAmountOtherToken);
             }
-            addDiffToolTip("#fAmountDFI", fAmountDFI, cAmountDFI);
-            addDiffToolTip("#fAmountToken", fAmountToken, cAmountToken);
+            addDiffToolTip("#fAmountFirstToken", fAmountFirstToken, cAmountFirstToken);
+            addDiffToolTip("#fAmountOtherToken", fAmountOtherToken, cAmountOtherToken);
 
-            fValueToken       = fAmountToken * fPriceToken;
-            fValueDFI         = fAmountDFI * fPriceDFI;
+            fValueToken       = fAmountOtherToken * fPriceOtherToken;
+            fValueDFI         = fAmountFirstToken * fPriceFirstToken;
             fValue            = fValueToken + fValueDFI;
 
-            fValueTokenH      = cAmountToken * fPriceToken;
-            fValueDFIH        = cAmountDFI * fPriceDFI;
+            fValueTokenH      = cAmountOtherToken * fPriceOtherToken;
+            fValueDFIH        = cAmountFirstToken * fPriceFirstToken;
             fValueH           = fValueTokenH + fValueDFIH;
             
-            fValueDFIHDFI     = 2 * cAmountDFI * fPriceDFI;
-            fValueTokenHToken = 2 * cAmountToken * fPriceToken;
+            fValueDFIHDFI     = 2 * cAmountFirstToken * fPriceFirstToken;
+            fValueTokenHToken = 2 * cAmountOtherToken * fPriceOtherToken;
 
             addDiffToolTip("#fValueDFI", fValueDFI, fValueDFIH);
             addDiffToolTip("#fValueToken", fValueToken, fValueTokenH);
@@ -546,17 +546,17 @@ function calculate() {
 
                     var transFee = 0.0001634;
                     // 2 transaction fees (one to convert, one to pool) + 1 convertion fee per period
-                    fAmountDFII   = fAmountDFI + (((fAmountDFI * (compAPR + compFee))) - (2 * transFee * periods)) * (1 - tax);
-                    fAmountTokenI = fAmountToken + (fAmountToken * (compAPR + compFee)) * (1 - tax);
+                    fAmountFirstTokenI   = fAmountFirstToken + (((fAmountFirstToken * (compAPR + compFee))) - (2 * transFee * periods)) * (1 - tax);
+                    fAmountOtherTokenI = fAmountOtherToken + (fAmountOtherToken * (compAPR + compFee)) * (1 - tax);
                 } else {
-                    fAmountDFII   = fAmountDFI + ((fAmountDFI * ( 2 * compAPR + compFee))) * (1 - tax);
-                    fAmountTokenI = fAmountToken + (fAmountToken * compFee) * (1 - tax);
+                    fAmountFirstTokenI   = fAmountFirstToken + ((fAmountFirstToken * ( 2 * compAPR + compFee))) * (1 - tax);
+                    fAmountOtherTokenI = fAmountOtherToken + (fAmountOtherToken * compFee) * (1 - tax);
                 }
-                addDiffToolTip("#fAmountDFII", fAmountDFII, cAmountDFI);
-                addDiffToolTip("#fAmountTokenI", fAmountTokenI, cAmountToken);
+                addDiffToolTip("#fAmountFirstTokenI", fAmountFirstTokenI, cAmountFirstToken);
+                addDiffToolTip("#fAmountOtherTokenI", fAmountOtherTokenI, cAmountOtherToken);
 
-                fValueTokenI  = fAmountTokenI * fPriceToken;
-                fValueDFII    = fAmountDFII * fPriceDFI;
+                fValueTokenI  = fAmountOtherTokenI * fPriceOtherToken;
+                fValueDFII    = fAmountFirstTokenI * fPriceFirstToken;
                 fValueI       = fValueTokenI + fValueDFII;
                 addDiffToolTip("#fValueDFII", fValueDFII, fValueDFIH);
                 addDiffToolTip("#fValueTokenI", fValueTokenI, fValueTokenH);
@@ -570,16 +570,16 @@ function calculate() {
         }
     }
 
-    my$("#cAmountToken").value = prettyNumber(cAmountToken);
+    my$("#cAmountOtherToken").value = prettyNumber(cAmountOtherToken);
     my$("#cValueToken").value = prettyNumber(cValueToken);
     my$("#cValueDFI").value = prettyNumber(cValueDFI);
     my$("#cValue").value = prettyNumber(cValue);
 
-    my$("#fAmountToken").value = prettyNumber(fAmountToken);
-    my$("#fAmountDFI").value = prettyNumber(fAmountDFI);
+    my$("#fAmountOtherToken").value = prettyNumber(fAmountOtherToken);
+    my$("#fAmountFirstToken").value = prettyNumber(fAmountFirstToken);
 
-    my$("#fAmountTokenI").value = prettyNumber(fAmountTokenI);
-    my$("#fAmountDFII").value = prettyNumber(fAmountDFII);
+    my$("#fAmountOtherTokenI").value = prettyNumber(fAmountOtherTokenI);
+    my$("#fAmountFirstTokenI").value = prettyNumber(fAmountFirstTokenI);
 
     my$("#fValueToken").value = prettyNumber(fValueToken);
     my$("#fValueDFI").value = prettyNumber(fValueDFI);
@@ -625,25 +625,25 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH) {
     var current = Math.round(fPriceRatio/cPriceRatio * 100);
 
     /* Math:
-     * AmountDFI * AmountToken = k
-     * PriceRatio = AmountToken / AmountDFI
-     * PriceRatio = PriceDFI / PriceToken
+     * AmountFirstToken * AmountOtherToken = k
+     * PriceRatio = AmountOtherToken / AmountFirstToken
+     * PriceRatio = PriceFirstToken / PriceOtherToken
      *
-     * AmountToken = k / AmountDFI
-     * AmountDFI = AmountToken / PriceRatio
-     * AmountToken = k / AmountToken / PriceRatio
-     * AmountToken^2 = k * PriceRatio
-     * AmountToken = sqrt(k * PriceRatio)
+     * AmountOtherToken = k / AmountFirstToken
+     * AmountFirstToken = AmountOtherToken / PriceRatio
+     * AmountOtherToken = k / AmountOtherToken / PriceRatio
+     * AmountOtherToken^2 = k * PriceRatio
+     * AmountOtherToken = sqrt(k * PriceRatio)
      *
-     * AmountDFI = k / AmountToken
-     * AmountToken = PriceRatio * AmountDFI
-     * AmountDFI = k / (PriceRatio * AmountDFI)
-     * AmountDFI^2 = k / PriceRatio
-     * AmountDFI = sqrt(k / PriceRatio)
+     * AmountFirstToken = k / AmountOtherToken
+     * AmountOtherToken = PriceRatio * AmountFirstToken
+     * AmountFirstToken = k / (PriceRatio * AmountFirstToken)
+     * AmountFirstToken^2 = k / PriceRatio
+     * AmountFirstToken = sqrt(k / PriceRatio)
      *
      * divergenceLoss = (fValue - fValueH) / fValue
      * divergenceLoss = (fValue / fValueH) - 1
-     * divergenceLoss = (2 * fAmountDFI) / (cAmountDFI + (cAmountToken * fPriceRatio)) -1
+     * divergenceLoss = (2 * fAmountFirstToken) / (cAmountFirstToken + (cAmountOtherToken * fPriceRatio)) -1
      * divergenceLoss = (2 * sqrt(k/fPriceRatio)) / (sqrt(k/cPriceRatio) + (sqrt(k*cPriceRatio)/fPriceRatio)) - 1
      * divergenceLoss = (2 * sqrt(1/fPriceRatio)) / (sqrt(1/cPriceRatio) + (sqrt(cPriceRatio)/fPriceRatio)) - 1
      * divergenceLoss = (2 * sqrt(1/fPriceRatio)) / (1 * sqrt(1/cPriceRatio) + (cPriceRatio/fPriceRatio * sqrt(1/cPriceRatio))) - 1
@@ -760,11 +760,11 @@ async function getPrices() {
         price2 = price2 * ratio;
     }
 
-    my$("#cPriceDFI").value = price1;
-    inputEvent("#cPriceDFI");
-    if (!my$("#cPriceToken").disabled) {
-        my$("#cPriceToken").value = price2;
-        inputEvent("#cPriceToken");
+    my$("#cPriceFirstToken").value = price1;
+    inputEvent("#cPriceFirstToken");
+    if (!my$("#cPriceOtherToken").disabled) {
+        my$("#cPriceOtherToken").value = price2;
+        inputEvent("#cPriceOtherToken");
     }
     my$("#sync").classList.remove("rotate");
 }
@@ -813,9 +813,9 @@ function info() {
 }
 
 function copyPrices() {
-    my$("#fPriceDFI").value = my$("#cPriceDFI").value;
-    my$("#fPriceToken").value = my$("#cPriceToken").value;
-    inputEvent("#fPriceToken");
+    my$("#fPriceFirstToken").value = my$("#cPriceFirstToken").value;
+    my$("#fPriceOtherToken").value = my$("#cPriceOtherToken").value;
+    inputEvent("#fPriceOtherToken");
 }
 
 function mousedownEvent(selector) {

@@ -51,8 +51,8 @@ function setupCurrency() {
 
     my$("#CurrencyValue").addEventListener("change", function() {
         SwitchCurrencyLabel();
-        clearCPriceDFI();
-        clearCPriceToken();
+        clearCPriceFirstToken();
+        clearCPriceOtherToken();
     });
 
     if (localStorage.getItem("Currency")) {
@@ -60,8 +60,8 @@ function setupCurrency() {
         changeEvent("#CurrencyValue");
     }
     SwitchCurrencyLabel();
-    clearCPriceDFI();
-    clearCPriceToken();
+    clearCPriceFirstToken();
+    clearCPriceOtherToken();
 
     return select;
 }
@@ -84,7 +84,7 @@ function setupFirstToken() {
 
     my$("#FirstTokenValue").addEventListener("change", function() {
         SwitchFirstTokenLabel();
-        clearCPriceDFI();
+        clearCPriceFirstToken();
         var OtherTokenOptions = my$("#OtherTokenValue");
         var dfiIndex = -1;
         for(var i=0; i < OtherTokenOptions.length; i++) {
@@ -137,7 +137,7 @@ function setupOtherToken() {
 
     my$("#OtherTokenValue").addEventListener("change", function() {
         SwitchOtherTokenLabel();
-        clearCPriceToken();
+        clearCPriceOtherToken();
     });
 
     if (localStorage.getItem("OtherToken")) {
@@ -212,13 +212,13 @@ document.addEventListener("DOMContentLoaded", function() {
     gSelects.push(setupFirstToken());
     gSelects.push(setupOtherToken());
 
-    my$("#cPriceToken").addEventListener("input", cCalculate);
-    my$("#cPriceDFI").addEventListener("input", cCalculate);
+    my$("#cPriceOtherToken").addEventListener("input", cCalculate);
+    my$("#cPriceFirstToken").addEventListener("input", cCalculate);
 
-    my$("#cAmountDFI").addEventListener("input", calculate);
+    my$("#cAmountFirstToken").addEventListener("input", calculate);
 
-    my$("#fPriceToken").addEventListener("input", fCalculate);
-    my$("#fPriceDFI").addEventListener("input", fCalculate);
+    my$("#fPriceOtherToken").addEventListener("input", fCalculate);
+    my$("#fPriceFirstToken").addEventListener("input", fCalculate);
 
     my$("#apr").addEventListener("input", calculate);
     my$("#fee").addEventListener("input", calculate);
