@@ -796,14 +796,18 @@ async function getPrices() {
 function addDiffToolTip(selector, fNumber, cNumber) {
     var tip;
     var diff = fNumber - cNumber;
-    var pct  = prettyNumber(diff / cNumber * 100);
+    var pct  = 0;
+
     if (selector.includes("Value"))
         tip = "Compared to Holding Value\n$ ";
     else
         tip = "Compared to the Initial Amount\n";
     if (diff > 0)
         tip = tip + "+";
-    tip = tip + prettyNumber(diff) + "\n% " + pct;
+    if (diff != 0)
+        tip = tip + prettyNumber(diff) + "\n% " + prettyNumber(diff / cNumber * 100)
+    else
+        tip = tip + "0\n% 0"
     my$(selector).parentElement.dataset.tooltip = tip;
 }
 
