@@ -380,36 +380,42 @@ function compareTotalValues(cValue, fValueH, fValueHDFI, fValueHToken, fValue, f
 }
 
 function calculate() {
-    var cPriceFirstToken  = 0;
-    var cPriceOtherToken       = 0;
+    var cPriceFirstToken            = 0;
+    var cPriceOtherToken            = 0;
 
-    var cAmountFirstToken = 0;
-    var cAmountOtherToken      = 0;
+    var cAmountFirstToken           = 0;
+    var cAmountOtherToken           = 0;
+    var cAmountDFI                  = 0;
 
-    var cValueDFI         = 0;
-    var cValueToken       = 0;
-    var cValue            = 0;
+    var cValueFirstToken            = 0;
+    var cValueOtherToken            = 0;
+    var cValue                      = 0;
 
-    var fAmountFirstToken = 0;
-    var fAmountOtherToken      = 0;
+    var fAmountFirstToken           = 0;
+    var fAmountOtherToken           = 0;
+    var fAmountDFI                  = 0;
 
-    var fAmountFirstTokenI= 0;
-    var fAmountOtherTokenI     = 0;
+    var fAmountFirstTokenI          = 0;
+    var fAmountOtherTokenI          = 0;
+    var fAmountDFII                 = 0;
 
-    var fValueDFI         = 0;
-    var fValueToken       = 0;
-    var fValue            = 0;
+    var fValueFirstToken            = 0;
+    var fValueOtherToken            = 0;
+    var fValueDFI                   = 0;
+    var fValue                      = 0;
 
-    var fValueDFII        = 0;
-    var fValueTokenI      = 0;
-    var fValueI           = 0;
+    var fValueFirstTokenI           = 0;
+    var fValueOtherTokenI           = 0;
+    var fValueDFII                  = 0;
+    var fValueI                     = 0;
 
-    var fValueDFIH        = 0;
-    var fValueTokenH      = 0;
-    var fValueH           = 0;
+    var fValueFirstTokenH           = 0;
+    var fValueOtherTokenH           = 0;
+    var fValueDFIH                  = 0;
+    var fValueH                     = 0;
 
-    var fValueDFIHDFI     = 0;
-    var fValueTokenHToken = 0;
+    var fValueFirstTokenHFirstToken = 0;
+    var fValueOtherTokenHOtherToken = 0;
 
     my$("#best").className  = "";
     my$("#best1").className = "";
@@ -423,17 +429,17 @@ function calculate() {
     my$("#valuesTitles3").classList.remove("shadow");
 
     runOnChildren("#fAmounts > div", function(el) {
-        el.dataset.tooltip="";
+        el.dataset.tooltip = "";
     });
     runOnChildren("#fAmountsI > div", function(el) {
-        el.dataset.tooltip="";
+        el.dataset.tooltip = "";
     });
 
     runOnChildren("#mining > div", function(el) {
-        el.dataset.tooltip="";
+        el.dataset.tooltip = "";
     });
     runOnChildren("#miningI > div", function(el) {
-        el.dataset.tooltip="";
+        el.dataset.tooltip = "";
     });
 
     my$("#int").hidden = true;
@@ -442,32 +448,32 @@ function calculate() {
     if (((my$("#cPriceOtherToken").value && my$("#cPriceFirstToken").value) ||
          (my$("#cPriceRatio").value)) &&
         (my$("#cAmountFirstToken").value)) {
-        var cPriceRatio  = 0;
-        cAmountFirstToken   = +my$("#cAmountFirstToken").value;
+        var cPriceRatio   = 0;
+        cAmountFirstToken = +my$("#cAmountFirstToken").value;
 
         if (my$("#cPriceOtherToken").value && my$("#cPriceFirstToken").value) {
-            cPriceOtherToken  = +my$("#cPriceOtherToken").value;
-            cPriceFirstToken    = +my$("#cPriceFirstToken").value;
-            cPriceRatio  = cPriceOtherToken / cPriceFirstToken;
+            cPriceOtherToken = +my$("#cPriceOtherToken").value;
+            cPriceFirstToken = +my$("#cPriceFirstToken").value;
+            cPriceRatio      = cPriceOtherToken / cPriceFirstToken;
         } else if (my$("#cPriceRatio").value) {
-            cPriceRatio  = +my$("#cPriceRatio").value;
+            cPriceRatio      = +my$("#cPriceRatio").value;
         }
 
         cAmountOtherToken = cAmountFirstToken/cPriceRatio;
-        cValueToken  = cAmountOtherToken * cPriceOtherToken;
-        cValueDFI    = cAmountFirstToken * cPriceFirstToken;
-        cValue       = cValueToken + cValueDFI;
+        cValueOtherToken  = cAmountOtherToken * cPriceOtherToken;
+        cValueFirstToken  = cAmountFirstToken * cPriceFirstToken;
+        cValue            = cValueOtherToken + cValueFirstToken;
 
-        var fPriceOtherToken  = +my$("#fPriceOtherToken").value;
-        var fPriceFirstToken    = +my$("#fPriceFirstToken").value;
-        var fPriceRatio  = +my$("#fPriceRatio").value;
+        var fPriceOtherToken = +my$("#fPriceOtherToken").value;
+        var fPriceFirstToken = +my$("#fPriceFirstToken").value;
+        var fPriceRatio      = +my$("#fPriceRatio").value;
 
         if (my$("#fPriceOtherToken").value && my$("#fPriceFirstToken").value) {
 
             fPriceRatio  = fPriceOtherToken / fPriceFirstToken;
 
             if ((fPriceFirstToken == cPriceFirstToken) && (fPriceOtherToken == cPriceOtherToken)) {
-                fAmountFirstToken   = cAmountFirstToken;
+                fAmountFirstToken = cAmountFirstToken;
                 fAmountOtherToken = cAmountOtherToken;
             }
         }
@@ -500,24 +506,24 @@ function calculate() {
 
             if ((!fAmountOtherToken) && (!fAmountFirstToken)) {
                 fAmountOtherToken = Math.sqrt(cAmountOtherToken * cAmountFirstToken * 1/fPriceRatio);
-                fAmountFirstToken   = (fPriceRatio * fAmountOtherToken);
+                fAmountFirstToken = (fPriceRatio * fAmountOtherToken);
             }
             addDiffToolTip("#fAmountFirstToken", fAmountFirstToken, cAmountFirstToken);
             addDiffToolTip("#fAmountOtherToken", fAmountOtherToken, cAmountOtherToken);
 
-            fValueToken       = fAmountOtherToken * fPriceOtherToken;
-            fValueDFI         = fAmountFirstToken * fPriceFirstToken;
-            fValue            = fValueToken + fValueDFI;
+            fValueOtherToken  = fAmountOtherToken * fPriceOtherToken;
+            fValueFirstToken  = fAmountFirstToken * fPriceFirstToken;
+            fValue            = fValueOtherToken + fValueFirstToken;
 
-            fValueTokenH      = cAmountOtherToken * fPriceOtherToken;
-            fValueDFIH        = cAmountFirstToken * fPriceFirstToken;
-            fValueH           = fValueTokenH + fValueDFIH;
+            fValueOtherTokenH = cAmountOtherToken * fPriceOtherToken;
+            fValueFirstTokenH = cAmountFirstToken * fPriceFirstToken;
+            fValueH           = fValueOtherTokenH + fValueFirstTokenH;
             
-            fValueDFIHDFI     = 2 * cAmountFirstToken * fPriceFirstToken;
-            fValueTokenHToken = 2 * cAmountOtherToken * fPriceOtherToken;
+            fValueFirstTokenHFirstToken     = 2 * cAmountFirstToken * fPriceFirstToken;
+            fValueOtherTokenHOtherToken   = 2 * cAmountOtherToken * fPriceOtherToken;
 
-            addDiffToolTip("#fValueDFI", fValueDFI, fValueDFIH);
-            addDiffToolTip("#fValueToken", fValueToken, fValueTokenH);
+            addDiffToolTip("#fValueFirstToken", fValueFirstToken, fValueFirstTokenH);
+            addDiffToolTip("#fValueOtherToken", fValueOtherToken, fValueOtherTokenH);
             addDiffToolTip("#fValue", fValue, fValueH);
 
             my$("#fAmounts").classList.remove("shadow");
@@ -526,45 +532,58 @@ function calculate() {
             my$("#mining").classList.remove("shadow");
 
             if ((my$("#apr").value > 0 || my$("#fee").value > 0) && (my$("#duration").value && my$("#duration").value > 0) ) {
-                var apr      = +my$("#apr").value;
-                var fee      = +my$("#fee").value;
                 var cPeriod  = +my$("#period").value;
                 var duration = +my$("#duration").value;
+                var apr      = +my$("#apr").value / 100;
+                var fee      = +my$("#fee").value / 100;
                 var tax      = +my$("#tax").value / 100;
-                var compAPR  = apr / 100 * duration / 365;
-                var compFee  = fee / 100 * duration / 365;
-                var periods  = 0;
 
-                if (tax > 100) {
+                if (tax > 1) {
                     alert("Tax cannot be bigger than 100%!");
-                    tax = 100;
+                    tax = 1;
                 }
 
-                if (cPeriod && (cPeriod < duration)) {
+                if (cPeriod && (cPeriod <= duration)) {
                     if (cPeriod < (1 / 2880))
                         cPeriod = (1 / 2880);
-                    var convFee = 0.002;
 
-                    periods  = duration / cPeriod;
-                    compAPR  = Math.pow( 1 + (compAPR * (1 - convFee) / periods), periods) - 1;
-                    compFee  = Math.pow( 1 + (compFee * (1 - convFee) / periods), periods) - 1;
+                    const convFee     = 0.002;
+                    const transFee    = 0.0001634;
+                    //var   remDuration = duration - ( periods * cPeriod);
 
-                    var transFee = 0.0001634;
+                    //compAPR = (Math.pow(1 + (compAPR * (1 - convFee) / periods), periods) - 1) + (apr * remDuration / duration);
+                    //compFee = (Math.pow(1 + (compFee * (1 - convFee) / periods), periods) - 1) + (fee * remDuration / duration);
+
+                    /* From https://www.educba.com/compounding-formula/ */
+                    var periods  = Math.floor(duration / cPeriod);
+                    var periodsY = 365 / cPeriod;
+                    var compAPR = Math.pow(1 + apr/periodsY, periodsY * duration / 365) - 1;
+                    var compFee = Math.pow(1 + fee/periodsY, periodsY * duration / 365) - 1;
+
                     // 2 transaction fees (one to convert, one to pool) + 1 convertion fee per period
-                    fAmountFirstTokenI   = fAmountFirstToken + (((fAmountFirstToken * (compAPR + compFee))) - (2 * transFee * periods)) * (1 - tax);
-                    fAmountOtherTokenI = fAmountOtherToken + (fAmountOtherToken * (compAPR + compFee)) * (1 - tax);
+                    fAmountFirstTokenI = (fAmountFirstToken * (1 + compAPR + compFee)) - (2 * transFee * periods);
+                    fAmountOtherTokenI = (fAmountOtherToken * (1 + compAPR + compFee));
                 } else {
-                    fAmountFirstTokenI   = fAmountFirstToken + ((fAmountFirstToken * ( 2 * compAPR + compFee))) * (1 - tax);
-                    fAmountOtherTokenI = fAmountOtherToken + (fAmountOtherToken * compFee) * (1 - tax);
+                    fAmountFirstTokenI = fAmountFirstToken * (1 + ( (2 * apr + fee) * duration / 365));
+                    fAmountOtherTokenI = fAmountOtherToken * (1 + (fee * duration / 365));
                 }
+
+                /* Taxes */
+                if (fAmountFirstTokenI > fAmountFirstToken) {
+                        fAmountFirstTokenI -= (fAmountFirstTokenI - fAmountFirstToken) * tax;
+                }
+                if (fAmountOtherTokenI > fAmountOtherToken) {
+                    fAmountOtherTokenI -= (fAmountOtherTokenI - fAmountOtherToken) * tax;
+                }
+
                 addDiffToolTip("#fAmountFirstTokenI", fAmountFirstTokenI, cAmountFirstToken);
                 addDiffToolTip("#fAmountOtherTokenI", fAmountOtherTokenI, cAmountOtherToken);
 
-                fValueTokenI  = fAmountOtherTokenI * fPriceOtherToken;
-                fValueDFII    = fAmountFirstTokenI * fPriceFirstToken;
-                fValueI       = fValueTokenI + fValueDFII;
-                addDiffToolTip("#fValueDFII", fValueDFII, fValueDFIH);
-                addDiffToolTip("#fValueTokenI", fValueTokenI, fValueTokenH);
+                fValueOtherTokenI = fAmountOtherTokenI * fPriceOtherToken;
+                fValueFirstTokenI = fAmountFirstTokenI * fPriceFirstToken;
+                fValueI           = fValueOtherTokenI  + fValueFirstTokenI;
+                addDiffToolTip("#fValueFirstTokenI", fValueFirstTokenI, fValueFirstTokenH);
+                addDiffToolTip("#fValueOtherTokenI", fValueOtherTokenI, fValueOtherTokenH);
                 addDiffToolTip("#fValueI", fValueI, fValueH);
 
                 my$("#fAmountsI").classList.remove("shadow");
@@ -576,8 +595,8 @@ function calculate() {
     }
 
     my$("#cAmountOtherToken").value = prettyNumber(cAmountOtherToken);
-    my$("#cValueToken").value = prettyNumber(cValueToken);
-    my$("#cValueDFI").value = prettyNumber(cValueDFI);
+    my$("#cValueOtherToken").value = prettyNumber(cValueOtherToken);
+    my$("#cValueFirstToken").value = prettyNumber(cValueFirstToken);
     my$("#cValue").value = prettyNumber(cValue);
 
     my$("#fAmountOtherToken").value = prettyNumber(fAmountOtherToken);
@@ -586,30 +605,30 @@ function calculate() {
     my$("#fAmountOtherTokenI").value = prettyNumber(fAmountOtherTokenI);
     my$("#fAmountFirstTokenI").value = prettyNumber(fAmountFirstTokenI);
 
-    my$("#fValueToken").value = prettyNumber(fValueToken);
-    my$("#fValueDFI").value = prettyNumber(fValueDFI);
+    my$("#fValueOtherToken").value = prettyNumber(fValueOtherToken);
+    my$("#fValueFirstToken").value = prettyNumber(fValueFirstToken);
     my$("#fValue").value = prettyNumber(fValue);
 
-    my$("#fValueTokenH").value = prettyNumber(fValueTokenH);
-    my$("#fValueDFIH").value = prettyNumber(fValueDFIH);
+    my$("#fValueOtherTokenH").value = prettyNumber(fValueOtherTokenH);
+    my$("#fValueFirstTokenH").value = prettyNumber(fValueFirstTokenH);
     my$("#fValueH").value = prettyNumber(fValueH);
 
-    my$("#fValueDFIHDFI").value = prettyNumber(fValueDFIHDFI);
-    my$("#fValueTokenHToken").value = prettyNumber(fValueTokenHToken);
+    my$("#fValueFirstTokenHFirstToken").value = prettyNumber(fValueFirstTokenHFirstToken);
+    my$("#fValueOtherTokenHOtherToken").value = prettyNumber(fValueOtherTokenHOtherToken);
 
-    compareValues(fValueDFIH, fValueDFI, "#fValueDFIH", "#fValueDFI");
-    compareValues(fValueTokenH, fValueToken, "#fValueTokenH", "#fValueToken");
+    compareValues(fValueFirstTokenH, fValueFirstToken, "#fValueFirstTokenH", "#fValueFirstToken");
+    compareValues(fValueOtherTokenH, fValueOtherToken, "#fValueOtherTokenH", "#fValueOtherToken");
     compareValues(fValueH, fValue, "#fValueH", "#fValue");
 
-    my$("#fValueTokenI").value = prettyNumber(fValueTokenI);
-    my$("#fValueDFII").value = prettyNumber(fValueDFII);
+    my$("#fValueOtherTokenI").value = prettyNumber(fValueOtherTokenI);
+    my$("#fValueFirstTokenI").value = prettyNumber(fValueFirstTokenI);
     my$("#fValueI").value = prettyNumber(fValueI);
 
-    compareValues(fValueDFIH, fValueDFII, "#fValueDFIH", "#fValueDFII");
-    compareValues(fValueTokenH, fValueTokenI, "#fValueTokenH", "#fValueTokenI");
+    compareValues(fValueFirstTokenH, fValueFirstTokenI, "#fValueFirstTokenH", "#fValueFirstTokenI");
+    compareValues(fValueOtherTokenH, fValueOtherTokenI, "#fValueOtherTokenH", "#fValueOtherTokenI");
     compareValues(fValueH, fValueI, "#fValueH", "#fValueI");
 
-    compareTotalValues(cValue, fValueH, fValueDFIHDFI, fValueTokenHToken, fValue, fValueI);
+    compareTotalValues(cValue, fValueH, fValueFirstTokenHFirstToken, fValueOtherTokenHOtherToken, fValue, fValueI);
 }
 
 function compareNumbers(a, b) {
@@ -821,6 +840,23 @@ function copyPrices() {
     my$("#fPriceFirstToken").value = my$("#cPriceFirstToken").value;
     my$("#fPriceOtherToken").value = my$("#cPriceOtherToken").value;
     inputEvent("#fPriceOtherToken");
+}
+
+function getTokenDFI() {
+    if (my$("#FirstTokenValue").value == "DFI")
+        return 0;
+    if (my$("#OtherTokenValue").value == "DFI")
+        return 1;
+    return -1;
+}
+
+function isATokenDFI() {
+    if (getTokenDFI() >= 0)
+        for (const elem of document.getElementsByClassName('third'))
+            elem.classList.add("hidden");
+    else
+        for (const elem of document.getElementsByClassName('third'))
+            elem.classList.remove("hidden");
 }
 
 function mousedownEvent(selector) {

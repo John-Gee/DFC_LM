@@ -172,3 +172,8 @@ input[type=number] {
 .flat {
     display: contents;
 }
+
+
+.hidden {
+    display: none;
+}

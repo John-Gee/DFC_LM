@@ -107,6 +107,7 @@ function setupFirstToken() {
             OtherTokenOptions.selectedIndex = dfiIndex;
         }
         changeEvent("#OtherTokenValue");
+        isATokenDFI();
     });
 
     if (localStorage.getItem("FirstToken")) {
@@ -138,6 +139,7 @@ function setupOtherToken() {
     my$("#OtherTokenValue").addEventListener("change", function() {
         SwitchOtherTokenLabel();
         clearCPriceOtherToken();
+        isATokenDFI();
     });
 
     if (localStorage.getItem("OtherToken")) {
