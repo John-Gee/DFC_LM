@@ -53,6 +53,7 @@ function setupCurrency() {
         SwitchCurrencyLabel();
         clearCPriceFirstToken();
         clearCPriceOtherToken();
+        clearCPriceDFI();
     });
 
     if (localStorage.getItem("Currency")) {
@@ -62,6 +63,7 @@ function setupCurrency() {
     SwitchCurrencyLabel();
     clearCPriceFirstToken();
     clearCPriceOtherToken();
+    clearCPriceDFI();
 
     return select;
 }
