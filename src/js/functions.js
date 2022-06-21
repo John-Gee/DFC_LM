@@ -142,6 +142,16 @@ function prettyNumber(number) {
     });
 }
 
+function prettyNumberCleaner(number) {
+    return numbro(number).format({/*average: true,
+                                  totalLength: 10,*/
+                                  optionalMantissa: true,
+                                  thousandSeparated: true,
+                                  trimMantissa: true,
+                                  mantissa: 2
+    });
+}
+
 function cCalculate() {
     xCalculate("c");
 }
@@ -832,12 +842,13 @@ function addDiffToolTip(selector, fNumber, cNumber) {
         tip = "Compared to Holding Value\n$ ";
     else
         tip = "Compared to the Initial Amount\n";
+
     if (diff > 0)
         tip = tip + "+";
-    if (diff != 0)
-        tip = tip + prettyNumber(diff) + "\n% " + prettyNumber(diff / cNumber * 100)
-    else
-        tip = tip + "0\n% 0"
+    tip = tip + prettyNumberCleaner(diff) + "\n% ";
+    if (diff > 0)
+        tip = tip + "+";
+    tip = tip + prettyNumberCleaner(diff / cNumber * 100);
     my$(selector).parentElement.dataset.tooltip = tip;
 }
 
