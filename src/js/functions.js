@@ -548,31 +548,45 @@ function calculate() {
                     tax = 1;
                 }
 
+                /* Fees */
+                const convFee  = 0.002;
+                const transFee = 0.0001634;
+
+                var periods   = 0;
+                var rDuration = duration;
+                var compAPR   = 0;
+                var compFee   = 0;
+
                 if (cPeriod && (cPeriod <= duration)) {
                     if (cPeriod < (1 / 2880))
                         cPeriod = (1 / 2880);
 
-                    const convFee  = 0.002;
-                    const transFee = 0.0001634;
-
                     /* From https://www.educba.com/compounding-formula/ */
-                    var periods  = Math.floor(duration / cPeriod);
+                    periods  = Math.floor(duration / cPeriod);
                     var periodsY = 365 / cPeriod;
-                    var compAPR = Math.pow(1 + apr/periodsY, periodsY * duration / 365) - 1;
-                    var compFee = Math.pow(1 + fee/periodsY, periodsY * duration / 365) - 1;
+                    var sDuration = periods * cPeriod;
+                    rDuration = duration - sDuration;
+                    compAPR = Math.pow(1 + (apr * (1 - convFee) / periodsY), periodsY * sDuration / 365) - 1;
+                    compFee = Math.pow(1 + (fee * (1 - convFee) / periodsY), periodsY * sDuration / 365) - 1;
+                }
 
-                    // 2 transaction fees (one to convert, one to pool) + 1 convertion fee per period
-                    fAmountFirstTokenI = (fAmountFirstToken * (1 + compAPR + compFee)) - (2 * transFee * periods);
-                    fAmountOtherTokenI = (fAmountOtherToken * (1 + compAPR + compFee));
-                } else {
-                    fAmountFirstTokenI = fAmountFirstToken * (1 + (fee * duration / 365));
-                    fAmountOtherTokenI = fAmountOtherToken * (1 + (fee * duration / 365));
-                    if (my$("#FirstTokenValue").value == "DFI")
-                        fAmountFirstTokenI += fAmountFirstToken * 2 * apr * duration / 365;
-                    else if (my$("#OtherTokenValue").value == "DFI")
-                        fAmountOtherTokenI += fAmountOtherToken * 2 * apr * duration / 365;
-                    else
-                        fAmountDFII        =  fAmountFirstToken * fPriceFirstToken / fPriceDFI * 2 * apr * duration / 365;
+                // 2 transaction fees (one to convert, one to pool) + 1 convertion fee per period
+                fAmountFirstTokenI = fAmountFirstToken * (1 + compAPR + compFee + (fee * rDuration / 365));
+                fAmountOtherTokenI = fAmountOtherToken * (1 + compAPR + compFee + (fee * rDuration / 365));
+                if (my$("#FirstTokenValue").value == "DFI") {
+                    fAmountFirstTokenI += (fAmountFirstTokenI * 2 * apr * rDuration / 365) - (2 * transFee * periods);
+                    if (fAmountFirstTokenI < fAmountFirstToken)
+                        fAmountFirstTokenI = fAmountFirstToken;
+                }
+                else if (my$("#OtherTokenValue").value == "DFI") {
+                    fAmountOtherTokenI += (fAmountOtherTokenI * 2 * apr * rDuration / 365) - (2 * transFee * periods);
+                    if (fAmountOtherTokenI < fAmountOtherToken)
+                        fAmountOtherTokenI = fAmountOtherToken;
+                }
+                else {
+                    fAmountDFII        = (fAmountFirstTokenI * fPriceFirstToken / fPriceDFI * 2 * apr * rDuration / 365) - (2 * transFee * periods);
+                        if (fAmountDFII < 0)
+                        fAmountDFII = 0;
                 }
 
                 /* Taxes */
