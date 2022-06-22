@@ -169,7 +169,7 @@ input[type=number] {
     //vertical-align: middle;
 }
 
-.title > img {
+.input > .title > img {
     margin-left: -0.25rem;
 }
 
