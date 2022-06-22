@@ -204,6 +204,20 @@ function setupInfo() {
     });
 }
 
+function setupShare() {
+    my$("#urlB").addEventListener("mouseover", function() {
+        my$("#urlB").style.display = "none";
+        my$("#urlB2").style.display = "block";
+    });
+    my$("#urlB").addEventListener("mouseout", function() {
+        my$("#urlB").style.display = "block";
+        my$("#urlB2").style.display = "none";
+    });
+    my$("#urlButtons").addEventListener("click", function() {
+        share();
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     gSelects = new Array();
 
@@ -233,7 +247,11 @@ document.addEventListener("DOMContentLoaded", function() {
     my$("#sync").addEventListener("click", getPrices);
     my$("#copy").addEventListener("click", copyPrices);
 
+    createEmptyPlot();
+
+    parseURL();
+    setupShare();
+
     cCalculate();
     fCalculate();
-    createEmptyPlot();
 });

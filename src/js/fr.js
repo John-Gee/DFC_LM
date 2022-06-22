@@ -39,6 +39,7 @@ const fr = {
     tour: {
         play: "Bienvenue au tutoriel! Ce bouton le relance.",
         infoB: "Ce bouton bascule l'onglet d'information.",
+        urlB: "Ce bouton ouvre le site sur un nouvel onglet avec les valeurs actuelles du calculateur.",
         title: "Ce calculateur estime des changements divergents potentiels.",
         CurrencyValueDiv: "Choisissez la devise.",
         FirstTokenValueDiv: "Choisissez la 1ère monnaie dans la paire.",

@@ -323,6 +323,10 @@ function createTutorial(guideChimp) {
             element: "#plot",
             title: lang["tour"]["plot"],
             position: "top"
+        },
+        {
+            element: "#urlB",
+            title: lang["tour"]["urlB"]
         }
     ];
     if (guideChimp != null) {
@@ -903,6 +907,73 @@ function isATokenDFI() {
     else
         for (const elem of document.getElementsByClassName('third'))
             elem.classList.remove("hidden");
+}
+
+function parseURL() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    parseParamIndex(urlParams, 'FirstTokenValue');
+    parseParamIndex(urlParams, 'CurrencyValue');
+    parseParam(urlParams, 'cPriceFirstToken');
+    parseParamIndex(urlParams, 'OtherTokenValue');
+    parseParam(urlParams, 'cPriceOtherToken');
+    parseParam(urlParams, 'cPriceDFI');
+    parseParam(urlParams, 'fPriceFirstToken');
+    parseParam(urlParams, 'fPriceOtherToken');
+    parseParam(urlParams, 'fPriceDFI');
+    parseParam(urlParams, 'cAmountFirstToken');
+    parseParam(urlParams, 'apr');
+    parseParam(urlParams, 'fee');
+    parseParam(urlParams, 'duration');
+    parseParam(urlParams, 'period');
+    parseParam(urlParams, 'tax');
+}
+
+function parseParam(urlParams, param){
+    if (! urlParams.get(param))
+        return
+    my$("#" + param).value = urlParams.get(param);
+    changeEvent("#" + param);
+}
+
+function parseParamIndex(urlParams, param){
+    if (! urlParams.get(param))
+        return
+    my$("#" + param).selectedIndex = urlParams.get(param);
+    changeEvent("#" + param);
+}
+
+function share() {
+    var url = window.location.href.split('?')[0].concat("?",
+                                    getParamIndex('FirstTokenValue'),
+                                    getParamIndex('CurrencyValue'),
+                                    getParam('cPriceFirstToken'),
+                                    getParamIndex('OtherTokenValue'),
+                                    getParam('cPriceOtherToken'),
+                                    getParam('cPriceDFI'),
+                                    getParam('fPriceFirstToken'),
+                                    getParam('fPriceOtherToken'),
+                                    getParam('fPriceDFI'),
+                                    getParam('cAmountFirstToken'),
+                                    getParam('apr'),
+                                    getParam('fee'),
+                                    getParam('duration'),
+                                    getParam('period'),
+                                    getParam('tax'));
+    window.open(url, '_blank');
+}
+
+function getParam(param) {
+    if (my$("#" + param).value === "")
+        return "";
+    return param.concat("=", my$("#" + param).value, "&");
+}
+
+function getParamIndex(param) {
+    if (my$("#" + param).selectedIndex === "")
+        return "";
+    return param.concat("=", my$("#" + param).selectedIndex, "&");
 }
 
 function mousedownEvent(selector) {
