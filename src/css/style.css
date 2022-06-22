@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    font-size: 1.2vw;
+    font-size: 1.15vw;
 }
 
 body {
@@ -37,7 +37,7 @@ body {
     display: grid;
     grid-template-areas: "inv out"
                          "inv chart";
-    grid-template-columns: 1fr 4.2fr;
+    grid-template-columns: 1fr 4.527fr;
     grid-template-rows: repeat(2, auto);
 
     /* style */
@@ -154,9 +154,9 @@ input[type=number] {
 
 .inputtext {
     /* style */
-    font-size: 100%;
+    font-size: 1rem;
     min-width: 0;
-    height: 94%;
+    height: 1rem;
     border: none;
     outline: none;
     color: inherit;
@@ -165,8 +165,12 @@ input[type=number] {
 }
 
 .select2-selection__rendered > img, .input > img, .title > img, .prices > img {
-    width: 0.9rem;
-    vertical-align: middle;
+    width: 1.17rem;
+    //vertical-align: middle;
+}
+
+.title > img {
+    margin-left: -0.25rem;
 }
 
 .flat {
