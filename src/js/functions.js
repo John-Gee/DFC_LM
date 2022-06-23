@@ -78,7 +78,7 @@ function clearCPriceDFI() {
 }
 
 function SwitchCurrencyLabel() {
-    var label = my$("#CurrencyValue").options[my$("#CurrencyValue").selectedIndex].innerHTML;
+    const label = my$("#CurrencyValue").options[my$("#CurrencyValue").selectedIndex].innerHTML;
     myMap("[name='Currency']", function(el) {
         el.innerHTML = label;
     });
@@ -86,7 +86,7 @@ function SwitchCurrencyLabel() {
 }
 
 function SwitchFirstTokenLabel() {
-    var label = my$("#FirstTokenValue").value;
+    const label = my$("#FirstTokenValue").value;
     myMap("[name='FirstToken']", function(el) {
         el.innerHTML = coinNameToImg(label);
     });
@@ -98,7 +98,7 @@ function SwitchFirstTokenLabel() {
 }
 
 function SwitchOtherTokenLabel() {
-    var label = my$("#OtherTokenValue").value;
+    const label = my$("#OtherTokenValue").value;
     myMap("[name='OtherToken']", function(el) {
         el.innerHTML = coinNameToImg(label);
     });
@@ -120,7 +120,7 @@ function formatCoin(coin, container) {
         return coin.text;
     }
 
-    var img = document.createElement("img");
+    const img = document.createElement("img");
     img.src = "../docs/img/" + coin.id + ".svg";
     img.class = "img-flag";
     return img;
@@ -168,9 +168,9 @@ function xCalculate(letter) {
 }
 
 function calcPriceRatio(time) {
-    var priceToken = "#" + time + "PriceOtherToken";
-    var priceFirstToken = "#" + time + "PriceFirstToken";
-    var priceRatio      = "#" + time + "PriceRatio";
+    const priceToken      = "#" + time + "PriceOtherToken";
+    const priceFirstToken = "#" + time + "PriceFirstToken";
+    const priceRatio      = "#" + time + "PriceRatio";
 
     if (!my$(priceFirstToken).value || !my$(priceToken).value)
         my$(priceRatio).value = "";
@@ -179,11 +179,11 @@ function calcPriceRatio(time) {
 }
 
 function createTutorial() {
-    var pricesPosition    = "right";
-    var interestsPosition = "top";
-    var lmaPosition       = "right";
-    var valuesLPosition   = "left";
-    var valuesRPosition   = "left";
+    const pricesPosition    = "right";
+    let   interestsPosition = "top";
+    let   lmaPosition       = "right";
+    let   valuesLPosition   = "left";
+    let   valuesRPosition   = "left";
 
     const mediaQuery = window.matchMedia("(max-width: 900px)");
     if (mediaQuery.matches) {
@@ -193,7 +193,7 @@ function createTutorial() {
         valuesRPosition   = "left";
     }
 
-    var lang = getLanguageObj();
+    const lang = getLanguageObj();
     return [
         {
             element: "#play",
@@ -334,8 +334,8 @@ function createTutorial() {
 }
 
 function startTutorial() {
-    let startT = function() {
-        var step = localStorage.getItem("Tutorial-N");
+    const startT = function() {
+        const step = localStorage.getItem("Tutorial-N");
         if (step)
             guideChimp.start(step);
         else
@@ -381,8 +381,8 @@ function compareTotalValues(cValue, fValueH, fValueHDFI, fValueHToken, fValue, f
     if (!fValue)
         return;
 
-    var best    = "c";
-    var biggest = cValue;
+    let best    = "c";
+    let biggest = cValue;
 
     if (cValue < fValueH) {
         best    = "fh";
@@ -417,38 +417,38 @@ function compareTotalValues(cValue, fValueH, fValueHDFI, fValueHToken, fValue, f
 }
 
 function calculate() {
-    var cPriceFirstToken            = 0;
-    var cPriceOtherToken            = 0;
+    let cPriceFirstToken            = 0;
+    let cPriceOtherToken            = 0;
 
-    var cAmountFirstToken           = 0;
-    var cAmountOtherToken           = 0;
+    let cAmountFirstToken           = 0;
+    let cAmountOtherToken           = 0;
 
-    var cValueFirstToken            = 0;
-    var cValueOtherToken            = 0;
-    var cValue                      = 0;
+    let cValueFirstToken            = 0;
+    let cValueOtherToken            = 0;
+    let cValue                      = 0;
 
-    var fAmountFirstToken           = 0;
-    var fAmountOtherToken           = 0;
+    let fAmountFirstToken           = 0;
+    let fAmountOtherToken           = 0;
 
-    var fAmountFirstTokenI          = 0;
-    var fAmountOtherTokenI          = 0;
-    var fAmountDFII                 = 0;
+    let fAmountFirstTokenI          = 0;
+    let fAmountOtherTokenI          = 0;
+    let fAmountDFII                 = 0;
 
-    var fValueFirstToken            = 0;
-    var fValueOtherToken            = 0;
-    var fValue                      = 0;
+    let fValueFirstToken            = 0;
+    let fValueOtherToken            = 0;
+    let fValue                      = 0;
 
-    var fValueFirstTokenI           = 0;
-    var fValueOtherTokenI           = 0;
-    var fValueDFII                  = 0;
-    var fValueI                     = 0;
+    let fValueFirstTokenI           = 0;
+    let fValueOtherTokenI           = 0;
+    let fValueDFII                  = 0;
+    let fValueI                     = 0;
 
-    var fValueFirstTokenH           = 0;
-    var fValueOtherTokenH           = 0;
-    var fValueH                     = 0;
+    let fValueFirstTokenH           = 0;
+    let fValueOtherTokenH           = 0;
+    let fValueH                     = 0;
 
-    var fValueFirstTokenHFirstToken = 0;
-    var fValueOtherTokenHOtherToken = 0;
+    let fValueFirstTokenHFirstToken = 0;
+    let fValueOtherTokenHOtherToken = 0;
 
     my$("#best").className  = "";
     my$("#best1").className = "";
@@ -481,7 +481,7 @@ function calculate() {
     if (((my$("#cPriceOtherToken").value && my$("#cPriceFirstToken").value) ||
          (my$("#cPriceRatio").value)) &&
         (my$("#cAmountFirstToken").value)) {
-        var cPriceRatio   = 0;
+        let cPriceRatio   = 0;
         cAmountFirstToken = +my$("#cAmountFirstToken").value;
 
         if (my$("#cPriceOtherToken").value && my$("#cPriceFirstToken").value) {
@@ -497,10 +497,10 @@ function calculate() {
         cValueFirstToken  = cAmountFirstToken * cPriceFirstToken;
         cValue            = cValueOtherToken + cValueFirstToken;
 
-        var fPriceOtherToken = +my$("#fPriceOtherToken").value;
-        var fPriceFirstToken = +my$("#fPriceFirstToken").value;
-        var fPriceRatio      = +my$("#fPriceRatio").value;
-        var fPriceDFI        = +my$("#fPriceDFI").value;
+        const fPriceOtherToken = +my$("#fPriceOtherToken").value;
+        const fPriceFirstToken = +my$("#fPriceFirstToken").value;
+        const fPriceDFI        = +my$("#fPriceDFI").value;
+        let   fPriceRatio      = +my$("#fPriceRatio").value;
 
         if (my$("#fPriceOtherToken").value && my$("#fPriceFirstToken").value) {
 
@@ -566,11 +566,11 @@ function calculate() {
             my$("#mining").classList.remove("shadow");
 
             if ((my$("#apr").value > 0 || my$("#fee").value > 0) && (my$("#duration").value && my$("#duration").value > 0) ) {
-                var cPeriod  = +my$("#period").value;
-                var duration = +my$("#duration").value;
-                var apr      = +my$("#apr").value / 100;
-                var fee      = +my$("#fee").value / 100;
-                var tax      = +my$("#tax").value / 100;
+                let   cPeriod  = +my$("#period").value;
+                const duration = +my$("#duration").value;
+                const apr      = +my$("#apr").value / 100;
+                const fee      = +my$("#fee").value / 100;
+                let   tax      = +my$("#tax").value / 100;
 
                 if (tax > 1) {
                     alert("Tax cannot be bigger than 100%!");
@@ -581,10 +581,10 @@ function calculate() {
                 const convFee  = 0.002;
                 const transFee = 0.0001634;
 
-                var periods   = 0;
-                var rDuration = duration;
-                var compAPR   = 0;
-                var compFee   = 0;
+                let periods   = 0;
+                let rDuration = duration;
+                let compAPR   = 0;
+                let compFee   = 0;
 
                 if (cPeriod && (cPeriod <= duration)) {
                     if (cPeriod < (1 / 2880))
@@ -592,8 +592,8 @@ function calculate() {
 
                     /* From https://www.educba.com/compounding-formula/ */
                     periods  = Math.floor(duration / cPeriod);
-                    var periodsY = 365 / cPeriod;
-                    var sDuration = periods * cPeriod;
+                    const periodsY = 365 / cPeriod;
+                    const sDuration = periods * cPeriod;
                     rDuration = duration - sDuration;
                     compAPR = Math.pow(1 + (apr * (1 - convFee) / periodsY), periodsY * sDuration / 365) - 1;
                     compFee = Math.pow(1 + (fee * (1 - convFee) / periodsY), periodsY * sDuration / 365) - 1;
@@ -695,7 +695,7 @@ function createEmptyPlot() {
 }
 
 function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI) {
-    var current = Math.round(fPriceRatio/cPriceRatio * 100);
+    const current = Math.round(fPriceRatio/cPriceRatio * 100);
 
     /* Math:
      * AmountFirstToken * AmountOtherToken = k
@@ -727,16 +727,16 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI) {
      * divergenceLoss = (2 * sqrt(fPriceRatio/cPriceRatio) / (fPriceRatio/cPriceRatio + 1)) -1
     */
 
-    var priceRatios = [];
-    var points      = [];
-    var points2     = [];
+    let priceRatios = [];
+    let points      = [];
+    let points2     = [];
 
     if (current < 500) {
         for (let i = 0; i < 11; i++) {
             priceRatios.push(50 * i);
         }
     } else {
-        var step = Math.round(2 * current / 11);
+        const step = Math.round(2 * current / 11);
         for (let i = 0; i < 11; i++) {
             priceRatios.push(step * i);
         }
@@ -750,7 +750,7 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI) {
     }
     if (fValueI) {
         my$("#int").hidden = false;
-        var interest_ratio = fValueI / fValue;
+        const interest_ratio = fValueI / fValue;
         for (let i = 0; i < priceRatios.length; i++) {
             points2.push(100 * ((2 * interest_ratio * Math.sqrt(priceRatios[i] / 100) / (1 + (priceRatios[i] / 100))) - 1));
         }
@@ -774,7 +774,7 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI) {
 }
 
 async function getOraclePrice(name) {
-    var url   = "https://ocean.defichain.com/v0/mainnet/prices/" + name + "-USD";
+    const url   = "https://ocean.defichain.com/v0/mainnet/prices/" + name + "-USD";
     return await fetch(url)
         .then((response) => response.json())
         .then(function(data){
@@ -787,7 +787,7 @@ async function getOraclePrice(name) {
 }
 
 async function getCoinGeckoPrice(coin, currency) {
-    var url = "https://api.coingecko.com/api/v3/simple/price?ids=" + coin + "&vs_currencies=" + currency;
+    const url = "https://api.coingecko.com/api/v3/simple/price?ids=" + coin + "&vs_currencies=" + currency;
     return await fetch(url)
         .then((response) => response.json())
         .then(function(data){
@@ -800,11 +800,11 @@ async function getCoinGeckoPrice(coin, currency) {
 }
 
 async function getCurrencyUSDRatio(currency) {
-    var btcUSD   = await getCoinGeckoPrice("bitcoin", "usd");
+    const btcUSD   = await getCoinGeckoPrice("bitcoin", "usd");
     if (btcUSD == 0)
         return 0;
 
-    var btcOther = await getCoinGeckoPrice("bitcoin", currency);
+    const btcOther = await getCoinGeckoPrice("bitcoin", currency);
 
     return btcOther / btcUSD;
 }
@@ -813,19 +813,19 @@ async function getPrices() {
     // showing loading
     my$("#sync").classList.add("rotate");
 
-    var price1    = 1;
-    var otherCoin = my$("#OtherTokenValue").value;
+    let   price1    = 1;
+    const otherCoin = my$("#OtherTokenValue").value;
     if (my$("#FirstTokenValue").value != "dUSD")
         price1 = await getOraclePrice(my$("#FirstTokenValue").value);
 
-    var price2 = await getOraclePrice(otherCoin);
-    var ratio    = 1;
-    var currency = my$("#CurrencyValue").value;
+    let   price2   = await getOraclePrice(otherCoin);
+    let   ratio    = 1;
+    const currency = my$("#CurrencyValue").value;
     if (currency != "usd") {
         ratio = await getCurrencyUSDRatio(currency);
     }
 
-    var price3 = await getOraclePrice("DFI");
+    let price3 = await getOraclePrice("DFI");
 
     if ( (price1 == 0) || (price2 == 0) || (price3 == 0) || (ratio == 0) ) {
         price1 = "";
@@ -849,8 +849,8 @@ async function getPrices() {
 }
 
 function addDiffToolTip(selector, fNumber, cNumber) {
-    var tip;
-    var diff = fNumber - cNumber;
+    let tip;
+    const diff = fNumber - cNumber;
 
     if (selector.includes("Value"))
         tip = "Compared to Holding Value\n$ ";
@@ -871,12 +871,12 @@ function getLanguageObj() {
 }
 
 function translate() {
-    var translator = new Translator({
+    const translator = new Translator({
         detectLanguage: false,
         filesLocation: "/i18n"
     });
 
-    var lang = my$("#i18n-toggler").value;
+    const lang = my$("#i18n-toggler").value;
     translator.add(lang, getLanguageObj()).translatePageTo(lang);
 
     localStorage.setItem("lang", my$("#i18n-toggler").selectedIndex);
@@ -955,7 +955,7 @@ function parseParamIndex(urlParams, param){
 }
 
 function share() {
-    var url = window.location.href.split("?")[0].concat(
+    const url = window.location.href.split("?")[0].concat(
         "?",
         getParamIndex("FirstTokenValue"),
         getParamIndex("CurrencyValue"),
@@ -992,14 +992,14 @@ function lazyLoadScript(path, func) {
     lazyLoadedScript.src   = new URL(path, document.baseURI).href;
     lazyLoadedScript.async = false;
     document.head.append(lazyLoadedScript);
-    lazyLoadedScript.addEventListener('load', () => {
+    lazyLoadedScript.addEventListener("load", () => {
         func();
         document.dispatchEvent(new Event(getFilename(path + "Loaded")));
     });
 }
 
 function getFilename(fullPath) {
-  return fullPath.substring(fullPath.lastIndexOf('/') + 1);
+    return fullPath.substring(fullPath.lastIndexOf("/") + 1);
 }
 
 function mousedownEvent(selector) {
@@ -1015,8 +1015,8 @@ function changeEvent(selector) {
 }
 
 function runOnChildren(selector, func) {
-    var children = document.querySelectorAll(selector);
-    for(var i = 0; i < children.length; ++i) {
+    const children = document.querySelectorAll(selector);
+    for(let i = 0; i < children.length; ++i) {
         func(children[i]);
     }
 }

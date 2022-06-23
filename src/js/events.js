@@ -1,8 +1,8 @@
 "use strict";
 
-var gSelects;
-var guideChimp = null;
-var plot = new Chartist.Line(".ct-chart");
+let gSelects;
+let guideChimp = null;
+const plot = new Chartist.Line(".ct-chart");
 
 function closeDropDowns() {
     for (const select of gSelects) {
@@ -12,7 +12,7 @@ function closeDropDowns() {
 }
 
 function setupi18n() {
-    var select = new TsSelect2(my$("#i18n-toggler"), {
+    const select = new TsSelect2(my$("#i18n-toggler"), {
         minimumResultsForSearch: -1,
         width: "100%",
         dropdownAutoWidth : true,
@@ -41,7 +41,7 @@ function setupi18n() {
 }
 
 function setupCurrency() {
-    var select = new TsSelect2(my$("#CurrencyValue"), {
+    const select = new TsSelect2(my$("#CurrencyValue"), {
         minimumResultsForSearch: -1,
         width: "100%",
         dropdownAutoWidth : true,
@@ -74,7 +74,7 @@ function setupCurrency() {
 }
 
 function setupFirstToken() {
-    var select = new TsSelect2(my$("#FirstTokenValue"), {
+    const select = new TsSelect2(my$("#FirstTokenValue"), {
         minimumResultsForSearch: -1,
         width: "100%",
         dropdownAutoWidth : true,
@@ -92,24 +92,24 @@ function setupFirstToken() {
     my$("#FirstTokenValue").addEventListener("change", function() {
         SwitchFirstTokenLabel();
         clearCPriceFirstToken();
-        var OtherTokenOptions = my$("#OtherTokenValue");
-        var dfiIndex = -1;
-        for(var i=0; i < OtherTokenOptions.length; i++) {
+        let OtherTokenOptions = my$("#OtherTokenValue");
+        let dfiIndex = -1;
+        for(let i=0; i < OtherTokenOptions.length; i++) {
             if (OtherTokenOptions[i].value == "DFI") {
                 dfiIndex = i;
                 break;
             }
         }
         if (my$("#FirstTokenValue").selectedIndex == 0) {
-            for(var i=0; i < dfiIndex; i++)
+            for(let i=0; i < dfiIndex; i++)
                 OtherTokenOptions[i].className = "";
-            for(var i=dfiIndex; i < OtherTokenOptions.length; i++)
+            for(let i=dfiIndex; i < OtherTokenOptions.length; i++)
                 OtherTokenOptions[i].className = "optInvisible";
             OtherTokenOptions.selectedIndex = 1;
         } else if (my$("#FirstTokenValue").selectedIndex == 1) {
-            for(var i=0; i < dfiIndex; i++)
+            for(let i=0; i < dfiIndex; i++)
                 OtherTokenOptions[i].className = "optInvisible";
-            for(var i=dfiIndex; i < OtherTokenOptions.length; i++)
+            for(let i=dfiIndex; i < OtherTokenOptions.length; i++)
                 OtherTokenOptions[i].className = "";
             OtherTokenOptions.selectedIndex = dfiIndex;
         }
@@ -128,7 +128,7 @@ function setupFirstToken() {
 }
 
 function setupOtherToken() {
-    var select = new TsSelect2(my$("#OtherTokenValue"), {
+    const select = new TsSelect2(my$("#OtherTokenValue"), {
         minimumResultsForSearch: -1,
         width: "100%",
         dropdownAutoWidth : true,
@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     gSelects.push(setupi18n());
 
-    setupPreGuide()
+    setupPreGuide();
 
     setupInfo();
 
