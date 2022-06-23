@@ -675,15 +675,11 @@ function compareNumbers(a, b) {
 }
 
 function createEmptyPlot() {
-    new Chartist.Line(".ct-chart", {
-        labels: [0, 25, 50, 100, 125, 150, 175, 200],
+    plot.update({
         series: [[]]
-    }, {
-        high: 100,
-        low: -100,
-        //fullWidth: true,
     });
 }
+
 function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI) {
     var current = Math.round(fPriceRatio/cPriceRatio * 100);
 
@@ -747,7 +743,7 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI) {
     }
 
     priceRatios[priceRatios.indexOf(current)] = current + " (from input)";
-    new Chartist.Line(".ct-chart", {
+    plot.update({
         labels: priceRatios,
         series: [points, points2]
     }, {
@@ -911,7 +907,7 @@ function isATokenDFI() {
 
 function parseURL() {
     const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
+    const urlParams   = new URLSearchParams(queryString);
 
     parseParamIndex(urlParams, "FirstTokenValue");
     parseParamIndex(urlParams, "CurrencyValue");
@@ -975,6 +971,20 @@ function getParamIndex(param) {
     if (my$("#" + param).selectedIndex === "")
         return "";
     return param.concat("=", my$("#" + param).selectedIndex, "&");
+}
+
+function lazyLoadScript(path) {
+    var name = getFilename(path);
+    if (document.getElementsByName(name).length > 0)
+        return;
+
+    const lazyLoadedScript = document.createElement(name);
+    lazyLoadedScript.src = path;
+    document.body.append(lazyLoadedScript);
+}
+
+function getFilename(fullPath) {
+  return fullPath.substring(fullPath.lastIndexOf('/') + 1);
 }
 
 function mousedownEvent(selector) {

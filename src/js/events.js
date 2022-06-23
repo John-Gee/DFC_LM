@@ -1,6 +1,7 @@
 "use strict";
 
 var gSelects;
+var plot = new Chartist.Line(".ct-chart");
 
 function closeDropDowns() {
     for (const select of gSelects) {
