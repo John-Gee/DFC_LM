@@ -75,4 +75,4 @@ const en = {
         email_off: "You can also contact us at <a href=\"mailto:contact@defichain.tools?subject=DefiChainTools\"> contact@defichain.tools</a>",
         donation: "If you appreciate this site and want to support it, you can donate to this DeFiChain address:"
     }
-}
+};

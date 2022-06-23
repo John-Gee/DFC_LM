@@ -1,5 +1,5 @@
 function removeAccents(obj) {
-    return obj.text.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    return obj.text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
 function clearCPriceFirstToken() {
@@ -120,35 +120,37 @@ function formatCoin(coin, container) {
         return coin.text;
     }
 
-    var img = document.createElement('img');
+    var img = document.createElement("img");
     img.src = "../docs/img/" + coin.id + ".svg";
     img.class = "img-flag";
     return img;
 }
 
 function coinNameToImg(coinName) {
-    return '<img src="../docs/img/' + coinName + '.svg" class="img-flag"/>';
+    return "<img src='../docs/img/" + coinName + ".svg' class='img-flag'/>";
 }
 
 function prettyNumber(number) {
     if (number == "")
         return "";
 
-    return numbro(number).format({/*average: true,
-                                  totalLength: 10,*/
-                                  optionalMantissa: true,
-                                  thousandSeparated: true,
-                                  trimMantissa: true
+    return numbro(number).format({
+        /*average: true,
+        totalLength: 10,*/
+        optionalMantissa: true,
+        thousandSeparated: true,
+        trimMantissa: true
     });
 }
 
 function prettyNumberCleaner(number) {
-    return numbro(number).format({/*average: true,
-                                  totalLength: 10,*/
-                                  optionalMantissa: true,
-                                  thousandSeparated: true,
-                                  trimMantissa: true,
-                                  mantissa: 2
+    return numbro(number).format({
+        /*average: true,
+        totalLength: 10,*/
+        optionalMantissa: true,
+        thousandSeparated: true,
+        trimMantissa: true,
+        mantissa: 2
     });
 }
 
@@ -183,7 +185,7 @@ function createTutorial(guideChimp) {
     var valuesLPosition   = "left";
     var valuesRPosition   = "left";
 
-    const mediaQuery = window.matchMedia('(max-width: 900px)')
+    const mediaQuery = window.matchMedia("(max-width: 900px)");
     if (mediaQuery.matches) {
         interestsPosition = "left";
         lmaPosition       = "top";
@@ -369,17 +371,17 @@ function compareTotalValues(cValue, fValueH, fValueHDFI, fValueHToken, fValue, f
     var biggest = cValue;
 
     if (cValue < fValueH) {
-        best    = "fh"
+        best    = "fh";
         biggest = fValueH;
     }
 
     if (biggest < fValueHDFI) {
-        best    = "fhDFI"
+        best    = "fhDFI";
         biggest = fValueHDFI;
     }
 
     if (biggest < fValueHToken) {
-        best    = "fhT"
+        best    = "fhT";
         biggest = fValueHToken;
     }
 
@@ -429,7 +431,6 @@ function calculate() {
 
     var fValueFirstTokenH           = 0;
     var fValueOtherTokenH           = 0;
-    var fValueDFIH                  = 0;
     var fValueH                     = 0;
 
     var fValueFirstTokenHFirstToken = 0;
@@ -599,13 +600,13 @@ function calculate() {
                 }
                 else {
                     fAmountDFII        = (fAmountFirstTokenI * fPriceFirstToken / fPriceDFI * 2 * apr * rDuration / 365) - (2 * transFee * periods);
-                        if (fAmountDFII < 0)
+                    if (fAmountDFII < 0)
                         fAmountDFII = 0;
                 }
 
                 /* Taxes */
                 if (fAmountFirstTokenI > fAmountFirstToken) {
-                        fAmountFirstTokenI -= (fAmountFirstTokenI - fAmountFirstToken) * tax;
+                    fAmountFirstTokenI -= (fAmountFirstTokenI - fAmountFirstToken) * tax;
                 }
                 if (fAmountOtherTokenI > fAmountOtherToken) {
                     fAmountOtherTokenI -= (fAmountOtherTokenI - fAmountOtherToken) * tax;
@@ -626,7 +627,7 @@ function calculate() {
                 my$("#miningI").classList.remove("shadow");
             }
 
-            createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH);
+            createPlot(cPriceRatio, fPriceRatio, fValue, fValueI);
         }
     }
 
@@ -683,7 +684,7 @@ function createEmptyPlot() {
         //fullWidth: true,
     });
 }
-function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH) {
+function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI) {
     var current = Math.round(fPriceRatio/cPriceRatio * 100);
 
     /* Math:
@@ -716,9 +717,9 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH) {
      * divergenceLoss = (2 * sqrt(fPriceRatio/cPriceRatio) / (fPriceRatio/cPriceRatio + 1)) -1
     */
 
-    priceRatios = [];
-    points      = [];
-    points2     = [];
+    var priceRatios = [];
+    var points      = [];
+    var points2     = [];
 
     if (current < 500) {
         for (let i = 0; i < 11; i++) {
@@ -739,7 +740,7 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH) {
     }
     if (fValueI) {
         my$("#int").hidden = false;
-        interest_ratio = fValueI / fValue;
+        var interest_ratio = fValueI / fValue;
         for (let i = 0; i < priceRatios.length; i++) {
             points2.push(100 * ((2 * interest_ratio * Math.sqrt(priceRatios[i] / 100) / (1 + (priceRatios[i] / 100))) - 1));
         }
@@ -765,27 +766,27 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI, fValueH) {
 async function getOraclePrice(name) {
     var url   = "https://ocean.defichain.com/v0/mainnet/prices/" + name + "-USD";
     return await fetch(url)
-    .then((response) => response.json())
-    .then(function(data){
-        return data["data"]["price"]["aggregated"]["amount"];
-    })
-    .catch(function(error) {
-        alert("An error happened while querying the oracle.");
-        return 0;
-    });
+        .then((response) => response.json())
+        .then(function(data){
+            return data["data"]["price"]["aggregated"]["amount"];
+        })
+        .catch(function() {
+            alert("An error happened while querying the oracle.");
+            return 0;
+        });
 }
 
 async function getCoinGeckoPrice(coin, currency) {
     var url = "https://api.coingecko.com/api/v3/simple/price?ids=" + coin + "&vs_currencies=" + currency;
     return await fetch(url)
-    .then((response) => response.json())
-    .then(function(data){
-        return data[coin][currency];
-    })
-    .catch(function(error) {
-        alert("An error happened while querying CoinGecko.");
-        return 0;
-    });
+        .then((response) => response.json())
+        .then(function(data){
+            return data[coin][currency];
+        })
+        .catch(function() {
+            alert("An error happened while querying CoinGecko.");
+            return 0;
+        });
 }
 
 async function getCurrencyUSDRatio(currency) {
@@ -840,7 +841,6 @@ async function getPrices() {
 function addDiffToolTip(selector, fNumber, cNumber) {
     var tip;
     var diff = fNumber - cNumber;
-    var pct  = 0;
 
     if (selector.includes("Value"))
         tip = "Compared to Holding Value\n$ ";
@@ -863,7 +863,7 @@ function getLanguageObj() {
 function translate() {
     var translator = new Translator({
         detectLanguage: false,
-        filesLocation: '/i18n'
+        filesLocation: "/i18n"
     });
 
     var lang = my$("#i18n-toggler").value;
@@ -876,12 +876,12 @@ function info() {
     if (my$("#calc").style.display == "") {
         my$("#calc").style.display = "none";
         my$("#info").style.display = "grid";
-        my$("body").style.gridTemplateAreas = '"head" "info"';
+        my$("body").style.gridTemplateAreas = "'head' 'info'";
     }
     else {
         my$("#calc").style.display = "";
         my$("#info").style.display = "none";
-        my$("body").style.gridTemplateAreas = '"head" "calc"';
+        my$("body").style.gridTemplateAreas = "'head' 'calc'";
     }
 }
 
@@ -902,10 +902,10 @@ function getTokenDFI() {
 
 function isATokenDFI() {
     if (getTokenDFI() >= 0)
-        for (const elem of document.getElementsByClassName('third'))
+        for (const elem of document.getElementsByClassName("third"))
             elem.classList.add("hidden");
     else
-        for (const elem of document.getElementsByClassName('third'))
+        for (const elem of document.getElementsByClassName("third"))
             elem.classList.remove("hidden");
 }
 
@@ -913,55 +913,56 @@ function parseURL() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
-    parseParamIndex(urlParams, 'FirstTokenValue');
-    parseParamIndex(urlParams, 'CurrencyValue');
-    parseParam(urlParams, 'cPriceFirstToken');
-    parseParamIndex(urlParams, 'OtherTokenValue');
-    parseParam(urlParams, 'cPriceOtherToken');
-    parseParam(urlParams, 'cPriceDFI');
-    parseParam(urlParams, 'fPriceFirstToken');
-    parseParam(urlParams, 'fPriceOtherToken');
-    parseParam(urlParams, 'fPriceDFI');
-    parseParam(urlParams, 'cAmountFirstToken');
-    parseParam(urlParams, 'apr');
-    parseParam(urlParams, 'fee');
-    parseParam(urlParams, 'duration');
-    parseParam(urlParams, 'period');
-    parseParam(urlParams, 'tax');
+    parseParamIndex(urlParams, "FirstTokenValue");
+    parseParamIndex(urlParams, "CurrencyValue");
+    parseParam(urlParams, "cPriceFirstToken");
+    parseParamIndex(urlParams, "OtherTokenValue");
+    parseParam(urlParams, "cPriceOtherToken");
+    parseParam(urlParams, "cPriceDFI");
+    parseParam(urlParams, "fPriceFirstToken");
+    parseParam(urlParams, "fPriceOtherToken");
+    parseParam(urlParams, "fPriceDFI");
+    parseParam(urlParams, "cAmountFirstToken");
+    parseParam(urlParams, "apr");
+    parseParam(urlParams, "fee");
+    parseParam(urlParams, "duration");
+    parseParam(urlParams, "period");
+    parseParam(urlParams, "tax");
 }
 
 function parseParam(urlParams, param){
     if (! urlParams.get(param))
-        return
+        return;
     my$("#" + param).value = urlParams.get(param);
     changeEvent("#" + param);
 }
 
 function parseParamIndex(urlParams, param){
     if (! urlParams.get(param))
-        return
+        return;
     my$("#" + param).selectedIndex = urlParams.get(param);
     changeEvent("#" + param);
 }
 
 function share() {
-    var url = window.location.href.split('?')[0].concat("?",
-                                    getParamIndex('FirstTokenValue'),
-                                    getParamIndex('CurrencyValue'),
-                                    getParam('cPriceFirstToken'),
-                                    getParamIndex('OtherTokenValue'),
-                                    getParam('cPriceOtherToken'),
-                                    getParam('cPriceDFI'),
-                                    getParam('fPriceFirstToken'),
-                                    getParam('fPriceOtherToken'),
-                                    getParam('fPriceDFI'),
-                                    getParam('cAmountFirstToken'),
-                                    getParam('apr'),
-                                    getParam('fee'),
-                                    getParam('duration'),
-                                    getParam('period'),
-                                    getParam('tax'));
-    window.open(url, '_blank');
+    var url = window.location.href.split("?")[0].concat(
+        "?",
+        getParamIndex("FirstTokenValue"),
+        getParamIndex("CurrencyValue"),
+        getParam("cPriceFirstToken"),
+        getParamIndex("OtherTokenValue"),
+        getParam("cPriceOtherToken"),
+        getParam("cPriceDFI"),
+        getParam("fPriceFirstToken"),
+        getParam("fPriceOtherToken"),
+        getParam("fPriceDFI"),
+        getParam("cAmountFirstToken"),
+        getParam("apr"),
+        getParam("fee"),
+        getParam("duration"),
+        getParam("period"),
+        getParam("tax"));
+    window.open(url, "_blank");
 }
 
 function getParam(param) {
@@ -977,11 +978,11 @@ function getParamIndex(param) {
 }
 
 function mousedownEvent(selector) {
-    my$(selector).dispatchEvent(new Event('mousedown'));
+    my$(selector).dispatchEvent(new Event("mousedown"));
 }
 
 function inputEvent(selector) {
-    my$(selector).dispatchEvent(new Event('input'));
+    my$(selector).dispatchEvent(new Event("input"));
 }
 
 function changeEvent(selector) {

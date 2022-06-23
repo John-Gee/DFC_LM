@@ -1,3 +1,5 @@
+"use strict";
+
 var gSelects;
 
 function closeDropDowns() {
@@ -135,7 +137,7 @@ function setupOtherToken() {
     });
 
     my$("#OtherTokenValue").addEventListener("select2:opening", function() {
-            closeDropDowns();
+        closeDropDowns();
     });
 
     my$("#OtherTokenValue").addEventListener("change", function() {
