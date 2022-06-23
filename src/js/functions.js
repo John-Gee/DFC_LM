@@ -178,7 +178,7 @@ function calcPriceRatio(time) {
         my$(priceRatio).value = prettyNumber(my$(priceToken).value / my$(priceFirstToken).value);
 }
 
-function createTutorial(guideChimp) {
+function createTutorial() {
     var pricesPosition    = "right";
     var interestsPosition = "top";
     var lmaPosition       = "right";
@@ -194,7 +194,7 @@ function createTutorial(guideChimp) {
     }
 
     var lang = getLanguageObj();
-    var tour = [
+    return [
         {
             element: "#play",
             title: lang["tour"]["play"]
@@ -331,21 +331,35 @@ function createTutorial(guideChimp) {
             title: lang["tour"]["urlB"]
         }
     ];
-    if (guideChimp != null) {
-        guideChimp.tour = tour;
-        return guideChimp;
-    } else {
-        return GuideChimp(tour, {padding: 5});
-    }
 }
 
-function startTutorial(guideChimp) {
-    var step = localStorage.getItem("Tutorial-N");
-    if (step)
-        guideChimp.start(step);
+function startTutorial() {
+    let startT = function() {
+        var step = localStorage.getItem("Tutorial-N");
+        if (step)
+            guideChimp.start(step);
+        else
+            guideChimp.start();
+        localStorage.setItem("Tutorial", "Started");
+    };
+
+    if (guideChimp === null)
+        setupGuide(startT);
     else
-        guideChimp.start();
-    localStorage.setItem("Tutorial", "Started");
+        startT();
+}
+
+function setupGuide(func) {
+    lazyLoadScript("../docs/Libraries/GuideChimp/guidechimp.min.js", () => {
+        guideChimp = GuideChimp(createTutorial(), {padding: 5});
+        guideChimp.on("onStop", ()=>{
+            localStorage.setItem("Tutorial-N", guideChimp.currentStepIndex);
+        });
+        guideChimp.on("onComplete", ()=>{
+            localStorage.removeItem("Tutorial-N");
+        });
+        func();
+    });
 }
 
 function compareValues(value1, value2, id1, id2) {
@@ -973,14 +987,15 @@ function getParamIndex(param) {
     return param.concat("=", my$("#" + param).selectedIndex, "&");
 }
 
-function lazyLoadScript(path) {
-    var name = getFilename(path);
-    if (document.getElementsByName(name).length > 0)
-        return;
-
-    const lazyLoadedScript = document.createElement(name);
-    lazyLoadedScript.src = path;
-    document.body.append(lazyLoadedScript);
+function lazyLoadScript(path, func) {
+    const lazyLoadedScript = document.createElement("script");
+    lazyLoadedScript.src   = new URL(path, document.baseURI).href;
+    lazyLoadedScript.async = false;
+    document.head.append(lazyLoadedScript);
+    lazyLoadedScript.addEventListener('load', () => {
+        func();
+        document.dispatchEvent(new Event(getFilename(path + "Loaded")));
+    });
 }
 
 function getFilename(fullPath) {

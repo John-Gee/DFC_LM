@@ -1,6 +1,7 @@
 "use strict";
 
 var gSelects;
+var guideChimp = null;
 var plot = new Chartist.Line(".ct-chart");
 
 function closeDropDowns() {
@@ -27,7 +28,8 @@ function setupi18n() {
 
     my$("#i18n-toggler").addEventListener("change", function() {
         translate();
-        setupGuide();
+        if (guideChimp != null)
+            guideChimp.tour = createTutorial();
     });
     if (localStorage.getItem("lang")) {
         my$("#i18n-toggler").selectedIndex = localStorage.getItem("lang");
@@ -156,20 +158,7 @@ function setupOtherToken() {
     return select;
 }
 
-var guideChimp = null;
-function setupGuide() {
-    if (guideChimp != null) {
-        createTutorial(guideChimp);
-        return;
-    }
-    guideChimp = createTutorial(guideChimp);
-    guideChimp.on("onStop", ()=>{
-        localStorage.setItem("Tutorial-N", guideChimp.currentStepIndex);
-    });
-    guideChimp.on("onComplete", ()=>{
-        localStorage.removeItem("Tutorial-N");
-    });
-
+function setupPreGuide() {
     my$("#play").addEventListener("mouseover", function() {
         if (my$("#calc").style.display != "")
             return;
@@ -225,6 +214,8 @@ document.addEventListener("DOMContentLoaded", function() {
     gSelects = new Array();
 
     gSelects.push(setupi18n());
+
+    setupPreGuide()
 
     setupInfo();
 
