@@ -24,13 +24,16 @@ function cleanPaths() {
 }
 
 function minifyCSS() {
-    minCSS=`cat css/{chart,fonts,guide,header,info,investment,outcome,select2,style,tooltips,queries}.css |
-    sed "s|../docs/||" | sed "s|../fonts/|fonts/|" |npx postcss -m`
-    for f in {chart,fonts,guide,header,info,investment,outcome,select2,tooltips,queries}.css
+    cat css/{chart,fonts,guide,header,info,investment,outcome,select2,style,tooltips}.css |
+    sed "s|../docs/||" | npx postcss -m > ../docs/css/style.min.css
+    cat css/queries.css |
+    sed "s|../docs/||" | npx postcss -m > ../docs/css/queries.min.css
+    for f in {chart,fonts,guide,header,info,investment,outcome,select2,tooltips}.css
     do
         sed -i "/^.*$f.*$/d" ../docs/index.html
     done
-    sed -i "s|^.*style.css.*$|<style type=text/css>$minCSS</style>|" ../docs/index.html
+    sed -i "s|style.css|style.min.css|" ../docs/index.html
+    sed -i "s|queries.css|queries.min.css|" ../docs/index.html
 }
 
 function minifyJS() {

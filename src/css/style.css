@@ -166,7 +166,8 @@ input[type=number] {
 
 .select2-selection__rendered > img, .input > img, .title > img, .prices > img {
     width: 1.17rem;
-    //vertical-align: middle;
+    height: 1.17rem;
+    vertical-align: middle;
 }
 
 .input > .title > img {

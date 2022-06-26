@@ -350,6 +350,8 @@ function startTutorial() {
 }
 
 function setupGuide(func) {
+    lazyLoadStyle("../docs/Libraries/GuideChimp/guidechimp.min.css");
+    lazyLoadStyle("css/guide.css");
     lazyLoadScript("../docs/Libraries/GuideChimp/guidechimp.min.js", () => {
         guideChimp = GuideChimp(createTutorial(), {padding: 5});
         guideChimp.on("onStop", ()=>{
@@ -449,6 +451,10 @@ function calculate() {
 
     let fValueFirstTokenHFirstToken = 0;
     let fValueOtherTokenHOtherToken = 0;
+
+    // should prevent multiple rendering while updating values
+    let origCalcDisplay = my$("#calc").style.display;
+    my$("#calc").style.display = "none";
 
     my$("#best").className  = "";
     my$("#best1").className = "";
@@ -635,7 +641,7 @@ function calculate() {
                 fValueI           = fValueOtherTokenI  + fValueFirstTokenI + fValueDFII;
                 addDiffToolTip("#fValueFirstTokenI", fValueFirstTokenI, fValueFirstTokenH);
                 addDiffToolTip("#fValueOtherTokenI", fValueOtherTokenI, fValueOtherTokenH);
-                addDiffToolTip("#fValueI", fValueI, fValueH);
+                addDiffToolTip("#fValueI", fmValueI, fValueH);
 
                 my$("#fAmountsI").classList.remove("shadow");
                 my$("#miningI").classList.remove("shadow");
@@ -682,6 +688,8 @@ function calculate() {
     compareValues(fValueH, fValueI, "#fValueH", "#fValueI");
 
     compareTotalValues(cValue, fValueH, fValueFirstTokenHFirstToken, fValueOtherTokenHOtherToken, fValue, fValueI);
+
+    my$("#calc").style.display = origCalcDisplay;
 }
 
 function compareNumbers(a, b) {
@@ -731,17 +739,14 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI) {
     let points      = [];
     let points2     = [];
 
-    if (current < 500) {
-        for (let i = 0; i < 11; i++) {
-            priceRatios.push(50 * i);
-        }
-    } else {
-        const step = Math.round(2 * current / 11);
-        for (let i = 0; i < 11; i++) {
-            priceRatios.push(step * i);
-        }
-        priceRatios.push(current);
-    }
+    let step;
+    if (current < 500)
+        step = 50;
+    else
+        step = Math.round(2 * current / 11);
+    for (let i = 0; i < 11; i++)
+        priceRatios.push(step * i);
+
     priceRatios.push(current);
     priceRatios = [...new Set(priceRatios)].sort(compareNumbers);
 
@@ -873,7 +878,7 @@ function getLanguageObj() {
 function translate() {
     const translator = new Translator({
         detectLanguage: false,
-        filesLocation: "/i18n"
+        //filesLocation: "/i18n"
     });
 
     const lang = my$("#i18n-toggler").value;
@@ -985,6 +990,14 @@ function getParamIndex(param) {
     if (my$("#" + param).selectedIndex === "")
         return "";
     return param.concat("=", my$("#" + param).selectedIndex, "&");
+}
+
+function lazyLoadStyle(path) {
+    const lazyLoadedStyle = document.createElement("link");
+    lazyLoadedStyle.href  = new URL(path, document.baseURI).href;
+    lazyLoadedStyle.rel   = "stylesheet";
+    lazyLoadedStyle.type  = "text/css";
+    document.head.append(lazyLoadedStyle);
 }
 
 function lazyLoadScript(path, func) {

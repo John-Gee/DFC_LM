@@ -30,6 +30,7 @@
 #logo {
     /* style */
     width: calc(2 * 1rem);
+    height: calc(2 * 1rem);
     vertical-align: middle;
     display: block;
     cursor: pointer;
@@ -55,4 +56,8 @@
 
 #play, #play2, #infoB, #infoB2, #urlB, #urlB2 {
     width: calc(2 * 1rem);
+    height: calc(2 * 1rem);
+    vertical-align: middle;
 }
+
+

@@ -31,11 +31,10 @@ function setupi18n() {
         if (guideChimp != null)
             guideChimp.tour = createTutorial();
     });
-    if (localStorage.getItem("lang")) {
+    if (localStorage.getItem("lang"))
         my$("#i18n-toggler").selectedIndex = localStorage.getItem("lang");
-        changeEvent("#i18n-toggler");
-    }
-    translate();
+
+    changeEvent("#i18n-toggler");
 
     return select;
 }
@@ -61,14 +60,10 @@ function setupCurrency() {
         clearCPriceDFI();
     });
 
-    if (localStorage.getItem("Currency")) {
+    if (localStorage.getItem("Currency"))
         my$("#CurrencyValue").selectedIndex = localStorage.getItem("Currency");
-        changeEvent("#CurrencyValue");
-    }
-    SwitchCurrencyLabel();
-    clearCPriceFirstToken();
-    clearCPriceOtherToken();
-    clearCPriceDFI();
+
+    changeEvent("#CurrencyValue");
 
     return select;
 }
@@ -121,7 +116,6 @@ function setupFirstToken() {
         my$("#FirstTokenValue").selectedIndex = localStorage.getItem("FirstToken");
     }
 
-    SwitchFirstTokenLabel();
     changeEvent("#FirstTokenValue");
 
     return select;
@@ -152,7 +146,7 @@ function setupOtherToken() {
     if (localStorage.getItem("OtherToken")) {
         my$("#OtherTokenValue").selectedIndex = localStorage.getItem("OtherToken");
     }
-    SwitchOtherTokenLabel();
+
     changeEvent("#OtherTokenValue");
 
     return select;
@@ -211,6 +205,10 @@ function setupShare() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+    // should prevent multiple rendering while updating values
+    let origBodyDisplay = my$("#calc").style.display;
+    my$("body").style.display = "none";
+
     gSelects = new Array();
 
     gSelects.push(setupi18n());
@@ -248,4 +246,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     cCalculate();
     fCalculate();
+
+    my$("body").style.display = origBodyDisplay;
 });
