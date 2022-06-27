@@ -101,7 +101,7 @@ h3 {
 .input {
     /* position */
     display: grid;
-    grid-template-columns: 2.25rem 1fr;
+    grid-template-columns: auto 1fr;
     gap: 0rem;
     align-items: center;
 
@@ -169,9 +169,9 @@ input[type=number] {
     margin-left: -0.25rem;
 }
 
-div[name="Currency"], .investmentTag, .empty, #select2-CurrencyValue-container {
+div[name="Currency"], .investmentTag, .empty, #select2-CurrencyValue-container, .input > .title, .input > .invest {
     font-size: 1.2rem;
-    width: 1.17rem;
+    width: 2.25rem;
     height: 1.17rem;
     vertical-align: middle;
 }
