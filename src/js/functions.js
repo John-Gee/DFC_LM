@@ -641,7 +641,7 @@ function calculate() {
                 fValueI           = fValueOtherTokenI  + fValueFirstTokenI + fValueDFII;
                 addDiffToolTip("#fValueFirstTokenI", fValueFirstTokenI, fValueFirstTokenH);
                 addDiffToolTip("#fValueOtherTokenI", fValueOtherTokenI, fValueOtherTokenH);
-                addDiffToolTip("#fValueI", fmValueI, fValueH);
+                addDiffToolTip("#fValueI", fValueI, fValueH);
 
                 my$("#fAmountsI").classList.remove("shadow");
                 my$("#miningI").classList.remove("shadow");
@@ -697,8 +697,8 @@ function compareNumbers(a, b) {
 }
 
 function createEmptyPlot() {
-    plot.update({
-        series: [[]]
+    new Chartist.Line(".ct-chart", {
+        series: [[],[]]
     });
 }
 
@@ -762,7 +762,7 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI) {
     }
 
     priceRatios[priceRatios.indexOf(current)] = current + " (from input)";
-    plot.update({
+    new Chartist.Line(".ct-chart", {
         labels: priceRatios,
         series: [points, points2]
     }, {

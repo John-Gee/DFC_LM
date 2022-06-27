@@ -2,7 +2,6 @@
 
 let gSelects;
 let guideChimp = null;
-const plot = new Chartist.Line(".ct-chart");
 
 function closeDropDowns() {
     for (const select of gSelects) {
@@ -246,8 +245,9 @@ document.addEventListener("DOMContentLoaded", function() {
     parseURL();
     setupShare();
 
-    cCalculate();
-    fCalculate();
+    calcPriceRatio("c");
+    calcPriceRatio("f");
+    calculate();
 
     my$("body").style.display = origBodyDisplay;
 });
