@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    font-size: 1.15vw;
+    font-size: 1.2vw;
 }
 
 body {
@@ -148,6 +148,9 @@ input[type=number] {
 }
 
 .inputtext {
+    /* position */
+    margin-top: 0.0875rem;
+    margin-bottom: -0.0875rem;
     /* style */
     font-size: 1rem;
     min-width: 0;
@@ -174,6 +177,16 @@ div[name="Currency"], .investmentTag, .empty, #select2-CurrencyValue-container, 
     width: 2.25rem;
     height: 1.17rem;
     vertical-align: middle;
+}
+
+div[name="Currency"], #select2-CurrencyValue-container, #CurrencyValueDiv > span > span > .select2-selection__arrow {
+    margin-top: -0.0875rem;
+    margin-bottom: 0.0875rem;
+}
+
+.select2-selection__rendered > img {
+    margin-top: -0.0875rem;
+    margin-bottom: 0.0875rem;
 }
 
 .flat {
