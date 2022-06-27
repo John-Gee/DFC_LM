@@ -116,9 +116,8 @@ h3 {
              0.3em 0.3em 0.5em rgba(0,0,0,0.3);
     color: rgba(255,0,176,1);
     font-weight: bold;
-    font-size: 0.9rem;
     margin: 0 0.5rem;
-    padding: 0rem 0.5rem 0rem 0.5rem;
+    padding: 0.15rem 0.5rem 0.15rem 0.5rem;
     text-align: left;
 }
 
@@ -134,10 +133,6 @@ h3 {
     color: white !important;
     -webkit-text-fill-color: white !important; /* Override iOS / Android font color change */
     -webkit-opacity:1; /* Override iOS opacity change affecting text & background color */
-}
-
-div[name="Currency"] {
-  color: rgba(255,0,176,1) !important;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -164,7 +159,7 @@ input[type=number] {
     background-clip: content-box;
 }
 
-.select2-selection__rendered > img, .input > img, .title > img, .prices > img {
+.select2-selection__rendered > img, .input > img, .title > img, .prices > img, .input .auto > * {
     width: 1.17rem;
     height: 1.17rem;
     vertical-align: middle;
@@ -172,6 +167,12 @@ input[type=number] {
 
 .input > .title > img {
     margin-left: -0.25rem;
+}
+
+div[name="Currency"], .investmentTag {
+    font-size: 1.2rem;
+    width: 1.17rem;
+    height: 1.17rem;
 }
 
 .flat {

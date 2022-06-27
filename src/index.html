@@ -156,7 +156,7 @@
                                 <option value="SPY" class="optInvisible">dSPY</option>
                                 <option value="URTH" class="optInvisible">dURTH</option>
                                 <option value="VNQ" class="optInvisible">dVNQ</option>
-                                <option value="VOO" class="optInvisible">dEEM</option>
+                                <option valu1.17e="VOO" class="optInvisible">dEEM</option>
                             </select>
                         </div>
                         <div class="input" id="cPriceOtherTokenDiv">
@@ -233,23 +233,28 @@
                         <h3 id="interestH" data-i18n="investment.int"></h3>
                         <div class="title" data-i18n="investment.APR"></div>
                         <div class="input" id="aprDiv">
-                            %<input class="inputtext" type="number" min="0" id="apr" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
+                            <div class="investmentTag">%</div>
+                            <input class="inputtext" type="number" min="0" id="apr" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
                         </div>
                         <div class="title" data-i18n="investment.fee"></div>
                         <div class="input" id="feeDiv">
-                            %<input class="inputtext" type="number" min="0" id="fee" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
+                            <div class="investmentTag">%</div>
+                            <input class="inputtext" type="number" min="0" id="fee" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
                         </div>
                         <div class="title" data-i18n="investment.time"></div>
                         <div class="input" id="durationDiv">
-                            d.<input class="inputtext" type="number" min="0" id="duration" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
+                            <div class="investmentTag">d.</div>
+                            <input class="inputtext" type="number" min="0" id="duration" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
                         </div>
                         <div class="title" data-i18n="investment.comp"></div>
                         <div class="input" id="periodDiv">
-                            d.<input class="inputtext" type="number" min="0" id="period" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
+                            <div class="investmentTag">d.</div>
+                            <input class="inputtext" type="number" min="0" id="period" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
                         </div>
                         <div class="title" data-i18n="investment.tax"></div>
                         <div class="input" id="taxDiv">
-                            %<input class="inputtext" type="number" min="0" max="100" id="tax" onkeyup="if (this.value < 0) this.value = 0; if (this.value > 100) this.value = 100; inputEvent('#' + this.id);" onblur="this.onkeyup();">
+                            <div class="investmentTag">%</div>
+                            <input class="inputtext" type="number" min="0" max="100" id="tax" onkeyup="if (this.value < 0) this.value = 0; if (this.value > 100) this.value = 100; inputEvent('#' + this.id);" onblur="this.onkeyup();">
                         </div>
                     </div>
                 </section>
