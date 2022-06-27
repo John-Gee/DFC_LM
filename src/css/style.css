@@ -169,10 +169,11 @@ input[type=number] {
     margin-left: -0.25rem;
 }
 
-div[name="Currency"], .investmentTag {
+div[name="Currency"], .investmentTag, .empty, #select2-CurrencyValue-container {
     font-size: 1.2rem;
     width: 1.17rem;
     height: 1.17rem;
+    vertical-align: middle;
 }
 
 .flat {

@@ -3,8 +3,8 @@
     /* children */
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-template-rows: auto 0.25rem auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
-    gap: 0rem;
+    grid-template-rows: 1fr 0.25rem repeat(17, 1fr);
+    gap: 0.25rem;
 }
 
 #investment > h2 {

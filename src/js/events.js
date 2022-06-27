@@ -49,6 +49,8 @@ function setupCurrency() {
         }
     });
 
+    my$("#CurrencyValue").nextSibling.setAttribute('id', 'CurrencyValueDiv');
+
     my$("#CurrencyValue").addEventListener("select2:opening", function() {
         closeDropDowns();
     });

@@ -19,10 +19,6 @@
     line-height: 1.44rem;
 }
 
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-    height: 1.44rem;
-}
-
 .select2-results__options::-webkit-scrollbar {
     width: 16px;
     background-clip: padding-box;
