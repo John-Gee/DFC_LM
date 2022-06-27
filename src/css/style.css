@@ -83,7 +83,7 @@ h3 {
 }
 
 .line {
-  border: 0.1rem solid rgba(200, 200, 200, 1);
+    border: 0.1rem solid rgba(200, 200, 200, 1);
 }
 
 .title {
@@ -91,7 +91,7 @@ h3 {
     display: flex;
     text-align: left;
     align-items: center;
-    justify-content: beginning;
+    justify-content: start;
 
     /* style */
     font-size: 0.7rem;
