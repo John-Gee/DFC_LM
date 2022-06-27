@@ -9,7 +9,164 @@
 
     .select2-selection__rendered > img, .input > img, .title > img, .prices > img {
         width: 2rem;
-        vertical-align: middle;
+        height: 2rem;
+    }
+
+    .select2-container .select2-selection--single .select2-selection__rendered {
+        overflow: visible !important;
+    }
+
+    #LM {
+        /* sets the page */
+        grid-template-areas: "inv"
+                             "out"
+                             "chart";
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, auto);
+    }
+
+    .input {
+        /* position */
+        grid-template-columns: 3rem 1fr;
+    }
+
+    #investment {
+        grid-template-columns: minmax(6rem, auto) 1fr 3rem auto 1fr;
+        grid-template-rows: auto 0.25rem auto auto auto auto auto auto auto auto auto;
+        grid-auto-flow: column;
+        gap: 1rem 0.5rem;
+        margin: 1.5rem;
+    }
+
+    #investment > h2 {
+        grid-area: 1 / 1 / 2 / 6;
+    }
+
+    #investment > hr {
+        grid-area: 2 / 1 / 3 / 6;
+    }
+
+    #investment > div:nth-of-type(n+3):nth-of-type(-n+4) > .empty,
+    #investment > div:nth-of-type(n+3):nth-of-type(-n+4) > .title {
+        grid-column-start: 4;
+        grid-column-end: 5;
+    }
+
+    #investment > div:nth-of-type(n+3):nth-of-type(-n+4) > h3,
+    #investment > div:nth-of-type(n+3):nth-of-type(-n+4) > .input {
+        grid-column-start: 5;
+        grid-column-end: 6;
+    }
+
+    #outcome {
+        grid-template-columns: minmax(3rem, auto) 1fr 1fr;
+        grid-template-rows: auto 0.25rem repeat(4, 1fr) 0.25rem repeat(5, 1fr) auto repeat(3, 1fr) auto repeat(4, 1fr) auto;
+        gap: 1rem 0.5rem;
+        grid-template-areas: "o-h2   o-h2  o-h2"
+                             "o-hr   o-hr  o-hr"
+                             "...    o-LMA o-LMA"
+                             "...    o-a   o-ai"
+                             "o-aD   o-Da  o-Dai"
+                             "o-aT   o-Ta  o-Tai"
+                             "o-AVS  o-AVS o-AVS"
+                             "....   o-V   o-V"
+                             "....   o-i   o-h"
+                             "o-vD   o-Di  o-Dh"
+                             "o-vT   o-Ti  o-Th"
+                             "o-vTo  o-Toi o-Toh"
+                             ".....  ..... ....."
+                             ".....  o-hD  o-hT"
+                             "o-vD3  o-DhD ....."
+                             "o-vT3  ..... o-ThT"
+                             ".....  ..... ....."
+                             ".....  o-lm  o-lmi"
+                             "o-vD2  o-Dlm  o-Dlmi"
+                             "o-vT2  o-Tlm  o-Tlmi"
+                             "o-vTo2 o-Tolm o-Tolmi"
+                             "...... ...... .....";
+
+        /* style */
+        margin: 1.5rem;
+    }
+    
+    #amountsTitles > div:last-child {
+        grid-area: unset;
+        display: none !important;
+    }
+
+    #AVS {;
+        /* style */
+        width: 100%;
+        height: 0.02rem;
+    }
+
+    #valuesTitles {
+        display: contents !important;
+    }
+
+    #valuesTitles > div:nth-of-type(1) {
+        grid-area: o-vD;
+    }
+
+    #valuesTitles > div:nth-of-type(2) {
+        grid-area: o-vT;
+    }
+
+    #valuesTitles > div:nth-of-type(3) {
+        grid-area: o-vTo;
+    }
+
+    #holding1 > h3:nth-of-type(1) {
+        display: none;
+    }
+
+    #holding1 > h3:nth-of-type(2) {
+        display: flex;
+        justify-content: center;
+        grid-area: o-hD;
+    }
+
+    #holding1 > h3:nth-of-type(3) {
+        display: flex;
+        justify-content: center;
+        grid-area: o-hT;
+    }
+    
+    #valuesTitles3 {
+        display: contents !important;
+    }
+    
+    #valuesTitles3 > div:nth-of-type(1) {
+        grid-area: o-vD3;
+    }
+
+    #valuesTitles3 > div:nth-of-type(2) {
+        grid-area: o-vT3;
+    }
+
+    #valuesTitles2 {
+        display: contents !important;
+    }
+    
+    #valuesTitles2 > div:nth-of-type(1) {
+        grid-area: o-vD2;
+    }
+
+    #valuesTitles2 > div:nth-of-type(2) {
+        grid-area: o-vT2;
+    }
+@media only screen and (max-width: 900px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        grid-template-areas: "head"
+                             "calc";
+        overflow: initial;
+    }
+
+    .select2-selection__rendered > img, .input > img, .title > img, .prices > img {
+        width: 2rem;
+        height: 2rem;
     }
     .select2-container .select2-selection--single .select2-selection__rendered {
         overflow: visible !important;
@@ -154,6 +311,62 @@
     #valuesTitles2 > div:nth-of-type(2) {
         grid-area: o-vT2;
     }
+
+    #valuesTitles2 > div:nth-of-type(3) {
+        grid-area: o-vTo2;
+    }
+
+    .best-c {
+        display: initial !important;
+        grid-area: 9 / 2 / 13 / 3;
+    }
+
+    .best-fh {
+        display: initial !important;
+        grid-area: 9 / 3 / 13 / 4;
+    }
+
+    .best-fh1 { 
+        display: none;
+    }
+
+    .best-fhDFI {
+        display: initial !important;
+        grid-area: 14 / 2 / 16 / 3;
+    }
+
+    .best-fhT {
+        display: initial !important;
+        grid-area: 14 / 3 / 17 / 4;
+    }
+    .best-f {
+        display: initial !important;
+        grid-area: 9 / 4 / 13 / 5;
+    }
+
+    .best-fi {
+        display: initial !important;
+        grid-area: 9 / 5 / 13 / 6;
+    }
+    
+    #best1 {
+        display: none !important;
+    }
+
+    #plot {
+        margin: 1.5rem;
+    }
+
+    @media only screen and (max-width: 500px) {
+        .input {
+            grid-template-columns: 6rem 1fr;
+        }
+
+        #investment {
+            grid-template-columns: minmax(5rem, auto) 1fr 3rem auto 1fr;
+        }
+    }
+}
 
     #valuesTitles2 > div:nth-of-type(3) {
         grid-area: o-vTo2;

@@ -61,7 +61,7 @@ body {
 h2 {
     text-align: center;
     color: rgba(255,0,176,1);
-    font-size: calc(0.9 * 1rem);
+    font-size: 0.9rem;
     font-family: SUB;
     margin-top: -0.25rem;
     margin-bottom: 0.25rem;
@@ -78,7 +78,7 @@ hr {
 h3 {
     text-align: center;
     font-weight: normal;
-    font-size: calc(0.7 * 1rem);
+    font-size: 0.7rem;
     font-family: KEYS;
 }
 

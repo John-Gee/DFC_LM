@@ -29,8 +29,8 @@
 
 #logo {
     /* style */
-    width: calc(2 * 1rem);
-    height: calc(2 * 1rem);
+    width: 2rem;
+    height: 2rem;
     vertical-align: middle;
     display: block;
     cursor: pointer;
@@ -55,8 +55,8 @@
 }
 
 #play, #play2, #infoB, #infoB2, #urlB, #urlB2 {
-    width: calc(2 * 1rem);
-    height: calc(2 * 1rem);
+    width: 2rem;
+    height: 2rem;
     vertical-align: middle;
 }
 
