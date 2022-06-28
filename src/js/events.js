@@ -223,12 +223,13 @@ document.addEventListener("DOMContentLoaded", function() {
     gSelects.push(setupFirstToken());
     gSelects.push(setupOtherToken());
 
-    parseURL();
-    setupShare();
+    if (parseURL() != "") {
+        calcPriceRatio("c");
+        calcPriceRatio("f");
+        calculate();
+    }
 
-    calcPriceRatio("c");
-    calcPriceRatio("f");
-    calculate();
+    setupShare();
 
     my$("#cPriceOtherToken").addEventListener("input", cCalculate);
     my$("#cPriceFirstToken").addEventListener("input", cCalculate);

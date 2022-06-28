@@ -944,6 +944,8 @@ function parseURL() {
     parseParam(urlParams, "duration");
     parseParam(urlParams, "period");
     parseParam(urlParams, "tax");
+
+    return queryString;
 }
 
 function parseParam(urlParams, param){
