@@ -115,14 +115,11 @@ function setupFirstToken() {
             OtherTokenOptions.selectedIndex = dfiIndex;
         }
         changeEvent("#OtherTokenValue");
-        isATokenDFI();
     });
 
     if (localStorage.getItem("FirstToken")) {
         my$("#FirstTokenValue").selectedIndex = localStorage.getItem("FirstToken");
     }
-
-    changeEvent("#FirstTokenValue");
 
     return select;
 }
@@ -154,8 +151,6 @@ function setupOtherToken() {
     if (localStorage.getItem("OtherToken")) {
         my$("#OtherTokenValue").selectedIndex = localStorage.getItem("OtherToken");
     }
-
-    changeEvent("#OtherTokenValue");
 
     return select;
 }
@@ -230,6 +225,13 @@ document.addEventListener("DOMContentLoaded", function() {
     gSelects.push(setupFirstToken());
     gSelects.push(setupOtherToken());
 
+    parseURL();
+    setupShare();
+
+    calcPriceRatio("c");
+    calcPriceRatio("f");
+    calculate();
+
     my$("#cPriceOtherToken").addEventListener("input", cCalculate);
     my$("#cPriceFirstToken").addEventListener("input", cCalculate);
 
@@ -246,15 +248,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     my$("#sync").addEventListener("click", getPrices);
     my$("#copy").addEventListener("click", copyPrices);
-
-    createEmptyPlot();
-
-    parseURL();
-    setupShare();
-
-    calcPriceRatio("c");
-    calcPriceRatio("f");
-    calculate();
 
     my$("body").style.display = origBodyDisplay;
 });
