@@ -15,7 +15,7 @@ function setupi18n() {
         minimumResultsForSearch: -1,
         width: "100%",
         dropdownAutoWidth : true,
-        templateSelection: removeAccents,
+        //templateSelection: removeAccents,
         escapeMarkup: function (m) {
             return m;
         }

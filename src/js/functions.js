@@ -1,6 +1,6 @@
-function removeAccents(obj) {
+/*function removeAccents(obj) {
     return obj.text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-}
+}*/
 
 function clearCPriceFirstToken() {
     if ((my$("#CurrencyValue").value == "usd") && (my$("#FirstTokenValue").value == "dUSD")) {
