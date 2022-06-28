@@ -18,9 +18,9 @@
     filter: drop-shadow(0.075rem 0.075rem 0 rgba(140,140,140,1));
 }
 
-#header > h1, h1 > .select2-container .select2-selection--single .select2-selection__rendered {
+#header > h1, h1 > .select2-container .select2-selection--single .select2-selection__rendered, .select2-container--default .select2-results__option {
     /* style */
-    color: rgba(255,0,176,1);
+    color: rgba(255,0,176,1) !important;
     font-family: TITLE;
     vertical-align: middle;
     display: block;
