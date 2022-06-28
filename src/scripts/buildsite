@@ -59,7 +59,7 @@ function minifyHTML() {
     --trim-custom-fragments --use-short-doctype ../docs/index.html  -o ../docs/index.html
 }
 
-cp -a index.html ../docs/
+cat index.html | recode -f utf8..flat > ../docs/index.html
 minifyCSS
 minifyJS
 cd ../docs
