@@ -928,10 +928,11 @@ function parseURL() {
     const queryString = window.location.search;
     const urlParams   = new URLSearchParams(queryString);
 
+    // OtherToken first allows not calling changeEvent on it
+    parseParamIndex(urlParams, "OtherTokenValue");
     parseParamIndex(urlParams, "FirstTokenValue");
     parseParamIndex(urlParams, "CurrencyValue");
     parseParam(urlParams, "cPriceFirstToken");
-    parseParamIndex(urlParams, "OtherTokenValue");
     parseParam(urlParams, "cPriceOtherToken");
     parseParam(urlParams, "cPriceDFI");
     parseParam(urlParams, "fPriceFirstToken");
@@ -957,7 +958,8 @@ function parseParamIndex(urlParams, param){
     const p = urlParams.get(param);
     if (p)
         my$("#" + param).selectedIndex = p;
-    changeEvent("#" + param);
+    if (param != "OtherTokenValue")
+        changeEvent("#" + param);
 }
 
 function share() {
