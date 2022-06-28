@@ -95,6 +95,7 @@
                              ".....  o-a    o-ai"
                              "o-aT1  o-T1a  o-T1ai"
                              "o-aT2  o-T2a  o-T2ai"
+                             "o-aD   o-Da   o-Dai"
                              "o-AVS  o-AVS  o-AVS"
                              ".....  o-V    o-V"
                              ".....  o-i    o-h"
@@ -109,6 +110,7 @@
                              ".....  o-lm   o-lmi"
                              "o-vT13 o-T1lm o-T1lmi"
                              "o-vT23 o-T2lm o-T2lmi"
+                             "o-vD   o-Dlm  o-Dlmi"
                              "o-vTo2 o-Tolm o-Tolmi"
                              "...... ...... .....";
 
@@ -171,6 +173,14 @@
         grid-area: o-vT23;
     }
 
+    #valuesTitles3 > div:nth-of-type(23) {
+        grid-area: o-vD;
+    }
+
+    #valuesTitles3 > div:nth-of-type(4) {
+        grid-area: o-vTo2;
+    }
+
     #valuesTitles2 {
         display: contents !important;
     }
@@ -183,18 +193,14 @@
         grid-area: o-vT22;
     }
 
-    #valuesTitles2 > div:nth-of-type(3) {
-        grid-area: o-vTo2;
-    }
-
     .best-c {
         display: initial !important;
-        grid-area: 9 / 2 / 13 / 3;
+        grid-area: 10 / 2 / 14 / 3;
     }
 
     .best-fh {
         display: initial !important;
-        grid-area: 9 / 3 / 13 / 4;
+        grid-area: 10 / 3 / 14 / 4;
     }
 
     .best-fh1 { 
@@ -203,21 +209,21 @@
 
     .best-fhT1 {
         display: initial !important;
-        grid-area: 14 / 2 / 16 / 3;
+        grid-area: 15 / 2 / 17 / 3;
     }
 
     .best-fhT2 {
         display: initial !important;
-        grid-area: 14 / 3 / 17 / 4;
+        grid-area: 15 / 3 / 18 / 4;
     }
     .best-f {
         display: initial !important;
-        grid-area: 17 / 2 / 22 / 3;
+        grid-area: 19 / 2 / 24 / 3;
     }
 
     .best-fi {
         display: initial !important;
-        grid-area: 17 / 3 / 22 / 4;
+        grid-area: 19 / 3 / 24 / 4;
     }
     
     #best1 {
