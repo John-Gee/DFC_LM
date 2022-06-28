@@ -9,8 +9,8 @@
                          "o-hr   o-hr   o-hr   o-hr  o-hr   o-hr  o-hr   o-hr   o-hr"
                          "...    o-LMA  o-LMA  o-AVS o-V    o-V   o-V    o-V    o-V"
                          "...    o-a    o-ai   o-AVS o-i    o-h   o-h1   o-lm   o-lmi"
-                         "o-aT1  o-T1a  o-T1ai o-AVS o-T1i  o-T1h o-T1hD o-T1lm o-T1lmi"
-                         "o-aT2  o-T2a  o-T2ai o-AVS o-T2i  o-T2h o-T2hT o-T2lm o-T2lmi"
+                         "o-aT1  o-T1a  o-T1ai o-AVS o-T1i  o-T1h o-T1h1 o-T1lm o-T1lmi"
+                         "o-aT2  o-T2a  o-T2ai o-AVS o-T2i  o-T2h o-T2h1 o-T2lm o-T2lmi"
                          "o-aD   o-Da   o-Dai  o-AVS o-Di   o-Dh  ...... o-Dlm  o-Dlmi"
                          "o-aTo  ....   .....  o-AVS o-Toi  o-Toh ...... o-Tolm o-Tolmi"
                          ".....  ....   .....  ..... .....  ..... ......  ...... .......";
@@ -152,11 +152,11 @@
 }
 
 #holding1 > div:nth-of-type(1) {
-    grid-area: o-T1hD;
+    grid-area: o-T1h1;
 }
 
 #holding1 > div:nth-of-type(2) {
-    grid-area: o-T2hT;
+    grid-area: o-T2h1;
 }
 
 #mining > h3 {
@@ -233,12 +233,12 @@
     grid-area: 4 / 7 / 5 / 8;
 }
 
-.best-fhDFI {
+.best-fhT1 {
     display: initial !important;
     grid-area: 5 / 7 / 6 / 8;
 }
 
-.best-fhT {
+.best-fhT2 {
     display: initial !important;
     grid-area: 6 / 7 / 7 / 8;
 }

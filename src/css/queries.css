@@ -89,26 +89,26 @@
         grid-template-columns: minmax(3rem, auto) 1fr 1fr;
         grid-template-rows: auto 0.25rem repeat(4, 1fr) 0.25rem repeat(5, 1fr) auto repeat(3, 1fr) auto repeat(4, 1fr) auto;
         gap: 1rem 0.5rem;
-        grid-template-areas: "o-h2   o-h2  o-h2"
-                             "o-hr   o-hr  o-hr"
-                             "...    o-LMA o-LMA"
-                             "...    o-a   o-ai"
-                             "o-aD   o-Da  o-Dai"
-                             "o-aT   o-Ta  o-Tai"
-                             "o-AVS  o-AVS o-AVS"
-                             "....   o-V   o-V"
-                             "....   o-i   o-h"
-                             "o-vD   o-Di  o-Dh"
-                             "o-vT   o-Ti  o-Th"
-                             "o-vTo  o-Toi o-Toh"
-                             ".....  ..... ....."
-                             ".....  o-hD  o-hT"
-                             "o-vD3  o-DhD ....."
-                             "o-vT3  ..... o-ThT"
-                             ".....  ..... ....."
-                             ".....  o-lm  o-lmi"
-                             "o-vD2  o-Dlm  o-Dlmi"
-                             "o-vT2  o-Tlm  o-Tlmi"
+        grid-template-areas: "o-h2   o-h2   o-h2"
+                             "o-hr   o-hr   o-hr"
+                             ".....  o-LMA  o-LMA"
+                             ".....  o-a    o-ai"
+                             "o-aT1  o-T1a  o-T1ai"
+                             "o-aT2  o-T2a  o-T2ai"
+                             "o-AVS  o-AVS  o-AVS"
+                             ".....  o-V    o-V"
+                             ".....  o-i    o-h"
+                             "o-vT1  o-T1i  o-T1h"
+                             "o-vT2  o-T2i  o-T2h"
+                             "o-vTo  o-Toi  o-Toh"
+                             ".....  ...... ......"
+                             ".....  o-hT1  o-hT2"
+                             "o-vT12 o-T1h1 ......"
+                             "o-vT22 ...... o-T2h1"
+                             ".....  ...... ....."
+                             ".....  o-lm   o-lmi"
+                             "o-vT13 o-T1lm o-T1lmi"
+                             "o-vT23 o-T2lm o-T2lmi"
                              "o-vTo2 o-Tolm o-Tolmi"
                              "...... ...... .....";
 
@@ -132,11 +132,11 @@
     }
 
     #valuesTitles > div:nth-of-type(1) {
-        grid-area: o-vD;
+        grid-area: o-vT1;
     }
 
     #valuesTitles > div:nth-of-type(2) {
-        grid-area: o-vT;
+        grid-area: o-vT2;
     }
 
     #valuesTitles > div:nth-of-type(3) {
@@ -150,13 +150,13 @@
     #holding1 > h3:nth-of-type(2) {
         display: flex;
         justify-content: center;
-        grid-area: o-hD;
+        grid-area: o-hT1;
     }
 
     #holding1 > h3:nth-of-type(3) {
         display: flex;
         justify-content: center;
-        grid-area: o-hT;
+        grid-area: o-hT2;
     }
     
     #valuesTitles3 {
@@ -164,11 +164,11 @@
     }
     
     #valuesTitles3 > div:nth-of-type(1) {
-        grid-area: o-vD3;
+        grid-area: o-vT13;
     }
 
     #valuesTitles3 > div:nth-of-type(2) {
-        grid-area: o-vT3;
+        grid-area: o-vT23;
     }
 
     #valuesTitles2 {
@@ -176,11 +176,11 @@
     }
     
     #valuesTitles2 > div:nth-of-type(1) {
-        grid-area: o-vD2;
+        grid-area: o-vT12;
     }
 
     #valuesTitles2 > div:nth-of-type(2) {
-        grid-area: o-vT2;
+        grid-area: o-vT22;
     }
 
     #valuesTitles2 > div:nth-of-type(3) {
@@ -201,23 +201,23 @@
         display: none;
     }
 
-    .best-fhDFI {
+    .best-fhT1 {
         display: initial !important;
         grid-area: 14 / 2 / 16 / 3;
     }
 
-    .best-fhT {
+    .best-fhT2 {
         display: initial !important;
         grid-area: 14 / 3 / 17 / 4;
     }
     .best-f {
         display: initial !important;
-        grid-area: 9 / 4 / 13 / 5;
+        grid-area: 17 / 2 / 22 / 3;
     }
 
     .best-fi {
         display: initial !important;
-        grid-area: 9 / 5 / 13 / 6;
+        grid-area: 17 / 3 / 22 / 4;
     }
     
     #best1 {

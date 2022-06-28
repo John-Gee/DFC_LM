@@ -392,12 +392,12 @@ function compareTotalValues(cValue, fValueH, fValueHDFI, fValueHToken, fValue, f
     }
 
     if (biggest < fValueHDFI) {
-        best    = "fhDFI";
+        best    = "fhT1";
         biggest = fValueHDFI;
     }
 
     if (biggest < fValueHToken) {
-        best    = "fhT";
+        best    = "fhT2";
         biggest = fValueHToken;
     }
 
@@ -413,7 +413,7 @@ function compareTotalValues(cValue, fValueH, fValueHDFI, fValueHToken, fValue, f
 
     if (biggest) {
         my$("#best").classList.add("best-" + best);
-        if ((best == "fhDFI") || (best == "fhT"))
+        if ((best == "fhT1") || (best == "fhT2"))
             my$("#best1").classList.add("best-fh1");
     }
 }
