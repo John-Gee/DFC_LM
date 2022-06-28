@@ -953,9 +953,10 @@ function parseParam(urlParams, param){
 }
 
 function parseParamIndex(urlParams, param){
-    if (! urlParams.get(param))
-        return;
-    my$("#" + param).selectedIndex = urlParams.get(param);
+    // We need to call changeEvent no matter.
+    const p = urlParams.get(param);
+    if (p)
+        my$("#" + param).selectedIndex = p;
     changeEvent("#" + param);
 }
 

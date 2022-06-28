@@ -67,8 +67,6 @@ function setupCurrency() {
     if (localStorage.getItem("Currency"))
         my$("#CurrencyValue").selectedIndex = localStorage.getItem("Currency");
 
-    changeEvent("#CurrencyValue");
-
     return select;
 }
 
