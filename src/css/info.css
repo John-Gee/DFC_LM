@@ -1,0 +1,37 @@
+#info {
+    grid-area: info;
+
+    /* sets the page */
+    display: none;
+    align-items: center;
+
+    /* style */
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#welcome, #links, #contact, #donation {
+    /* style */
+    background-color: rgba(240,240,240,1);
+    border-radius: 2rem;
+    box-shadow: -5px -5px 15px 5px rgba(250, 250, 250, 1),
+                5px 5px 15px 5px rgba(75, 75, 75, 1);
+    margin: 1rem 10rem;
+    padding: 0 2rem 1rem 2rem;
+    align-items: center;
+}
+
+
+#welcome > p, #links > p, #contact > p, #donation > p{
+    /* style */
+    padding: 1rem 0 0 0;
+    margin: 0 2rem;
+    font-size: calc(1.1 * 1rem);
+    text-align: center;
+}
+
+.DFC {
+    /* style */
+    font-weight: bold;
+}
