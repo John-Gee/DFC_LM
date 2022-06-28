@@ -871,14 +871,14 @@ function addDiffToolTip(selector, fNumber, cNumber) {
     my$(selector).parentElement.dataset.tooltip = tip;
 }
 
+// Returns the dictionary for the language.
 function getLanguageObj() {
     return eval(my$("#i18n-toggler").value);
 }
 
 function translate() {
     const translator = new Translator({
-        detectLanguage: false,
-        //filesLocation: "/i18n"
+        detectLanguage: false
     });
 
     const lang = my$("#i18n-toggler").value;
