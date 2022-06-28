@@ -21,6 +21,8 @@ function setupi18n() {
         }
     });
 
+    my$("#select2-i18n-toggler-container").nextSibling.firstChild.setAttribute("id", "i18nArrow");
+
     my$("#i18n-toggler").addEventListener("select2:opening", function() {
         closeDropDowns();
     });
@@ -48,7 +50,8 @@ function setupCurrency() {
         }
     });
 
-    my$("#CurrencyValue").nextSibling.setAttribute('id', 'CurrencyValueDiv');
+    my$("#CurrencyValue").nextSibling.setAttribute("id", "CurrencyValueDiv");
+    my$("#select2-CurrencyValue-container").nextSibling.firstChild.setAttribute("id", "CurrencyArrow");
 
     my$("#CurrencyValue").addEventListener("select2:opening", function() {
         closeDropDowns();
@@ -80,6 +83,8 @@ function setupFirstToken() {
             return m;
         }
     });
+
+    my$("#select2-FirstTokenValue-container").nextSibling.firstChild.setAttribute("id", "FirstTokenArrow");
 
     my$("#FirstTokenValue").addEventListener("select2:opening", function() {
         closeDropDowns();
@@ -133,6 +138,8 @@ function setupOtherToken() {
             return m;
         }
     });
+
+    my$("#select2-OtherTokenValue-container").nextSibling.firstChild.setAttribute("id", "OtherTokenArrow");
 
     my$("#OtherTokenValue").addEventListener("select2:opening", function() {
         closeDropDowns();

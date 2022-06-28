@@ -179,14 +179,19 @@ div[name="Currency"], .investmentTag, .empty, #select2-CurrencyValue-container, 
     vertical-align: middle;
 }
 
-div[name="Currency"], #select2-CurrencyValue-container, #CurrencyValueDiv > span > span > .select2-selection__arrow {
+div[name="Currency"], #select2-CurrencyValue-container, .select2-selection__rendered > img {
     margin-top: -0.0875rem;
     margin-bottom: 0.0875rem;
 }
 
-.select2-selection__rendered > img {
-    margin-top: -0.0875rem;
-    margin-bottom: 0.0875rem;
+#CurrencyArrow {
+    margin-top: -0.321rem;
+    margin-bottom: 0.321rem;
+}
+
+#FirstTokenArrow, #OtherTokenArrow {
+    margin-top: -0.175rem;
+    margin-bottom: 0.175rem;
 }
 
 .flat {
