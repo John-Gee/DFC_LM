@@ -28,10 +28,13 @@ function minifyCSS() {
     sed "s|../docs/||" | npx postcss -m --output ../docs/css/style.min.css
     cat css/queries.css |
     sed "s|../docs/||" | npx postcss -m --output ../docs/css/queries.min.css
+    # Next one returns nothing by postcss somehow
+    fonts=`cat css/fonts.css | sed "s|../../docs/||" | npx cleancss -O2`
     for f in {chart,guide,header,info,investment,outcome,select2,tooltips}.css
     do
         sed -i "/^.*$f.*$/d" ../docs/index.html
     done
+    sed -i "s|^.*fonts.css.*$|<style type=\"text/css\">$fonts</style>|" ../docs/index.html
     sed -i "s|style.css|style.min.css|" ../docs/index.html
     sed -i "s|queries.css|queries.min.css|" ../docs/index.html
 }
@@ -55,7 +58,7 @@ function minifyHTML() {
     --collapse-whitespace --conservative-collapse --decode-entities \
     --no-include-auto-generated-tags --prevent-attributes-escaping \
     --process-conditional-comments --remove-comments --remove-empty-attributes \
-    --remove-optional-tags --remove-redundant-attributes --sort-attributes --sort-class-name \
+    --remove-redundant-attributes --sort-attributes --sort-class-name \
     --trim-custom-fragments --use-short-doctype ../docs/index.html  -o ../docs/index.html
 }
 

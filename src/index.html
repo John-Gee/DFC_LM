@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <meta name="description"
-              content="A liquidity mining calculator for DeFiChain to estimate divergent
+        <meta name="description" content="A liquidity mining calculator for DeFiChain to estimate divergent
                        changes to the portfolio value of DFI and another coin such as BTC.">
+        <link rel="canonical" href="https://www.defichain.tools/" />
 
         <title>DeFiChain Liquidity Mining Calculator</title>
 
@@ -23,6 +23,7 @@
         <link href="../docs/Libraries/select2/select2.min.css" rel="stylesheet" type="text/css">
         <link href="../docs/Libraries/chartist/chartist.min.css" rel="stylesheet" type="text/css">
         <link href="css/chart.css" rel="stylesheet" type="text/css">
+        <link href="css/fonts.css" rel="stylesheet" type="text/css">
         <link href="css/header.css" rel="stylesheet" type="text/css">
         <link href="css/info.css" rel="stylesheet" type="text/css">
         <link href="css/investment.css" rel="stylesheet" type="text/css">
@@ -31,23 +32,6 @@
         <link href="css/style.css" rel="stylesheet" type="text/css">
         <link href="css/tooltips.css" rel="stylesheet" type="text/css">
         <link href="css/queries.css" rel="stylesheet" type="text/css" media="screen and (max-width: 900px)">
-
-        <style type="text/css">
-            @font-face {
-                font-family: "TITLE";
-                src: url("../docs/fonts/AROMA-Bold.woff2") format('woff2');
-            }
-
-            @font-face {
-                font-family: "SUB";
-                src: url("../docs/fonts/Comodo Regular Free.woff2") format('woff2');
-            }
-
-            @font-face {
-                font-family: "KEYS";
-                src: url("../docs/fonts/Comodo Regular Free.woff2") format('woff2');
-            }
-        </style>
 
         <link href="../docs/img/DFI.svg" rel="icon" type="image/svg+xml">
         <link href="../docs/img/BCH.svg" rel="prefetch" type="image/svg+xml" as="image">
@@ -82,7 +66,7 @@
     <body>
         <section id="header">
             <a href="https://www.defichain.com" target="_blank" rel="noopener">
-                <img id="logo" src="../docs/img/DFI.svg">
+                <img id="logo" src="../docs/img/DFI.svg" alt="DFI">
             </a>
             <h1>
                 <select class="js-example-templating" id="i18n-toggler">
@@ -174,7 +158,7 @@
                             <input class="inputtext" type="number" min="0" id="cPriceOtherToken" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
                         </div>
                         <div class="title third" name="DFIDiv">
-                            <img src="../docs/img/DFI.svg">
+                            <img src="../docs/img/DFI.svg" alt="DFI">
                         </div>
                         <div class="input third" id="cPriceDFIDiv">
                             <div name="Currency">$</div>
@@ -208,7 +192,7 @@
                             <input class="inputtext" type="number" min="0" id="fPriceOtherToken" onkeyup="if (this.value < 0) this.value = 1; inputEvent('#' + this.id);" onblur="this.onkeyup();">
                         </div>
                         <div class="title third" name="DFIDiv">
-                            <img src="../docs/img/DFI.svg">
+                            <img src="../docs/img/DFI.svg" alt="DFI">
                         </div>
                         <div class="input third" id="fPriceDFIDiv">
                             <div name="Currency">$</div>
@@ -277,7 +261,7 @@
                         </div>
                         <div class="title" name="OtherToken">Other</div>
                         <div class="title third" name="DFI">
-                            <img src="../docs/img/DFI.svg">
+                            <img src="../docs/img/DFI.svg" alt="DFI">
                         </div>
                         <div class="title">Total</div>
                     </div>
@@ -401,7 +385,7 @@
                             </div>
                             <div class="title" name="OtherToken">Other</div>
                             <div class="title" name="DFI">
-                                <img src="../docs/img/DFI.svg">
+                                <img src="../docs/img/DFI.svg" alt="DFI">
                             </div>
                             <div class="title">Total</div>
                         </div>
