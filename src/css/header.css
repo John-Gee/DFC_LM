@@ -18,12 +18,15 @@
     filter: drop-shadow(0.075rem 0.075rem 0 rgba(140,140,140,1));
 }
 
-#header > h1, h1 > .select2-container .select2-selection--single .select2-selection__rendered, .select2-container--default .select2-results__option {
+#header > h1, #select2-i18n-toggler-container, #select2-i18n-toggler-results > li {
     /* style */
-    color: rgba(255,0,176,1) !important;
     font-family: TITLE;
     vertical-align: middle;
     display: block;
+}
+
+#header > h1, #select2-i18n-toggler-container {
+    color: rgba(255,0,176,1) !important;
     padding-top: 0.2rem;
 }
 
