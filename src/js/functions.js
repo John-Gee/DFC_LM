@@ -819,9 +819,9 @@ async function getPrices() {
     my$("#sync").classList.add("rotate");
 
     let   price1    = 1;
-    const otherCoin = my$("#OtherTokenValue").value;
+    const otherCoin = my$("#OtherTokenValue").options[my$("#OtherTokenValue").selectedIndex].text;
     if (my$("#FirstTokenValue").value != "dUSD")
-        price1 = await getOraclePrice(my$("#FirstTokenValue").value);
+        price1 = await getOraclePrice(my$("#FirstTokenValue").options[my$("#FirstTokenValue").selectedIndex].text);
 
     let   price2   = await getOraclePrice(otherCoin);
     let   ratio    = 1;

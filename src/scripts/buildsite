@@ -1,5 +1,22 @@
 #!/usr/bin/env bash
 
+#function removeAccents() {
+    #cat index.html | recode -f utf8..flat > ../docs/index.html
+#}
+
+function addDTokens() {
+    node scripts/getNewTokens.js
+
+    preloads="";
+    options="";
+    for dToken in $(sort -u gen/dTokens.txt)
+    do
+        preloads+="<link href=\"../docs/img/"$dToken".svg\" rel=\"prefetch\" type=\"image/svg+xml\" as=\"image\"> ";
+        options+="<option value=\""$dToken"\" class=\"optInvisible\">"${dToken:1}"</option> ";
+    done 
+    sed -i "s|type=\"image/svg+xml\">|type=\"image/svg+xml\"> $preloads|" ../docs/index.html
+    sed -i "s|^.*dNONE.*$|$options|" ../docs/index.html
+}
 
 function addCSUM() {
     extension="$1"
@@ -62,7 +79,9 @@ function minifyHTML() {
     --trim-custom-fragments --use-short-doctype ../docs/index.html  -o ../docs/index.html
 }
 
-cat index.html | recode -f utf8..flat > ../docs/index.html
+cp -a index.html ../docs/index.html
+#removeAccents
+addDTokens
 minifyCSS
 minifyJS
 cd ../docs
