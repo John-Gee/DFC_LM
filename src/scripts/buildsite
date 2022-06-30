@@ -29,7 +29,7 @@ function minifyCSS() {
     cat css/queries.css |
     sed "s|../docs/||" | npx postcss -m --output ../docs/css/queries.min.css
     # Next one returns nothing by postcss somehow
-    fonts=`cat css/fonts.css | sed "s|../../docs/||" | npx cleancss -O2`
+    fonts=`cat css/fonts.css | sed "s|../../docs/||" | npx clean-css-cli -O2`
     for f in {chart,guide,header,info,investment,outcome,select2,tooltips}.css
     do
         sed -i "/^.*$f.*$/d" ../docs/index.html
