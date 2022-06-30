@@ -12,7 +12,7 @@ function addDTokens() {
     for dToken in $(sort -u gen/dTokens.txt)
     do
         preloads+="<link href=\"../docs/img/"$dToken".svg\" rel=\"prefetch\" type=\"image/svg+xml\" as=\"image\"> ";
-        options+="<option value=\""$dToken"\" class=\"optInvisible\">"${dToken:1}"</option> ";
+        options+="<option value=\""$dToken"\" class=\"optInvisible\">"$dToken"</option> ";
     done 
     sed -i "s|type=\"image/svg+xml\">|type=\"image/svg+xml\"> $preloads|" ../docs/index.html
     sed -i "s|^.*dNONE.*$|$options|" ../docs/index.html

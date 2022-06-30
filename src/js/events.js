@@ -91,6 +91,7 @@ function setupFirstToken() {
     my$("#FirstTokenValue").addEventListener("change", function() {
         SwitchFirstTokenLabel();
         clearCPriceFirstToken();
+        clearCPriceDFI();
         let OtherTokenOptions = my$("#OtherTokenValue");
         let dfiIndex = -1;
         for(let i=0; i < OtherTokenOptions.length; i++) {

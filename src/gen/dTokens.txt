@@ -35,8 +35,8 @@ dURA
 dURTH
 dMCHI
 dVNQ
-dPG
 dKO
+dPG
 dCS
 dXOM
 dGSG
@@ -82,8 +82,8 @@ dURA
 dURTH
 dMCHI
 dVNQ
-dPG
 dKO
+dPG
 dCS
 dXOM
 dGSG

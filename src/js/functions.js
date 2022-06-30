@@ -3,7 +3,7 @@
 }*/
 
 function clearCPriceFirstToken() {
-    if ((my$("#CurrencyValue").value == "usd") && (my$("#FirstTokenValue").value == "dUSD")) {
+    if ((my$("#CurrencyValue").value == "usd") && (my$("#FirstTokenValue").value == "dUSDN")) {
         my$("#cPriceFirstToken").value = 1;
         inputEvent("#cPriceFirstToken");
         my$("#cPriceFirstToken").disabled = true;
@@ -68,6 +68,11 @@ function clearCPriceOtherToken() {
             my$("#fPriceOtherToken").parentElement.classList.remove("auto");
         }
     }
+}
+
+function clearCPriceDFI() {
+    my$("#cPriceDFI").value = "";
+    inputEvent("#cPriceDFI");
 }
 
 function clearCPriceDFI() {
@@ -779,7 +784,7 @@ function createPlot(cPriceRatio, fPriceRatio, fValue, fValueI) {
 }
 
 async function getOraclePrice(name) {
-    const url   = "https://ocean.defichain.com/v0/mainnet/prices/" + name + "-USD";
+    const url = "https://ocean.defichain.com/v0/mainnet/prices/" + name + "-USD";
     return await fetch(url)
         .then((response) => response.json())
         .then(function(data){
@@ -789,6 +794,21 @@ async function getOraclePrice(name) {
             alert("An error happened while querying the oracle.");
             return 0;
         });
+}
+
+async function getDUSDPrice() {
+    const url = "https://ocean.defichain.com/v0/mainnet/poolpairs/17";
+    const ba = await fetch(url)
+        .then((response) => response.json())
+        .then(function(data){
+            return data["data"]["priceRatio"]["ba"];
+        })
+        .catch(function() {
+            alert("An error happened while querying the poolpair.");
+            return 0;
+        });
+    const dfiPrice = await getOraclePrice("DFI");
+    return dfiPrice * ba;
 }
 
 async function getCoinGeckoPrice(coin, currency) {
@@ -819,9 +839,14 @@ async function getPrices() {
     my$("#sync").classList.add("rotate");
 
     let   price1    = 1;
-    const otherCoin = my$("#OtherTokenValue").options[my$("#OtherTokenValue").selectedIndex].text;
+    let otherCoin = my$("#OtherTokenValue").value;
+    if (otherCoin != "DFI")
+        otherCoin = otherCoin.substring(1);
+    // stables aren't so stable right now:
     if (my$("#FirstTokenValue").value != "dUSD")
-        price1 = await getOraclePrice(my$("#FirstTokenValue").options[my$("#FirstTokenValue").selectedIndex].text);
+        price1 = await getOraclePrice(my$("#FirstTokenValue").value);
+    else
+        price1 = await getDUSDPrice();
 
     let   price2   = await getOraclePrice(otherCoin);
     let   ratio    = 1;
