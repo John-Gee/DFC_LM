@@ -105,13 +105,15 @@ function setupFirstToken() {
                 OtherTokenOptions[i].className = "";
             for(let i=dfiIndex; i < OtherTokenOptions.length; i++)
                 OtherTokenOptions[i].className = "optInvisible";
-            OtherTokenOptions.selectedIndex = 1;
+            if (OtherTokenOptions.selectedIndex >= dfiIndex)
+                OtherTokenOptions.selectedIndex = 1;
         } else if (my$("#FirstTokenValue").selectedIndex == 1) {
             for(let i=0; i < dfiIndex; i++)
                 OtherTokenOptions[i].className = "optInvisible";
             for(let i=dfiIndex; i < OtherTokenOptions.length; i++)
                 OtherTokenOptions[i].className = "";
-            OtherTokenOptions.selectedIndex = dfiIndex;
+            if (OtherTokenOptions.selectedIndex < dfiIndex)
+                OtherTokenOptions.selectedIndex = dfiIndex;
         }
         changeEvent("#OtherTokenValue");
     });
