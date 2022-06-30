@@ -25,9 +25,9 @@ function clearCPriceFirstToken() {
 }
 
 function clearCPriceOtherToken() {
-    if (((my$("#CurrencyValue").value == "usd") && ((my$("#OtherTokenValue").value == "USDC") || (my$("#OtherTokenValue").value == "USDT"))) ||
-        ((my$("#CurrencyValue").value == "btc") && (my$("#OtherTokenValue").value == "BTC")) ||
-        ((my$("#CurrencyValue").value == "eth") && (my$("#OtherTokenValue").value == "ETH"))) {
+    if (((my$("#CurrencyValue").value == "usd") && ((my$("#OtherTokenValue").value == "dUSDC") || (my$("#OtherTokenValue").value == "dUSDT"))) ||
+        ((my$("#CurrencyValue").value == "btc") && (my$("#OtherTokenValue").value == "dBTC")) ||
+        ((my$("#CurrencyValue").value == "eth") && (my$("#OtherTokenValue").value == "dETH"))) {
         my$("#cPriceOtherToken").value = 1;
         inputEvent("#cPriceOtherToken");
         my$("#cPriceOtherToken").disabled = true;
