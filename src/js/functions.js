@@ -25,7 +25,7 @@ function clearCPriceFirstToken() {
 }
 
 function clearCPriceOtherToken() {
-    if (((my$("#CurrencyValue").value == "usd") && ((my$("#OtherTokenValue").value == "dUSDC") || (my$("#OtherTokenValue").value == "dUSDT"))) ||
+    if (((my$("#CurrencyValue").value == "usd") && ((my$("#OtherTokenValue").value == "dUSDCN") || (my$("#OtherTokenValue").value == "dUSDTN"))) ||
         ((my$("#CurrencyValue").value == "btc") && (my$("#OtherTokenValue").value == "dBTC")) ||
         ((my$("#CurrencyValue").value == "eth") && (my$("#OtherTokenValue").value == "dETH"))) {
         my$("#cPriceOtherToken").value = 1;
