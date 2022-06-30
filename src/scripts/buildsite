@@ -12,7 +12,12 @@ function addDTokens() {
     for dToken in $(sort -u gen/dTokens.txt)
     do
         preloads+="<link href=\"../docs/img/"$dToken".svg\" rel=\"prefetch\" type=\"image/svg+xml\" as=\"image\"> ";
-        options+="<option value=\""$dToken"\" class=\"optInvisible\">"$dToken"</option> ";
+        if [ "$dToken" != "dBCH" ] && [ "$dToken" != "dBTC" ] && [ "$dToken" != "dDOGE" ] && [ "$dToken" != "dETH" ] && \
+           [ "$dToken" != "dFI" ] && [ "$dToken" != "dLTC" ] && \
+           [ "$dToken" != "dUSD" ] && [ "$dToken" != "dUSDC" ] && [ "$dToken" != "dUSDT" ]
+        then
+            options+="<option value=\""$dToken"\" class=\"optInvisible\">"$dToken"</option> ";
+        fi
     done 
     sed -i "s|type=\"image/svg+xml\">|type=\"image/svg+xml\"> $preloads|" ../docs/index.html
     sed -i "s|^.*dNONE.*$|$options|" ../docs/index.html
