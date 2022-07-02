@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "TITLE";
+    src: url("../../docs/fonts/AROMA-Bold.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: "SUB";
+    src: url("../../docs/fonts/Comodo Regular Free.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: "KEYS";
+    src: url("../../docs/fonts/Comodo Regular Free.woff2") format('woff2');
+}
