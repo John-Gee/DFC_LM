@@ -1,7 +1,7 @@
 module.exports = {
     plugins: [
         require('cssnano')({
-            preset: 'advanced',
+            preset: [ 'advanced', { reduceIdents: false } ] // messes with grid areas
         }),
     ],
 };

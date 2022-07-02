@@ -62,7 +62,7 @@ function minifyCSS() {
 }
 
 function minifyJS() {
-    cat js/{de,en,fr,events,functions}.js | recode -f utf8..flat | sed "s|../docs/||" | sed "s|\"'head' 'calc'\"|\"'h' 'ja'\"|" | sed "s|\"'head' 'info'\"|\"'h' 'i'\"|" | \
+    cat js/{de,en,fr,events,functions}.js | recode -f utf8..flat | sed "s|../docs/||" | \
     npx uglifyjs -o ../docs/js/functions.min.js \
     -c -m --source-map "root='../src/js',url='functions.min.js.map'"
     sed -i "s|functions.js|functions.min.js|" ../docs/index.html
