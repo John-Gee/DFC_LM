@@ -128,6 +128,7 @@ function formatCoin(coin, container) {
     const img = document.createElement("img");
     img.src = "../docs/img/" + coin.id + ".svg";
     img.class = "img-flag";
+    img.alt = coin.id;
     return img;
 }
 
