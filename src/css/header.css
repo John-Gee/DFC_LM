@@ -9,14 +9,14 @@
     padding: 0.15rem;
 
     /* style */
-    background-color: rgba(240,240,240,1);
-    box-shadow: 0px -5px 15px 0px rgba(250, 250, 250, 1),
-                0px 5px 15px 0px rgba(75, 75, 75, 1);
-    margin-bottom: 0.75rem;
+    background-color: var(--background);
+    box-shadow: 0px -5px 15px 0px var(--background),
+                0px 5px 15px 0px var(--diffusion);
+    margin-bottom: 0.5rem;
 }
 
 #header > *, h2 {
-    filter: drop-shadow(0.075rem 0.075rem 0 rgba(140,140,140,1));
+    filter: drop-shadow(0.075rem 0.075rem 0 var(--dropShadow));
 }
 
 #header > h1, #select2-i18n-toggler-container, #select2-i18n-toggler-results > li {
@@ -27,7 +27,7 @@
 }
 
 #header > h1, #select2-i18n-toggler-container {
-    color: rgba(255,0,176,1) !important;
+    color: var(--pinkDFC) !important;
     padding-top: 0.2rem;
 }
 

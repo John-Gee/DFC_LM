@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: 1fr 0.25rem repeat(17, 1fr);
-    gap: 0.25rem;
+    gap: 0.25rem 0;
 }
 
 #investment > h2 {

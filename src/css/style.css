@@ -4,6 +4,22 @@
     font-size: 1.1vw;
 }
 
+:root {
+    --pinkDFC: rgb(255,0,176);
+    --lightPinkDFC: rgba(255,0,176,0.15);
+    --clear: white;
+    --almostClear: rgb(250,250,250);
+    --dark: black;
+    --lightDark: rgba(0,0,0,0.3);
+    --good: rgb(0,255,0);
+    --bad: rgb(255,0,0);
+    --neutral: rgb(255,255,0);
+    --background: rgb(240,240,240);
+    --diffusion: rgb(75, 75, 75);
+    --dropShadow: rgb(140,140,140);
+    --separation: rgba(200,200,200);
+}
+
 body {
     /* sets the page */
     display: grid;
@@ -13,7 +29,7 @@ body {
                          "calc";
 
     /* style */
-    background-color: rgba(255,0,176,0.15);
+    background-color: var(--lightPinkDFC);
     height: 100vh;
     width: 100vw;
     overflow: hidden;
@@ -48,11 +64,11 @@ body {
 
 #investment, #outcome, #plot {
     /* style */
-    background-color: rgba(240,240,240,1);
+    background-color: var(--background);
     border-radius: 2rem;
-    box-shadow: -5px -5px 15px 5px rgba(250, 250, 250, 1),
-                5px 5px 15px 5px rgba(75, 75, 75, 1);
-    margin: 1rem 1rem;
+    box-shadow: -5px -5px 15px 5px var(--almostClear),
+                5px 5px 15px 5px var(--diffusion);
+    margin: 0.75rem 1rem;
     padding: 0 1rem 0.5rem 1rem;
     align-items: center;
     //justify-items: center;
@@ -60,7 +76,7 @@ body {
 
 h2 {
     text-align: center;
-    color: rgba(255,0,176,1);
+    color: var(--pinkDFC);
     font-size: 0.9rem;
     font-family: SUB;
     margin-top: -0.25rem;
@@ -72,7 +88,7 @@ hr {
     //margin-bottom: 2.5rem;
     height: 1px;
     border: 0;
-    background-color: rgba(200,200,200,1);
+    background-color: var(--separation);
 }
 
 h3 {
@@ -80,10 +96,11 @@ h3 {
     font-weight: normal;
     font-size: 0.7rem;
     font-family: KEYS;
+    color: var(--dark);
 }
 
 .line {
-    border: 0.1rem solid rgba(200, 200, 200, 1);
+    border: 0.1rem solid var(--separation);
 }
 
 .title {
@@ -96,6 +113,7 @@ h3 {
     /* style */
     font-size: 0.7rem;
     font-family: KEYS;
+    color: var(--dark);
 }
 
 .input {
@@ -110,11 +128,11 @@ h3 {
     background-color: white;
     border-style: inset;
     border-radius: 2rem;
-    border-color: rgba(200,200,200,0.25);
-    box-shadow: inset 0.1em 0.1em rgba(150, 150, 150, 1),
-             0 0 0 2px rgb(255,255,255),
-             0.3em 0.3em 0.5em rgba(0,0,0,0.3);
-    color: rgba(255,0,176,1);
+    border-color: var(--separation);
+    box-shadow: inset 0.1em 0.1em var(--dropShadow),
+             0 0 0 2px var(--clear),
+             0.3em 0.3em 0.5em var(--lightDark);
+    color: var(--pinkDFC);
     font-weight: bold;
     margin: 0 0.5rem;
     padding: 0.15rem 0.5rem 0.15rem 0.5rem;
@@ -123,10 +141,10 @@ h3 {
 
 .auto {
     /* style */
-    background-color: rgba(140,140,140,1);
-    box-shadow: inset 0.1em 0.1em rgba(50, 50, 50, 1),
-             0 0 0 2px rgb(255,255,255),
-             0.3em 0.3em 0.5em rgba(0,0,0,0.3);
+    background-color: var(--dropShadow);
+    box-shadow: inset 0.1em 0.1em var(--diffusion),
+             0 0 0 2px var(--clear),
+             0.3em 0.3em 0.5em var(--lightDark);
 }
 
 .auto > input {

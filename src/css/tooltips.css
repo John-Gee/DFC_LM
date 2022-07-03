@@ -27,18 +27,18 @@
   width: -moz-max-content;
   border-radius: 6px;
   font-size: 14px;
-  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 24px var(--dark);
   text-align: center;
   white-space: pre-wrap;
   transform: translate(-50%, -5px) scale(0.5);
-  background-color: rgb(255,0,176);
-  color: rgba(0,0,0,1);
+  background-color: var(--neutral);
+  color: var(--dark);
 }
 [data-tooltip*="+"]:before {
-    background-color: rgba(0,255,0,1);
+    background-color: var(--good);
 }
 [data-tooltip*="-"]:before {
-    background-color: rgba(255,0,0,1);
+    background-color: var(--bad);
 }
 
 /* Tooltip arrow */
@@ -54,10 +54,10 @@
   transform: translateX(-50%) scaleY(0);
 }
 [data-tooltip*="+"]:after {
-    border-color: rgba(0,255,0,1) transparent transparent transparent;
+    border-color: var(--good) transparent transparent transparent;
 }
 [data-tooltip*="-"]:after {
-    border-color: rgba(255,0,0,1) transparent transparent transparent;
+    border-color: var(--bad) transparent transparent transparent;
 }
 
 /* Tooltip becomes visible at hover */

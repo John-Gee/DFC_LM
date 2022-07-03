@@ -52,7 +52,7 @@
 
 #noInt {
     /* style */
-    color: rgba(140,140,140,1);
+    color: var(--neutral);
     white-space: nowrap;
     font-size: 0.8rem;
     font-family: SUB;
@@ -61,7 +61,7 @@
 
 #int {
     /* style */
-    color: rgba(255,0,176,1);
+    color: var(--pinkDFC);
     white-space: nowrap;
     font-size: 0.8rem;
     font-family: SUB;
@@ -69,17 +69,17 @@
 }
 
 .ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
-    stroke: rgba(140,140,140,1);
+    stroke: var(--neutral);
 }
 
 .ct-series-b .ct-bar, .ct-series-b .ct-line, .ct-series-b .ct-point, .ct-series-b .ct-slice-donut {
-    stroke: rgba(255,0,176,1);
+    stroke: var(--pinkDFC);
 }
 
 .ct-area.ct-threshold-above {
-  fill: rgba(0,255,0,1);
+  fill: var(--good);
 }
 
 .ct-area.ct-threshold-below {
-  fill: rgba(255,0,0,1);
+  fill: var(--bad);
 }
