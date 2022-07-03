@@ -46,23 +46,27 @@ function cleanPaths() {
 }
 
 function minifyCSS() {
-    cat css/{chart,guide,header,info,investment,outcome,select2,style,tooltips}.css |
+    cat css/{chart,header,info,investment,outcome,select2,style,tooltips}.css |
     sed "s|../docs/||" | npx postcss -m --output ../docs/css/style.min.css
+    cat css/guide.css |
+    sed "s|../docs/||" | npx postcss -m --output ../docs/css/guide.min.css
     cat css/queries.css |
     sed "s|../docs/||" | npx postcss -m --output ../docs/css/queries.min.css
     # Next one returns nothing by postcss somehow
     fonts=`cat css/fonts.css | sed "s|../../docs/||" | npx clean-css-cli -O2`
-    for f in {chart,guide,header,info,investment,outcome,select2,tooltips}.css
+    for f in {chart,header,info,investment,outcome,select2,tooltips}.css
     do
         sed -i "/^.*$f.*$/d" ../docs/index.html
     done
     sed -i "s|^.*fonts.css.*$|<style type=\"text/css\">$fonts</style>|" ../docs/index.html
     sed -i "s|style.css|style.min.css|" ../docs/index.html
+    sed -i "s|guide.css|guide.min.css|" ../docs/index.html
     sed -i "s|queries.css|queries.min.css|" ../docs/index.html
 }
 
 function minifyJS() {
-    cat js/{de,en,fr,events,functions}.js | recode -f utf8..flat | sed "s|../docs/||" | \
+    cat js/{de,en,fr,events,functions}.js | recode -f utf8..flat |
+    sed "s|../docs/||" | sed "s|guide.css|guide.min.css|" |\
     npx uglifyjs -o ../docs/js/functions.min.js \
     -c -m --source-map "root='../src/js',url='functions.min.js.map'"
     sed -i "s|functions.js|functions.min.js|" ../docs/index.html
