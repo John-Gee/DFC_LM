@@ -11,7 +11,7 @@ function addDTokens() {
     options="";
     for dToken in $(sort -u gen/dTokens.txt)
     do
-        preloads+="<link href=\"../docs/img/"$dToken".svg\" rel=\"prefetch\" type=\"image/svg+xml\" as=\"image\"> ";
+        preloads+="<link href=\"img/"$dToken".svg\" rel=\"prefetch\" type=\"image/svg+xml\" as=\"image\"> ";
         if [ "$dToken" != "dBCH" ] && [ "$dToken" != "dBTC" ] && [ "$dToken" != "dDOGE" ] && [ "$dToken" != "dETH" ] && \
            [ "$dToken" != "dFI" ] && [ "$dToken" != "dLTC" ] && \
            [ "$dToken" != "dUSD" ] && [ "$dToken" != "dUSDC" ] && [ "$dToken" != "dUSDT" ]
