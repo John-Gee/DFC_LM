@@ -844,7 +844,7 @@ async function getPrices() {
     if (otherCoin != "DFI")
         otherCoin = otherCoin.substring(1);
     // stables aren't so stable right now:
-    if (my$("#FirstTokenValue").value != "dUSD")
+    if (my$("#FirstTokenValue").value != "DUSD")
         price1 = await getOraclePrice(my$("#FirstTokenValue").value);
     else
         price1 = await getDUSDPrice();

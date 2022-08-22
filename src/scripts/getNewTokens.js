@@ -16,9 +16,7 @@ const Puppeteer = require('puppeteer');
 
     for (const acontent of acontents) {
         const href = await (await acontent.getProperty("href")).jsonValue();
-        let dToken = href.substring(26);
-        if (dToken == "DUSD")
-            dToken = "dUSD";
+        let dToken = href.substring(26).split("-")[0];
 
         if (dTokens.has(dToken))
             continue;

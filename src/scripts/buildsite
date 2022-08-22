@@ -5,7 +5,7 @@
 #}
 
 function addDTokens() {
-    #node scripts/getNewTokens.js
+    node scripts/getNewTokens.js
 
     preloads="";
     options="";
@@ -13,7 +13,7 @@ function addDTokens() {
     do
         preloads+="<link href=\"img/"$dToken".svg\" rel=\"prefetch\" type=\"image/svg+xml\" as=\"image\"> ";
         if [ "$dToken" != "dBCH" ] && [ "$dToken" != "dBTC" ] && [ "$dToken" != "dDOGE" ] && [ "$dToken" != "dETH" ] && \
-           [ "$dToken" != "dFI" ] && [ "$dToken" != "dLTC" ] && [ "$dToken" != "dUSD" ]
+           [ "$dToken" != "dFI" ] && [ "$dToken" != "dLTC" ] && [ "$dToken" != "DUSD" ]
         then
             options+="<option value=\""$dToken"\" class=\"optInvisible\">"$dToken"</option> ";
         fi
