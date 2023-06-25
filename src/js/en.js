@@ -72,7 +72,7 @@ const en = {
         links: "This site is accessible on the web at <a href=\"https://www.defichain.tools\">https://www.defichain.tools</a>",
         ipfs: "It is also available on IPFS at <a href=\"/ipns/defichain.tools/\">/ipns/defichain.tools/</a>",
         gh: "You can find the source to this site and file feature requests/bugs at <a href=\"https://github.com/John-Gee/DFC_LM/\">https://github.com/John-Gee/DFC_LM/</a>",
-        email_off: "You can also contact us at <a href=\"mailto:contact@defichain.tools?subject=DefiChainTools\"> contact@defichain.tools</a>",
+        email: "You can also contact us at <a href=\"mailto:admin@defichain.tools?subject=DefiChainTools\"> admin@defichain.tools</a>",
         donation: "If you appreciate this site and want to support it, you can donate to this DeFiChain address:"
     }
 };
