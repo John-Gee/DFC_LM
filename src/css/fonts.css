@@ -1,14 +1,14 @@
 @font-face {
-    font-family: "TITLE";
+    font-family: "TITLE"; /*, "Bungee", sans-serif;*/
     src: url("../../docs/fonts/AROMA-Bold.woff2") format('woff2');
 }
 
 @font-face {
-    font-family: "SUB";
+    font-family: "SUB"; /*, "Comodo", Nunito, sans-serif; */
     src: url("../../docs/fonts/Comodo Regular Free.woff2") format('woff2');
 }
 
 @font-face {
-    font-family: "KEYS";
+    font-family: "KEYS"; /*, "Comodo", Nunito, sans-serif; */
     src: url("../../docs/fonts/Comodo Regular Free.woff2") format('woff2');
 }
