@@ -9,12 +9,12 @@ dBCH
 dBITI
 dBRK.B
 dBTC
-dBURN2
 dCOIN
 dCS
 dDAX
 dDIS
 dDOGE
+dDOT
 dEEM
 dETH
 dEUROC
@@ -29,6 +29,7 @@ dINTC
 dJNJ
 dKO
 dLTC
+dMATIC
 dMCHI
 dMSFT
 dMSTR
@@ -45,7 +46,9 @@ dSAP
 dSH
 dSHEL
 dSLV
+dSOL
 dSPY
+dSUI
 dTAN
 dTLT
 dTSLA
@@ -61,6 +64,7 @@ dVBK
 dVNQ
 dVOO
 dWMT
+dXCHF
 dXLE
 dXLRE
 dXOM
